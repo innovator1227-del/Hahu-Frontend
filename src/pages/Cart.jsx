@@ -1,46 +1,114 @@
-import { useCart } from "../store/cartStore"
+import { useCart } from "../store/cartStore";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const { cartItems, removeFromCart } = useCart()
-
-  const total = cartItems.reduce((sum, item) => sum + item.price, 0)
+  const { cartItems, removeFromCart ,increaseQty, decreaseQty} = useCart();
+  
+  const navigate = useNavigate();
+  const total = cartItems.reduce(
+    (sum, item) => sum + item.price * (item.quantity || 1),
+    0
+  );
 
   return (
-    <div className="p-8 max-w-5xl mx-auto">
-      <h1 className="text-2xl font-bold mb-6">Your Cart</h1>
+    <div className="p-6 max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-      {cartItems.length === 0 ? (
-        <p className="text-gray-500">Your cart is empty.</p>
-      ) : (
-        <>
-          <div className="space-y-4">
-            {cartItems.map((item) => (
-              <div
-                key={item.cartId}
-                className="flex justify-between items-center border p-4 rounded"
-              >
-                <div>
-                  <h2 className="font-bold">{item.title}</h2>
-                  <p>{item.price} ETB</p>
+      {/* LEFT SIDE - CART ITEMS */}
+      <div className="lg:col-span-2 space-y-4">
+
+        <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
+
+        {cartItems.length === 0 ? (
+          <p className="text-gray-500">Your cart is empty.</p>
+        ) : (
+          cartItems.map((item) => (
+            <div
+              key={item.id || item.cartId}
+              className="flex gap-4 border p-4 rounded-lg bg-white"
+            >
+
+              {/* IMAGE (optional fallback) */}
+              <img
+                src={item.image || "https://via.placeholder.com/120"}
+                alt={item.title}
+                className="w-28 h-28 object-cover rounded"
+              />
+
+              {/* DETAILS */}
+              <div className="flex-1">
+                <h2 className="font-bold text-lg">{item.title}</h2>
+
+                <p className="text-gray-600">
+                  {item.price} ETB × {item.quantity || 1}
+                </p>
+
+                {/* Quantity display (future buttons later) */}
+                <div className="flex items-center gap-3 mt-2">
+
+                  <button
+                    onClick={() => decreaseQty(item.id)}
+                    className="px-3 py-1 border rounded"
+                  >
+                    -
+                  </button>
+
+                  <span>{item.quantity || 1}</span>
+
+                  <button
+                    onClick={() => increaseQty(item.id)}
+                    className="px-3 py-1 border rounded"
+                  >
+                    +
+                  </button>
+
                 </div>
 
+                {/* Remove */}
                 <button
-                  className="bg-red-500 text-white px-4 py-2 rounded"
-                  onClick={() => removeFromCart(item.cartId)}
+                  className="text-red-500 mt-3 text-sm hover:underline"
+                  onClick={() => removeFromCart(item.id || item.cartId)}
                 >
                   Remove
                 </button>
               </div>
-            ))}
+
+              {/* PRICE */}
+              <div className="font-bold text-lg">
+                {item.price * (item.quantity || 1)} ETB
+              </div>
+
+            </div>
+          ))
+        )}
+      </div>
+
+      {/* RIGHT SIDE - SUMMARY */}
+      {cartItems.length > 0 && (
+        <div className="h-fit sticky top-20 border rounded-lg p-4 bg-white shadow-sm">
+
+          <h2 className="text-lg font-bold mb-4">Order Summary</h2>
+
+          <div className="flex justify-between mb-2">
+            <span>Items</span>
+            <span>{cartItems.length}</span>
           </div>
 
-          <div className="mt-6 text-right text-xl font-bold">
-            Total: {total} ETB
+          <div className="flex justify-between font-bold text-lg border-t pt-2">
+            <span>Total</span>
+            <span>{total} ETB</span>
           </div>
-        </>
+
+          <button
+             onClick={() => navigate("/app/checkout")}
+             className="w-full mt-4 bg-black text-white py-2 rounded-lg hover:bg-gray-800"
+          >
+              Proceed to Checkout
+          </button>
+        </div>
       )}
-    </div>
-  )
-}
 
-export default Cart
+    </div>
+  );
+};
+
+export default Cart;

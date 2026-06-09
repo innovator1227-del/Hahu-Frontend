@@ -1,5 +1,6 @@
 import SellerAddProduct from "@/pages/SellerAddProduct";
 import StaticPage from "@/pages/StaticPage";
+import Checkout from "@/pages/Checkout";
 
 export const AppRoute = [
     { path: "create-listing", element: <SellerAddProduct /> },

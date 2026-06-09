@@ -3,6 +3,7 @@ import { Menu, X, Search, ShoppingCart, Heart, PlusCircle, LogIn, LogOut, Bell, 
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSearch } from "@/store/searchStore.jsx";
 import { useAuth } from "@/store/authStore.jsx";
+import { useCart } from "@/store/cartStore.jsx";
 
 const Navbar = ({ toggleSidebar }) => {
   const { user, logout } = useAuth();
@@ -15,6 +16,8 @@ const Navbar = ({ toggleSidebar }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const { setSearchQuery } = useSearch();
+  // const { cartItems } =  useCart();
+  const { cartItems, message } = useCart();
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -64,6 +67,11 @@ const Navbar = ({ toggleSidebar }) => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center gap-4">
+            {message && (
+              <div className="fixed top-20 right-4 bg-gray-600 text-white px-4 py-2 rounded-lg shadow-lg z-50">
+                {message}
+              </div>
+            )}
             <button
               onClick={toggleSidebar}
               className="p-2 hover:bg-gray-800 dark:hover:bg-gray-800 rounded-lg transition-colors"
@@ -109,7 +117,11 @@ const Navbar = ({ toggleSidebar }) => {
 
             <Link to="/cart" className="p-2.5 hover:bg-gray-800 dark:hover:bg-gray-800 rounded-lg transition-colors relative">
               <ShoppingCart size={20} />
-              <span className="absolute -top-0.5 -right-0.5 bg-white-500 text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">2</span>
+              {cartItems.length > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 bg-white-500 text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
+                {cartItems.length}
+  </span>
+)}
             </Link>
 
             <Link

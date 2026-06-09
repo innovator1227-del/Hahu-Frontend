@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import Checkout from "@/pages/Checkout";
 
 import PublicLayout from "./layouts/PublicLayout";
 import AppLayout from "./layouts/AppLayout";
@@ -38,6 +39,9 @@ const AppRouter = () => {
                     {AppRoute.map((route, i) => (
                         <Route key={i} {...route} />
                     ))}
+
+                     <Route path="checkout" element={<Checkout />} />
+
                 </Route>
             </Route>
 
@@ -50,6 +54,7 @@ const AppRouter = () => {
                 </Route>
             </Route>
 
+           
             {/* 404 */}
             <Route path="*" element={<NotFound />} />
 
