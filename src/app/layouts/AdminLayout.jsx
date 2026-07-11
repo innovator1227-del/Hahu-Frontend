@@ -10,7 +10,7 @@ const AdminLayout = () => {
     <div className="min-h-screen bg-slate-950 text-white">
       <Sidebar isOpen={showSidebar} variant="admin" onClose={() => setShowSidebar(false)} />
 
-      <div className={`min-h-screen transition-all ${showSidebar ? 'md:pl-72' : 'md:pl-20'}`}>
+      <div className={`min-h-screen transition-all duration-500 ${showSidebar ? 'md:pl-64' : 'md:pl-[88px]'}`}>
         <Navbar toggleSidebar={() => setShowSidebar((prev) => !prev)} />
 
         <main className="min-h-[calc(100vh-64px)] px-4 py-6 md:px-8">

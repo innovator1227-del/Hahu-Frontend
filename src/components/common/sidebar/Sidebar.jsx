@@ -123,25 +123,28 @@ const Sidebar = ({ isOpen, variant = "public", onClose }) => {
                     onClick={onClose}
                 />
             )}
-
             <aside
-                className={`fixed top-0 left-0 h-screen flex flex-col bg-white z-50 transition-all duration-300
-  ${isOpen ? "w-72 translate-x-0" : "-translate-x-full md:translate-x-0 md:w-20"}`}
-            >
+                className={`fixed top-0 left-0 z-50 h-screen flex flex-col bg-[#020617] backdrop-blur-xl border-r border-white/5 transition-all duration-500 ease-in-out
+                    ${isOpen
+                ? "w-64 translate-x-0"
+                : "-translate-x-full md:translate-x-0 md:w-[88px]"
+                }
+                `}
+                >
                 {/* Header */}
-                <div className="h-26.5 flex items-center justify-between px-4 border-b bg-black text-white">
+                <div className="h-16 md:h-20 flex items-center px-5 border-b border-white/5 bg-transparent text-white">
                     <div className="flex items-center gap-3">
 
                         {/* Logo ALWAYS visible */}
                         <img
                             src={Logo}
                             alt="HAHU Market Logo"
-                            className="w-8 h-8 rounded-full object-cover"
+                            className="w-10 h-10 rounded-full ring-2 ring-white/5 object-cover"
                         />
 
                         {/* Text only when open */}
                         {isOpen && (
-                            <span className="font-bold text-lg tracking-tight">
+                            <span className="text-lg font-bold tracking-tight text-slate-100">
                                 HAHU <span className="text-white ">MARKET</span>
                             </span>
                         )}
@@ -150,24 +153,27 @@ const Sidebar = ({ isOpen, variant = "public", onClose }) => {
                 </div>
 
                 {/* Scrollable Menu */}
-                <div className="flex-1 overflow-y-auto px-3 py-4 space-y-2">
+                <div className="flex-1 overflow-y-auto custom-scrollbar flex flex-col gap-2 px-3 py-6">
                     {/* Main Menu Items */}
                     {menuItems.map((item) => (
                         <Link
                             key={item.id}
                             to={item.link}
                             onClick={handleNavClick}
-                            className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-300 ease-in-out group ${isActive(item.link)
-                                ? 'bg-linear-to-r from-red-500/20 to-red-600/10 text-white-400 border-l-2 border-white-500'
-                                : 'hover:bg-slate-800 dark:hover:bg-slate-300'
-                                }`}
+                            className={`group relative flex items-center gap-3 h-12 px-4 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/5 $${isActive(item.link)
+                            ?
+                            "bg-white/10 border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)] text-white"
+                            :
+                            ""
+                            }`}
                         >
-                            <item.icon size={20} className={`${isActive(item.link) ? 'text-white-400' : 'text-slate-700 group-hover:text-white-400'} transition-colors`} />
+                            <item.icon size={20} className={`w-5 h-5 transition-colors ${isActive(item.link)? "text-blue-400 ": "text-slate-400 group-hover:text-white"}
+                            `} />
                             {isOpen && (
                                 <>
-                                    <span className="text-sm font-medium flex-1">{item.name}</span>
+                                    <span className="text-sm font-medium flex-1 tracking-wide">{item.name}</span>
                                     {item.badge && (
-                                        <span className="bg-white-500 text-[10px] px-2 py-0.5 rounded-full font-medium">{item.badge}</span>
+                                        <span className="px-2 py-0.5 rounded-full bg-blue-500 text-white text-[10px] font-semibold">{item.badge}</span>
                                     )}
                                 </>
                             )}
@@ -179,7 +185,7 @@ const Sidebar = ({ isOpen, variant = "public", onClose }) => {
                         <>
                             {isOpen && (
                                 <div className="pt-4 pb-2">
-                                    <h3 className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider px-3">
+                                    <h3 className="px-4 text-xs uppercase tracking-[0.25em] font-semibold text-slate-500">
                                         Categories
                                     </h3>
                                 </div>
@@ -189,7 +195,7 @@ const Sidebar = ({ isOpen, variant = "public", onClose }) => {
                                     key={cat.id}
                                     to={cat.link}
                                     onClick={handleNavClick}
-                                    className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-800 dark:hover:bg-slate-300 transition-colors group"
+                                    className="group relative flex items-center gap-3 h-12 px-4 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/5"
                                 >
                                     {/* Icon ALWAYS visible */}
                                     <span className="text-lg group-hover:scale-110 transition-transform">
@@ -213,7 +219,7 @@ const Sidebar = ({ isOpen, variant = "public", onClose }) => {
                                 <div key={subMenu.id} className="mb-2">
                                     <button
                                         onClick={() => toggleDropdown(subMenu.id)}
-                                        className="flex items-center justify-between w-full px-3 py-2.5 rounded-xl hover:bg-slate-800 dark:hover:bg-slate-300 transition-colors"
+                                        className="flex items-center justify-between w-full h-12 px-4 rounded-2xl transition-all duration-300 hover:bg-white/5"
                                     >
                                         <div className="flex items-center gap-3">
                                             <subMenu.icon size={20} className="text-slate-400" />
@@ -246,7 +252,7 @@ const Sidebar = ({ isOpen, variant = "public", onClose }) => {
 
                     {/* Bottom Actions */}
                     {isOpen && (
-                        <div className="mt-auto p-3 border-t">
+                        <div className="mt-auto border-t border-white/5 p-4">
                             {variant === "user" && (
                                 <div className="space-y-1">
                                     <Link
@@ -284,7 +290,7 @@ const Sidebar = ({ isOpen, variant = "public", onClose }) => {
                                 <Link
                                     to="/create-listing"
                                     onClick={handleNavClick}
-                                    className="flex items-center justify-center gap-2 w-full py-3 bg-linear-to-r from-white-500 to-white-600 rounded-xl font-medium text-sm shadow-lg shadow-white-500/20 hover:from-white-600 hover:to-white-700 transition-all"
+                                    className="flex items-center justify-center gap-2 h-11 rounded-xl bg-blue-600 fonbt-medium text-white shadow-lg shadow-blue-900/30 transition-all duration-300 hover:bg-blue-700"
                                 >
                                     <Store size={18} />
                                     Sell an Item

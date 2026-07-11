@@ -12,13 +12,13 @@ const PublicLayout = () => {
   const showHero = location.pathname === '/' || location.pathname === '/browse'
 
   return (
-    <div className={`min-h-screen bg-default text-black`}>
+    <div className={`min-h-screen text-black`}>
       <Sidebar
         isOpen={showSidebar}
         variant={user ? 'user' : 'public'}
         onClose={() => setShowSidebar(false)}
       />
-      <div className={`min-h-screen transition-all ${showSidebar ? 'md:pl-72' : 'md:pl-20'}`}>
+      <div className={`min-h-screen transition-all duration-500 ${showSidebar ? 'md:pl-64' : 'md:pl-[88px]'}`}>
         <Navbar toggleSidebar={() => setShowSidebar((prev) => !prev)} />
 
         {showHero && (
@@ -28,7 +28,7 @@ const PublicLayout = () => {
           </div>
         )}
 
-        <main className="px-4 pb-8 md:px-8">
+        <main className="bg-slate-50 min-h-screen rounded-tl-3xl">
           <Outlet />
         </main>
 

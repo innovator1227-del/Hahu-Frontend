@@ -63,10 +63,20 @@ const Navbar = ({ toggleSidebar }) => {
   };
 
   return (
-    <nav className="bg-gray-900 dark:bg-gray-950 text-white sticky top-0 z-50 shadow-lg">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
-          <div className="flex items-center gap-4">
+          <nav
+        className="
+          sticky top-0 z-50
+          h-16 md:h-20
+          bg-[#020617]/80
+          backdrop-blur-xl
+          border-b border-white/5
+          transition-all duration-300
+          text-white
+        "
+      >
+      <div className="h-full px-4 md:px-6">
+        <div className="flex items-center justify-between h-full gap-4">
+          <div className="flex items-center gap-3 shrink-0">
             {message && (
               <div className="fixed top-20 right-4 bg-gray-600 text-white px-4 py-2 rounded-lg shadow-lg z-50">
                 {message}
@@ -74,59 +84,74 @@ const Navbar = ({ toggleSidebar }) => {
             )}
             <button
               onClick={toggleSidebar}
-              className="p-2 hover:bg-gray-800 dark:hover:bg-gray-800 rounded-lg transition-colors"
+              className="
+                  w-10
+                  h-10
+                  flex
+                  items-center
+                  justify-center
+                  rounded-full
+                  text-slate-400
+                  hover:text-white
+                  hover:bg-white/10
+                  transition-all
+                  duration-200
+                "
             >
               <Menu size={22} />
             </button>
             <Link to="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-linear-to-br from-blue-500 to-blue-700 flex items-center justify-center font-bold text-lg shadow-lg">
+              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center font-bold text-lg shadow-lg shadow-blue-900/40">
                 H
               </div>
-              <span className="font-bold text-xl hidden lg:block tracking-tight">HAHU<span className="text-white-500">MARKET</span></span>
+              <span className="hidden lg:block text-xl font-bold tracking-tight text-slate-100">HAHU<span className="text-white-500">MARKET</span></span>
             </Link>
           </div>
 
-          <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-xl mx-8">
+          <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-2xl mx-auto">
             <div className="relative w-full">
               <input
                 type="text"
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
                 placeholder="Search phones, cars, furniture..."
-                className="w-full rounded-full border border-gray-700 bg-gray-800 dark:bg-gray-900 px-5 py-2.5 pr-12 focus:outline-none focus:border-white-500 focus:ring-1 focus:ring-white-500 text-sm text-white placeholder-gray-400 transition-all"
+                className="w-full h-11 rounded-full bg-slate-900/70 border border-white/5 backdrop-blur-xl px-5 pr-12 text-sm text-white placeholder:text-slate-500 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500"
               />
               <button
                 type="submit"
-                className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 bg-white-500 hover:bg-white-600 rounded-full transition-colors"
+                className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-300"
               >
                 <Search size={16} />
               </button>
             </div>
           </form>
 
-          <div className="flex items-center gap-1 md:gap-2">
-            <Link to="/notifications" className="p-2.5 hover:bg-gray-800 dark:hover:bg-gray-800 rounded-lg transition-colors relative">
+          <div className="flex items-center gap-2 shirink-0">
+            <Link
+              to="/notifications"
+              className=" relative w-10 h-10 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-200"
+              >
               <Bell size={20} />
               <span className="absolute top-1 right-1 w-2 h-2 bg-white-500 rounded-full"></span>
             </Link>
 
-            <Link to="/wishlist" className="p-2.5 hover:bg-gray-800 dark:hover:bg-gray-800 rounded-lg transition-colors relative">
+            <Link to="/wishlist" className="relative w-10 h-10 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-200">
               <Heart size={20} />
               <span className="absolute -top-0.5 -right-0.5 bg-white-500 text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">3</span>
             </Link>
 
-            <Link to="/cart" className="p-2.5 hover:bg-gray-800 dark:hover:bg-gray-800 rounded-lg transition-colors relative">
+            <Link to="/cart" className="relative w-10 h-10 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-200">
               <ShoppingCart size={20} />
               {cartItems.length > 0 && (
                 <span className="absolute -top-0.5 -right-0.5 bg-white-500 text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
-                {cartItems.length}
-  </span>
-)}
+                  {cartItems.length}
+                </span>
+              )}
             </Link>
 
             <Link
               to="/create-listing"
-              className="hidden md:flex items-center gap-2 bg-linear-to-r from-white-500 to-white-600 hover:from-white-600 hover:to-white-700 px-4 py-2 rounded-full font-medium text-sm shadow-lg shadow-white-500/20 transition-all hover:scale-105"
+              className="hidden md:flex items-center px-5 h-10 gap-2 bg-blue-600 text-white rounded-full font-medium text-sm shadow-lg shadow-blue-900/30 hover:bg-blue-700 transition-all duration-300 hover:scale-[1.03]"
             >
               <PlusCircle size={16} />
               <span>Sell</span>
@@ -136,9 +161,9 @@ const Navbar = ({ toggleSidebar }) => {
               {user ? (
                 <button
                   onClick={() => setUserMenuOpen(!userMenuOpen)}
-                  className="flex items-center gap-2 p-1.5 hover:bg-gray-800 dark:hover:bg-gray-800 rounded-lg transition-colors"
+                  className="flex items-center gap-2 pl-1 pr-3 h-10 rounded-full hover:bg-white/10 transition-all duration-300"
                 >
-                  <div className="w-8 h-8 bg-linear-to-br from-white-400 to-white-600 rounded-full flex items-center justify-center text-sm font-bold shadow">
+                  <div className="w-9 h-9 rounded-full bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-sm font-bold ring-2 ring-white/5">
                     {userInitials}
                   </div>
                   <ChevronDown size={16} className={`transition-transform ${userMenuOpen ? "rotate-180" : ""}`} />
@@ -151,7 +176,7 @@ const Navbar = ({ toggleSidebar }) => {
               )}
 
               {userMenuOpen && user && (
-                <div className="absolute right-0 top-full mt-2 w-56 bg-gray-800 dark:bg-gray-900 rounded-xl shadow-xl border border-gray-700 py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                <div className="absolute right-0 top-full mt-3 w-64 rounded-2xl bg-[#0f172a] backdrop-blur-xl border border-white/5 shadow-2xl shadow-black/40 py-2 z-50">
                   <div className="px-4 py-3 border-b border-gray-700">
                     <p className="font-medium text-sm">{user.name}</p>
                     <p className="text-xs text-gray-400">{user.email}</p>
@@ -190,7 +215,7 @@ const Navbar = ({ toggleSidebar }) => {
             </div>
 
             <button
-              className="md:hidden p-2.5 hover:bg-gray-800 rounded-lg transition-colors"
+              className="md:hidden w-10 h-10 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-200"
               onClick={() => setMenuOpen(!menuOpen)}
             >
               {menuOpen ? <X size={22} /> : <Menu size={22} />}
@@ -199,14 +224,14 @@ const Navbar = ({ toggleSidebar }) => {
         </div>
       </div>
 
-      <div className="hidden md:block border-t border-gray-800 dark:border-gray-800">
+      <div className="hidden md:block border-t border-white/5">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center gap-1 h-10">
             {menuItems.map((item) => (
               <Link
                 key={item.id}
                 to={item.link}
-                className={`px-4 py-1.5 rounded-lg text-sm font-medium transition-colors hover:bg-gray-800 ${location.pathname === item.link ? 'bg-gray-800 text-white-400' : ''}`}
+                className={`px-4 h-9 flex items-center rounded-full text-sm font-medium text-slate-900 transition-all duration-300  hover:bg-white ${location.pathname === item.link ? 'bg-gray-300 text-white-400' : ''}`}
               >
                 {item.name}
               </Link>
@@ -215,7 +240,7 @@ const Navbar = ({ toggleSidebar }) => {
             <div className="relative" ref={catRef}>
               <button
                 onClick={() => setCatOpen(!catOpen)}
-                className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-sm font-medium hover:bg-gray-800 transition-colors"
+                className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-sm font-medium hover:bg-gray-300 transition-colors text-slate-800"
               >
                 Categories
                 <ChevronDown size={14} className={`transition-transform ${catOpen ? "rotate-180" : ""}`} />
