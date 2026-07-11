@@ -18,7 +18,7 @@ const PublicLayout = () => {
         variant={user ? 'user' : 'public'}
         onClose={() => setShowSidebar(false)}
       />
-      <div className={`min-h-screen transition-all duration-500 ${showSidebar ? 'md:pl-64' : 'md:pl-[88px]'}`}>
+      <div className={`min-h-screen transition-[padding] duration-500 ease-in-out ${showSidebar ? 'md:pl-64' : 'md:pl-[88px]'}`}>
         <Navbar toggleSidebar={() => setShowSidebar((prev) => !prev)} />
 
         {showHero && (

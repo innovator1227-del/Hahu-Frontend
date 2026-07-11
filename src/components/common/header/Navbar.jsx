@@ -96,6 +96,7 @@ const Navbar = ({ toggleSidebar }) => {
                   hover:bg-white/10
                   transition-all
                   duration-200
+                  cursor-pointer
                 "
             >
               <Menu size={22} />
