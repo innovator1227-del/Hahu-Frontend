@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Footer from '@/components/common/Footer'
-import Navbar from '@/components/common/Navbar'
-import Sidebar from '@/components/common/Sidebar'
+import Navbar from '@/components/common/header/Navbar'
+import Sidebar from '@/components/common/sidebar/Sidebar'
 import { Outlet, useLocation } from 'react-router-dom'
 import { useAuth } from '@/store/authStore.jsx'
 
