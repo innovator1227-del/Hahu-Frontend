@@ -67,7 +67,7 @@ const Navbar = ({ toggleSidebar }) => {
         className="
           sticky top-0 z-50
           h-16 md:h-20
-          bg-[#020617]/80
+          bg-[#020617]
           backdrop-blur-xl
           border-b border-white/5
           transition-all duration-300
