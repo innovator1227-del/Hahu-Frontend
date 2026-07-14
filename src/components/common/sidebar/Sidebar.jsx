@@ -4,7 +4,7 @@ import Logo from "@/assets/logo.jpg";
 import { useAuth } from "@/store/authStore.jsx";
 import { useNavigate } from "react-router-dom";
 
-import { LogOut, ChevronDown, ChevronRight, Store,} from "lucide-react";
+import { LogOut, ChevronDown, ChevronRight, Store, Settings} from "lucide-react";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 import { publicMenuItems, publicCategories, userMenuItems, adminMenuItems, adminSubMenus } from "./Data.jsx";
