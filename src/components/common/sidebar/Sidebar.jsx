@@ -75,7 +75,7 @@ const Sidebar = ({ isOpen, variant = "public", onClose }) => {
         </div>
 
         {/* Scrollable Menu */}
-        <div className="flex-1 overflow-y-auto custom-scrollbar flex flex-col gap-2 px-3 py-6">
+        <div className="flex-1 h-full overflow-y-auto custom-scrollbar flex flex-col gap-2 px-3 py-6">
           {/* Main Menu Items */}
           {menuItems.map((item) => (
             <Link
@@ -130,7 +130,7 @@ const Sidebar = ({ isOpen, variant = "public", onClose }) => {
                   onClick={handleNavClick}
                   data-tooltip-id={!isOpen ? "sidebar-tooltip" : undefined}
                   data-tooltip-content={!isOpen ? cat.name : undefined}
-                  className="group relative flex items-center gap-3 h-12 px-4 rounded-2xl transition-all duration-300 text-slate-400 hover:text-white hover:bg-white/5"
+                  className="group relative flex items-center gap-3 h-12 px-4 rounded-2xl transition-all duration-300 text-slate-400 hover:scale-[1.02] hover:text-white hover:bg-white/5"
                 >
                   {/* Icon ALWAYS visible */}
                   <span className="text-lg group-hover:scale-110 transition-transform ">
