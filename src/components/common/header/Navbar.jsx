@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSearch } from "@/store/searchStore.jsx";
 import { useAuth } from "@/store/authStore.jsx";
 import { useCart } from "@/store/cartStore.jsx";
+//import { categories, menuItems } from "./NavData.jsx";
 
 const Navbar = ({ toggleSidebar }) => {
   const { user, logout } = useAuth();
@@ -18,6 +19,22 @@ const Navbar = ({ toggleSidebar }) => {
   const { setSearchQuery } = useSearch();
   // const { cartItems } =  useCart();
   const { cartItems, message } = useCart();
+const categories = [
+    { id: 1, name: "Electronics & Gadgets", icon: "📱", link: "/category/electronics", count: 234 },
+    { id: 2, name: "Vehicles", icon: "🚗", link: "/category/vehicles", count: 89 },
+    { id: 3, name: "Furniture", icon: "🛋️", link: "/category/furniture", count: 156 },
+    { id: 4, name: "Clothing & Fashion", icon: "👕", link: "/category/clothing", count: 312 },
+    { id: 5, name: "Books & Education", icon: "📚", link: "/category/books", count: 78 },
+    { id: 6, name: "Sports & Outdoors", icon: "⚽", link: "/category/sports", count: 67 },
+    { id: 7, name: "Home & Garden", icon: "🏡", link: "/category/home", count: 145 },
+    { id: 8, name: "Baby & Kids", icon: "👶", link: "/category/baby", count: 89 },
+  ];
+
+  const menuItems = [
+    { id: 1, name: "Home", link: "/" },
+    { id: 2, name: "Browse", link: "/browse" },
+    { id: 3, name: "Categories", link: "/categories" },
+  ];
 
   useEffect(() => {
     const handleClickOutside = (e) => {
@@ -36,23 +53,7 @@ const Navbar = ({ toggleSidebar }) => {
     setMenuOpen(false);
   }, [location]);
 
-  const categories = [
-    { id: 1, name: "Electronics & Gadgets", icon: "📱", link: "/category/electronics", count: 234 },
-    { id: 2, name: "Vehicles", icon: "🚗", link: "/category/vehicles", count: 89 },
-    { id: 3, name: "Furniture", icon: "🛋️", link: "/category/furniture", count: 156 },
-    { id: 4, name: "Clothing & Fashion", icon: "👕", link: "/category/clothing", count: 312 },
-    { id: 5, name: "Books & Education", icon: "📚", link: "/category/books", count: 78 },
-    { id: 6, name: "Sports & Outdoors", icon: "⚽", link: "/category/sports", count: 67 },
-    { id: 7, name: "Home & Garden", icon: "🏡", link: "/category/home", count: 145 },
-    { id: 8, name: "Baby & Kids", icon: "👶", link: "/category/baby", count: 89 },
-  ];
-
-  const menuItems = [
-    { id: 1, name: "Home", link: "/" },
-    { id: 2, name: "Browse", link: "/browse" },
-    { id: 3, name: "Categories", link: "/categories" },
-  ];
-
+  
   const userInitials = user?.name?.split(" ").map((part) => part[0]).join("").slice(0, 2).toUpperCase() || "JD";
 
   const handleSearch = (e) => {
@@ -84,20 +85,7 @@ const Navbar = ({ toggleSidebar }) => {
             )}
             <button
               onClick={toggleSidebar}
-              className="
-                  w-10
-                  h-10
-                  flex
-                  items-center
-                  justify-center
-                  rounded-full
-                  text-slate-400
-                  hover:text-white
-                  hover:bg-white/10
-                  transition-all
-                  duration-200
-                  cursor-pointer
-                "
+              className="  w-10  h-10 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-300 cursor-pointer"
             >
               <Menu size={22} />
             </button>
