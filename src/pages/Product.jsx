@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom"
 import products from "@/data/products"
 import { useCart } from "@/store/cartStore"
 import { Link } from "react-router-dom"
+import Button from "@/components/ui/Button"
 
 const Product = () => {
   const { id } = useParams()
@@ -40,12 +41,13 @@ const Product = () => {
             {product.description}
           </p>
 
-          <button
+          <Button
+          variant="primary"
+          size="lg"
             onClick={() => addToCart(product)}
-            className="bg-amber-500 text-white px-5 py-2 rounded-md hover:bg-amber-600 transition"
           >
             Add to Cart
-          </button>
+          </Button>
           {/* Related Products */}
           <div className="mt-12">
             <h2 className="text-xl font-bold mb-4">

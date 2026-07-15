@@ -12,7 +12,7 @@ const Button = ({
 
   const variants = {
     primary:
-      "bg-black text-white hover:bg-blue-300 shadow-md hover:shadow-lg",
+      "bg-black text-white hover:bg-gray-600 shadow-md hover:shadow-lg",
 
     secondary:
       "bg-slate-800 text-white hover:bg-slate-700",

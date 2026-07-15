@@ -151,7 +151,7 @@ const Navbar = ({ toggleSidebar }) => {
             ) : (
               <Button 
               variant="login" 
-              size="md">
+              size="lg">
                 <Link to="/login">
                 <LogIn size={14} />
                 <span>Sign In</span>

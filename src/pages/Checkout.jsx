@@ -1,6 +1,7 @@
 import { useCart } from "../store/cartStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Button from "@/components/ui/Button";
 
 
 const Checkout = () => {
@@ -38,40 +39,52 @@ const Checkout = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-10">
-         <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6">
+    <div className="min-h-screen bg-slate-50 py-12">
+         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6">
 
       {/* LEFT - FORM */}
-      <div className="bg-white p-6 rounded-xl shadow">
-        <h2 className="text-xl font-bold mb-4">Shipping Details</h2>
+      <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-8">
+        <h2 className="text-xl text-slate-900 font-bold mb-6">Shipping Details</h2>
 
-        <input
-          name="name"
-          placeholder="Full Name"
-          className="w-full border p-2 mb-3"
-          onChange={handleChange}
-        />
+        <div className="mb-5">
+        <label className="block mb-2 text-sm font-medium text-slate-700">
+          Full Name
+        </label>
 
-        <input
-          name="phone"
-          placeholder="Phone Number"
-          className="w-full border p-2 mb-3"
-          onChange={handleChange}
-        />
+          <input
+         placeholder="Name"
+         className="w-full h-12 rounded-xl border border-slate-300 bg-white px-4 focus:outline-none focus:ring-0.5 focus:ring-gray-500 focus:border-gray-500 transition"
+          />
+        </div>
 
-        <textarea
-          name="address"
+        <div className="mb-5">
+          <label className="block mb-2 text-sm font-medium text-slate-700">
+            Phone Number
+          </label>
+          <input 
+          placeholder="09...."
+          className="w-full h-12 rounded-xl border border-slate-300 bg-white px-4 focus:outline-none focus:ring-o.5 focus:ring-gray-500 focus:border-gray-500 transition"/>
+         </div>
+        
+        <div className="mb-5">
+          <label className="block mb-2 text-sm font-medium text-slate-700">
+            Enter your Adress
+          </label>
+         <textarea
           placeholder="Address"
-          className="w-full border p-2 mb-3"
-          onChange={handleChange}
+         onChange={handleChange}
+         className="w-full h-12 rounded-xl border border-slate-300 bg-white px-4 focus:outline-none focus:ring-0.5 focus:ring-gray-300 focus:border-gray-500 focus:to-black transition"
         />
+        </div>
+        
 
-        <button
+        <Button
           onClick={placeOrder}
-          className="w-full bg-black text-white py-3 rounded-lg hover:bg-gray-800 transition"
+          variant="primary"
+          size="lg"
         >
           Place Order
-        </button>
+        </Button>
       </div>
 
       {/* RIGHT - ORDER SUMMARY */}
