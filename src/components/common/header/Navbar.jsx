@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSearch } from "@/store/searchStore.jsx";
 import { useAuth } from "@/store/authStore.jsx";
 import { useCart } from "@/store/cartStore.jsx";
+import Button from "@/components/ui/Button";
 
 const Navbar = ({ toggleSidebar }) => {
   const { user, logout } = useAuth();
@@ -75,12 +76,13 @@ const Navbar = ({ toggleSidebar }) => {
         
         {/* Left: Sidebar toggle & Logo */}
         <div className="flex items-center gap-2 shrink-0">
-          <button
+          <Button
             onClick={toggleSidebar}
-           className="w-10 h-10 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-300 cursor-pointer hover:scale-105 active:scale-95"
+            variant="ghost"
+            size="icon"
           >
             <Menu size={22} />
-          </button>
+          </Button>
           
           <Link to="/" className="flex items-center gap-3 group cursor-pointer">
             <div className="w-9 h-9 rounded-full bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center font-bold text-white shadow-md shadow-blue-900/40 transition-transform duration-300 group-hover:scale-105">
@@ -147,10 +149,15 @@ const Navbar = ({ toggleSidebar }) => {
                 <ChevronDown size={14} className={`text-slate-400 transition-transform duration-200 ${userMenuOpen ? "rotate-180" : ""}`} />
               </button>
             ) : (
-              <Link to="/login" className="flex items-center gap-1.5 px-3.5 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-full text-xs font-medium transition-colors">
+              <Button 
+              variant="login" 
+              size="md">
+                <Link to="/login">
                 <LogIn size={14} />
                 <span>Sign In</span>
               </Link>
+              </Button>
+              
             )}
 
             {/* User Dropdown Menu */}
@@ -257,13 +264,14 @@ const Navbar = ({ toggleSidebar }) => {
           </div>
 
           {/* Right: Header Row 2 Sell Action */}
-          <Link
-            to="/create-listing"
-            className="flex items-center gap-1.5 px-4 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-semibold text-sm shadow-md shadow-blue-900/30 transition-all duration-200"
-          >
+          <Button as child variant="primary">
+           <Link
+            to="/create-listing">
             <PlusCircle size={15} />
             <span>Sell on Hahu</span>
           </Link>
+          </Button>
+          
         </div>
       </div>
 
@@ -312,24 +320,6 @@ const Navbar = ({ toggleSidebar }) => {
                   </Link>
                 ))}
               </div>
-            </div>
-
-            <hr className="border-slate-800" />
-
-            <div className="flex flex-col gap-2">
-              <Link
-                to="/create-listing"
-                className="flex items-center justify-center gap-1.5 bg-blue-600 text-white px-4 py-2.5 rounded-xl font-semibold text-sm"
-              >
-                <PlusCircle size={16} />
-                Sell an Item
-              </Link>
-              {!user && (
-                <Link to="/login" className="flex items-center justify-center gap-1.5 px-4 py-2 bg-slate-800 rounded-xl text-sm font-medium text-slate-300">
-                  <LogIn size={16} />
-                  Sign In
-                </Link>
-              )}
             </div>
           </div>
         </div>

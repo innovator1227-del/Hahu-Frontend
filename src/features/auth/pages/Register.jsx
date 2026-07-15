@@ -2,6 +2,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import { Eye, EyeOff, Mail, Lock, User, Phone, MapPin, Upload } from "lucide-react"
 import { useAuth } from "@/store/authStore.jsx"
+import Button from "@/components/ui/Button"
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false)
@@ -227,13 +228,14 @@ const Register = () => {
             </label>
           </div>
 
-          <button
+          <Button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-red-500 text-white py-3 rounded-xl font-medium hover:bg-red-600 transition-colors disabled:cursor-not-allowed disabled:bg-red-300"
+            as child
+            variant ="primary"
           >
             {isLoading ? "Creating account..." : "Create Account"}
-          </button>
+          </Button>
 
           <p className="mt-6 text-center text-sm text-gray-600">
             Already have an account? <Link to="/login" className="text-red-500 hover:text-red-600 font-medium">Sign in</Link>
