@@ -2,7 +2,9 @@ import React from 'react'
 
 const NavData = () => {
   return (
-    <div>NavData</div>
+    <div>
+      
+    </div>
   )
 }
 

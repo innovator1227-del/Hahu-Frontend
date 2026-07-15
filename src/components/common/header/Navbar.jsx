@@ -4,7 +4,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSearch } from "@/store/searchStore.jsx";
 import { useAuth } from "@/store/authStore.jsx";
 import { useCart } from "@/store/cartStore.jsx";
-//import { categories, menuItems } from "./NavData.jsx";
 
 const Navbar = ({ toggleSidebar }) => {
   const { user, logout } = useAuth();
@@ -17,9 +16,9 @@ const Navbar = ({ toggleSidebar }) => {
   const location = useLocation();
   const navigate = useNavigate();
   const { setSearchQuery } = useSearch();
-  // const { cartItems } =  useCart();
   const { cartItems, message } = useCart();
-const categories = [
+
+  const categories = [
     { id: 1, name: "Electronics & Gadgets", icon: "📱", link: "/category/electronics", count: 234 },
     { id: 2, name: "Vehicles", icon: "🚗", link: "/category/vehicles", count: 89 },
     { id: 3, name: "Furniture", icon: "🛋️", link: "/category/furniture", count: 156 },
@@ -33,7 +32,6 @@ const categories = [
   const menuItems = [
     { id: 1, name: "Home", link: "/" },
     { id: 2, name: "Browse", link: "/browse" },
-    { id: 3, name: "Categories", link: "/categories" },
   ];
 
   useEffect(() => {
@@ -53,7 +51,6 @@ const categories = [
     setMenuOpen(false);
   }, [location]);
 
-  
   const userInitials = user?.name?.split(" ").map((part) => part[0]).join("").slice(0, 2).toUpperCase() || "JD";
 
   const handleSearch = (e) => {
@@ -64,226 +61,226 @@ const categories = [
   };
 
   return (
-          <nav
-        className="
-          sticky top-0 z-50
-          h-16 md:h-20
-          bg-[#020617]
-          backdrop-blur-xl
-          border-b border-white/5
-          transition-all duration-300
-          text-white
-        "
-      >
-      <div className="h-full px-4 md:px-6">
-        <div className="flex items-center justify-between h-full gap-4">
-          <div className="flex items-center gap-3 shrink-0">
-            {message && (
-              <div className="fixed top-20 right-4 bg-gray-600 text-white px-4 py-2 rounded-lg shadow-lg z-50">
-                {message}
+    <nav className="sticky top-0 z-50 bg-[#020617] border-b border-slate-800 text-slate-100 shadow-lg">
+      
+      {/* Toast Alert message */}
+      {message && (
+        <div className="fixed top-24 right-4 bg-slate-800 border border-slate-700 text-white px-4 py-2.5 rounded-xl shadow-2xl z-50 animate-in fade-in slide-in-from-top-4 duration-300">
+          {message}
+        </div>
+      )}
+
+      {/* LINE 1: MAIN HEADER (Logo, Search, Action Icons) */}
+      <div className="w-full px-4 sm:px-6 h-16 flex items-center gap-6 flex-2">
+        
+        {/* Left: Sidebar toggle & Logo */}
+        <div className="flex items-center gap-2 shrink-0">
+          <button
+            onClick={toggleSidebar}
+           className="w-10 h-10 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-300 cursor-pointer hover:scale-105 active:scale-95"
+          >
+            <Menu size={22} />
+          </button>
+          
+          <Link to="/" className="flex items-center gap-3 group cursor-pointer">
+            <div className="w-9 h-9 rounded-full bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center font-bold text-white shadow-md shadow-blue-900/40 transition-transform duration-300 group-hover:scale-105">
+              H
+            </div>
+            <span className="hidden sm:block text-lg font-bold tracking-tight group-hover:tracking-wide hover:scale-105 text-white">
+              HAHU<span className="text-blue-500">MARKET</span>
+            </span>
+          </Link>
+        </div>
+
+        {/* Center: Search Bar */}
+        <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-xl mx-auto">
+          <div className="relative w-full">
+            <input
+              type="text"
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+              placeholder="Search items, brands, or categories..."
+              className="w-full h-10 rounded-full bg-slate-900 border border-slate-800 pl-5 pr-12 text-sm text-white placeholder:text-slate-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500"
+            />
+            <button
+              type="submit"
+              className="absolute right-1.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full flex items-center justify-center text-slate-400 hover:text-white transition-all duration-200"
+            >
+              <Search size={16} />
+            </button>
+          </div>
+        </form>
+
+        {/* Right: Icon Buttons & User Profile */}
+        <div className="flex items-center gap-1 sm:gap-2 shrink-0">
+          <Link
+            to="/notifications"
+            className="relative w-9 h-9 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-slate-800/60 transition-all duration-200"
+          >
+            <Bell size={19} />
+            <span className="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-blue-500 border-2 border-[#020617] rounded-full"></span>
+          </Link>
+
+          <Link to="/wishlist" className="relative w-9 h-9 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-slate-800/60 transition-all duration-200">
+            <Heart size={19} />
+            <span className="absolute top-0.5 right-0.5 bg-blue-600 text-[10px] font-bold text-white rounded-full w-4 h-4 flex items-center justify-center">3</span>
+          </Link>
+
+          <Link to="/cart" className="relative w-9 h-9 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-slate-800/60 transition-all duration-200">
+            <ShoppingCart size={19} />
+            {cartItems.length > 0 && (
+              <span className="absolute top-0.5 right-0.5 bg-blue-600 text-[10px] font-bold text-white rounded-full w-4 h-4 flex items-center justify-center">
+                {cartItems.length}
+              </span>
+            )}
+          </Link>
+
+          <div className="relative" ref={userRef}>
+            {user ? (
+              <button
+                onClick={() => setUserMenuOpen(!userMenuOpen)}
+                className="flex items-center gap-1.5 pl-1.5 pr-2 h-9 rounded-full hover:bg-slate-800/60 transition-all duration-200"
+              >
+                <div className="w-7 h-7 rounded-full bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-xs font-bold text-white">
+                  {userInitials}
+                </div>
+                <ChevronDown size={14} className={`text-slate-400 transition-transform duration-200 ${userMenuOpen ? "rotate-180" : ""}`} />
+              </button>
+            ) : (
+              <Link to="/login" className="flex items-center gap-1.5 px-3.5 py-1.5 bg-slate-800 hover:bg-slate-700 rounded-full text-xs font-medium transition-colors">
+                <LogIn size={14} />
+                <span>Sign In</span>
+              </Link>
+            )}
+
+            {/* User Dropdown Menu */}
+            {userMenuOpen && user && (
+              <div className="absolute right-0 top-full mt-2 w-60 rounded-xl bg-slate-900 border border-slate-800 shadow-2xl py-1.5 z-50">
+                <div className="px-4 py-2 border-b border-slate-800">
+                  <p className="font-semibold text-sm text-white truncate">{user.name}</p>
+                  <p className="text-xs text-slate-400 truncate">{user.email}</p>
+                </div>
+                <Link to="/profile" className="flex items-center gap-2.5 px-4 py-2 hover:bg-slate-800 text-sm text-slate-300 hover:text-white transition-colors">
+                  <User size={15} /> My Profile
+                </Link>
+                <Link to="/my-listings" className="flex items-center gap-2.5 px-4 py-2 hover:bg-slate-800 text-sm text-slate-300 hover:text-white transition-colors">
+                  <Package size={15} /> My Listings
+                </Link>
+                <Link to="/orders" className="flex items-center gap-2.5 px-4 py-2 hover:bg-slate-800 text-sm text-slate-300 hover:text-white transition-colors">
+                  <ShoppingBag size={15} /> My Orders
+                </Link>
+                <Link to="/messages" className="flex items-center gap-2.5 px-4 py-2 hover:bg-slate-800 text-sm text-slate-300 hover:text-white transition-colors">
+                  <MessageCircle size={15} /> Messages
+                  <span className="ml-auto bg-blue-600 text-[10px] text-white px-1.5 py-0.5 rounded-full">2</span>
+                </Link>
+                <hr className="my-1.5 border-slate-800" />
+                <button
+                  onClick={() => {
+                    logout();
+                    setUserMenuOpen(false);
+                    navigate("/");
+                  }}
+                  className="flex items-center gap-2.5 px-4 py-2 hover:bg-red-500/10 text-sm text-red-400 hover:text-red-300 transition-colors w-full text-left"
+                >
+                  <LogOut size={15} /> Sign Out
+                </button>
               </div>
             )}
-            <button
-              onClick={toggleSidebar}
-              className="  w-10  h-10 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-300 cursor-pointer"
-            >
-              <Menu size={22} />
-            </button>
-            <Link to="/" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center font-bold text-lg shadow-lg shadow-blue-900/40">
-                H
-              </div>
-              <span className="hidden lg:block text-xl font-bold tracking-tight text-slate-100">HAHU<span className="text-white-500">MARKET</span></span>
-            </Link>
           </div>
 
-          <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-2xl mx-auto">
-            <div className="relative w-full">
-              <input
-                type="text"
-                value={searchText}
-                onChange={(e) => setSearchText(e.target.value)}
-                placeholder="Search phones, cars, furniture..."
-                className="w-full h-11 rounded-full bg-slate-900/70 border border-white/5 backdrop-blur-xl px-5 pr-12 text-sm text-white placeholder:text-slate-500 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500"
-              />
-              <button
-                type="submit"
-                className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full flex items-center justify-center text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-300"
-              >
-                <Search size={16} />
-              </button>
-            </div>
-          </form>
-
-          <div className="flex items-center gap-2 shirink-0">
-            <Link
-              to="/notifications"
-              className=" relative w-10 h-10 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-200"
-              >
-              <Bell size={20} />
-              <span className="absolute top-1 right-1 w-2 h-2 bg-white-500 rounded-full"></span>
-            </Link>
-
-            <Link to="/wishlist" className="relative w-10 h-10 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-200">
-              <Heart size={20} />
-              <span className="absolute -top-0.5 -right-0.5 bg-white-500 text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">3</span>
-            </Link>
-
-            <Link to="/cart" className="relative w-10 h-10 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-200">
-              <ShoppingCart size={20} />
-              {cartItems.length > 0 && (
-                <span className="absolute -top-0.5 -right-0.5 bg-white-500 text-[10px] font-bold rounded-full w-4 h-4 flex items-center justify-center">
-                  {cartItems.length}
-                </span>
-              )}
-            </Link>
-
-            <Link
-              to="/create-listing"
-              className="hidden md:flex items-center px-5 h-10 gap-2 bg-blue-600 text-white rounded-full font-medium text-sm shadow-lg shadow-blue-900/30 hover:bg-blue-700 transition-all duration-300 hover:scale-[1.03]"
-            >
-              <PlusCircle size={16} />
-              <span>Sell</span>
-            </Link>
-
-            <div className="relative" ref={userRef}>
-              {user ? (
-                <button
-                  onClick={() => setUserMenuOpen(!userMenuOpen)}
-                  className="flex items-center gap-2 pl-1 pr-3 h-10 rounded-full hover:bg-white/10 transition-all duration-300"
-                >
-                  <div className="w-9 h-9 rounded-full bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-sm font-bold ring-2 ring-white/5">
-                    {userInitials}
-                  </div>
-                  <ChevronDown size={16} className={`transition-transform ${userMenuOpen ? "rotate-180" : ""}`} />
-                </button>
-              ) : (
-                <Link to="/login" className="flex items-center gap-2 px-4 py-2 bg-gray-800 dark:bg-gray-800 hover:bg-gray-700 rounded-lg transition-colors text-sm font-medium">
-                  <LogIn size={16} />
-                  <span className="hidden lg:inline">Sign In</span>
-                </Link>
-              )}
-
-              {userMenuOpen && user && (
-                <div className="absolute right-0 top-full mt-3 w-64 rounded-2xl bg-[#0f172a] backdrop-blur-xl border border-white/5 shadow-2xl shadow-black/40 py-2 z-50">
-                  <div className="px-4 py-3 border-b border-gray-700">
-                    <p className="font-medium text-sm">{user.name}</p>
-                    <p className="text-xs text-gray-400">{user.email}</p>
-                  </div>
-                  <Link to="/profile" className="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-700 dark:hover:bg-gray-800 text-sm transition-colors">
-                    <User size={16} />
-                    My Profile
-                  </Link>
-                  <Link to="/my-listings" className="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-700 dark:hover:bg-gray-800 text-sm transition-colors">
-                    <Package size={16} />
-                    My Listings
-                  </Link>
-                  <Link to="/orders" className="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-700 dark:hover:bg-gray-800 text-sm transition-colors">
-                    <ShoppingBag size={16} />
-                    My Orders
-                  </Link>
-                  <Link to="/messages" className="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-700 dark:hover:bg-gray-800 text-sm transition-colors">
-                    <MessageCircle size={16} />
-                    Messages
-                    <span className="ml-auto bg-white-500 text-[10px] px-1.5 py-0.5 rounded-full">2</span>
-                  </Link>
-                  <hr className="my-2 border-gray-700" />
-                  <button
-                    onClick={() => {
-                      logout();
-                      setUserMenuOpen(false);
-                      navigate("/");
-                    }}
-                    className="flex items-center gap-3 px-4 py-2.5 hover:bg-gray-700 dark:hover:bg-red-500 text-sm text-white-400 transition-colors w-full"
-                  >
-                    <LogOut size={16} />
-                    Sign Out
-                  </button>
-                </div>
-              )}
-            </div>
-
-            <button
-              className="md:hidden w-10 h-10 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-200"
-              onClick={() => setMenuOpen(!menuOpen)}
-            >
-              {menuOpen ? <X size={22} /> : <Menu size={22} />}
-            </button>
-          </div>
+          {/* Mobile Menu Toggle Button */}
+          <button
+            className="md:hidden w-9 h-9 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-slate-800/60 transition-all duration-200"
+            onClick={() => setMenuOpen(!menuOpen)}
+          >
+            {menuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
         </div>
       </div>
 
-      <div className="hidden md:block border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center gap-1 h-10">
+      {/* LINE 2: SUB-NAVIGATION (Categories, Main Menu Items, Sell Button) - Desktop Only */}
+      <div className="hidden md:block border-t border-slate-900 bg-slate-950/60">
+        <div className="max-w-7xl mx-auto sm:px-6 h-12 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            
+            {/* Category Dropdown Toggle */}
+            <div className="relative flex flex-1 gap-6" ref={catRef}>
+              {/* Menu Items Links */}
             {menuItems.map((item) => (
               <Link
                 key={item.id}
                 to={item.link}
-                className={`px-4 h-9 flex items-center rounded-full text-sm font-medium text-slate-900 transition-all duration-300  hover:bg-white ${location.pathname === item.link ? 'bg-gray-300 text-white-400' : ''}`}
+                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
+                  location.pathname === item.link
+                    ? 'bg-slate-800 text-white font-semibold'
+                    : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
+                }`}
               >
                 {item.name}
               </Link>
             ))}
-
-            <div className="relative" ref={catRef}>
               <button
                 onClick={() => setCatOpen(!catOpen)}
-                className="flex items-center gap-1.5 px-4 py-1.5 rounded-lg text-sm font-medium hover:bg-gray-300 transition-colors text-slate-800"
+                className="flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-semibold hover:bg-slate-800 transition-all duration-200 text-slate-200 border border-slate-800/80 bg-slate-900/50"
               >
                 Categories
-                <ChevronDown size={14} className={`transition-transform ${catOpen ? "rotate-180" : ""}`} />
+                <ChevronDown size={14} className={`text-slate-400 transition-transform duration-200 ${catOpen ? "rotate-180" : ""}`} />
               </button>
 
+              {/* Category Dropdown Panel */}
               {catOpen && (
-                <div className="absolute top-full left-0 mt-2 w-72 bg-gray-800 dark:bg-gray-900 rounded-xl shadow-xl border border-gray-700 py-3 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                <div className="absolute top-full left-0 mt-2 w-80 bg-slate-900 rounded-2xl shadow-2xl border border-slate-800 py-3 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
                   <div className="grid grid-cols-2 gap-1 px-2">
                     {categories.map((cat) => (
                       <Link
                         key={cat.id}
                         to={cat.link}
-                        className="flex items-center gap-3 px-3 py-2.5 rounded-lg hover:bg-gray-700 dark:hover:bg-gray-800 transition-colors group"
+                        className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-slate-800 transition-colors group"
                         onClick={() => setCatOpen(false)}
                       >
-                        <span className="text-xl group-hover:scale-110 transition-transform">{cat.icon}</span>
+                        <span className="text-lg group-hover:scale-110 transition-transform duration-200">{cat.icon}</span>
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium truncate">{cat.name}</p>
-                          <p className="text-xs text-gray-400">{cat.count} items</p>
+                          <p className="text-xs font-semibold text-slate-200 truncate">{cat.name}</p>
+                          <p className="text-[10px] text-slate-400">{cat.count} listings</p>
                         </div>
                       </Link>
                     ))}
                   </div>
-                  <div className="mt-2 pt-2 border-t border-gray-700">
-                    <Link to="/categories" className="flex items-center justify-center gap-2 px-4 py-2 text-sm text-white-400 hover:bg-gray-700 rounded-lg transition-colors" onClick={() => setCatOpen(false)}>
+                  <div className="mt-2.5 pt-2 border-t border-slate-800">
+                    <Link to="/categories" className="flex items-center justify-center text-xs font-medium text-blue-400 hover:text-blue-300 py-1 transition-colors" onClick={() => setCatOpen(false)}>
                       View All Categories
                     </Link>
                   </div>
                 </div>
               )}
             </div>
-
-            <div className="flex-1"></div>
-            <Link to="/create-listing" className="md:hidden lg:flex items-center gap-2 text-sm text-white-400 hover:text-white-300 transition-colors">
-              <PlusCircle size={16} />
-              Sell an Item
-            </Link>
           </div>
+
+          {/* Right: Header Row 2 Sell Action */}
+          <Link
+            to="/create-listing"
+            className="flex items-center gap-1.5 px-4 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-full font-semibold text-sm shadow-md shadow-blue-900/30 transition-all duration-200"
+          >
+            <PlusCircle size={15} />
+            <span>Sell on Hahu</span>
+          </Link>
         </div>
       </div>
 
+      {/* MOBILE FULLSCREEN SIDE-PANEL / DROPDOWN MENU */}
       {menuOpen && (
-        <div className="md:hidden bg-gray-800 dark:bg-gray-900 border-t border-gray-700 py-4 animate-in slide-in-from-top duration-200">
-          <div className="max-w-7xl mx-auto px-4 space-y-4">
+        <div className="md:hidden bg-slate-900 border-t border-slate-800 py-4 animate-in slide-in-from-top-2 duration-300">
+          <div className="px-4 space-y-4">
             <form onSubmit={handleSearch} className="relative">
               <input
                 type="text"
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
                 placeholder="Search items..."
-                className="w-full rounded-xl border border-gray-600 bg-gray-900 px-4 py-2.5 pr-10 focus:outline-none focus:border-white-500 text-sm text-white placeholder-gray-400"
+                className="w-full rounded-xl border border-slate-800 bg-slate-950 px-4 py-2.5 pr-10 focus:outline-none focus:border-blue-500 text-sm text-white placeholder-slate-400"
               />
-              <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 text-gray-400">
-                <Search size={18} />
+              <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 text-slate-400">
+                <Search size={16} />
               </button>
             </form>
 
@@ -292,47 +289,47 @@ const categories = [
                 <Link
                   key={item.id}
                   to={item.link}
-                  className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-colors ${location.pathname === item.link ? 'bg-gray-700 text-white-400' : 'hover:bg-gray-700'}`}
+                  className={`block py-2 px-3 rounded-lg text-sm font-medium transition-colors ${location.pathname === item.link ? 'bg-slate-800 text-white' : 'text-slate-300 hover:bg-slate-800'}`}
                 >
                   {item.name}
                 </Link>
               ))}
             </div>
 
-            <hr className="border-gray-700" />
+            <hr className="border-slate-800" />
 
             <div>
-              <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2 px-3">Categories</h4>
+              <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 px-3">Top Categories</h4>
               <div className="grid grid-cols-2 gap-2">
                 {categories.slice(0, 6).map((cat) => (
                   <Link
                     key={cat.id}
                     to={cat.link}
-                    className="flex items-center gap-2 py-2.5 px-3 rounded-lg hover:bg-gray-700 transition-colors"
+                    className="flex items-center gap-2 py-2 px-3 rounded-lg hover:bg-slate-800 transition-colors"
                   >
-                    <span className="text-lg">{cat.icon}</span>
-                    <span className="text-sm font-medium truncate">{cat.name}</span>
+                    <span className="text-base">{cat.icon}</span>
+                    <span className="text-xs font-medium text-slate-300 truncate">{cat.name}</span>
                   </Link>
                 ))}
               </div>
             </div>
 
-            <hr className="border-gray-700" />
+            <hr className="border-slate-800" />
 
             <div className="flex flex-col gap-2">
               <Link
                 to="/create-listing"
-                className="flex items-center justify-center gap-2 bg-linear-to-r from-white-500 to-white-600 px-4 py-3 rounded-xl font-medium text-sm"
+                className="flex items-center justify-center gap-1.5 bg-blue-600 text-white px-4 py-2.5 rounded-xl font-semibold text-sm"
               >
-                <PlusCircle size={18} />
+                <PlusCircle size={16} />
                 Sell an Item
               </Link>
-              <div className="flex items-center justify-end">
-                <Link to="/login" className="flex items-center gap-2 px-4 py-2 bg-gray-700 rounded-lg text-sm font-medium">
+              {!user && (
+                <Link to="/login" className="flex items-center justify-center gap-1.5 px-4 py-2 bg-slate-800 rounded-xl text-sm font-medium text-slate-300">
                   <LogIn size={16} />
                   Sign In
                 </Link>
-              </div>
+              )}
             </div>
           </div>
         </div>
