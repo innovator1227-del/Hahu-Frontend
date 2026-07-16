@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Logo from "@/assets/logo.jpg";
+import Logo from "@/assets/logo.png";
 import { useAuth } from "@/store/authStore.jsx";
 import { useNavigate } from "react-router-dom";
 

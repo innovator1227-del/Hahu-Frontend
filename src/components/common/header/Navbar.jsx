@@ -5,6 +5,7 @@ import { useSearch } from "@/store/searchStore.jsx";
 import { useAuth } from "@/store/authStore.jsx";
 import { useCart } from "@/store/cartStore.jsx";
 import Button from "@/components/ui/Button";
+import Input from "@/components/ui/Input";
 
 const Navbar = ({ toggleSidebar }) => {
   const { user, logout } = useAuth();
@@ -12,8 +13,9 @@ const Navbar = ({ toggleSidebar }) => {
   const [catOpen, setCatOpen] = useState(false);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [searchText, setSearchText] = useState("");
-  const catRef = useRef();
-  const userRef = useRef();
+  
+  const catRef = useRef(null);
+  const userRef = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
   const { setSearchQuery } = useSearch();
@@ -35,6 +37,7 @@ const Navbar = ({ toggleSidebar }) => {
     { id: 2, name: "Browse", link: "/browse" },
   ];
 
+  // Handle outside clicks to close dropdowns safely
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (catRef.current && !catRef.current.contains(e.target)) {
@@ -48,6 +51,7 @@ const Navbar = ({ toggleSidebar }) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Close mobile drawer on route changes
   useEffect(() => {
     setMenuOpen(false);
   }, [location]);
@@ -62,7 +66,7 @@ const Navbar = ({ toggleSidebar }) => {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-[#020617] border-b border-slate-800 text-slate-100 shadow-lg">
+    <nav className="sticky top-0 z-50 bg-[#020617] border-b border-slate-800 text-slate-100 shadow-lg w-full">
       
       {/* Toast Alert message */}
       {message && (
@@ -71,72 +75,119 @@ const Navbar = ({ toggleSidebar }) => {
         </div>
       )}
 
-      {/* LINE 1: MAIN HEADER (Logo, Search, Action Icons) */}
-      <div className="w-full px-4 sm:px-6 h-16 flex items-center gap-6 flex-2">
+      {/* LINE 1: MAIN HEADER */}
+      <div className="mx-auto w-full px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
         
-        {/* Left: Sidebar toggle & Logo */}
+        {/* Left Section: Sidebar toggle & Logo */}
         <div className="flex items-center gap-2 shrink-0">
           <Button
             onClick={toggleSidebar}
             variant="ghost"
             size="icon"
+            className="text-slate-300 hover:text-white"
           >
             <Menu size={22} />
           </Button>
           
-          <Link to="/" className="flex items-center gap-3 group cursor-pointer">
+          <Link to="/" className="flex items-center gap-2 group cursor-pointer">
             <div className="w-9 h-9 rounded-full bg-gradient-to-br from-blue-600 to-cyan-500 flex items-center justify-center font-bold text-white shadow-md shadow-blue-900/40 transition-transform duration-300 group-hover:scale-105">
               H
             </div>
-            <span className="hidden sm:block text-lg font-bold tracking-tight group-hover:tracking-wide hover:scale-105 text-white">
+            <span className="hidden md:block text-lg font-bold tracking-tight text-white">
               HAHU<span className="text-blue-500">MARKET</span>
             </span>
           </Link>
         </div>
+          <div className="flex flex-1 px-4 gap-0.5">
+            <div className="relative" ref={catRef}>
+              <button 
+                onClick={() => setCatOpen(!catOpen)}
+                className="hidden md:block items-center gap-1.5 px-4 py-1.5  text-sm font-semibold hover:bg-slate-800 transition-all duration-200 text-slate-200 border border-slate-800 bg-slate-900/50"
+              >
+                All 
+                <ChevronDown size={14} className={`text-slate-400 transition-transform duration-200 ${catOpen ? "rotate-180" : ""}`} />
+              </button> 
 
-        {/* Center: Search Bar */}
-        <form onSubmit={handleSearch} className="hidden md:flex flex-1 max-w-xl mx-auto">
-          <div className="relative w-full">
-            <input
+              {/* Category Dropdown Panel */}
+              <div className={`absolute top-full left-0 mt-2 w-80 bg-slate-950 rounded-xl shadow-2xl border border-slate-800 py-3 z-50 origin-top-left transition-all duration-200 ${catOpen ? "opacity-100 scale-100 translate-y-0 visible" : "opacity-0 scale-95 -translate-y-2 invisible pointer-events-none"}`}>
+                <div className="grid grid-cols-1 gap-0.5 px-2 max-h-96 overflow-y-auto">
+                  {categories.map((cat) => (
+                    <Link
+                      key={cat.id}
+                      to={cat.link}
+                      className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-slate-800/60 transition-all duration-200 group"
+                      onClick={() => setCatOpen(false)}
+                    >
+                      <span className="text-lg group-hover:scale-110 transition-transform duration-150">{cat.icon}</span>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-xs font-medium text-slate-200 truncate group-hover:text-white">{cat.name}</p>
+                        <p className="text-[10px] text-slate-500">{cat.count} listings</p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+                <div className="mt-2 pt-2 border-t border-slate-800 px-3">
+                  <Link to="/categories" className="flex items-center justify-center text-xs font-semibold text-blue-400 hover:text-blue-300 py-1 transition-colors" onClick={() => setCatOpen(false)}>
+                    View All Categories
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+        {/* Middle Section: Search bar (Hidden on mobile, expands beautifully on desktop) */}
+        <div className="hidden md:flex flex-1 max-w-lg mx-4">
+          <form onSubmit={handleSearch} className="relative w-full">
+            <Input 
               type="text"
+              placeholder="Search On Hahu..."
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
-              placeholder="Search items, brands, or categories..."
-              className="w-full h-10 rounded-full bg-slate-900 border border-slate-800 pl-5 pr-12 text-sm text-white placeholder:text-slate-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-500"
+              
             />
             <button
               type="submit"
-              className="absolute right-1.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full flex items-center justify-center text-slate-400 hover:text-white transition-all duration-200"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white transition-colors duration-200"
             >
               <Search size={16} />
             </button>
-          </div>
-        </form>
+          </form>
+        </div>
+        </div>
 
-        {/* Right: Icon Buttons & User Profile */}
-        <div className="flex items-center gap-1 sm:gap-2 shrink-0">
+        {/* Right Section: Icons & Profile & Mobile Toggle */}
+        <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
+          
+          {/* Search toggle for tablets (between mobile and full desktop size) */}
+          <Link
+            to="/browse"
+            className="md:hidden w-9 h-9 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-slate-800/60 transition-all duration-200"
+          >
+            <Search size={19} />
+          </Link>
+
           <Link
             to="/notifications"
             className="relative w-9 h-9 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-slate-800/60 transition-all duration-200"
           >
             <Bell size={19} />
-            <span className="absolute top-1.5 right-1.5 w-2.5 h-2.5 bg-blue-500 border-2 border-[#020617] rounded-full"></span>
+            <span className="absolute top-2 right-2 w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
           </Link>
 
           <Link to="/wishlist" className="relative w-9 h-9 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-slate-800/60 transition-all duration-200">
             <Heart size={19} />
-            <span className="absolute top-0.5 right-0.5 bg-blue-600 text-[10px] font-bold text-white rounded-full w-4 h-4 flex items-center justify-center">3</span>
+            <span className="absolute -top-0.5 -right-0.5 bg-blue-600 text-[10px] font-bold text-white rounded-full w-4.5 h-4.5 flex items-center justify-center">3</span>
           </Link>
 
           <Link to="/cart" className="relative w-9 h-9 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-slate-800/60 transition-all duration-200">
             <ShoppingCart size={19} />
             {cartItems.length > 0 && (
-              <span className="absolute top-0.5 right-0.5 bg-blue-600 text-[10px] font-bold text-white rounded-full w-4 h-4 flex items-center justify-center">
+              <span className="absolute -top-0.5 -right-0.5 bg-blue-600 text-[10px] font-bold text-white rounded-full w-4.5 h-4.5 flex items-center justify-center">
                 {cartItems.length}
               </span>
             )}
           </Link>
 
+          {/* User Account Section */}
           <div className="relative" ref={userRef}>
             {user ? (
               <button
@@ -149,53 +200,53 @@ const Navbar = ({ toggleSidebar }) => {
                 <ChevronDown size={14} className={`text-slate-400 transition-transform duration-200 ${userMenuOpen ? "rotate-180" : ""}`} />
               </button>
             ) : (
-              <Button 
-              variant="login" 
-              size="lg">
-                <Link to="/login">
-                <LogIn size={14} />
-                <span>Sign In</span>
+              <Link to="/login">
+                <Button variant="login" size="sm" className="gap-1.5">
+                  <LogIn size={14} />
+                  <span className="hidden sm:inline">Sign In</span>
+                </Button>
               </Link>
-              </Button>
-              
             )}
 
             {/* User Dropdown Menu */}
-            {userMenuOpen && user && (
-              <div className="absolute right-0 top-full mt-2 w-60 rounded-xl bg-slate-900 border border-slate-800 shadow-2xl py-1.5 z-50">
-                <div className="px-4 py-2 border-b border-slate-800">
+            {user && (
+              <div className={`absolute top-full right-0 mt-2 w-56 bg-slate-950 rounded-xl shadow-2xl border border-slate-800 py-2 z-50 transition-all duration-200 origin-top-right ${userMenuOpen ? "opacity-100 scale-100 translate-y-0 visible" : "opacity-0 scale-95 -translate-y-2 invisible pointer-events-none"}`}>
+                <div className="px-4 py-2 border-b border-slate-800/60">
                   <p className="font-semibold text-sm text-white truncate">{user.name}</p>
                   <p className="text-xs text-slate-400 truncate">{user.email}</p>
                 </div>
-                <Link to="/profile" className="flex items-center gap-2.5 px-4 py-2 hover:bg-slate-800 text-sm text-slate-300 hover:text-white transition-colors">
-                  <User size={15} /> My Profile
-                </Link>
-                <Link to="/my-listings" className="flex items-center gap-2.5 px-4 py-2 hover:bg-slate-800 text-sm text-slate-300 hover:text-white transition-colors">
-                  <Package size={15} /> My Listings
-                </Link>
-                <Link to="/orders" className="flex items-center gap-2.5 px-4 py-2 hover:bg-slate-800 text-sm text-slate-300 hover:text-white transition-colors">
-                  <ShoppingBag size={15} /> My Orders
-                </Link>
-                <Link to="/messages" className="flex items-center gap-2.5 px-4 py-2 hover:bg-slate-800 text-sm text-slate-300 hover:text-white transition-colors">
-                  <MessageCircle size={15} /> Messages
-                  <span className="ml-auto bg-blue-600 text-[10px] text-white px-1.5 py-0.5 rounded-full">2</span>
-                </Link>
-                <hr className="my-1.5 border-slate-800" />
-                <button
-                  onClick={() => {
-                    logout();
-                    setUserMenuOpen(false);
-                    navigate("/");
-                  }}
-                  className="flex items-center gap-2.5 px-4 py-2 hover:bg-red-500/10 text-sm text-red-400 hover:text-red-300 transition-colors w-full text-left"
-                >
-                  <LogOut size={15} /> Sign Out
-                </button>
+                <div className="py-1">
+                  <Link to="/profile" className="flex items-center gap-2.5 px-4 py-2 hover:bg-slate-800/60 text-sm text-slate-300 hover:text-white transition-colors">
+                    <User size={15} /> My Profile
+                  </Link>
+                  <Link to="/my-listings" className="flex items-center gap-2.5 px-4 py-2 hover:bg-slate-800/60 text-sm text-slate-300 hover:text-white transition-colors">
+                    <Package size={15} /> My Listings
+                  </Link>
+                  <Link to="/orders" className="flex items-center gap-2.5 px-4 py-2 hover:bg-slate-800/60 text-sm text-slate-300 hover:text-white transition-colors">
+                    <ShoppingBag size={15} /> My Orders
+                  </Link>
+                  <Link to="/messages" className="flex items-center gap-2.5 px-4 py-2 hover:bg-slate-800/60 text-sm text-slate-300 hover:text-white transition-colors">
+                    <MessageCircle size={15} /> Messages
+                    <span className="ml-auto bg-blue-600 text-[10px] text-white px-1.5 py-0.5 rounded-full">2</span>
+                  </Link>
+                </div>
+                <div className="border-t border-slate-800/60 pt-1 mt-1">
+                  <button
+                    onClick={() => {
+                      logout();
+                      setUserMenuOpen(false);
+                      navigate("/");
+                    }}
+                    className="flex items-center gap-2.5 px-4 py-2 hover:bg-red-500/10 text-sm text-red-400 hover:text-red-300 transition-colors w-full text-left"
+                  >
+                    <LogOut size={15} /> Sign Out
+                  </button>
+                </div>
               </div>
             )}
           </div>
 
-          {/* Mobile Menu Toggle Button */}
+          {/* Mobile Navigation Drawer Toggle */}
           <button
             className="md:hidden w-9 h-9 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-slate-800/60 transition-all duration-200"
             onClick={() => setMenuOpen(!menuOpen)}
@@ -205,121 +256,95 @@ const Navbar = ({ toggleSidebar }) => {
         </div>
       </div>
 
-      {/* LINE 2: SUB-NAVIGATION (Categories, Main Menu Items, Sell Button) - Desktop Only */}
-      <div className="hidden md:block border-t border-slate-900 bg-slate-950/60">
-        <div className="max-w-7xl mx-auto sm:px-6 h-12 flex items-center justify-between">
-          <div className="flex items-center gap-2">
+      {/* LINE 2: SUB-NAVIGATION (Desktop Only) */}
+      <div className="hidden md:block border-t border-slate-900 bg-slate-950/40">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-12 flex items-center justify-between">
+          <div className="flex items-center gap-4">
             
-            {/* Category Dropdown Toggle */}
-            <div className="relative flex flex-1 gap-6" ref={catRef}>
-              {/* Menu Items Links */}
-            {menuItems.map((item) => (
-              <Link
-                key={item.id}
-                to={item.link}
-                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-200 ${
-                  location.pathname === item.link
-                    ? 'bg-slate-800 text-white font-semibold'
-                    : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
-                }`}
-              >
-                {item.name}
-              </Link>
-            ))}
-              <button
-                onClick={() => setCatOpen(!catOpen)}
-                className="flex items-center gap-1.5 px-4 py-1.5 rounded-full text-sm font-semibold hover:bg-slate-800 transition-all duration-200 text-slate-200 border border-slate-800/80 bg-slate-900/50"
-              >
-                Categories
-                <ChevronDown size={14} className={`text-slate-400 transition-transform duration-200 ${catOpen ? "rotate-180" : ""}`} />
-              </button>
+            {/* Category Dropdown Container */}
+            
 
-              {/* Category Dropdown Panel */}
-              {catOpen && (
-                <div className="absolute top-full left-0 mt-2 w-80 bg-slate-900 rounded-2xl shadow-2xl border border-slate-800 py-3 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-                  <div className="grid grid-cols-2 gap-1 px-2">
-                    {categories.map((cat) => (
-                      <Link
-                        key={cat.id}
-                        to={cat.link}
-                        className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl hover:bg-slate-800 transition-colors group"
-                        onClick={() => setCatOpen(false)}
-                      >
-                        <span className="text-lg group-hover:scale-110 transition-transform duration-200">{cat.icon}</span>
-                        <div className="flex-1 min-w-0">
-                          <p className="text-xs font-semibold text-slate-200 truncate">{cat.name}</p>
-                          <p className="text-[10px] text-slate-400">{cat.count} listings</p>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                  <div className="mt-2.5 pt-2 border-t border-slate-800">
-                    <Link to="/categories" className="flex items-center justify-center text-xs font-medium text-blue-400 hover:text-blue-300 py-1 transition-colors" onClick={() => setCatOpen(false)}>
-                      View All Categories
-                    </Link>
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-
-          {/* Right: Header Row 2 Sell Action */}
-          <Button as child variant="primary">
-           <Link
-            to="/create-listing">
-            <PlusCircle size={15} />
-            <span>Sell on Hahu</span>
-          </Link>
-          </Button>
-          
-        </div>
-      </div>
-
-      {/* MOBILE FULLSCREEN SIDE-PANEL / DROPDOWN MENU */}
-      {menuOpen && (
-        <div className="md:hidden bg-slate-900 border-t border-slate-800 py-4 animate-in slide-in-from-top-2 duration-300">
-          <div className="px-4 space-y-4">
-            <form onSubmit={handleSearch} className="relative">
-              <input
-                type="text"
-                value={searchText}
-                onChange={(e) => setSearchText(e.target.value)}
-                placeholder="Search items..."
-                className="w-full rounded-xl border border-slate-800 bg-slate-950 px-4 py-2.5 pr-10 focus:outline-none focus:border-blue-500 text-sm text-white placeholder-slate-400"
-              />
-              <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 text-slate-400">
-                <Search size={16} />
-              </button>
-            </form>
-
-            <div className="space-y-1">
+            {/* Menu Links */}
+            <div className="flex items-center gap-1">
               {menuItems.map((item) => (
                 <Link
                   key={item.id}
                   to={item.link}
-                  className={`block py-2 px-3 rounded-lg text-sm font-medium transition-colors ${location.pathname === item.link ? 'bg-slate-800 text-white' : 'text-slate-300 hover:bg-slate-800'}`}
+                  className={`px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 ${
+                    location.pathname === item.link
+                      ? 'bg-slate-800 text-white'
+                      : 'text-slate-400 hover:text-white hover:bg-slate-800/40'
+                  }`}
                 >
                   {item.name}
                 </Link>
               ))}
             </div>
+          </div>
 
-            <hr className="border-slate-800" />
+          {/* Sell CTA button */}
+          <Link to="/create-listing">
+            <Button variant="primary" size="sm" className="gap-1.5">
+              <PlusCircle size={15} />
+              <span>Sell on Hahu</span>
+            </Button>
+          </Link>
+        </div>
+      </div>
 
-            <div>
-              <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 px-3">Top Categories</h4>
-              <div className="grid grid-cols-2 gap-2">
-                {categories.slice(0, 6).map((cat) => (
-                  <Link
-                    key={cat.id}
-                    to={cat.link}
-                    className="flex items-center gap-2 py-2 px-3 rounded-lg hover:bg-slate-800 transition-colors"
-                  >
-                    <span className="text-base">{cat.icon}</span>
-                    <span className="text-xs font-medium text-slate-300 truncate">{cat.name}</span>
-                  </Link>
-                ))}
-              </div>
+      {/* MOBILE FULLSCREEN SIDE-PANEL / DROPDOWN */}
+      {menuOpen && (
+        <div className="md:hidden bg-slate-950 border-t border-slate-800 py-4 px-4 space-y-4 animate-in slide-in-from-top-2 duration-300">
+          <form onSubmit={handleSearch} className="relative">
+            <input
+              type="text"
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+              placeholder="Search items..."
+              className="w-full rounded-xl border border-slate-800 bg-slate-900 px-4 py-2.5 pr-10 focus:outline-none focus:border-blue-500 text-sm text-white placeholder-slate-500"
+            />
+            <button type="submit" className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-slate-400 hover:text-white">
+              <Search size={16} />
+            </button>
+          </form>
+
+          <div className="space-y-1">
+            {menuItems.map((item) => (
+              <Link
+                key={item.id}
+                to={item.link}
+                className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-colors ${location.pathname === item.link ? 'bg-slate-800 text-white' : 'text-slate-300 hover:bg-slate-800/60'}`}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </div>
+
+          <hr className="border-slate-800" />
+
+          {/* Sell Button on Mobile */}
+          <Link to="/create-listing" className="block">
+            <Button variant="primary" className="w-full justify-center gap-1.5">
+              <PlusCircle size={16} />
+              <span>Sell on Hahu</span>
+            </Button>
+          </Link>
+
+          <hr className="border-slate-800" />
+
+          <div>
+            <h4 className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-3 px-3">Top Categories</h4>
+            <div className="grid grid-cols-2 gap-2">
+              {categories.slice(0, 6).map((cat) => (
+                <Link
+                  key={cat.id}
+                  to={cat.link}
+                  className="flex items-center gap-2 py-2 px-3 rounded-lg bg-slate-900 hover:bg-slate-800/60 border border-slate-800/40 transition-colors"
+                >
+                  <span className="text-base">{cat.icon}</span>
+                  <span className="text-xs font-medium text-slate-300 truncate">{cat.name}</span>
+                </Link>
+              ))}
             </div>
           </div>
         </div>

@@ -2,6 +2,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import { Eye, EyeOff, Mail, Lock } from "lucide-react"
 import { useAuth } from "@/store/authStore.jsx"
+import Input from "@/components/ui/Input"
 
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
@@ -43,35 +44,33 @@ const Login = () => {
           <div className="mb-6">
             <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
             <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
                 <Mail className="h-5 w-5 text-gray-400" />
               </div>
-              <input
-                type="email"
-                name="email"
-                autoComplete="email"
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500"
-                placeholder="you@example.com"
-                required
-              />
+              <Input
+              name="email"
+              type="email"
+              placeholder="your email"
+              className="pl-11"
+              onChange ={handleChange}
+              value={formData.email}
+               />
             </div>
           </div>
 
           <div className="mb-6">
             <label className="block text-sm font-medium text-gray-700 mb-2">Password</label>
             <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
                 <Lock className="h-5 w-5 text-gray-400" />
               </div>
-              <input
+              <Input
+              className= "pl-11"
                 type={showPassword ? "text" : "password"}
                 name="password"
                 autoComplete="current-password"
                 value={formData.password}
                 onChange={handleChange}
-                className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-xl bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-red-500"
                 placeholder="••••••••"
                 required
               />
