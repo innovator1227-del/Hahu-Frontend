@@ -98,18 +98,18 @@ const Navbar = ({ toggleSidebar }) => {
             </span>
           </Link>
         </div>
-          <div className="flex flex-1 px-4 gap-0.5">
+          <div className="flex flex-1 px-4 gap-2">
             <div className="relative" ref={catRef}>
               <button 
                 onClick={() => setCatOpen(!catOpen)}
-                className="hidden md:block items-center gap-1.5 px-4 py-1.5  text-sm font-semibold hover:bg-slate-800 transition-all duration-200 text-slate-200 border border-slate-800 bg-slate-900/50"
+                className="hidden md:flex items-center gap-1.5 px-6 py-3 text-sm font-semibold hover:bg-slate-800 transition-all duration-200 text-slate-200 border border-blue-300 bg-slate-900/50"
               >
                 All 
                 <ChevronDown size={14} className={`text-slate-400 transition-transform duration-200 ${catOpen ? "rotate-180" : ""}`} />
               </button> 
 
               {/* Category Dropdown Panel */}
-              <div className={`absolute top-full left-0 mt-2 w-80 bg-slate-950 rounded-xl shadow-2xl border border-slate-800 py-3 z-50 origin-top-left transition-all duration-200 ${catOpen ? "opacity-100 scale-100 translate-y-0 visible" : "opacity-0 scale-95 -translate-y-2 invisible pointer-events-none"}`}>
+              <div className={`absolute top-full left-0 mt-2 w-80 bg-slate-950  rounded-xl shadow-2xl border border-slate-800 py-3 z-50 origin-top-left transition-all duration-200 ${catOpen ? "opacity-100 scale-100 translate-y-0 visible" : "opacity-0 scale-95 -translate-y-2 invisible pointer-events-none"}`}>
                 <div className="grid grid-cols-1 gap-0.5 px-2 max-h-96 overflow-y-auto">
                   {categories.map((cat) => (
                     <Link

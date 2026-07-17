@@ -15,3 +15,16 @@
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: rgb(100 116 139);
 }
+
+div::-webkit-scrollbar {
+   width: 6px;
+}
+
+div::-webkit-scrollbar-thumb {
+   background-color: #4b5563;
+   border-radius: 10px;
+}
+
+div::-webkit-scrollbar-track {
+   background-color: #1f2947;
+}

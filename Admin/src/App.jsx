@@ -1,12 +1,17 @@
-import React from 'react'
+import React from "react";
+import Sidebar from "./components/common/Sidebar/Sidebar";
+//import Header from "./components/common/Header";
 
-const App =
- () => {
+const App = () => {
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100 text-shadow-black">
-      Admin application
+    <div className="flex">
+      <Sidebar />
+      {/*<Header />*/}
+      <div className="flex flex-1 items-center justify-center min-h-screen bg-blue-200">
+        <h3 className="font-bold text-3xl">Administrator Dashboard</h3>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
