@@ -2,6 +2,8 @@
 import { Link, useNavigate } from "react-router-dom"
 import { Eye, EyeOff, Mail, Lock, User, Phone, MapPin, Upload } from "lucide-react"
 import { useAuth } from "@/store/authStore.jsx"
+import Button from "@/components/ui/Button"
+import Input from "@/components/ui/Input"
 
 const Register = () => {
   const [showPassword, setShowPassword] = useState(false)
@@ -60,13 +62,13 @@ const Register = () => {
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <User className="h-5 w-5 text-gray-400" />
                 </div>
-                <input
+                <Input
                   type="text"
                   name="firstName"
                   autoComplete="given-name"
                   value={formData.firstName}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-300"
+                  className="pl-11"
                   placeholder="First name"
                   required
                 />
@@ -75,13 +77,12 @@ const Register = () => {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Last Name</label>
-              <input
+              <Input
                 type="text"
                 name="lastName"
                 autoComplete="family-name"
                 value={formData.lastName}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-300"
                 placeholder="Last name"
                 required
               />
@@ -91,16 +92,16 @@ const Register = () => {
           <div className="mb-6">
             <label className="block text-sm font-medium text-gray-700 mb-2">Email Address</label>
             <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
                 <Mail className="h-5 w-5 text-gray-400" />
               </div>
-              <input
+              <Input
                 type="email"
                 name="email"
                 autoComplete="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-300"
+                className="pl-11"
                 placeholder="you@example.com"
                 required
               />
@@ -110,16 +111,16 @@ const Register = () => {
           <div className="mb-6">
             <label className="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
             <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
                 <Phone className="h-5 w-5 text-gray-400" />
               </div>
-              <input
+              <Input
+              className="pl-11"
                 type="tel"
                 name="phone"
                 autoComplete="tel"
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-300"
                 placeholder="+251 912 345 678"
                 required
               />
@@ -132,13 +133,13 @@ const Register = () => {
               <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                 <MapPin className="h-5 w-5 text-gray-400" />
               </div>
-              <input
+              <Input
                 type="text"
                 name="location"
                 autoComplete="address-level2"
                 value={formData.location}
                 onChange={handleChange}
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-300"
+                className="pl-11"
                 placeholder="Addis Ababa, Bole"
                 required
               />
@@ -156,7 +157,7 @@ const Register = () => {
                 name="nationalId"
                 onChange={handleChange}
                 accept="image/*,.pdf"
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-medium file:bg-gray-50 file:text-gray-700 hover:file:bg-gray-100"
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-xl bg-white text-gray-900 focus:outline-none focus:ring-0.5 focus:ring-gray-300 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-medium file:bg-gray-50 file:text-gray-700 hover:file:bg-gray-100"
                 required
               />
             </div>
@@ -171,13 +172,13 @@ const Register = () => {
                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                   <Lock className="h-5 w-5 text-gray-400" />
                 </div>
-                <input
+                <Input
                   type={showPassword ? "text" : "password"}
                   name="password"
                   autoComplete="new-password"
                   value={formData.password}
                   onChange={handleChange}
-                  className="w-full pl-10 pr-12 py-3 border border-gray-300 rounded-xl bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-300"
+                  className="pl-11"
                   placeholder="••••••••"
                   required
                 />
@@ -198,13 +199,12 @@ const Register = () => {
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Confirm Password</label>
-              <input
+              <Input
                 type="password"
                 name="confirmPassword"
                 autoComplete="new-password"
                 value={formData.confirmPassword}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-gray-300 rounded-xl bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-gray-300"
                 placeholder="••••••••"
                 required
               />
@@ -227,13 +227,14 @@ const Register = () => {
             </label>
           </div>
 
-          <button
+          <Button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-red-500 text-white py-3 rounded-xl font-medium hover:bg-red-600 transition-colors disabled:cursor-not-allowed disabled:bg-red-300"
+            as child
+            variant ="primary"
           >
             {isLoading ? "Creating account..." : "Create Account"}
-          </button>
+          </Button>
 
           <p className="mt-6 text-center text-sm text-gray-600">
             Already have an account? <Link to="/login" className="text-red-500 hover:text-red-600 font-medium">Sign in</Link>

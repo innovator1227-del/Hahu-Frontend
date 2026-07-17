@@ -6,6 +6,7 @@ const products = [
     category: "Phones",
     image: "https://images.unsplash.com/photo-1632661674596-618e0d3e0b6c",
     description: "iPhone 13, 128GB, excellent condition",
+    place: "Bahirdar"
   },
   {
     id: 2,

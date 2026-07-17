@@ -3,17 +3,16 @@ import { Link } from "react-router-dom"
 function ListingCard({ listing }) {
   return (
     <Link to={`/product/${listing.id}`}>
-      <div className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition duration-300 border border-gray-100">
+      <div className="bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition duration-300 border border-gray-100">
         
         {/* Image */}
-        <div className="h-48 w-full overflow-hidden">
+        <div className="h-48 w-full overflow-hidden rounded-full">
           <img
             src={listing.image}
             alt={listing.title}
             className="w-full h-full object-cover hover:scale-105 transition duration-300"
           />
         </div>
-
         {/* Content */}
         <div className="p-4">
           <h2 className="text-lg font-semibold text-gray-800 truncate">

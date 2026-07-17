@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Footer from '@/components/common/Footer'
-import Navbar from '@/components/common/Navbar'
-import Sidebar from '@/components/common/Sidebar'
+import Navbar from '@/components/common/header/Navbar'
+import Sidebar from '@/components/common/sidebar/Sidebar'
 import { Outlet, useLocation } from 'react-router-dom'
 import { useAuth } from '@/store/authStore.jsx'
 
@@ -12,13 +12,13 @@ const PublicLayout = () => {
   const showHero = location.pathname === '/' || location.pathname === '/browse'
 
   return (
-    <div className={`min-h-screen bg-default text-black`}>
+    <div className={`min-h-screen text-black`}>
       <Sidebar
         isOpen={showSidebar}
         variant={user ? 'user' : 'public'}
         onClose={() => setShowSidebar(false)}
       />
-      <div className={`min-h-screen transition-all ${showSidebar ? 'md:pl-72' : 'md:pl-20'}`}>
+      <div className={`min-h-screen transition-[padding] duration-500 ease-in-out ${showSidebar ? 'md:pl-64' : 'md:pl-[88px]'}`}>
         <Navbar toggleSidebar={() => setShowSidebar((prev) => !prev)} />
 
         {showHero && (
@@ -28,7 +28,7 @@ const PublicLayout = () => {
           </div>
         )}
 
-        <main className="px-4 pb-8 md:px-8">
+        <main className="bg-slate-50 min-h-screen rounded-tl-3xl">
           <Outlet />
         </main>
 
