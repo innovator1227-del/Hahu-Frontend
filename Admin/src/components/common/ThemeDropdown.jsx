@@ -1,0 +1,128 @@
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown, Check } from "lucide-react";
+import useThemeStore from "../../stores/ThemeStore";
+import useTheme from "../../hooks/useTheme";
+
+const themeOptions = [
+  {
+    id: "darkblue",
+    name: "Default",
+    color: "bg-blue-600",
+  },
+  {
+    id: "white",
+    name: "White",
+    color: "bg-gray-200 border",
+  },
+  {
+    id: "black",
+    name: "Black",
+    color: "bg-black",
+  },
+];
+
+const ThemeDropdown = () => {
+  const currentTheme = useTheme();
+  const [open, setOpen] = useState(false);
+
+  const { theme, setTheme } = useThemeStore();
+
+  const selectedTheme =
+    themeOptions.find((item) => item.id === theme) || themeOptions[0];
+
+  const changeTheme = (value) => {
+    setTheme(value);
+    setOpen(false);
+  };
+
+  return (
+    <div className="relative">
+      {/* Button */}
+      <button
+        onClick={() => setOpen((prev) => !prev)}
+        className={`
+          flex items-center gap-2
+          rounded-xl
+          border
+          px-4 py-2
+          shadow-sm
+          transition-all duration-200
+          hover:shadow-md
+          ${currentTheme.header}
+          ${currentTheme.text}
+        `}
+      >
+        <div className={`w-3 h-3 rounded-full ${selectedTheme.color}`} />
+
+        <span className="font-medium">{selectedTheme.name}</span>
+
+        <ChevronDown
+          size={18}
+          className={`transition-transform duration-300 ${
+            open ? "rotate-180" : ""
+          }`}
+        />
+      </button>
+
+      {/* Dropdown */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -8, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -8, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+            className={`
+              absolute
+              right-0
+              mt-2
+              w-52
+              rounded-xl
+              border
+              shadow-xl
+              overflow-hidden
+              z-50
+              ${currentTheme.dropdown}
+              ${currentTheme.dropdownText}
+            `}
+          >
+            {themeOptions.map((item) => (
+              <button
+                key={item.id}
+                onClick={() => changeTheme(item.id)}
+                className={`
+                  w-full
+                  flex
+                  items-center
+                  justify-between
+                  px-4
+                  py-3
+                  transition-colors
+                  ${
+                    theme === "black"
+                      ? "hover:bg-slate-700"
+                      : "hover:bg-slate-100"
+                  }
+                  ${currentTheme.dropdownText}
+                `}
+              >
+                <div className="flex items-center gap-3">
+                  <div className={`w-4 h-4 rounded-full ${item.color}`} />
+
+                  <span>{item.name}</span>
+                </div>
+
+                {theme === item.id && (
+                  <Check size={18} className="text-blue-500" />
+                )}
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+export default ThemeDropdown;
