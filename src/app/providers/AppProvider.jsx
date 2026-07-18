@@ -4,6 +4,8 @@ import { CartProvider } from "@/store/cartStore.jsx"
 import { CategoryProvider } from "@/store/categoryStore.jsx"
 import { SearchProvider } from "@/store/searchStore.jsx"
 import { ProductProvider } from "@/store/productStore.jsx"
+import { WishlistProvider } from "@/store/wishlistStore.jsx"
+import { OrderProvider } from "@/store/orderStore.jsx"
 
 const AppProvider = ({ children }) => {
     return (
@@ -11,9 +13,13 @@ const AppProvider = ({ children }) => {
             <CartProvider>
                 <CategoryProvider>
                     <SearchProvider>
-                        <ProductProvider>
-                            <BrowserRouter>{children}</BrowserRouter>
-                        </ProductProvider>
+                        <WishlistProvider>
+                            <ProductProvider>
+                                <OrderProvider>
+                                    <BrowserRouter>{children}</BrowserRouter>
+                                </OrderProvider>
+                            </ProductProvider>
+                        </WishlistProvider>
                     </SearchProvider>
                 </CategoryProvider>
             </CartProvider>
@@ -21,3 +27,4 @@ const AppProvider = ({ children }) => {
     )
 }
 export default AppProvider
+               

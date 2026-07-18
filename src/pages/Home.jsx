@@ -3,61 +3,62 @@ import { useProducts } from "@/store/productStore"
 import { Link } from "react-router-dom"
 import { useSearch } from "@/store/searchStore"
 
+import CategorySection from "@/components/CategorySection";
+
 const Home = () => {
-  const { selectedCategory } = useCategory()
-  const { searchQuery } = useSearch()
+
   const { products } = useProducts()
 
-  const filteredProducts = products.filter((product) => {
-    const matchesCategory =
-      selectedCategory === "All" || product.category === selectedCategory
+  const approvedProducts = products.filter(
+    product => product.status === "APPROVED"
+  )
 
-    const matchesSearch =
-      product.title.toLowerCase().includes(searchQuery.toLowerCase())
 
-    const isApproved = product.status === "APPROVED"
+  const phones = approvedProducts.filter(
+    product => product.category === "Phones"
+  )
 
-    return matchesCategory && matchesSearch && isApproved
-  })
+  const electronics = approvedProducts.filter(
+    product => product.category === "Electronics"
+  )
+
+  const furniture = approvedProducts.filter(
+    product => product.category === "Furniture"
+  )
+
+  const clothes = approvedProducts.filter(
+    product => product.category === "Clothes"
+  )
+
 
   return (
     <div className="p-6 max-w-7xl mx-auto">
 
-      <h2 className="text-2xl font-bold mb-6">
-        {selectedCategory} Listings
-      </h2>
+      <h1 className="text-3xl font-bold mb-8">
+        Welcome to Hahu Marketplace
+      </h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
 
-        {filteredProducts.map((product) => (
-          <Link
-            to={`/product/${product.id}`}
-            key={product.id}
-            className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition"
-          >
-            <img
-              src={product.image}
-              alt={product.title}
-              className="w-full h-48 object-cover"
-            />
+      <CategorySection
+        title="Phones"
+        products={phones}
+      />
 
-            <div className="p-4">
-              <h3 className="font-semibold text-lg">
-                {product.title}
-              </h3>
+      <CategorySection
+        title="Electronics"
+        products={electronics}
+      />
 
-              <p className="text-blue-600 font-bold">
-                {product.price} ETB
-              </p>
+      <CategorySection
+        title="Furniture"
+        products={furniture}
+      />
 
-              <p className="text-gray-500 text-sm mt-2">
-                {product.description}
-              </p>
-            </div>
-          </Link>
-        ))}
+      <CategorySection
+        title="Clothes"
+        products={clothes}
+      />
 
-      </div>
     </div>
   )
 }

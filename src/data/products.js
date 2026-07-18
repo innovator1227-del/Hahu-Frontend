@@ -40,6 +40,249 @@ const products = [
     image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf",
     description: "Strong battery, clean phone",
   },
+  {
+  id: 6,
+  title: "Dell Laptop",
+  price: 28000,
+  category: "Electronics",
+  image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
+  description: "Dell laptop, good condition"
+},
+
+{
+  id: 7,
+  title: "Toyota Car",
+  price: 900000,
+  category: "Vehicles",
+  image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7",
+  description: "Well maintained Toyota"
+},
+
+{
+  id: 8,
+  title: "Wooden Table",
+  price: 8000,
+  category: "Furniture",
+  image: "https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc",
+  description: "Modern wooden table"
+},
+
+{
+  id: 9,
+  title: "Running Shoes",
+  price: 3000,
+  category: "Clothes",
+  image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
+  description: "Original running shoes"
+},
+{
+  id: 10,
+  title: "Samsung Galaxy S23",
+  price: 55000,
+  category: "Phones",
+  image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97",
+  description: "Samsung flagship phone, excellent condition",
+  place: "Addis Ababa"
+},
+
+{
+  id: 11,
+  title: "Google Pixel 7",
+  price: 40000,
+  category: "Phones",
+  image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97",
+  description: "Clean Google Pixel phone",
+  place: "Bahir Dar"
+},
+
+{
+  id: 12,
+  title: "Lenovo ThinkPad",
+  price: 35000,
+  category: "Electronics",
+  image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
+  description: "Business laptop with strong performance",
+  place: "Addis Ababa"
+},
+
+{
+  id: 13,
+  title: "Wireless Headphones",
+  price: 2500,
+  category: "Electronics",
+  image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e",
+  description: "Noise cancelling headphones",
+  place: "Bahir Dar"
+},
+
+{
+  id: 14,
+  title: "Office Chair",
+  price: 7000,
+  category: "Furniture",
+  image: "https://images.unsplash.com/photo-1580480055273-228ff5388ef8",
+  description: "Comfortable office chair",
+  place: "Addis Ababa"
+},
+
+{
+  id: 15,
+  title: "Wooden Desk",
+  price: 12000,
+  category: "Furniture",
+  image: "https://images.unsplash.com/photo-1519710164239-da123dc03ef4",
+  description: "Modern study desk",
+  place: "Bahir Dar"
+},
+
+{
+  id: 16,
+  title: "Winter Coat",
+  price: 4500,
+  category: "Clothes",
+  image: "https://images.unsplash.com/photo-1543076447-215ad9ba6923",
+  description: "Warm jacket for cold weather",
+  place: "Addis Ababa"
+},
+
+{
+  id: 17,
+  title: "Sports Shoes",
+  price: 3500,
+  category: "Clothes",
+  image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
+  description: "Comfortable running shoes",
+  place: "Bahir Dar"
+},
+
+{
+  id: 18,
+  title: "Toyota Corolla",
+  price: 850000,
+  category: "Vehicles",
+  image: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2",
+  description: "Well maintained Toyota Corolla",
+  place: "Addis Ababa"
+},
+
+{
+  id: 19,
+  title: "Mountain Bike",
+  price: 15000,
+  category: "Vehicles",
+  image: "https://images.unsplash.com/photo-1485965120184-e220f721d03e",
+  description: "Good condition mountain bike",
+  place: "Bahir Dar"
+},
+{
+  id: 20,
+  title: "Google Pixel 8 Pro",
+  price: 65000,
+  category: "Phones",
+  image: "https://images.unsplash.com/photo-1598327105666-5b89351aff97",
+  description: "Google Pixel 8 Pro, excellent camera and clean condition",
+  place: "Addis Ababa"
+},
+
+{
+  id: 21,
+  title: "MacBook Air M2",
+  price: 95000,
+  category: "Electronics",
+  image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
+  description: "Apple MacBook Air M2, lightweight and powerful",
+  place: "Bahir Dar"
+},
+
+{
+  id: 22,
+  title: "Canon DSLR Camera",
+  price: 35000,
+  category: "Electronics",
+  image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32",
+  description: "Professional camera for photography",
+  place: "Addis Ababa"
+},
+
+{
+  id: 23,
+  title: "Smart LED Television",
+  price: 28000,
+  category: "Electronics",
+  image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1",
+  description: "55 inch smart LED TV",
+  place: "Bahir Dar"
+},
+
+{
+  id: 24,
+  title: "Luxury Wooden Cabinet",
+  price: 22000,
+  category: "Furniture",
+  image: "https://images.unsplash.com/photo-1595428774223-ef52624120d2",
+  description: "Large storage cabinet with modern design",
+  place: "Addis Ababa"
+},
+
+{
+  id: 25,
+  title: "Dining Table Set",
+  price: 35000,
+  category: "Furniture",
+  image: "https://images.unsplash.com/photo-1618220179428-22790b461013",
+  description: "Complete dining table with chairs",
+  place: "Bahir Dar"
+},
+
+{
+  id: 26,
+  title: "Leather Backpack",
+  price: 2500,
+  category: "Clothes",
+  image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62",
+  description: "Premium leather backpack",
+  place: "Addis Ababa"
+},
+
+{
+  id: 27,
+  title: "Classic Men's Watch",
+  price: 7000,
+  category: "Clothes",
+  image: "https://images.unsplash.com/photo-1524805444758-089113d48a6d",
+  description: "Elegant classic wrist watch",
+  place: "Bahir Dar"
+},
+
+{
+  id: 28,
+  title: "Hyundai Tucson",
+  price: 950000,
+  category: "Vehicles",
+  image: "https://images.unsplash.com/photo-1503376780353-7e6692767b70",
+  description: "Modern SUV in excellent condition",
+  place: "Addis Ababa"
+},
+
+{
+  id: 29,
+  title: "Electric Scooter",
+  price: 25000,
+  category: "Vehicles",
+  image: "https://images.unsplash.com/photo-1558981806-ec527fa84c39",
+  description: "Electric scooter for city transportation",
+  place: "Bahir Dar"
+},
+
+{
+  id: 30,
+  title: "Gaming PC Setup",
+  price: 85000,
+  category: "Electronics",
+  image: "https://images.unsplash.com/photo-1593640408182-31c228f17e5b",
+  description: "High performance gaming computer setup",
+  place: "Addis Ababa"
+}
 ]
 
 export default products

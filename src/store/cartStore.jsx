@@ -60,6 +60,11 @@ const decreaseQty = (id) => {
       .filter(item => item.quantity > 0)
   );
 };
+const clearCart = () => {
+
+ setCartItems([])
+
+}
 
   return (
     <CartContext.Provider value={{
@@ -69,6 +74,7 @@ const decreaseQty = (id) => {
   message,
   increaseQty,
   decreaseQty,
+  clearCart,
   setCartItems
   }}
 >

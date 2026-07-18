@@ -1,7 +1,13 @@
 import { useState } from "react"
 import { useProducts } from "@/store/productStore"
+import { useNavigate } from "react-router-dom"
 
 const SellerAddProduct = () => {
+
+  const navigate = useNavigate()
+
+  const [message, setMessage] = useState("")
+
   const [form, setForm] = useState({
     title: "",
     price: "",
@@ -9,7 +15,10 @@ const SellerAddProduct = () => {
     description: "",
     image: "",
   })
+
+
   const { addProduct } = useProducts()
+
 
   const handleChange = (e) => {
     setForm({
@@ -18,12 +27,21 @@ const SellerAddProduct = () => {
     })
   }
 
+
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    addProduct(form)
 
-    alert("Product submitted for approval")
+    addProduct({
+      ...form,
+      price: Number(form.price),
+    })
+
+
+    setMessage(
+      "Product submitted successfully. Waiting for admin approval."
+    )
+
 
     setForm({
       title: "",
@@ -32,77 +50,166 @@ const SellerAddProduct = () => {
       description: "",
       image: "",
     })
+
+
+    setTimeout(() => {
+      navigate("/app/my-listings")
+    }, 1500)
+
   }
 
+
+
   return (
-    <div className="max-w-2xl mx-auto p-6">
-      <h2 className="text-2xl font-bold mb-6">
-        Add New Product
-      </h2>
+    <div className="max-w-2xl mx-auto">
 
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="bg-white rounded-xl shadow p-6">
 
-        <input
-          type="text"
-          name="title"
-          placeholder="Product Title"
-          value={form.title}
-          onChange={handleChange}
-          className="w-full border p-2 rounded"
-          required
-        />
+        <h2 className="text-3xl font-bold mb-6">
+          Create New Listing
+        </h2>
 
-        <input
-          type="number"
-          name="price"
-          placeholder="Price"
-          value={form.price}
-          onChange={handleChange}
-          className="w-full border p-2 rounded"
-          required
-        />
 
-        <select
-          name="category"
-          value={form.category}
-          onChange={handleChange}
-          className="w-full border p-2 rounded"
+        {message && (
+          <div className="bg-green-100 text-green-700 p-3 rounded-lg mb-5">
+            {message}
+          </div>
+        )}
+
+
+
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-5"
         >
-          <option>Phones</option>
-          <option>Electronics</option>
-          <option>Furniture</option>
-          <option>Clothes</option>
-        </select>
 
-        <textarea
-          name="description"
-          placeholder="Description"
-          value={form.description}
-          onChange={handleChange}
-          className="w-full border p-2 rounded"
-          required
-        />
 
-        <input
-          type="text"
-          name="image"
-          placeholder="Image URL"
-          value={form.image}
-          onChange={handleChange}
-          className="w-full border p-2 rounded"
-          required
-        />
+          <div>
+            <label className="font-medium">
+              Product Title
+            </label>
 
-        <button
-          type="submit"
-          className="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700"
-        >
-          Submit Product
-        </button>
+            <input
+              type="text"
+              name="title"
+              value={form.title}
+              onChange={handleChange}
+              placeholder="Example: iPhone 15"
+              className="w-full border p-3 rounded-lg mt-1"
+              required
+            />
+          </div>
 
-      </form>
+
+
+          <div>
+            <label className="font-medium">
+              Price (ETB)
+            </label>
+
+            <input
+              type="number"
+              name="price"
+              value={form.price}
+              onChange={handleChange}
+              placeholder="Example: 50000"
+              className="w-full border p-3 rounded-lg mt-1"
+              required
+            />
+          </div>
+
+
+
+          <div>
+            <label className="font-medium">
+              Category
+            </label>
+
+            <select
+              name="category"
+              value={form.category}
+              onChange={handleChange}
+              className="w-full border p-3 rounded-lg mt-1"
+            >
+
+              <option>Phones</option>
+              <option>Electronics</option>
+              <option>Furniture</option>
+              <option>Clothes</option>
+              <option>Vehicles</option>
+
+            </select>
+
+          </div>
+
+
+
+
+          <div>
+            <label className="font-medium">
+              Description
+            </label>
+
+            <textarea
+              name="description"
+              value={form.description}
+              onChange={handleChange}
+              placeholder="Describe your product..."
+              className="w-full border p-3 rounded-lg mt-1"
+              rows="4"
+              required
+            />
+
+          </div>
+
+
+
+
+          <div>
+            <label className="font-medium">
+              Image URL
+            </label>
+
+            <input
+              type="text"
+              name="image"
+              value={form.image}
+              onChange={handleChange}
+              placeholder="Paste image URL"
+              className="w-full border p-3 rounded-lg mt-1"
+              required
+            />
+
+
+            {form.image && (
+              <img
+                src={form.image}
+                alt="Preview"
+                className="w-40 h-40 object-cover rounded-lg mt-4"
+              />
+            )}
+
+          </div>
+
+
+
+
+
+          <button
+            type="submit"
+            className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700"
+          >
+            Submit Product
+          </button>
+
+
+        </form>
+
+      </div>
+
     </div>
   )
 }
+
 
 export default SellerAddProduct
