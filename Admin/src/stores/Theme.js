@@ -1,18 +1,15 @@
+import { hover } from "framer-motion";
+
 export const themes = {
   darkblue: {
-    background: "bg-slate-900",
+    background: "bg-gradient-to-br from-[#1E3A8A] via-[#0B1220] to-[#020827]",
+    sidebar: "bg-gradient-to-b from-[#1E3A8A] via-[#0F172A] to-[#020617]",
+    header: "bg-gradient-to-br from-[#1E3A8A] via-[#0B1230] to-[#020837]",
+    dropdown: "bg-blue",
+    hover: "bg-slate-700",
     text: "text-white",
-
-    sidebar: "bg-slate-800",
-    sidebarText: "text-white",
-
-    header: "bg-slate-800",
-    headerText: "text-white",
-
-    dropdown: "bg-white",
-    dropdownText: "text-slate-900",
+    dropdownText: "text-white",
   },
-
   white: {
     background: "bg-white",
     text: "text-black",

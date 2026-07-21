@@ -23,6 +23,9 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
      flex
     flex-col
      gap-8
+     transition-colors
+     duration-1000
+     ease-in-out
    `}
       >
         <div

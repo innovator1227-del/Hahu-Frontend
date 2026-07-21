@@ -14,40 +14,36 @@ import NotFound from "@/pages/NotFound";
 import { PublicRoute } from "./routes/PublicRoute";
 import { AppRoute } from "./routes/AppRoute";
 
-
 const AppRouter = () => {
-    return (
-        <Routes>
+  return (
+    <Routes>
+      {/* PUBLIC */}
+      <Route path="/" element={<PublicLayout />}>
+        {PublicRoute.map((route, i) => (
+          <Route key={i} {...route} />
+        ))}
 
-            {/* PUBLIC */}
-            <Route path="/" element={<PublicLayout />}>
-                {PublicRoute.map((route, i) => (
-                    <Route key={i} {...route} />
-                ))}
+        <Route element={<GuestRoute />}>
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+        </Route>
+      </Route>
 
-                <Route element={<GuestRoute />}>
-                    <Route path="login" element={<Login />} />
-                    <Route path="register" element={<Register />} />
-                </Route>
-            </Route>
+      {/* USER */}
+      <Route element={<ProtectedRoute />}>
+        <Route path="/app" element={<AppLayout />}>
+          {AppRoute.map((route, i) => (
+            <Route key={i} {...route} />
+          ))}
 
-            {/* USER */}
-            <Route element={<ProtectedRoute />}>
-                <Route path="/app" element={<AppLayout />}>
-                    {AppRoute.map((route, i) => (
-                        <Route key={i} {...route} />
-                    ))}
+          <Route path="checkout" element={<Checkout />} />
+        </Route>
+      </Route>
 
-                     <Route path="checkout" element={<Checkout />} />
-
-                </Route>
-            </Route>
-           
-            {/* 404 */}
-            <Route path="*" element={<NotFound />} />
-
-        </Routes>
-    );
+      {/* 404 */}
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  );
 };
 
 export default AppRouter;

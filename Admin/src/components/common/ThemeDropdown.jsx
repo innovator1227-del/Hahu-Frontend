@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Check } from "lucide-react";
 import useThemeStore from "../../stores/ThemeStore";
@@ -23,6 +23,7 @@ const themeOptions = [
 ];
 
 const ThemeDropdown = () => {
+  const dropdownRef = useRef(null);
   const currentTheme = useTheme();
   const [open, setOpen] = useState(false);
 
@@ -36,8 +37,19 @@ const ThemeDropdown = () => {
     setOpen(false);
   };
 
+  useEffect(() => {
+    function handleClick(e) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, []);
+
   return (
-    <div className="relative">
+    <div ref={dropdownRef} className="relative">
       {/* Button */}
       <button
         onClick={() => setOpen((prev) => !prev)}
@@ -51,6 +63,9 @@ const ThemeDropdown = () => {
           hover:shadow-md
           ${currentTheme.header}
           ${currentTheme.text}
+          transition-colors
+          duration-1000
+          ease-in-out
         `}
       >
         <div className={`w-3 h-3 rounded-full ${selectedTheme.color}`} />
@@ -85,6 +100,9 @@ const ThemeDropdown = () => {
               z-50
               ${currentTheme.dropdown}
               ${currentTheme.dropdownText}
+              transition-colors
+              duration-1000
+              ease-in-out
             `}
           >
             {themeOptions.map((item) => (
