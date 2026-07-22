@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaBars } from "react-icons/fa6";
 import { menuItems } from "./Data";
 import SideItem from "./SideItem";
 import { Tooltip } from "react-tooltip";
@@ -24,7 +23,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
     flex-col
      gap-8
      transition-colors
-     duration-1000
+     duration-500
      ease-in-out
    `}
       >

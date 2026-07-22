@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Check } from "lucide-react";
+import { ChevronDown, Check, Sun } from "lucide-react";
 import useThemeStore from "../../stores/ThemeStore";
 import useTheme from "../../hooks/useTheme";
 
@@ -54,23 +54,28 @@ const ThemeDropdown = () => {
       <button
         onClick={() => setOpen((prev) => !prev)}
         className={`
-          flex items-center gap-2
+          flex items-center gap-1
           rounded-xl
-          border
           px-4 py-2
-          shadow-sm
           transition-all duration-200
-          hover:shadow-md
+          cursor-pointer
           ${currentTheme.header}
           ${currentTheme.text}
           transition-colors
-          duration-1000
+          duration-500
           ease-in-out
         `}
       >
-        <div className={`w-3 h-3 rounded-full ${selectedTheme.color}`} />
-
-        <span className="font-medium">{selectedTheme.name}</span>
+        <div className="flex flex-1 items-center space-x-3 pl-6 pr-5 border-l border-slate-200 rounded-xl gap-3">
+          <Sun />
+          <div className="hidden: md-block">
+            <h1 className="font-2xl font-bold">Theme</h1>
+            <div className="flex flex-1 gap-2">
+              <div className={`w-3 h-3 rounded-full ${selectedTheme.color}`} />
+              <span className="font-medium text-xs">{selectedTheme.name}</span>
+            </div>
+          </div>
+        </div>
 
         <ChevronDown
           size={18}
@@ -94,14 +99,12 @@ const ThemeDropdown = () => {
               mt-2
               w-52
               rounded-xl
-              border
-              shadow-xl
               overflow-hidden
               z-50
               ${currentTheme.dropdown}
               ${currentTheme.dropdownText}
               transition-colors
-              duration-1000
+              duration-500
               ease-in-out
             `}
           >
@@ -116,16 +119,16 @@ const ThemeDropdown = () => {
                   justify-between
                   px-4
                   py-3
-                  transition-colors
+                  transition-all
                   ${
-                    theme === "black"
+                    theme === "black" || theme === "darkblue"
                       ? "hover:bg-slate-700"
                       : "hover:bg-slate-100"
                   }
                   ${currentTheme.dropdownText}
                 `}
               >
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-6">
                   <div className={`w-4 h-4 rounded-full ${item.color}`} />
 
                   <span>{item.name}</span>

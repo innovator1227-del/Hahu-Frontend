@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Sidebar from "./components/common/Sidebar/Sidebar";
 import Header from "./components/common/Header";
 import useTheme from "./hooks/useTheme";
+import Router from "./app/Router";
 
 const App = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -18,7 +19,7 @@ const App = () => {
         <Header isOpen={isOpen} setIsOpen={setIsOpen} />
 
         <main className="flex-1 p-6">
-          <h1 className="text-3xl font-bold">Administrator Dashboard</h1>
+          <Router />
         </main>
       </div>
     </div>

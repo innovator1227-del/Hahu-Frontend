@@ -7,8 +7,9 @@ const AdminInput = ({ label, error, className, ...props }) => {
   const { theme, setTheme } = useThemeStore();
   return (
     <div
-      className={`w-full ${currentTheme.header}
-    ${currentTheme.text} `}
+      className={`w-full
+      ${currentTheme.header}
+      ${currentTheme.text} `}
     >
       {label && (
         <label className="mb-2 text-sm font-medium text-slate-700">
@@ -17,7 +18,7 @@ const AdminInput = ({ label, error, className, ...props }) => {
       )}
       <input
         className={twMerge(
-          "w-xl gap-2 h-12 rounded-xl border border-slate-300 bg-white px-4 text-sm text-slate-900 placeholder:text-slate-400 outline-none transition-all duration-300 focus:border-gray-500 focus:ring-0.5 focus:ring-gray-400",
+          "w-xl gap-2 h-12 rounded-xl border shadow-none px-4 text-sm placeholder:text-slate-400 outline-none transition-colors duration-all focus:border-gray-500 focus:ring-0.5 focus:ring-gray-500",
           error && "border-red-500 focus:border-red-400 focus:ring-red-400",
           className,
         )}
