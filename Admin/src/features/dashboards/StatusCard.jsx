@@ -13,7 +13,7 @@ const StatusCard = ({ title, value, change, icon: Icon, color }) => {
         <div
           className={`w-14 h-14 rounded-xl ${color} flex items-center justify-center`}
         >
-          <Icon size={28} className="text-white" />
+          <Icon size={28} />
         </div>
       </div>
     </div>
