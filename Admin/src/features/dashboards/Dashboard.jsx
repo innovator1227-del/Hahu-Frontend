@@ -1,10 +1,15 @@
 import React from "react";
 import StatsGrid from "./StatsGrid";
+import SalesChart from "./charts/SalesChart";
+//import RevenueChart from "./charts/RevenueChart";
 
 const Dashboard = () => {
   return (
-    <div>
+    <div className="flex flex-col gap-6">
       <StatsGrid />
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <SalesChart />
+      </div>
     </div>
   );
 };

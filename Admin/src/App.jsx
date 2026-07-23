@@ -11,7 +11,7 @@ const App = () => {
 
   return (
     <div
-      className={`flex h-screen ${currentTheme.background} ${currentTheme.text}`}
+      className={`flex h-min-screen w-full ${currentTheme.background} ${currentTheme.text}`}
     >
       <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
 

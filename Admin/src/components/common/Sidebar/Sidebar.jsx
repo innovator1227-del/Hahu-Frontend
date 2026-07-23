@@ -17,7 +17,11 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         className={`
      ${currentTheme.sidebar}
      ${currentTheme.text}
+     top-0
+     left-0
      h-screen
+     sticky
+     z-50
      p-4
      flex
     flex-col
