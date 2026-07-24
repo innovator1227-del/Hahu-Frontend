@@ -9,7 +9,7 @@ const StatusCard = ({ title, value, change, icon: Icon, color }) => {
     <div
       className={`rounded-2xl border-l-0 p-6 shadow-lg hover:shadow-lg transition-all duration-300 hover:translate-x-1 hover:scale-[1.02] ${
         theme === "darkblue" || theme === "black"
-          ? "bg-slate-800"
+          ? "bg-slate-900"
           : "bg-slate-50"
       } `}
     >

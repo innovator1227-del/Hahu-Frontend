@@ -11,7 +11,7 @@ const App = () => {
 
   return (
     <div
-      className={`flex h-min-screen w-full ${currentTheme.background} ${currentTheme.text}`}
+      className={`flex min-h-screen w-full ${currentTheme.background} ${currentTheme.text}`}
     >
       <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
 
@@ -21,6 +21,19 @@ const App = () => {
         <main className="flex-1 p-6">
           <Router />
         </main>
+        <footer
+          className={`
+      h-14
+      flex
+      items-center
+      justify-center
+      text-sm
+      ${currentTheme.header}
+      ${currentTheme.text}
+    `}
+        >
+          © 2026 HAHU Market Admin Dashboard
+        </footer>
       </div>
     </div>
   );

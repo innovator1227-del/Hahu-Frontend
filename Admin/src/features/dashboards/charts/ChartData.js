@@ -14,10 +14,28 @@ export const ChartData = [
 ];
 
 export const RevenueData = [
-  { month: "Jan", sales: 120, revenue: 18000 },
-  { month: "Feb", sales: 150, revenue: 23000 },
-  { month: "Mar", sales: 180, revenue: 27000 },
-  { month: "Apr", sales: 210, revenue: 34000 },
-  { month: "May", sales: 240, revenue: 39000 },
-  { month: "Jun", sales: 280, revenue: 45000 },
+  { month: "Jan", revenue: 18000 },
+  { month: "Feb", revenue: 23000 },
+  { month: "Mar", revenue: 27000 },
+  { month: "Apr", revenue: 34000 },
+  { month: "May", revenue: 39000 },
+  { month: "Jun", revenue: 45000 },
+];
+
+export const OrderData = [
+  { month: "Jan", orders: 85 },
+  { month: "Feb", orders: 110 },
+  { month: "Mar", orders: 140 },
+  { month: "Apr", orders: 175 },
+  { month: "May", orders: 205 },
+  { month: "Jun", orders: 260 },
+  { month: "Jul", orders: 360 },
+];
+
+export const CategoryData = [
+  { name: "Electronics", value: 35 },
+  { name: "Fashion", value: 25 },
+  { name: "Furniture", value: 20 },
+  { name: "Books", value: 10 },
+  { name: "Vehicles", value: 10 },
 ];

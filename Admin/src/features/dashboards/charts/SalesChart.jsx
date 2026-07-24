@@ -11,17 +11,22 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
+import useTheme from "@/hooks/useTheme";
 
 const SalesChart = () => {
+  const currentTheme = useTheme();
   const { theme, setTheme } = useThemeStore();
   return (
     <div
-      className={`backdrop-blur-xl rounded-b-2xl rounded-2xl border-l-0 p-6 shadow-lg hover:shadow-lg transition-all duration-300 hover:translate-x-1 hover:scale-[1.02] w-lvh
+      className={`backdrop-blur-xl rounded-b-2xl rounded-2xl border-l-0 p-6 shadow-lg hover:shadow-lg transition-all duration-300 hover:translate-x-1 hover:scale-[1.02] min-w-0
         ${
           theme === "black" || theme === "darkblue"
-            ? "bg-slate-800"
+            ? "bg-slate-900"
             : "bg-slate-50"
-        }`}
+        }
+        ${currentTheme.background}
+        ${currentTheme.text}
+        `}
     >
       <div className="flex flex-1 items-center justify-between mb-6">
         <div>

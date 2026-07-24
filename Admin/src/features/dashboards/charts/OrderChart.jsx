@@ -1,18 +1,18 @@
+import useTheme from "@/hooks/useTheme";
 import useThemeStore from "@/stores/ThemeStore";
 import React from "react";
 import {
   ResponsiveContainer,
-  AreaChart,
-  Area,
+  BarChart,
+  Bar,
   XAxis,
   YAxis,
   CartesianGrid,
   Tooltip,
 } from "recharts";
-import { RevenueData } from "./ChartData";
-import useTheme from "@/hooks/useTheme";
+import { OrderData } from "./ChartData";
 
-const RevenueChart = () => {
+const OrderChart = () => {
   const currentTheme = useTheme();
   const { theme, setTheme } = useThemeStore();
   return (
@@ -31,44 +31,38 @@ const RevenueChart = () => {
     >
       <div className="flex flex-1 items-center justify-between mb-6">
         <div>
-          <h3 className="text-xl font bold">Revenue Chart</h3>
-          <p className="text-sm">Business and Proffit track chart</p>
+          <h3 className="text-xl font bold">Order Chart</h3>
+          <p className="text-sm">Users Order and Track chart</p>
         </div>
         <div className="flex items-center space-x-4">
           <div className="flex items-center space-x-2">
-            <div className="w-3 h-3 bg-gradient-to-r from-red-600 to-green-600 rounded-full"></div>
+            <div className="w-3 h-3 bg-gradient-to-r from-blue-600 to-green-600 rounded-full"></div>
             <div className="text-sm">
-              <span>Revenue</span>
+              <span>order</span>
             </div>
           </div>
         </div>
       </div>
       <div className="h-80">
-        <ResponsiveContainer width="100%" height="100%">
-          <AreaChart data={RevenueData}>
+        <ResponsiveContainer>
+          <BarChart data={OrderData}>
             <CartesianGrid
+              stroke={theme === "white" ? "#E2E8F0" : "#334155"}
               strokeDasharray="3 3"
-              stroke={theme === "white" ? "#E2F8E0" : "#334155"}
+              opacity={0.3}
             />
             <XAxis
               stroke={theme === "white" ? "#64748B" : "#CBD5E1"}
               dataKey="month"
             />
             <YAxis stroke={theme === "white" ? "#64748B" : "#CBD5E1"} />
-            <Tooltip />
-            <Area
-              type="monotone"
-              dataKey="revenue"
-              stroke="#3B82F6"
-              fill="#60A5FA"
-              fillOpacity={0.25}
-              strokeWidth={3}
-            />
-          </AreaChart>
+            <Tooltip formatter={(value) => [`${value} Orders`, "Orders"]} />
+            <Bar dataKey="orders" fill="#3B82F6" radius={[8, 8, 0, 0]} />
+          </BarChart>
         </ResponsiveContainer>
       </div>
     </div>
   );
 };
 
-export default RevenueChart;
+export default OrderChart;

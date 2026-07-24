@@ -16,7 +16,7 @@ export const themes = {
     sidebar: "bg-gray-100",
     sidebarText: "text-black",
 
-    header: "bg-white",
+    header: "bg-gray-100",
     headerText: "text-black",
 
     dropdown: "bg-slate-400",
