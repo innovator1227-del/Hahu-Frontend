@@ -4,10 +4,10 @@ import Logo from "@/assets/logo.png";
 import { useAuth } from "@/store/authStore.jsx";
 import { useNavigate } from "react-router-dom";
 
-import { LogOut, ChevronDown, ChevronRight, Store, Settings} from "lucide-react";
+import { LogOut, Store, Settings } from "lucide-react";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
-import { publicMenuItems, publicCategories, userMenuItems, adminMenuItems, adminSubMenus } from "./Data.jsx";
+import { publicMenuItems, publicCategories, userMenuItems } from "./Data.jsx";
 
 const Sidebar = ({ isOpen, variant = "public", onClose }) => {
   const [openDropdown, setOpenDropdown] = useState(null);
@@ -24,8 +24,6 @@ const Sidebar = ({ isOpen, variant = "public", onClose }) => {
     switch (variant) {
       case "user":
         return userMenuItems;
-      case "admin":
-        return adminMenuItems;
       default:
         return publicMenuItems;
     }
@@ -47,8 +45,8 @@ const Sidebar = ({ isOpen, variant = "public", onClose }) => {
         />
       )}
       <aside
-        className={`fixed top-0 left-0 z-50 h-screen flex flex-col bg-[#020617] backdrop-blur-xl border-r border-white/5 transition-all duration-500 ease-in-out ${isOpen  ? "w-64 translate-x-0" : "-translate-x-full md:translate-x-0 md:w-[88px]" }
-                    
+        className={`fixed top-0 left-0 z-50 h-screen flex flex-col bg-[#020617] backdrop-blur-xl border-r border-white/5 transition-all duration-500 ease-in-out ${isOpen ? "w-64 translate-x-0" : "-translate-x-full md:translate-x-0 md:w-[88px]"}
+
         `}
       >
         {/* Header */}
@@ -58,19 +56,19 @@ const Sidebar = ({ isOpen, variant = "public", onClose }) => {
             <img
               src={Logo}
               alt="HAHU Market Logo"
-              className={`w-10 h-10 rounded-full ring-2 ring-white/5 object-cover transition-transform duration-500 ease-in-out ${isOpen ? "rotate-0 scale-100" : "rotate-12 scale-90"}`}
+              className={`w-10 h-10 rounded-full ring-2 ring-white/5 object-cover transition-transform duration-500 ease-in-out `}
             />
 
             {/* Text only when open */}
-              <span                                  
-                className={` overflow-hidden whitespace-nowrap transition-all duration-500 ease-in-out origin-left
-                 ${ isOpen ? "opacity-100 scale-100 translate-x-0 max-w-[180px]": "opacity-0 scale-95 -translate-x-3 max-w-0"}
+            <span
+              className={` overflow-hidden whitespace-nowrap transition-all duration-500 ease-in-out origin-left
+                 ${isOpen ? "opacity-100 scale-100 translate-x-0 max-w-[180px]" : "opacity-0 scale-95 -translate-x-3 max-w-0"}
                 `}
-              >
-                <span className="text-lg font-bold tracking-tight text-slate-100">
-                  HAHU <span className="text-blue-400">MARKET</span>
-                </span>
+            >
+              <span className="text-lg font-bold tracking-tight text-slate-100">
+                HAHU <span className="text-blue-400">MARKET</span>
               </span>
+            </span>
           </div>
         </div>
 
@@ -91,21 +89,23 @@ const Sidebar = ({ isOpen, variant = "public", onClose }) => {
               }`}
             >
               <item.icon
-            size={20}
-            className={`w-5 h-5 transition-colors ${
-              isActive(item.link)
-                ? "text-blue-400"
-                : "text-slate-400 group-hover:text-white"
-            }`}
-          />
-              <div className={`flex items-center justify-between flex-1 overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? "opacity-100 translate-x-0 max-w-52": "opacity-0  -translate-x-3 max-w-0"}`}>
+                size={20}
+                className={`w-5 h-5 transition-colors ${
+                  isActive(item.link)
+                    ? "text-blue-400"
+                    : "text-slate-400 group-hover:text-white"
+                }`}
+              />
+              <div
+                className={`flex items-center justify-between flex-1 overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? "opacity-100 translate-x-0 max-w-52" : "opacity-0  -translate-x-3 max-w-0"}`}
+              >
                 <span className="text-sm font-medium tracking-wide whitespace-nowrap">
-                {item.name}
+                  {item.name}
                 </span>
                 {item.badge && (
-                    <span classsName="ml-2 px-2 py-0.5 rounded-full bg-blue-500 text-white text-[10px] font-semibold">
-                      {item.badge}
-                    </span>
+                  <span classsName="ml-2 px-2 py-0.5 rounded-full bg-blue-500 text-white text-[10px] font-semibold">
+                    {item.badge}
+                  </span>
                 )}
               </div>
             </Link>
@@ -114,14 +114,15 @@ const Sidebar = ({ isOpen, variant = "public", onClose }) => {
           {/* Public Categories */}
           {variant === "public" && (
             <>
-              <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? "opacity-100 max-h-10" : "opacity-0   max-h-0"}
+              <div
+                className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? "opacity-100 max-h-10" : "opacity-0   max-h-0"}
               `}
               >
-            <div className ="pt-4 pb-2">
-             <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider">
-                Categories
-             </h3>
-            </div>
+                <div className="pt-4 pb-2">
+                  <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider">
+                    Categories
+                  </h3>
+                </div>
               </div>
               {publicCategories.map((cat) => (
                 <Link
@@ -134,56 +135,20 @@ const Sidebar = ({ isOpen, variant = "public", onClose }) => {
                 >
                   {/* Icon ALWAYS visible */}
                   <span className="text-lg group-hover:scale-110 transition-transform ">
-                  {cat.icon}
+                    {cat.icon}
                   </span>
 
                   {/* Text only when open */}
-                 <span className={`block overflow-hidden whitespace-nowrap transition-all duration-500 ease-in-out origin-left ${isOpen ? "opacity-100 translate-x-0 max-w-40" : "opacity-0 -translate-x-3 max-w-0"}`}>
+                  <span
+                    className={`block overflow-hidden whitespace-nowrap transition-all duration-500 ease-in-out origin-left ${isOpen ? "opacity-100 translate-x-0 max-w-40" : "opacity-0 -translate-x-3 max-w-0"}`}
+                  >
                     {cat.name}
-                 </span>
+                  </span>
                 </Link>
               ))}
             </>
           )}
 
-          {/* Admin Sub Menus */}
-          {variant === "admin" && isOpen && (
-            <>
-              <div className="pt-4"></div>
-              {adminSubMenus.map((subMenu) => (
-                <div key={subMenu.id} className="mb-2">
-                  <button
-                    onClick={() => toggleDropdown(subMenu.id)}
-                    className="flex items-center justify-between w-full h-12 px-4 rounded-2xl transition-all duration-300 hover:bg-white/5"
-                  >
-                    <div className="flex items-center gap-3">
-                      <subMenu.icon size={20} className="text-slate-400" />
-                      <span className="text-sm">{subMenu.name}</span>
-                    </div>
-                    <ChevronDown
-                      size={16}
-                      className={`text-slate-500 transition-transform ${openDropdown === subMenu.id ? "rotate-180" : ""}`}
-                    />
-                  </button>
-                  {openDropdown === subMenu.id && (
-                    <div className="ml-6 mt-1 space-y-1 animate-in slide-in-from-top-2 duration-200">
-                      {subMenu.items.map((item, idx) => (
-                        <Link
-                          key={idx}
-                          to={item.link}
-                          onClick={handleNavClick}
-                          className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-slate-800 dark:hover:bg-slate-300 text-sm text-slate-300 hover:text-white transition-colors"
-                        >
-                          <ChevronRight size={14} className="text-slate-500" />
-                          {item.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </>
-          )}
           {/* Bottom Actions */}
           {isOpen && (
             <div className="mt-auto border-t border-white/5 p-4">
@@ -232,10 +197,13 @@ const Sidebar = ({ isOpen, variant = "public", onClose }) => {
               )}
             </div>
           )}
-          
         </div>
-        <Tooltip id="sidebar-tooltip"  place="right" delayShow={200} offset={40}
-        /> 
+        <Tooltip
+          id="sidebar-tooltip"
+          place="right"
+          delayShow={200}
+          offset={40}
+        />
       </aside>
     </>
   );
