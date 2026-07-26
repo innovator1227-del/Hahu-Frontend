@@ -5,6 +5,7 @@ import SideItem from "./SideItem";
 import { Tooltip } from "react-tooltip";
 import { ShieldCheck } from "lucide-react";
 import useTheme from "../../../hooks/useTheme";
+import { Link } from "react-router-dom";
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
   const currentTheme = useTheme();
@@ -34,7 +35,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         <div
           className={`flex items-center ${isOpen ? "justify-start" : "justify-center"}`}
         >
-          <div className="w-10 h-10 bg-gradient-to-r from-blue-300 to-blue-600 rounded-xl flex items-center justify-center">
+          <div className="w-10 h-10 bg-gradient-to-r from-blue-300 to-blue-600 rounded-xl flex items-center justify-center object-cover transition-transform ring-2">
             <ShieldCheck className="w-7 h-7 text-white" />
           </div>
 
@@ -60,6 +61,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
               key={index}
               icon={item.icon}
               text={item.text}
+              path={item.path}
               isOpen={isOpen}
               setIsOpen={setIsOpen}
             />

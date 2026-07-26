@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Sidebar from "./components/common/Sidebar/Sidebar";
-import Header from "./components/common/Header";
+import Sidebar from "./components/common/sidebar/Sidebar";
+import Header from "./components/common/header/Header";
 import useTheme from "./hooks/useTheme";
 import Router from "./app/Router";
 
