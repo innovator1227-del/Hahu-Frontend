@@ -46,15 +46,11 @@ const useAuthStore = create(
           success: true,
         };
       },
-
-      // Logout
       logout: () => {
         set({
           admin: null,
         });
       },
-
-      // Helper
       isAuthenticated: () => {
         return get().admin !== null;
       },
