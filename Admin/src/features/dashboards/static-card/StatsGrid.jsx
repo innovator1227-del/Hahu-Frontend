@@ -1,4 +1,4 @@
-import { StatsData } from "@/features/dashboards/StatsData";
+import { StatsData } from "@/features/dashboards/static-card/StatsData";
 import StatusCard from "./StatusCard";
 
 const StatsGrid = () => {

@@ -1,5 +1,5 @@
 import React from "react";
-import StatsGrid from "./StatsGrid";
+import StatsGrid from "./static-card/StatsGrid";
 import SalesChart from "./charts/SalesChart";
 import RevenueChart from "./charts/RevenueChart";
 import OrderChart from "./charts/OrderChart";

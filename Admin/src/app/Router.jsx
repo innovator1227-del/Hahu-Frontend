@@ -1,5 +1,5 @@
 import Dashboard from "@/features/dashboards/Dashboard";
-import Notification from "@/features/notifications/Notification";
+import Notification from "@/components/pages/notifications/Notification";
 import Order from "@/components/pages/orders/Order";
 import User from "@/components/pages/users/User";
 import React from "react";
