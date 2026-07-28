@@ -44,12 +44,12 @@ const OrderChart = () => {
         </div>
       </div>
       <div className="h-80">
-        <ResponsiveContainer>
+        <ResponsiveContainer width="100%" height={300}>
           <BarChart data={OrderData}>
             <CartesianGrid
               stroke={theme === "white" ? "#E2E8F0" : "#334155"}
               strokeDasharray="3 3"
-              opacity={0.3}
+              opacity={1}
             />
             <XAxis
               stroke={theme === "white" ? "#64748B" : "#CBD5E1"}
