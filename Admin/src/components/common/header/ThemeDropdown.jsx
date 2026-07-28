@@ -89,7 +89,7 @@ const ThemeDropdown = () => {
             className={`absolute right-0 mt-2 w-52 rounded-xl overflow-hidden z-50
               ${currentTheme.dropdown}
               ${currentTheme.dropdownText}
-              transition-colors duration-500ease-in-out
+              transition-colors duration-500 ease-in-out
             `}
           >
             {themeOptions.map((item) => (

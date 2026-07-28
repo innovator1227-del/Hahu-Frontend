@@ -14,9 +14,15 @@ const ProfileDropdown = () => {
   const { theme, setTheme } = useThemeStore();
   const currentTheme = useTheme();
 
+  const handleProfile = () => {
+    setOpen(false);
+    navigate("/profile");
+  };
+
   const handleLogout = () => {
     logout();
     navigate("/login");
+    setOpen(false);
   };
   useEffect(() => {
     function handleClick(e) {
@@ -45,7 +51,7 @@ const ProfileDropdown = () => {
 
         <div className="hidden md:block text-left">
           <p className="text-sm font-medium">Hahu-Market</p>
-          <p className="text-xs">Administrator</p>
+          <p className="text-xs">Admin@Hahu.</p>
         </div>
 
         <ChevronDown
@@ -63,20 +69,13 @@ const ProfileDropdown = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.95 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className={`
-        absolute
-        right-0
-        mt-5
-        w-48
-        rounded-lg
-        shadow-lg
-        overflow-hidden
-        z-50
-        ${currentTheme.dropdown}
-        ${currentTheme.dropdownText}
-      `}
+            className={`absolute right-0 mt-5 w-48 rounded-lg shadow-lg overflow-hidden z-50
+           ${currentTheme.dropdown}
+           ${currentTheme.dropdownText}
+            `}
           >
             <Link
+              onClick={handleProfile}
               to="/profile"
               className="block px-4 py-3 hover:bg-slate-700 transition-colors"
             >

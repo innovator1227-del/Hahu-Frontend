@@ -57,7 +57,12 @@ const OrderChart = () => {
             />
             <YAxis stroke={theme === "white" ? "#64748B" : "#CBD5E1"} />
             <Tooltip formatter={(value) => [`${value} Orders`, "Orders"]} />
-            <Bar dataKey="orders" fill="#3B82F6" radius={[8, 8, 0, 0]} />
+            <Bar
+              dataKey="orders"
+              fill="#3B82F6"
+              radius={[8, 8, 0, 0]}
+              animationDuration={1500}
+            />
           </BarChart>
         </ResponsiveContainer>
       </div>

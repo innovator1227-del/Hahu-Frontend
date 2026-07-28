@@ -1,7 +1,7 @@
 import AuthForm from "@/features/auth/AuthForm";
 import useThemeStore from "@/stores/ThemeStore";
 
-const AdminLogin = () => {
+const Login = () => {
   const { theme, setTheme } = useThemeStore();
   return (
     <div
@@ -50,4 +50,4 @@ const AdminLogin = () => {
   );
 };
 
-export default AdminLogin;
+export default Login;

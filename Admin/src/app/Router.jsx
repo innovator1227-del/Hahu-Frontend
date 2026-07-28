@@ -1,28 +1,33 @@
-import AdminLogin from "@/components/pages/AdminLogin";
 import Dashboard from "@/features/dashboards/Dashboard";
 import Notification from "@/features/notifications/Notification";
-import Order from "@/features/orders/Order";
-import User from "@/features/users/User";
+import Order from "@/components/pages/orders/Order";
+import User from "@/components/pages/users/User";
 import React from "react";
 import { Navigate, Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import AdminLayout from "./layouts/AdminLayout";
+import Login from "@/components/pages/Login";
+import Category from "@/components/pages/categories/Category";
+import Profile from "@/components/pages/Profile";
+import Product from "@/components/pages/products/Product";
 
 const Router = () => {
   return (
     <Routes>
       {/* public rouet */}
-      <Route path="/login" element={<AdminLogin />} />
+      <Route element={<AdminLayout />}>
+        <Route path="/" element={<Login />} />
 
-      {/* root redirect to login */}
-
-      <Route path="/" element={<Navigate to="/login" replace />} />
-
-      {/* protected route */}
-      <Route element={<ProtectedRoute />}>
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/notification" element={<Notification />} />
-        <Route path="/order" element={<Order />} />
-        <Route path="/customer" element={<User />} />
+        {/* protected route */}
+        <Route element={<ProtectedRoute />}>
+          <Route path="profile" element={<Profile />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/notification" element={<Notification />} />
+          <Route path="/order" element={<Order />} />
+          <Route path="/customer" element={<User />} />
+          <Route path="/category" element={<Category />} />
+          <Route path="product" element={<Product />} />
+        </Route>
       </Route>
     </Routes>
   );
