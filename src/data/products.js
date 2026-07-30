@@ -7,6 +7,7 @@ const products = [
     image: "https://images.unsplash.com/photo-1632661674596-618e0d3e0b6c",
     description: "iPhone 13, 128GB, excellent condition",
     place: "Bahirdar",
+    time_served: "two year",
   },
   {
     id: 2,
@@ -15,6 +16,8 @@ const products = [
     category: "Electronics",
     image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
     description: "8GB RAM, 512GB SSD, fast performance",
+    place: "Bahirdar",
+    time_served: "one year",
   },
   {
     id: 3,
@@ -23,6 +26,8 @@ const products = [
     category: "Furniture",
     image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7",
     description: "Comfortable 3-seat sofa, like new",
+    place: "Bahirdar",
+    time_served: "one year",
   },
   {
     id: 4,
@@ -31,6 +36,8 @@ const products = [
     category: "Clothes",
     image: "https://images.unsplash.com/photo-1520975922323-1f6c2c7c1e03",
     description: "Warm winter jacket, stylish",
+    place: "Bahirdar",
+    time_served: "one year",
   },
   {
     id: 5,
@@ -39,6 +46,8 @@ const products = [
     category: "Phones",
     image: "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf",
     description: "Strong battery, clean phone",
+    place: "Bahirdar",
+    time_served: "one year",
   },
   {
     id: 6,
@@ -47,6 +56,8 @@ const products = [
     category: "Electronics",
     image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
     description: "Dell laptop, good condition",
+    place: "Bahirdar",
+    time_served: "one year",
   },
 
   {
@@ -56,6 +67,8 @@ const products = [
     category: "Vehicles",
     image: "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7",
     description: "Well maintained Toyota",
+    place: "Bahirdar",
+    time_served: "one year",
   },
 
   {
@@ -65,6 +78,8 @@ const products = [
     category: "Furniture",
     image: "https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc",
     description: "Modern wooden table",
+    place: "Bahirdar",
+    time_served: "one year",
   },
 
   {
@@ -74,6 +89,8 @@ const products = [
     category: "Clothes",
     image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff",
     description: "Original running shoes",
+    place: "Bahirdar",
+    time_served: "one year",
   },
   {
     id: 10,

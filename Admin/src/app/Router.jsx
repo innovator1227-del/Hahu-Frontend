@@ -9,6 +9,7 @@ import Login from "@/components/pages/Login";
 import Category from "@/components/pages/categories/Category";
 import Profile from "@/components/pages/Profile";
 import Product from "@/components/pages/products/Product";
+import NotFound from "@/components/pages/NotFound";
 
 const Router = () => {
   return (
@@ -28,6 +29,8 @@ const Router = () => {
           <Route path="product" element={<Product />} />
         </Route>
       </Route>
+
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };

@@ -12,19 +12,16 @@ const Button = ({
 
   const variants = {
     primary:
-      "bg-black text-white hover:bg-gray-600 shadow-md hover:shadow-lg",
+      "bg-black text-white hover:bg-gray-600 shadow-md hover:shadow-lg w-full h-12",
 
-    secondary:
-      "bg-slate-800 text-white hover:bg-slate-700",
+    secondary: "bg-slate-800 text-white hover:bg-slate-700",
 
     ghost:
       "bg-transparent text-slate-400 hover:bg-white/10 hover:text-white rounded-full",
 
-    danger:
-      "bg-red-600 text-white hover:bg-red-700",
+    danger: "bg-red-600 text-white hover:bg-red-700",
 
-    outline:
-      "border border-slate-600 text-slate-300 hover:bg-slate-800",
+    outline: "border border-slate-600 text-slate-300 hover:bg-slate-800",
 
     login:
       "flex flex-1 text-slate-400 hover:bg-white/10 hover:text-white rounded-full",
@@ -39,12 +36,7 @@ const Button = ({
 
   return (
     <button
-      className={twMerge(
-        base,
-        variants[variant],
-        sizes[size],
-        className
-      )}
+      className={twMerge(base, variants[variant], sizes[size], className)}
       {...props}
     >
       {children}

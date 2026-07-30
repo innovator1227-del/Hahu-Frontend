@@ -254,12 +254,12 @@ const Navbar = ({ toggleSidebar }) => {
           </Link>
 
           <Link
-            to="/wishlist"
+            to="app/wishlist"
             className="relative w-9 h-9 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-slate-800/60 transition-all duration-200"
           >
             <Heart size={19} />
             <span className="absolute -top-0.5 -right-0.5 bg-blue-600 text-[10px] font-bold text-white rounded-full w-4.5 h-4.5 flex items-center justify-center">
-              3
+              n
             </span>
           </Link>
 

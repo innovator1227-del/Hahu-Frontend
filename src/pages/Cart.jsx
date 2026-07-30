@@ -2,20 +2,18 @@ import { useCart } from "../store/cartStore";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const { cartItems, removeFromCart ,increaseQty, decreaseQty} = useCart();
-  
+  const { cartItems, removeFromCart, increaseQty, decreaseQty } = useCart();
+
   const navigate = useNavigate();
   const total = cartItems.reduce(
     (sum, item) => sum + item.price * (item.quantity || 1),
-    0
+    0,
   );
 
   return (
     <div className="p-6 max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
-
       {/* LEFT SIDE - CART ITEMS */}
       <div className="lg:col-span-2 space-y-4">
-
         <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
 
         {cartItems.length === 0 ? (
@@ -26,7 +24,6 @@ const Cart = () => {
               key={item.id || item.cartId}
               className="flex gap-4 border p-4 rounded-lg bg-white"
             >
-
               {/* IMAGE (optional fallback) */}
               <img
                 src={item.image || "https://via.placeholder.com/120"}
@@ -44,7 +41,6 @@ const Cart = () => {
 
                 {/* Quantity display (future buttons later) */}
                 <div className="flex items-center gap-3 mt-2">
-
                   <button
                     onClick={() => decreaseQty(item.id)}
                     className="px-3 py-1 border rounded"
@@ -60,7 +56,6 @@ const Cart = () => {
                   >
                     +
                   </button>
-
                 </div>
 
                 {/* Remove */}
@@ -76,7 +71,6 @@ const Cart = () => {
               <div className="font-bold text-lg">
                 {item.price * (item.quantity || 1)} ETB
               </div>
-
             </div>
           ))
         )}
@@ -85,7 +79,6 @@ const Cart = () => {
       {/* RIGHT SIDE - SUMMARY */}
       {cartItems.length > 0 && (
         <div className="h-fit sticky top-20 border rounded-lg p-4 bg-white shadow-sm">
-
           <h2 className="text-lg font-bold mb-4">Order Summary</h2>
 
           <div className="flex justify-between mb-2">
@@ -99,14 +92,13 @@ const Cart = () => {
           </div>
 
           <button
-             onClick={() => navigate("/app/checkout")}
-             className="w-full mt-4 bg-black text-white py-2 rounded-lg hover:bg-gray-800"
+            onClick={() => navigate("/app/checkout")}
+            className="w-full mt-4 bg-black text-white py-2 rounded-lg hover:bg-gray-800"
           >
-              Proceed to Checkout
+            Proceed to Checkout
           </button>
         </div>
       )}
-
     </div>
   );
 };
