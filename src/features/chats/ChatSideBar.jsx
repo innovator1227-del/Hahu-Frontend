@@ -5,7 +5,7 @@ const ChatSidebar = () => {
 
       <div className="space-y-4">
         <div className="rounded-xl border border-slate-300 p-4 cursor-pointer hover:bg-slate-50">
-          Name John
+          Name Hahu
         </div>
 
         <div className="rounded-xl border border-slate-400 p-4 cursor-pointer hover:bg-slate-50">
