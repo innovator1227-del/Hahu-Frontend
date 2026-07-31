@@ -28,7 +28,7 @@ const Home = () => {
   );
 
   return (
-    <div className="p-6 max-w-7xl mx-auto">
+    <div className="p-6 w-full ml-6">
       <h1 className="text-3xl font-bold mb-8">Welcome to Hahu Marketplace</h1>
 
       <CategorySection title="Phones" products={phones} />

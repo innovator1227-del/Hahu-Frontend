@@ -1,11 +1,9 @@
-import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { menuItems } from "./Data";
 import SideItem from "./SideItem";
 import { Tooltip } from "react-tooltip";
 import { ShieldCheck } from "lucide-react";
 import useTheme from "../../../hooks/useTheme";
-import { Link } from "react-router-dom";
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
   const currentTheme = useTheme();
@@ -16,21 +14,9 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         animate={{ width: isOpen ? 240 : 72 }}
         transition={{ duration: 0.4 }}
         className={`
-     ${currentTheme.sidebar}
-     ${currentTheme.text}
-     top-0
-     left-0
-     h-screen
-     sticky
-     z-50
-     p-4
-     flex
-    flex-col
-     gap-8
-     transition-colors
-     duration-500
-     ease-in-out
-   `}
+        ${currentTheme.sidebar}
+        ${currentTheme.text}top-0 left-0 h-screen sticky z-50 p-4 flex flex-col gap-8 transition-colors duration-500 ease-in-out
+        `}
       >
         <div
           className={`flex items-center ${isOpen ? "justify-start" : "justify-center"}`}

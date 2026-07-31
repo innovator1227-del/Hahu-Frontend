@@ -22,7 +22,7 @@ const ProductDetail = () => {
   const navigate = useNavigate();
 
   const goToChat = () => {
-    navigate("/chat");
+    navigate("/app/chat");
   };
 
   const { addToCart } = useCart();
@@ -50,7 +50,7 @@ const ProductDetail = () => {
             <img
               src={product.image}
               alt={product.title}
-              className="w-full h-[650px] rounded-2xl object-contain"
+              className="w-full h-162.5 rounded-2xl object-contain"
             />
           </div>
 
