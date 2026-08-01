@@ -1,23 +1,63 @@
-const ChatSidebar = () => {
+import { Search } from "lucide-react";
+import { chatData } from "./ChatData";
+import ChatConversetionItem from "./ChatConversetionItem";
+import { useState } from "react";
+
+const ChatSideBar = ({ selectedChat, setSelectedChat }) => {
+  const [filter, setFilter] = useState("all");
+
+  const chatsToRender =
+    filter === "unread" ? chatData.filter((chat) => chat.unread > 0) : chatData;
   return (
-    <div className="w-48 h-screen border-r border-slate-300 bg-slate-200 p-5 top-0 z-40 sticky left-0">
-      <h2 className="text-xl font-bold mb-6">Chats Page</h2>
+    <aside className="w-80 border-r border-slate-300 bg-slate-200 flex flex-col">
+      {/* Title */}
+      <div className="p-5 border-b border-slate-300">
+        <h2 className="text-2xl font-bold">Hahu-Market Chat</h2>
+      </div>
 
-      <div className="space-y-4">
-        <div className="rounded-xl border border-slate-300 p-4 cursor-pointer hover:bg-slate-50">
-          Name Hahu
-        </div>
+      {/* Search */}
+      <div className="p-4">
+        <div className="flex items-center gap-2 bg-slate-50 rounded-xl px-3 py-2">
+          <Search size={18} />
 
-        <div className="rounded-xl border border-slate-400 p-4 cursor-pointer hover:bg-slate-50">
-          Profile
-        </div>
-
-        <div className="rounded-xl border border-slate-300 p-4 cursor-pointer hover:bg-slate-50">
-          Last Chat
+          <input
+            placeholder="Search previous chats..."
+            className="bg-transparent outline-none flex-1"
+          />
         </div>
       </div>
-    </div>
+
+      {/* Filter */}
+      <div className="flex gap-4 px-4 pb-4">
+        <button
+          className={`px-3 py-1 rounded-lg text-sm transition-all ${filter === "all" ? "bg-blue-600 text-white" : "bg-slate-200 text-slate-700"}`}
+          onClick={() => setFilter("all")}
+        >
+          All
+        </button>
+        <button
+          className={`px-3 py-1 rounded-lg text-sm transition-all ${filter === "unread" ? "bg-blue-600 text-white" : "bg-slate-200 text-slate-700"}`}
+          onClick={() => setFilter("unread")}
+        >
+          Unread
+        </button>
+      </div>
+
+      {/* Conversation List */}
+      <div>
+        <div className="flex-1 overflow-y-auto px-3 pb-4 space-y-3">
+          {chatsToRender.map((chat) => (
+            <ChatConversetionItem
+              key={chat.id}
+              chat={chat}
+              active={selectedChat?.id === chat.id}
+              onClick={() => setSelectedChat(chat)}
+            />
+          ))}
+        </div>
+      </div>
+    </aside>
   );
 };
 
-export default ChatSidebar;
+export default ChatSideBar;

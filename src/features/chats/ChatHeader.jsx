@@ -1,9 +1,36 @@
-import React from "react";
-
-const ChatHeader = () => {
+import react from "react";
+const ChatHeader = ({ selectedChat }) => {
   return (
-    <header className="h-20 shrink-0 bg-slate-200 border-b border-slate-300 flex items-center justify-between px-5 left-52 right-0 top-0 sticky">
-      Chat Windows
+    <header className="h-20 px-6 border-b border-slate-300  bg-slate-200 flex items-center justify-between">
+      <div className="flex items-center gap-4">
+        <img
+          src={selectedChat.avatar}
+          alt={selectedChat.seller}
+          className="w-12 h-12 rounded-full"
+        />
+
+        <div>
+          <h2 className="font-bold">{selectedChat.seller}</h2>
+
+          <p
+            className={`text-sm ${selectedChat.online ? "text-green-500" : "text-gray-500"}`}
+          >
+            {selectedChat.online ? "Online" : "Offline"}
+          </p>
+
+          <p className="text-xs text-slate-500">{selectedChat.location}</p>
+        </div>
+      </div>
+
+      <div className="flex items-center gap-4">
+        <img src={selectedChat.productImage} className="w-14 h-14 rounded-xl" />
+
+        <div>
+          <h3 className="font-semibold">{selectedChat.product}</h3>
+
+          <p className="text-blue-600 font-bold">{selectedChat.price} ETB</p>
+        </div>
+      </div>
     </header>
   );
 };
