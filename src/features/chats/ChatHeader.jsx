@@ -8,23 +8,18 @@ const ChatHeader = ({ selectedChat }) => {
           alt={selectedChat.seller}
           className="w-12 h-12 rounded-full"
         />
-
         <div>
           <h2 className="font-bold">{selectedChat.seller}</h2>
-
           <p
             className={`text-sm ${selectedChat.online ? "text-green-500" : "text-gray-500"}`}
           >
             {selectedChat.online ? "Online" : "Offline"}
           </p>
-
           <p className="text-xs text-slate-500">{selectedChat.location}</p>
         </div>
       </div>
-
       <div className="flex items-center gap-4">
         <img src={selectedChat.productImage} className="w-14 h-14 rounded-xl" />
-
         <div>
           <h3 className="font-semibold">{selectedChat.product}</h3>
 

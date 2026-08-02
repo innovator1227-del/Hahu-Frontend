@@ -1,11 +1,18 @@
 import EmojiPicker from "emoji-picker-react";
-import { Paperclip, Send, Smile } from "lucide-react";
+import { Camera, Paperclip, Send, Smile } from "lucide-react";
 import React, { useEffect, useState, useRef } from "react";
 
-const ChatInput = () => {
+const ChatInput = ({ onSendMessage }) => {
   const [showEmoji, setShowEmoji] = useState(false);
 
   const [message, setMessage] = useState("");
+
+  const handleSendMessage = () => {
+    if (message.trim() !== "") {
+      onSendMessage(message);
+      setMessage("");
+    }
+  };
 
   const handleEmojiClick = (emojiData) => {
     setMessage((prevMessage) => prevMessage + emojiData.emoji);
@@ -29,9 +36,10 @@ const ChatInput = () => {
   return (
     <div className="h-16 shrink-0 border-t border-green-400 bg-white px-6 flex items-center rounded-2xl">
       <div className="flex items-center gap-2 flex-1">
-        <button className="text-gray-500 hover:text-gray-700 focus:outline-none space-x-3 cursor-pointer">
-          <Paperclip size={24} />
+        <button className="text-gray-500 hover:text-gray-700 focus:outline-none cursor-pointer pb-1 space-x-2">
+          <Camera size={24} />
         </button>
+
         <div className="relative" ref={emojiref}>
           <button
             onClick={() => setShowEmoji(!showEmoji)}
@@ -45,16 +53,27 @@ const ChatInput = () => {
             </div>
           )}
         </div>
-        <input
-          type="text"
+        <textarea
           placeholder="Type your message..."
-          className="bg-transparent border-none focus:outline-none focus:ring-0"
+          className="bg-transparent border-none focus:outline-none focus:ring-0 w-full bottom-3 resize-none py-2 max-h-32 overflow-y-auto"
           value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          onChange={(e) => {
+            setMessage(e.target.value);
+            e.target.style.height = "auto";
+            e.target.style.height = `${e.target.scrollHeight}px`;
+          }}
+          rows={1}
         />
       </div>
+
       <div className="flex items-center gap-2">
-        <button className="text-gray-500 hover:text-gray-700 focus:outline-none cursor-pointer">
+        <button className="text-gray-500 hover:text-gray-700 focus:outline-none space-x-3 cursor-pointer">
+          <Paperclip size={24} />
+        </button>
+        <button
+          onClick={handleSendMessage}
+          className="text-gray-500 hover:text-gray-700 focus:outline-none cursor-pointer"
+        >
           <Send size={24} />
         </button>
       </div>
