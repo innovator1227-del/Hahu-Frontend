@@ -4,9 +4,9 @@ const ChatConversetionItem = ({ chat, active, onClick }) => {
   return (
     <button
       onClick={onClick}
-      className={`w-full flex items-center gap-2 p-3 rounded-xl transition-all duration-300 ${
+      className={`w-full flex items-center gap-2 p-3 rounded-xl transition-all duration-700 ease-in-out hover:translate-x-1 cursor-pointer ${
         active
-          ? "bg-green-50 border border-green-100"
+          ? "bg-green-50  border-green-100"
           : "hover:bg-slate-300 bg-slate-100"
       }`}
     >

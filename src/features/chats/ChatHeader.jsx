@@ -2,7 +2,7 @@ import react from "react";
 const ChatHeader = ({ selectedChat }) => {
   return (
     <header className="h-20 px-6 border-b border-slate-300  bg-slate-200 flex items-center justify-between">
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-4 cursor-pointer">
         <img
           src={selectedChat.avatar}
           alt={selectedChat.seller}
@@ -19,7 +19,10 @@ const ChatHeader = ({ selectedChat }) => {
         </div>
       </div>
       <div className="flex items-center gap-4">
-        <img src={selectedChat.productImage} className="w-14 h-14 rounded-xl" />
+        <img
+          src={selectedChat.productImage}
+          className="w-14 h-14 rounded-xl cursor-pointer transition-all duration-700 ease-in-out hover:translate-x-1"
+        />
         <div>
           <h3 className="font-semibold">{selectedChat.product}</h3>
 

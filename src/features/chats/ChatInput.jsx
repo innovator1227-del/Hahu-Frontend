@@ -7,10 +7,25 @@ const ChatInput = ({ onSendMessage }) => {
 
   const [message, setMessage] = useState("");
 
+  const fileInputRef = useRef(null);
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const imageURL = URL.createObjectURL(file);
+    onSendMessage({ type: "image", content: imageURL });
+  };
+
+  const textareaRef = useRef(null);
+
   const handleSendMessage = () => {
     if (message.trim() !== "") {
-      onSendMessage(message);
+      onSendMessage({ type: "text", content: message });
       setMessage("");
+
+      if (textareaRef.current) {
+        textareaRef.current.style.height = "auto";
+      }
     }
   };
 
@@ -21,8 +36,8 @@ const ChatInput = ({ onSendMessage }) => {
   const emojiref = useRef(null);
 
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (emojiref.current && !emojiref.current.contains(event.target)) {
+    const handleClickOutside = (e) => {
+      if (emojiref.current && !emojiref.current.contains(e.target)) {
         setShowEmoji(false);
       }
     };
@@ -34,16 +49,28 @@ const ChatInput = ({ onSendMessage }) => {
   }, []);
 
   return (
-    <div className="h-16 shrink-0 border-t border-green-400 bg-white px-6 flex items-center rounded-2xl">
-      <div className="flex items-center gap-2 flex-1">
-        <button className="text-gray-500 hover:text-gray-700 focus:outline-none cursor-pointer pb-1 space-x-2">
+    <div className="shrink-0 border-t border-green-400 bg-white px-6 py-3 flex items-center justify-between gap-2">
+      <div className="flex items-end gap-2 flex-1">
+        <button
+          onClick={() => fileInputRef.current.click()}
+          className="text-gray-500 hover:text-gray-700 focus:outline-none cursor-pointer pb-2 space-x-2"
+        >
+          <input
+            type="file"
+            accept="image/*"
+            capture="environment"
+            className="hidden"
+            ref={fileInputRef}
+            onChange={handleFileChange}
+          />
+
           <Camera size={24} />
         </button>
 
         <div className="relative" ref={emojiref}>
           <button
             onClick={() => setShowEmoji(!showEmoji)}
-            className="text-gray-500 hover:text-gray-700 focus:outline-none cursor-pointer"
+            className="text-gray-500 hover:text-gray-700 focus:outline-none cursor-pointer pb-2"
           >
             <Smile size={24} />
           </button>
@@ -54,8 +81,9 @@ const ChatInput = ({ onSendMessage }) => {
           )}
         </div>
         <textarea
+          ref={textareaRef}
           placeholder="Type your message..."
-          className="bg-transparent border-none focus:outline-none focus:ring-0 w-full bottom-3 resize-none py-2 max-h-32 overflow-y-auto"
+          className="w-full bg-transparent border-none focus:outline-none focus:ring-0 bottom-3 resize-none py-3 max-h-32 overflow-y-auto"
           value={message}
           onChange={(e) => {
             setMessage(e.target.value);

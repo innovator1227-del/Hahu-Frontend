@@ -144,7 +144,7 @@ const ProductDetail = () => {
               <Button
                 variant="primary"
                 size="lg"
-                className="w-2xl"
+                className="w-2xl "
                 onClick={goToChat}
               >
                 <Send size={18} className="pr-3 size-8" /> chat with seller
