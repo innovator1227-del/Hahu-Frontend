@@ -1,0 +1,58 @@
+export const categories = [
+  {
+    id: 1,
+    name: "Electronics & Gadgets",
+    icon: "📱",
+    link: "/category/electronics",
+    count: 234,
+  },
+  {
+    id: 2,
+    name: "Vehicles",
+    icon: "🚗",
+    link: "/category/vehicles",
+    count: 89,
+  },
+  {
+    id: 3,
+    name: "Furniture",
+    icon: "🛋️",
+    link: "/category/furniture",
+    count: 156,
+  },
+  {
+    id: 4,
+    name: "Clothing & Fashion",
+    icon: "👕",
+    link: "/category/clothing",
+    count: 312,
+  },
+  {
+    id: 5,
+    name: "Books & Education",
+    icon: "📚",
+    link: "/category/books",
+    count: 78,
+  },
+  {
+    id: 6,
+    name: "Sports & Outdoors",
+    icon: "⚽",
+    link: "/category/sports",
+    count: 67,
+  },
+  {
+    id: 7,
+    name: "Home & Garden",
+    icon: "🏡",
+    link: "/category/home",
+    count: 145,
+  },
+  {
+    id: 8,
+    name: "Baby & Kids",
+    icon: "👶",
+    link: "/category/baby",
+    count: 89,
+  },
+];

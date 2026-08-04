@@ -23,12 +23,11 @@ const Button = ({
 
     outline: "border border-slate-600 text-slate-300 hover:bg-slate-800",
 
-    login:
-      "flex flex-1 text-slate-400 hover:bg-white/10 hover:text-white rounded-full",
+    login: "flex flex-1 text-slate-300 hover:bg-white/10 hover:text-white",
   };
 
   const sizes = {
-    sm: "h-9 px-3 text-sm",
+    sm: "h-10 px-3 text-sm",
     md: "h-10 px-4 text-sm",
     lg: "h-12 px-6 text-base",
     icon: "w-10 h-10",

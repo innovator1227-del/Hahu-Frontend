@@ -45,7 +45,7 @@ const Sidebar = ({ isOpen, variant = "public", onClose }) => {
         />
       )}
       <aside
-        className={`fixed top-0 left-0 z-50 h-screen flex flex-col bg-[#020617] backdrop-blur-xl border-r border-white/5 transition-all duration-500 ease-in-out ${isOpen ? "w-64 translate-x-0" : "-translate-x-full md:translate-x-0 md:w-[88px]"}
+        className={`fixed top-0 left-0 z-50 h-screen flex flex-col bg-[#020617] backdrop-blur-xl border-r border-white/5 transition-all duration-500 ease-in-out ${isOpen ? "w-64 translate-x-0" : "-translate-x-full md:translate-x-0 md:w-22"}
 
         `}
       >
@@ -62,7 +62,7 @@ const Sidebar = ({ isOpen, variant = "public", onClose }) => {
             {/* Text only when open */}
             <span
               className={` overflow-hidden whitespace-nowrap transition-all duration-500 ease-in-out origin-left
-                 ${isOpen ? "opacity-100 scale-100 translate-x-0 max-w-[180px]" : "opacity-0 scale-95 -translate-x-3 max-w-0"}
+                 ${isOpen ? "opacity-100 scale-100 translate-x-0 max-w-45" : "opacity-0 scale-95 -translate-x-3 max-w-0"}
                 `}
             >
               <span className="text-lg font-bold tracking-tight text-slate-100">
@@ -103,7 +103,7 @@ const Sidebar = ({ isOpen, variant = "public", onClose }) => {
                   {item.name}
                 </span>
                 {item.badge && (
-                  <span classsName="ml-2 px-2 py-0.5 rounded-full bg-blue-500 text-white text-[10px] font-semibold">
+                  <span className="ml-2 px-2 py-0.5 rounded-full bg-blue-500 text-white text-[10px] font-semibold">
                     {item.badge}
                   </span>
                 )}
