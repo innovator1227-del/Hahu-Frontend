@@ -1,11 +1,8 @@
 import Button from "@/components/ui/Button";
-import { PlusCircle } from "lucide-react";
-import React, { useEffect, useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Gem, ScanBarcodeIcon } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const SubNavbar = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   const menuItems = [
     { id: 1, name: "Home", link: "/" },
     { id: 2, name: "Browse", link: "/browse" },
@@ -13,10 +10,10 @@ const SubNavbar = () => {
 
   return (
     <div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-12 flex items-center justify-between">
-        <div className="flex items-center gap-4">
+      <div className="w-full px-4 sm:px-6 lg:px-8 h-12 flex items-center justify-between mb-2 ml-6">
+        <div className="flex items-center gap-4 mb-1 items-center flex-1 ml-4">
           {/* Menu Links */}
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-3">
             {menuItems.map((item) => (
               <Link
                 key={item.id}
@@ -34,12 +31,20 @@ const SubNavbar = () => {
         </div>
 
         {/* Sell CTA button */}
-        <Link to="/create-listing">
-          <Button variant="primary" size="sm" className="gap-1.5">
-            <PlusCircle size={15} />
-            <span>Sell on Hahu</span>
-          </Button>
-        </Link>
+        <div className="flex gap-4 mr-4">
+          <Link to="/create-listing">
+            <Button variant="primary" size="sm" className="gap-1.5">
+              <Gem size={20} />
+              <span>Continue As Seller</span>
+            </Button>
+          </Link>
+          <Link to="/create-listing">
+            <Button variant="primary" size="sm" className="gap-1.5">
+              <ScanBarcodeIcon size={20} />
+              <span>Countiue As Buyer</span>
+            </Button>
+          </Link>
+        </div>
       </div>
     </div>
   );

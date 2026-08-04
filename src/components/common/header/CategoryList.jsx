@@ -42,7 +42,7 @@ const CategoryList = ({ categories }) => {
               onClick={() => setCatOpen(false)}
             >
               <span className="text-lg group-hover:scale-110 transition-transform duration-150">
-                {cat.icon}
+                <cat.icon />
               </span>
               <div className="flex-1 min-w-0">
                 <p className="text-xs font-medium text-slate-200 truncate group-hover:text-white">

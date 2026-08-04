@@ -14,7 +14,12 @@ const products = [
     title: "HP Laptop",
     price: 30000,
     category: "Electronics",
-    image: "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
+    image: [
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
+      "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
+    ],
     description: "8GB RAM, 512GB SSD, fast performance",
     place: "Bahirdar",
     time_served: "one year",

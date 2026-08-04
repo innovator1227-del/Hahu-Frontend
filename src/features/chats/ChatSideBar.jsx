@@ -30,7 +30,7 @@ const ChatSideBar = ({ selectedChat, setSelectedChat }) => {
       {/* Filter */}
       <div className="flex gap-4 px-4 pb-4">
         <button
-          className={`px-3 py-1 rounded-lg text-sm transition-all cursor-pointer ${filter === "all" ? "bg-blue-600 text-white" : "bg-slate-200 text-slate-700"}`}
+          className={`px-3 py-1 rounded-lg text-sm transition-all duration-500 ease-in-out cursor-pointer ${filter === "all" ? "bg-blue-600 text-white" : "bg-slate-200 text-slate-700"}`}
           onClick={() => setFilter("all")}
         >
           All

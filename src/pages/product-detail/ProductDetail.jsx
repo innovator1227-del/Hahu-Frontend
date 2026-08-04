@@ -1,14 +1,14 @@
 import { useParams } from "react-router-dom";
 import products from "@/data/products";
-
 import SellerDetail from "./SellerDetail";
 import QuickButton from "./QuickButton";
 import RelatedProduct from "./RelatedProduct";
 import Description from "./Description";
+import { useState } from "react";
 
 const ProductDetail = () => {
+  //const [selectedImage, setSelectedImage] = useState(product.images[0]);
   const { id } = useParams();
-
   // Find product
   const product = products.find((p) => p.id === parseInt(id));
 

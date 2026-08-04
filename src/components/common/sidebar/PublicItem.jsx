@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { publicCategories } from "./SideData";
-import { Store } from "lucide-react";
 
 const PublicItem = ({ isOpen, variant, onClose }) => {
   const handleNavClick = () => {
@@ -48,15 +47,6 @@ const PublicItem = ({ isOpen, variant, onClose }) => {
           ))}
         </>
       )}
-
-      <Link
-        to="/create-listing"
-        onClick={handleNavClick}
-        className={`flex items-center justify-center gap-2 h-11 rounded-xl bg-blue-600 fonbt-medium text-white shadow-lg shadow-blue-900/30 transition-all duration-300 hover:bg-blue-700 ${isOpen ? "opacity-100 translate-x-0 max-w-40" : "opacity-0 -translate-x-3 max-w-0"} `}
-      >
-        <Store size={18} />
-        Sell an Item
-      </Link>
     </div>
   );
 };

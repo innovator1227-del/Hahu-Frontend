@@ -1,5 +1,5 @@
 import Button from "@/components/ui/Button";
-import { Menu, PlusCircle, Search, X } from "lucide-react";
+import { Menu, Search, X } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
@@ -63,14 +63,6 @@ const MobileMenu = ({ categories }) => {
           </div>
 
           <hr className="border-slate-800" />
-
-          {/* Sell Button on Mobile */}
-          <Link to="/create-listing" className="block">
-            <Button variant="primary" className="w-full justify-center gap-1.5">
-              <PlusCircle size={16} />
-              <span>Sell on Hahu</span>
-            </Button>
-          </Link>
 
           <hr className="border-slate-800" />
 
