@@ -1,6 +1,7 @@
 import products from "@/data/products";
 import {
   BadgeCheck,
+  Check,
   Clock3,
   MapPin,
   PackageCheck,
@@ -41,22 +42,22 @@ const Description = () => {
 
       <div className="grid grid-cols-1 gap-4 mt-8">
         <div className="flex items-center gap-3">
-          <ShieldCheck className="text-green-600" size={20} />
+          <Check className="text-green-600" size={20} />
           <span>Excellent Condition</span>
         </div>
 
         <div className="flex items-center gap-3">
-          <BadgeCheck className="text-green-600" size={20} />
+          <Check className="text-green-600" size={20} />
           <span>Original Product</span>
         </div>
 
         <div className="flex items-center gap-3">
-          <PackageCheck className="text-green-600" size={20} />
+          <Check className="text-green-600" size={20} />
           <span>Fast Delivery</span>
         </div>
 
         <div className="flex items-center gap-3">
-          <RotateCcw className="text-green-600" size={20} />
+          <Check className="text-green-600" size={20} />
           <span>7-Day Return</span>
         </div>
       </div>

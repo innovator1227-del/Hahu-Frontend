@@ -33,8 +33,9 @@ const PublicItem = ({ isOpen, variant, onClose }) => {
               className="group relative flex items-center gap-3 h-12 px-4 rounded-2xl transition-all duration-300 text-slate-400 hover:scale-[1.02] hover:text-white hover:bg-white/5"
             >
               {/* Icon ALWAYS visible */}
+
               <span className="text-lg group-hover:scale-110 transition-transform ">
-                {cat.icon}
+                <cat.icon />
               </span>
 
               {/* Text only when open */}
