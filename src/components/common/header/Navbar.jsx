@@ -10,7 +10,6 @@ import UserProfile from "./UserProfile";
 import SubNavbar from "./SubNavbar";
 import MobileMenu from "./MobileMenu";
 const Navbar = ({ toggleSidebar }) => {
-  //const [menuOpen, setMenuOpen] = useState(false);
   return (
     <nav className="sticky top-0 z-50 bg-[#020617] border-b border-slate-800 text-slate-100 shadow-lg w-full">
       <div className="mx-auto w-full px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
