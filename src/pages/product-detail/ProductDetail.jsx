@@ -5,6 +5,7 @@ import QuickButton from "./QuickButton";
 import RelatedProduct from "./RelatedProduct";
 import Description from "./Description";
 import { useState } from "react";
+import ProductGallery from "./ProductGallery";
 
 const ProductDetail = () => {
   //const [selectedImage, setSelectedImage] = useState(product.images[0]);
@@ -31,7 +32,9 @@ const ProductDetail = () => {
               className="w-full h-162.5 rounded-2xl object-contain"
             />
           </div>
-
+          <div>
+            <ProductGallery />
+          </div>
           {/* Details */}
 
           <div className="flex flex-col flex-1 p-10">

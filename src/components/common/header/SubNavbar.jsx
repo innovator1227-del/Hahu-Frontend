@@ -31,7 +31,7 @@ const SubNavbar = () => {
         </div>
 
         {/* Sell CTA button */}
-        <div className="flex gap-4">
+        <div className="flex gap-4 mr-6">
           <Link to="/create-listing">
             <Button variant="primary" size="sm" className="gap-1.5">
               <Gem size={20} />
