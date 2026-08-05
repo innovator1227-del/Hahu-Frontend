@@ -11,7 +11,7 @@ const SubNavbar = () => {
   return (
     <div>
       <div className="w-full px-4 sm:px-6 lg:px-8 h-12 flex items-center justify-between mb-2 ml-6">
-        <div className="flex items-center gap-4 mb-1 items-center flex-1 ml-4">
+        <div className="flex items-center gap-4 mb-1 flex-1 ml-4">
           {/* Menu Links */}
           <div className="flex items-center gap-3">
             {menuItems.map((item) => (
@@ -31,7 +31,7 @@ const SubNavbar = () => {
         </div>
 
         {/* Sell CTA button */}
-        <div className="flex gap-4 mr-4">
+        <div className="flex gap-4">
           <Link to="/create-listing">
             <Button variant="primary" size="sm" className="gap-1.5">
               <Gem size={20} />

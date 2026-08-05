@@ -38,7 +38,7 @@ const Sidebar = ({ isOpen, onClose, variant }) => {
                 `}
             >
               <span className="text-lg font-bold tracking-tight text-slate-100">
-                HAHU <span className="text-blue-400">MARKET</span>
+                SECOND <span className="text-blue-400">HAND</span>
               </span>
             </span>
           </div>

@@ -2,10 +2,13 @@ import React, { useState } from "react";
 import { Search } from "lucide-react";
 import { useSearch } from "@/store/searchStore";
 import Input from "@/components/ui/Input";
+import { useNavigate } from "react-router-dom";
 const SearchInput = () => {
   const [searchText, setSearchText] = useState("");
 
   const { setSearchQuery } = useSearch();
+
+  const navigate = useNavigate;
 
   const handleSearch = (e) => {
     e.preventDefault();
