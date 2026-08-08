@@ -1,13 +1,5 @@
 import products from "@/data/products";
-import {
-  BadgeCheck,
-  Check,
-  Clock3,
-  MapPin,
-  PackageCheck,
-  RotateCcw,
-  ShieldCheck,
-} from "lucide-react";
+import { Check, Clock3, MapPin } from "lucide-react";
 import React from "react";
 import { useParams } from "react-router-dom";
 

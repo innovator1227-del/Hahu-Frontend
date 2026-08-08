@@ -34,7 +34,7 @@ const PublicItem = ({ isOpen, variant, onClose }) => {
               {/* Icon ALWAYS visible */}
 
               <span className="text-lg group-hover:scale-110 transition-transform ">
-                <cat.icon />
+                <cat.icon size={20} />
               </span>
 
               {/* Text only when open */}

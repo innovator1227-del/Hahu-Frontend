@@ -22,7 +22,7 @@ const Cart = () => {
           cartItems.map((item) => (
             <div
               key={item.id || item.cartId}
-              className="flex gap-4 border p-4 rounded-lg bg-white"
+              className="flex gap-4 border border-slate-400 p-4 rounded-2xl bg-white hover:scale-x-95 hover:translate-1.5 transition-all duration-500 ease-in-out"
             >
               {/* IMAGE (optional fallback) */}
               <img
@@ -78,7 +78,7 @@ const Cart = () => {
 
       {/* RIGHT SIDE - SUMMARY */}
       {cartItems.length > 0 && (
-        <div className="h-fit sticky top-20 border rounded-lg p-4 bg-white shadow-sm">
+        <div className="h-fit sticky top-20 border border-slate-400 rounded-2xl p-4 bg-white shadow-sm hover:scale-x-95 transition-all duration-500 ease-in-out hover:translate-2">
           <h2 className="text-lg font-bold mb-4">Order Summary</h2>
 
           <div className="flex justify-between mb-2">
@@ -86,7 +86,7 @@ const Cart = () => {
             <span>{cartItems.length}</span>
           </div>
 
-          <div className="flex justify-between font-bold text-lg border-t pt-2">
+          <div className="flex justify-between font-bold text-lg border-t border-slate-300 pt-2">
             <span>Total</span>
             <span>{total} ETB</span>
           </div>
