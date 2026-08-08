@@ -13,7 +13,10 @@ const AdminLayout = () => {
     <div
       className={`flex min-h-screen w-full ${currentTheme.background} ${currentTheme.text}`}
     >
-      <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
+      {/* Sidebar */}
+      <aside className="sticky top-0 h-screen shrink-0">
+        <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
+      </aside>
 
       <div className="flex flex-col flex-1">
         <Header isOpen={isOpen} setIsOpen={setIsOpen} />

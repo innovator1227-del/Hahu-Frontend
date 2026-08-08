@@ -7,7 +7,7 @@ const SellerDetail = () => {
       <h1 className="tetx-lg align-center">Seller Details</h1>
       <h1 className="text-2xl font-semibold flex flex-1 gap-2 items-center">
         <User />
-        Rahel Gedefew
+        Hahu customer
       </h1>
       <p className="text-lg font-bold">Verified Seller</p>
       <p className="text-lg">Seller Name</p>

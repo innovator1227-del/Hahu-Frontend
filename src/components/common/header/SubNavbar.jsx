@@ -16,7 +16,7 @@ const SubNavbar = () => {
           <div className="flex items-center gap-3">
             {menuItems.map((item) => (
               <Link
-                key={item.id}
+                key={item.images}
                 to={item.link}
                 className={`px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 ${
                   location.pathname === item.link

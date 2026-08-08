@@ -78,7 +78,7 @@ const Cart = () => {
 
       {/* RIGHT SIDE - SUMMARY */}
       {cartItems.length > 0 && (
-        <div className="h-fit sticky top-20 border border-slate-400 rounded-2xl p-4 bg-white shadow-sm hover:scale-x-95 transition-all duration-500 ease-in-out hover:translate-2">
+        <div className="h-fit sticky top-20 border border-slate-400 rounded-2xl p-4 bg-white shadow-lg hover:scale-x-95 transition-all duration-500 ease-in-out hover:translate-2">
           <h2 className="text-lg font-bold mb-4">Order Summary</h2>
 
           <div className="flex justify-between mb-2">

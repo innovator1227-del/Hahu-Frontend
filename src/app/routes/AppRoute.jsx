@@ -1,11 +1,11 @@
 import SellerAddProduct from "@/pages/SellerAddProduct";
 import StaticPage from "@/pages/StaticPage";
-import Checkout from "@/pages/Checkout";
 import Dashboard from "@/pages/Dashboard";
 import MyListings from "@/pages/MyListings";
 import Wishlist from "@/pages/Wishlist";
 import Orders from "@/pages/Orders";
 import ChatPage from "@/features/chats/ChatPage";
+import SellerDetail from "@/pages/product-detail/SellerDetail";
 
 export const AppRoute = [
   { path: "create-listing", element: <SellerAddProduct /> },
@@ -18,4 +18,5 @@ export const AppRoute = [
   { path: "my-listings", element: <MyListings /> },
   { path: "orders", element: <Orders /> },
   { path: "chat", element: <ChatPage /> },
+  { path: "sellerdetail", element: <SellerDetail /> },
 ];

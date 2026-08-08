@@ -22,16 +22,12 @@ const RelatedProduct = () => {
             <Link
               key={item.id}
               to={`/product/${item.id}`}
-              className="bg-white rounded-xl shadow overflow-hidden hover:shadow-lg transition"
+              className="bg-white rounded-xl shadow overflow-hidden hover:shadow-lg transition-all duration-500 hover:translate-x-1"
             >
               <img
-                src={item.image}
+                src={item.images}
                 alt={item.title}
-                className="
-                    h-40
-                    w-full
-                    object-cover
-                  "
+                className="h-40 w-full object-cover"
               />
 
               <div className="p-4">

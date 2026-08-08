@@ -2,8 +2,7 @@ import Button from "@/components/ui/Button";
 import products from "@/data/products";
 import { useCart } from "@/store/cartStore";
 import { useWishlist } from "@/store/wishlistStore";
-import { Heart, Send, ShoppingCart } from "lucide-react";
-import React from "react";
+import { Eye, Heart, Send, ShoppingCart } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
 
 const QuickButton = () => {
@@ -25,15 +24,19 @@ const QuickButton = () => {
     navigate("/app/chat");
   };
 
+  const goToSeller = () => {
+    navigate("/app/sellerdetail");
+  };
+
   return (
-    <div className="mt-8 mb-0 flex flex-4 gap-4 w-2xl">
-      <Button variant="primary" size="lg" onClick={() => addToCart(product)}>
+    <div className="flex gap-2 w-2xl m-3 p-3">
+      <Button variant="primary" size="sm" onClick={() => addToCart(product)}>
         <ShoppingCart className="pr-3 size-8" /> Add to Cart
       </Button>
 
       <Button
         variant="primary"
-        size="lg"
+        size="sm"
         onClick={() => addToWishlist(product)}
         disabled={isWishlisted}
         className={`w-2xl  ${
@@ -50,8 +53,17 @@ const QuickButton = () => {
         {isWishlisted ? "Saved" : "Add to Wishlist"}
       </Button>
 
-      <Button variant="primary" size="lg" className="w-2xl " onClick={goToChat}>
-        <Send size={18} className="pr-3 size-8" /> chat with seller
+      <Button variant="primary" size="sm" lassName="w-2xl " onClick={goToChat}>
+        <Send size={18} className="pr-3 size-8" />
+        chat with seller
+      </Button>
+      <Button
+        onClick={goToSeller}
+        variant="primary"
+        size="sm"
+        className="w-2xl"
+      >
+        <Eye size={18} className="pr-3 size-8" /> seller detail
       </Button>
     </div>
   );
