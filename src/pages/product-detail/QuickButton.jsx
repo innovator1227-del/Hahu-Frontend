@@ -53,7 +53,7 @@ const QuickButton = () => {
         {isWishlisted ? "Saved" : "Add to Wishlist"}
       </Button>
 
-      <Button variant="primary" size="sm" lassName="w-2xl " onClick={goToChat}>
+      <Button variant="primary" size="sm" className="w-2xl " onClick={goToChat}>
         <Send size={18} className="pr-3 size-8" />
         chat with seller
       </Button>

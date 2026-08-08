@@ -77,7 +77,9 @@ const MobileMenu = ({ categories }) => {
                   to={cat.link}
                   className="flex items-center gap-2 py-2 px-3 rounded-lg bg-slate-900 hover:bg-slate-800/60 border border-slate-800/40 transition-colors"
                 >
-                  <span className="text-base">{cat.icon}</span>
+                  <span className="text-base">
+                    <cat.icon size={20} />
+                  </span>
                   <span className="text-xs font-medium text-slate-300 truncate">
                     {cat.name}
                   </span>

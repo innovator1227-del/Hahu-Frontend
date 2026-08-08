@@ -1,4 +1,4 @@
-import Home from "@/pages/Home";
+import Home from "@/pages/home/Home";
 import Product from "@/pages/product-detail/ProductDetail";
 import Cart from "@/pages/Cart";
 import CategoryPage from "@/pages/CategoryPage";

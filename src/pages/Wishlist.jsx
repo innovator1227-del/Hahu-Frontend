@@ -19,7 +19,7 @@ const Wishlist = () => {
               className="bg-white rounded-xl shadow overflow-hidden"
             >
               <img
-                src={product.image}
+                src={product.images?.[0]}
                 alt={product.title}
                 className="w-full h-48 object-cover"
               />

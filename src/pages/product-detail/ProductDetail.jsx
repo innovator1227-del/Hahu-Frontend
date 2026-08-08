@@ -7,7 +7,7 @@ const ProductDetail = () => {
   return (
     <div className="grid grid-cols-1 p-8">
       <div className="shadow-lg hover:translate-1 transition-all duration-500 ease-out">
-        <div className="flex flex-cols-2 lg:flex-cols-2 gap-4">
+        <div className="flex gap-4 space-x-2">
           <ProductGallery />
           <QuickButton />
         </div>

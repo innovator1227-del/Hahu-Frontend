@@ -1,9 +1,6 @@
-import { useCategory } from "@/store/categoryStore";
 import { useProducts } from "@/store/productStore";
-import { Link } from "react-router-dom";
-import { useSearch } from "@/store/searchStore";
 
-import CategorySection from "@/components/CategorySection";
+import HomeSection from "@/pages/home/HomeSection";
 
 const Home = () => {
   const { products } = useProducts();
@@ -29,15 +26,17 @@ const Home = () => {
 
   return (
     <div className="p-6 w-full ml-6">
-      <h1 className="text-3xl font-bold mb-8">Welcome to Hahu Marketplace</h1>
+      <h1 className="teHomeSectiont-3HomeSectionl font-bold mb-8">
+        Welcome to Hahu Marketplace
+      </h1>
 
-      <CategorySection title="Phones" products={phones} />
+      <HomeSection title="Phones" products={phones} />
 
-      <CategorySection title="Electronics" products={electronics} />
+      <HomeSection title="Electronics" products={electronics} />
 
-      <CategorySection title="Furniture" products={furniture} />
+      <HomeSection title="Furniture" products={furniture} />
 
-      <CategorySection title="Clothes" products={clothes} />
+      <HomeSection title="Clothes" products={clothes} />
     </div>
   );
 };

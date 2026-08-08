@@ -16,7 +16,7 @@ const BrowseListing = () => {
   });
 
   return (
-    <div className="p-6 max-w-7xl mx-auto">
+    <div className="p-6 w-full mx-auto ml-6">
       <h1 className="text-3xl font-bold mb-6">
         {category ? `${category} Listings` : "All Listings"}
       </h1>
@@ -29,7 +29,7 @@ const BrowseListing = () => {
             className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition"
           >
             <img
-              src={product.image}
+              src={product.images?.[0]}
               alt={product.title}
               className="w-full h-48 object-cover"
             />

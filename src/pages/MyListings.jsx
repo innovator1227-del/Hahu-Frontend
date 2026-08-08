@@ -29,7 +29,7 @@ const MyListings = () => {
               className="bg-white rounded-xl shadow overflow-hidden"
             >
               <img
-                src={product.images}
+                src={product.images?.[0]}
                 alt={product.title}
                 className="w-full h-48 object-cover"
               />

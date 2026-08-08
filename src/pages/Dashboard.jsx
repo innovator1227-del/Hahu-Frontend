@@ -83,8 +83,7 @@ const Dashboard = () => {
 
           <Link
             to="/app/wishlist"
-            className="border px-5 py-2 rounded-lg hover:bg-gray-100
-                        "
+            className="border px-5 py-2 rounded-lg hover:bg-gray-100"
           >
             My Wishlist
           </Link>
