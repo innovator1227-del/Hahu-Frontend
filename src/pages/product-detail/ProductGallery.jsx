@@ -33,7 +33,7 @@ const ProductGallery = () => {
     <>
       <div className="flex gap-4 rounded-2xl flex-1">
         <div className="flex flex-col gap-2">
-          <h1 className="text-lg font-semibold">
+          <h1 className="text-lg font-semibold m-6">
             Welcome Back to Hahu and Enjoy WIth Brand and Chip products
           </h1>
 

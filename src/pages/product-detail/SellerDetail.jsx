@@ -1,9 +1,17 @@
 import { User } from "lucide-react";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useAsyncError } from "react-router-dom";
 
 const SellerDetail = () => {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(true);
+  }, []);
   return (
-    <div className="text-2xl font-bold w-2xs h-2 p-2">
+    <div
+      className={`text-2xl font-bold w-2xs h-2 p-2 duration-500 transition-all ease-in-out items-center justify-between ${open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+    >
       <h1 className="tetx-lg align-center">Seller Details</h1>
       <h1 className="text-2xl font-semibold flex flex-1 gap-2 items-center">
         <User />

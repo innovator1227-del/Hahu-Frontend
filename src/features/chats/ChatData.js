@@ -4,6 +4,7 @@ export const chatData = [
     seller: "Minyamr Kelemu",
     avatar: "https://i.pravatar.cc/150?img=1",
     product: "Dell Laptop",
+    productId: 2,
     productImage:
       "https://images.unsplash.com/photo-1496181133206-80ce9b88a853",
     lastMessage: "Yes, it is still available.",
@@ -19,6 +20,7 @@ export const chatData = [
     seller: "Rahel Gedefew",
     avatar: "https://i.pravatar.cc/150?img=2",
     product: "HP Laptop",
+    productId: 1,
     productImage:
       "https://images.unsplash.com/photo-1517336714731-489689fd1ca8",
     lastMessage: "Can you reduce the price?",
