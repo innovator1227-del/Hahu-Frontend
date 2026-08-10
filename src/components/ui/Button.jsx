@@ -23,7 +23,8 @@ const Button = ({
 
     outline: "border border-slate-600 text-slate-300 hover:bg-slate-800",
 
-    login: "flex flex-1 text-slate-300 hover:bg-white/10 hover:text-white",
+    login:
+      "flex flex-1 text-slate-900 hover:bg-slate-400 hover:text-white bg-slate-300",
   };
 
   const sizes = {

@@ -54,8 +54,6 @@ const products = [
       "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf",
       "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf",
       "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf",
-      "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf",
-      "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf",
     ],
     description: "Strong battery, clean phone",
     place: "Bahirdar",

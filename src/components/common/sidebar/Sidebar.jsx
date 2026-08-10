@@ -18,7 +18,7 @@ const Sidebar = ({ isOpen, onClose, variant }) => {
         />
       )}
       <aside
-        className={`fixed top-0 left-0 z-50 h-screen flex flex-col bg-[#020617] backdrop-blur-xl border-r border-white/5 transition-all duration-500 ease-in-out ${isOpen ? "w-64 translate-x-0" : "-translate-x-full md:translate-x-0 md:w-22"}
+        className={`fixed top-0 left-0 z-50 h-screen flex flex-col bg-[#020617] border-r border-white/5 transition-all duration-500 ease-in-out ${isOpen ? "w-64 translate-x-0" : "-translate-x-full md:translate-x-0 md:w-22"}
         `}
       >
         {/* Header */}
@@ -45,19 +45,25 @@ const Sidebar = ({ isOpen, onClose, variant }) => {
         </div>
 
         {/* Scrollable Menu */}
-        <div className="flex-1 h-full overflow-y-auto custom-scrollbar flex flex-col gap-2 px-3 py-6">
-          {/* Main Menu Items */}
-          <MenuItem isOpen={isOpen} variant="user" onClose={onClose} />
-          {/* Public Categories */}
-          {variant === "public" && (
-            <PublicItem isOpen={isOpen} variant="public" onClose={onClose} />
-          )}
+        <div className="flex-1 overflow-y-auto px-2 mr-2">
+          <div className="flex flex-col gap-2">
+            {/* Main Menu Items */}
+            {variant === "user" && (
+              <MenuItem isOpen={isOpen} variant="user" onClose={onClose} />
+            )}
 
-          {/* Bottom Actions */}
-          {variant === "user" && (
-            <UserItem isOpen={isOpen} variant="user" onClose={onClose} />
-          )}
+            {/* Public Categories */}
+            {(variant === "user" || variant === "public") && (
+              <PublicItem isOpen={isOpen} variant="public" onClose={onClose} />
+            )}
+
+            {/* Bottom Actions */}
+            {variant === "user" && (
+              <UserItem isOpen={isOpen} variant="user" onClose={onClose} />
+            )}
+          </div>
         </div>
+
         <Tooltip
           id="sidebar-tooltip"
           place="right"

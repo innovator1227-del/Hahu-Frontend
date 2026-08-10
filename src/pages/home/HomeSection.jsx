@@ -1,10 +1,20 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 const HomeSection = ({ title, products }) => {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(true);
+  }, []);
   if (products.length === 0) return null;
 
   return (
-    <section className="mb-10">
+    <section
+      className={`mb-10 transition-all duration-500 ease-in-out ${
+        open ? "opacity-100 translate-y-2" : "opacity-0 translate-y-6"
+      }`}
+    >
       <div className="flex justify-between items-center mb-5">
         <h2 className="text-2xl font-bold">{title}</h2>
 
