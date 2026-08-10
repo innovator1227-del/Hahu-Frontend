@@ -1,6 +1,5 @@
 import { User } from "lucide-react";
 import React, { useEffect, useState } from "react";
-import { useAsyncError } from "react-router-dom";
 
 const SellerDetail = () => {
   const [open, setOpen] = useState(false);
