@@ -24,7 +24,7 @@ const BrowseListing = () => {
 
   return (
     <div
-      className={`p-6 w-full mx-auto ml-6 transition-all duration-500 ease-in-out ${
+      className={`pr-12 p-6 w-full mx-auto ml-6 transition-all duration-500 ease-in-out ${
         open ? "opacity-100 translate-y-2" : "opacity-0 translate-y-6"
       }`}
     >

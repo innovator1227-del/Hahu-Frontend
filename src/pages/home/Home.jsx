@@ -25,7 +25,7 @@ const Home = () => {
   );
 
   return (
-    <div className="p-6 w-full ml-6">
+    <div className="p-6 w-full ml-6 pr-12">
       <h1 className="teHomeSectiont-3HomeSectionl font-bold mb-8">
         Welcome to Hahu Marketplace
       </h1>
