@@ -21,7 +21,7 @@ const RelatedProduct = () => {
           .map((item) => (
             <Link
               key={item.id}
-              to={`/product/${item.id}`}
+              to={`/app/product/${item.id}`}
               className="bg-white rounded-xl shadow overflow-hidden
                  hover:shadow-lg transition-all duration-500
                  hover:translate-x-1"

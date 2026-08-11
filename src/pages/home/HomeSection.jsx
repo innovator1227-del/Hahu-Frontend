@@ -27,7 +27,7 @@ const HomeSection = ({ title, products }) => {
         {products.slice(0, 4).map((product) => (
           <Link
             key={product.id}
-            to={`/product/${product.id}`}
+            to={`/app/product/${product.id}`}
             className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition"
           >
             <img

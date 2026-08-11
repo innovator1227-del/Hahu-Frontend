@@ -30,7 +30,7 @@ const QuickLink = () => {
         </span>
       </Link>
       <Link
-        to="/cart"
+        to="/app/cart"
         className="relative w-9 h-9 flex items-center justify-center rounded-full text-slate-400 hover:text-white hover:bg-slate-800/60 transition-all duration-200"
       >
         <ShoppingCart size={19} />

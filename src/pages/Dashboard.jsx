@@ -68,7 +68,7 @@ const Dashboard = () => {
           </Link>
 
           <Link
-            to="/browse"
+            to="/app/browse"
             className=" border px-5 py-2 rounded-lg hover:bg-gray-100"
           >
             Browse Products

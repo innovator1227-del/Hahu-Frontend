@@ -4,7 +4,7 @@ const ChatHeader = ({ selectedChat }) => {
   const navigate = useNavigate();
 
   const goToProduct = () => {
-    navigate(`/product/${selectedChat.productId}`);
+    navigate(`/app/product/${selectedChat.productId}`);
   };
 
   const goToSellerDetail = () => {

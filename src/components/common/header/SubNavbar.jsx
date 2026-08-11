@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const SubNavbar = () => {
   const menuItems = [
     { id: 1, name: "Home", link: "/" },
-    { id: 2, name: "Browse", link: "/browse" },
+    { id: 2, name: "Browse", link: "/app/browse" },
   ];
 
   return (
