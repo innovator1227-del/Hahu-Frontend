@@ -39,8 +39,8 @@ const AppLayout = () => {
               <footer className="mt-auto bg-slate-300 text-black pt-4 pb-6 shadow-lg border-t border-slate-400">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                   <div className="text-center text-gray-950 text-lg">
-                    &copy; {new Date().getFullYear()} HAHU MARKET. All rights
-                    reserved.
+                    &copy; {new Date().getFullYear()} Bahirdar Universty BiT
+                    HAHU MARKET. All rights reserved.
                   </div>
                 </div>
               </footer>
