@@ -33,7 +33,7 @@ const CategoryList = ({ categories }) => {
       <div
         className={`absolute top-full left-0 mt-2 w-80 bg-slate-950  rounded-xl shadow-2xl border border-slate-800 py-3 z-50 origin-top-left transition-all duration-200 ${catOpen ? "opacity-100 scale-100 translate-y-0 visible" : "opacity-0 scale-95 -translate-y-2 invisible pointer-events-none"}`}
       >
-        <div className="grid grid-cols-1 gap-0.5 px-2 max-h-96 overflow-y-auto">
+        <div className="grid grid-cols-1 gap-0.5 px-2 max-h-96 overflow-y-auto mr-2">
           {categories.map((cat) => (
             <Link
               key={cat.id}

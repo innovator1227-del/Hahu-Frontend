@@ -61,7 +61,7 @@ const ChatPage = () => {
 
   return (
     <div
-      className={`flex h-full overflow-hidden m-5 p-4 pb-24 rounded-xl border border-slate-300 bg-slate-100 transition-all duration-700 ease-in-out
+      className={`flex h-full overflow-hidden m-5 p-4 pb-12 rounded-xl border border-slate-300 bg-slate-100 transition-all duration-700 ease-in-out
 
     ${loaded ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"}`}
     >

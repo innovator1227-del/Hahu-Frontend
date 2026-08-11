@@ -10,7 +10,7 @@ import SubNavbar from "./SubNavbar";
 import MobileMenu from "./MobileMenu";
 const Navbar = ({ toggleSidebar }) => {
   return (
-    <nav className="sticky top-0 z-50 bg-[#020617] border-b border-slate-800 text-slate-100 shadow-lg w-full">
+    <nav className="w-full shrink-0 bg-[#020617] border-b border-slate-800 text-slate-100 shadow-lg">
       <div className="mx-auto w-full px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
         <div className="flex items-center gap-2 shrink-0">
           <Button
