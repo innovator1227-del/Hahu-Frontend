@@ -1,4 +1,4 @@
-import SellerAddProduct from "@/pages/SellerAddProduct";
+import SellerAddProduct from "@/features/listings/SellerAddProduct";
 import StaticPage from "@/pages/StaticPage";
 import Dashboard from "@/pages/Dashboard";
 import MyListings from "@/pages/MyListings";
@@ -8,7 +8,7 @@ import ChatPage from "@/features/chats/ChatPage";
 import SellerDetail from "@/pages/product-detail/SellerDetail";
 import ProductDetail from "@/pages/product-detail/ProductDetail";
 import Cart from "@/pages/Cart";
-import BrowseListing from "@/features/listings/pages/BrowseListing";
+import BrowseListing from "@/features/listings/BrowseListing";
 
 export const AppRoute = [
   { path: "create-listing", element: <SellerAddProduct /> },

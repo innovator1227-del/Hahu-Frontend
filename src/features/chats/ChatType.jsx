@@ -3,9 +3,9 @@ import React from "react";
 const ChatType = ({ message }) => {
   return (
     <div
-      className={`mb-4 p-3 rounded-lg max-w-xs whitespace-pre-wrap break-words transition-all duration-700 hover:translate-x-2 cursor-pointer hover:bg-blue-400 ${
+      className={`mb-4 p-3 rounded-lg max-w-xs whitespace-pre-wrap break-words transition-all duration-700 hover:translate-x-2 cursor-pointer hover:bg-green-100 hover:text-black ${
         message.sender === "buyer"
-          ? "bg-blue-300 text-white ml-auto"
+          ? "bg-green-200 text-slate-700 ml-auto"
           : "bg-gray-300 text-gray-800"
       }`}
     >
