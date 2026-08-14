@@ -34,7 +34,7 @@ const SellerAddProduct = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto w-lvh">
+    <div className="max-w-5xl mx-auto">
       <div className="mb-8">
         <h1 className="text-3xl font-bold">
           Welcome To Hahu Create your Listing
