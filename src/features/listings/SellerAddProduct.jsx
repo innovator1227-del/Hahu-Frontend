@@ -4,6 +4,7 @@ import { useProducts } from "@/store/productStore";
 import useListingForm from "./hooks/useListingForm";
 import ListingBasicInfo from "./components/ListingBasicInfo";
 import ListingImageUpload from "./components/image-upload/ListingImageUpload";
+import ListingDetails from "./components/ListingDetails";
 
 const SellerAddProduct = () => {
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ const SellerAddProduct = () => {
   };
 
   return (
-    <div className="max-w-5xl mx-auto">
+    <div className="max-w-5xl mx-auto w-lvh">
       <div className="mb-8">
         <h1 className="text-3xl font-bold">
           Welcome To Hahu Create your Listing
@@ -53,6 +54,7 @@ const SellerAddProduct = () => {
       <form onSubmit={handleSubmit} className="space-y-6">
         <ListingBasicInfo form={form} updateField={updateField} />
         <ListingImageUpload form={form} updateField={updateField} />
+        <ListingDetails form={form} updatedField={updateField} />
         <button
           type="submit"
           className="w-48 rounded-2xl bg-green-300 py-3 font-semibold text-slate-600 transition hover:bg-green-400"
