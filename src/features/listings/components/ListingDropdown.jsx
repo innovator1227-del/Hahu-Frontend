@@ -15,7 +15,7 @@ const ListingDropdown = ({
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        className="flex w-full items-center justify-between p-5 text-left"
+        className="flex w-full items-center justify-between p-5 text-left cursor-pointer bg-slate-50 rounded-2xl"
       >
         <div>
           <h2 className="text-lg font-semibold text-slate-900">{title}</h2>

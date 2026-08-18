@@ -6,6 +6,16 @@ const initialForm = {
   category: "Phones",
   description: "",
   images: [],
+  brand: "",
+  model: "",
+  age: "",
+  condition: "",
+  location: {
+    address: "",
+    city: "",
+    latitude: null,
+    longitude: null,
+  },
 };
 
 const useListingForm = () => {

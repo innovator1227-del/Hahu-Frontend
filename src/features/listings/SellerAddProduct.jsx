@@ -6,6 +6,7 @@ import ListingBasicInfo from "./components/ListingBasicInfo";
 import ListingImageUpload from "./components/image-upload/ListingImageUpload";
 import ListingDetails from "./components/ListingDetails";
 import ListingDropdown from "./components/ListingDropdown";
+import ListingLocation from "./components/location/ListingLocation";
 
 const SellerAddProduct = () => {
   const navigate = useNavigate();
@@ -55,7 +56,7 @@ const SellerAddProduct = () => {
       <form onSubmit={handleSubmit} className="space-y-6">
         <ListingDropdown
           title="Basic information About Your Product"
-          description="Add Main Information About Yor Product."
+          description="Add Basic Information About Yor Product."
         >
           <ListingBasicInfo form={form} updateField={updateField} />
         </ListingDropdown>
@@ -67,7 +68,20 @@ const SellerAddProduct = () => {
           <ListingImageUpload form={form} updateField={updateField} />
         </ListingDropdown>
 
-        <ListingDetails form={form} updatedField={updateField} />
+        <ListingDropdown
+          title="Add Detail information About Your Product"
+          description=" Announce and Give Detail Information to Buyer What You Sell, Including Every Required Information Provided In The Grid Below"
+        >
+          <ListingDetails form={form} updateField={updateField} />
+        </ListingDropdown>
+
+        <ListingDropdown
+          title="location of Product and seller"
+          description="Add you product location here We are tracking you with google map, so be sure yours and produc location"
+        >
+          <ListingLocation form={form} updateField={updateField} />
+        </ListingDropdown>
+
         <button
           type="submit"
           className="w-48 rounded-2xl bg-green-300 py-3 font-semibold text-slate-600 transition hover:bg-green-400"
