@@ -7,6 +7,7 @@ import ListingImageUpload from "./components/image-upload/ListingImageUpload";
 import ListingDetails from "./components/ListingDetails";
 import ListingDropdown from "./components/ListingDropdown";
 import ListingLocation from "./components/location/ListingLocation";
+import ListingPreview from "./components/ListingPreview";
 
 const SellerAddProduct = () => {
   const navigate = useNavigate();
@@ -76,15 +77,22 @@ const SellerAddProduct = () => {
         </ListingDropdown>
 
         <ListingDropdown
-          title="location of Product and seller"
-          description="Add you product location here We are tracking you with google map, so be sure yours and produc location"
+          title="location and delivery of product"
+          description=" Tell buyers where the product is located and how they can receive it."
         >
           <ListingLocation form={form} updateField={updateField} />
         </ListingDropdown>
 
+        <ListingDropdown
+          title="Preview your product"
+          description="Check how buyers will see your product before Submitting"
+        >
+          <ListingPreview />
+        </ListingDropdown>
+
         <button
           type="submit"
-          className="w-48 rounded-2xl bg-green-300 py-3 font-semibold text-slate-600 transition hover:bg-green-400"
+          className="w-48 rounded-2xl bg-green-300 py-3 font-semibold text-slate-600 transition hover:bg-green-400 cursor-pointer"
         >
           Submin Product
         </button>

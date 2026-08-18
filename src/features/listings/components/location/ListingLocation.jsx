@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import GoogleMapPicker from "./GoogleMapPicker";
+import { MapPin } from "lucide-react";
 
 const ListingLocation = ({ form, updateField }) => {
+  const [pickupAvailable, setPickupAvailable] = useState(false);
+
+  const [deliverAvailable, setdeliveryAvailable] = useState(false);
   return (
     <section className="rounded-2xl bg-white p-6 shadow-lg">
       <div>
@@ -25,22 +29,87 @@ const ListingLocation = ({ form, updateField }) => {
           onChange={(location) => updateField("location", location)}
         />
       </div>
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-        <div className="block shadow-lg transition-all duration-500 ease-in-out w-full md:w-72 rounded-2xl border-t border-slate-200 mt-3.5">
-          <h1 className="text-lg font-medium p-5">
-            Selected Location: Bahirdar
-          </h1>
-        </div>
+      {/* Selected location */}
+      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4 mt-3">
+        <div className="flex items-center justify-between gap-4">
+          <div className="flex min-w-0 items-center gap-3">
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-100 text-green-600">
+              <MapPin />
+            </div>
 
-        <div className="block shadow-lg transition-all duration-500 ease-in-out  w-full md:w-72 rounded-2xl mt-3.5 border-t border-slate-200">
-          <button className="text-lg font-medium p-5 cursor-pointer">
-            Pick-Up Available
+            <div className="min-w-0">
+              <p className="text-xs font-medium text-slate-500">
+                Selected location
+              </p>
+
+              <p className="truncate font-semibold text-slate-800">
+                Bahir Dar, Ethiopia
+              </p>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            className="shrink-0 text-sm font-medium text-green-600 hover:text-green-700"
+          >
+            Change
           </button>
         </div>
-        <div className="block shadow-lg transition-all duration-500 ease-in-out  w-full md:w-72 rounded-2xl mt-3.5 border-t border-slate-200">
-          <button className="text-lg font-medium p-5 cursor-pointer">
-            Delivery Available
-          </button>
+      </div>
+
+      {/* Delivery options */}
+      <div className="mt-6">
+        <h3 className="mb-3 text-sm font-semibold text-slate-700">
+          Delivery options
+        </h3>
+
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+          {/* Pickup card */}
+          <label
+            className={`flex flex-1 cursor-pointer items-center justify-between rounded-2xl border p-4 transition ${
+              pickupAvailable
+                ? "border-slate-300 bg-green-50"
+                : "border-slate-200 bg-white hover:border-slate-300"
+            }`}
+          >
+            <div>
+              <p className="font-semibold text-slate-800">Pickup</p>
+
+              <p className="text-sm text-slate-500">
+                Buyer can collect the item go to vendor
+              </p>
+            </div>
+
+            <input
+              type="checkbox"
+              checked={pickupAvailable}
+              onChange={(e) => setPickupAvailable(e.target.checked)}
+              className="h-5 w-5 accent-green-600 cursor-pointer"
+            />
+          </label>
+          {/* Delivery card */}
+          <label
+            className={`flex flex-1 cursor-pointer items-center justify-between rounded-2xl border p-4 transition ${
+              deliverAvailable
+                ? "border-slate-300 bg-green-50"
+                : "border-slate-200 bg-white hover:border-slate-300"
+            }`}
+          >
+            <div>
+              <p className="font-semibold text-slate-800">Delivery</p>
+
+              <p className="text-sm text-slate-500">
+                Seller Brings product directly to buyer location
+              </p>
+            </div>
+
+            <input
+              type="checkbox"
+              checked={deliverAvailable}
+              onChange={(e) => setdeliveryAvailable(e.target.checked)}
+              className="h-5 w-5 accent-green-600 cursor-pointer"
+            />
+          </label>
         </div>
       </div>
     </section>

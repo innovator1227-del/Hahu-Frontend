@@ -16,6 +16,8 @@ const initialForm = {
     latitude: null,
     longitude: null,
   },
+  pickupAvailable: true,
+  deliveryAvailable: false,
 };
 
 const useListingForm = () => {
