@@ -20,7 +20,7 @@ const CategoryList = ({ categories }) => {
     <div className="relative" ref={catRef}>
       <button
         onClick={() => setCatOpen(!catOpen)}
-        className="hidden md:flex items-center gap-1.5 px-6 py-3 text-sm font-semibold hover:bg-slate-800 transition-all duration-200 text-slate-200 border border-blue-300 bg-slate-900/50"
+        className="hidden md:flex items-center gap-1.5 px-6 py-3 text-sm font-semibold hover:bg-slate-800 transition-all duration-200 text-slate-200 border border-blue-300 bg-slate-900/50 cursor-pointer"
       >
         All
         <ChevronDown

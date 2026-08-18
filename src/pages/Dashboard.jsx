@@ -29,25 +29,25 @@ const Dashboard = () => {
       {/* Statistics Cards */}
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div className="bg-white p-6 rounded-xl shadow">
+        <div className="bg-white p-6 rounded-xl cursor-pointer transition-all duration-500 ease-in-out shadow-2xl hover:scale-105">
           <h3 className="text-gray-500">My Listings</h3>
 
           <p className="text-3xl font-bold mt-2">{myListings.length}</p>
         </div>
 
-        <div className="bg-white p-6 rounded-xl shadow">
+        <div className="bg-white p-6 rounded-xl cursor-pointer transition-all duration-500 ease-in-out shadow-2xl hover:scale-105">
           <h3 className="text-gray-500">Wishlist</h3>
 
           <p className="text-3xl font-bold mt-2">{wishlist.length}</p>
         </div>
 
-        <div className="bg-white p-6 rounded-xl shadow">
+        <div className="bg-white p-6 rounded-xl cursor-pointer transition-all duration-500 ease-in-out shadow-2xl hover:scale-105">
           <h3 className="text-gray-500">Orders</h3>
 
           <p className="text-3xl font-bold mt-2">{orders.length}</p>
         </div>
 
-        <div className="bg-white p-6 rounded-xl shadow">
+        <div className="bg-white p-6 rounded-xl cursor-pointer transition-all duration-500 ease-in-out shadow-2xl hover:scale-105">
           <h3 className="text-gray-500">Messages</h3>
 
           <p className="text-3xl font-bold mt-2">2</p>

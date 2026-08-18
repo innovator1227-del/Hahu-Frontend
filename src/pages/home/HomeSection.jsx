@@ -28,7 +28,7 @@ const HomeSection = ({ title, products }) => {
           <Link
             key={product.id}
             to={`/app/product/${product.id}`}
-            className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition"
+            className="transition-all duration-300 ease-in-out rounded-lg overflow-hidden shadow-2xl hover:shadow-lg hover:scale-105"
           >
             <img
               src={product.images?.[0]}

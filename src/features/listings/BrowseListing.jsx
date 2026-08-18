@@ -37,7 +37,7 @@ const BrowseListing = () => {
           <Link
             key={product.id}
             to={`/app/product/${product.id}`}
-            className="border rounded-lg overflow-hidden shadow hover:shadow-lg transition"
+            className="rounded-lg overflow-hidden shadow-2xl hover:shadow-lg transition-all duration-500 ease-in-out hover:scale-105"
           >
             <img
               src={product.images?.[0]}

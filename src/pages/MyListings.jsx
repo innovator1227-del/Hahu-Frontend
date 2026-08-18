@@ -26,7 +26,7 @@ const MyListings = () => {
           {products.map((product) => (
             <div
               key={product.id}
-              className="bg-white rounded-xl shadow overflow-hidden"
+              className="bg-white rounded-xl shadow-2xl overflow-hidden transition-all duration-500 ease-in-out hover:scale-105 cursor-pointer"
             >
               <img
                 src={product.images?.[0]}

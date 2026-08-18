@@ -43,9 +43,9 @@ const UserProfile = () => {
       {user ? (
         <button
           onClick={() => setUserMenuOpen(!userMenuOpen)}
-          className="flex items-center gap-1.5 pl-1.5 pr-2 h-9 rounded-full hover:bg-slate-800/60 transition-all duration-200"
+          className="flex items-center gap-1.5 pl-1.5 pr-2 h-9 rounded-full hover:bg-slate-800/60 transition-all duration-200 cursor-pointer"
         >
-          <div className="w-7 h-7 rounded-full bg-linear-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-xs font-bold text-white">
+          <div className="w-7 h-7 rounded-full bg-linear-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-xs font-bold text-white cursor-pointer">
             {userInitials}
           </div>
           <ChevronDown
@@ -109,7 +109,7 @@ const UserProfile = () => {
                 setUserMenuOpen(false);
                 navigate("/");
               }}
-              className="flex items-center gap-2.5 px-4 py-2 hover:bg-red-500/10 text-sm text-red-400 hover:text-red-300 transition-colors w-full text-left"
+              className="flex items-center gap-2.5 px-4 py-2 hover:bg-red-500/10 text-sm text-red-400 hover:text-red-300 transition-colors w-full text-left cursor-pointer"
             >
               <LogOut size={15} /> Sign Out
             </button>

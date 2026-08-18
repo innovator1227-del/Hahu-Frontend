@@ -22,9 +22,9 @@ const RelatedProduct = () => {
             <Link
               key={item.id}
               to={`/app/product/${item.id}`}
-              className="bg-white rounded-xl shadow overflow-hidden
+              className="bg-white rounded-xl overflow-hidden
                  hover:shadow-lg transition-all duration-500
-                 hover:translate-x-1"
+                 hover:translate-x-1 shadow-2xl"
             >
               <img
                 src={Array.isArray(item.images) ? item.images[0] : item.images}
