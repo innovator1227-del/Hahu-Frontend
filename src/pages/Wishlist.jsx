@@ -12,7 +12,7 @@ const Wishlist = () => {
           <p className="text-gray-500">Your wishlist is empty.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {wishlist.map((product) => (
             <div
               key={product.id}

@@ -22,7 +22,7 @@ const MyListings = () => {
           <p className="text-gray-500">You have no listings yet.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {products.map((product) => (
             <div
               key={product.id}
