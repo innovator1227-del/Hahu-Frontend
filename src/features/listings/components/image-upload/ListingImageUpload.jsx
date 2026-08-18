@@ -21,7 +21,7 @@ const ListingImageUpload = ({ form, updateField }) => {
   });
 
   return (
-    <section className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm sm:p-6">
+    <section className="rounded-2xl border border-slate-200 bg-white p-4 shadow-lg sm:p-6">
       {/* Header */}
       <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
@@ -34,8 +34,7 @@ const ListingImageUpload = ({ form, updateField }) => {
           </div>
 
           <p className="mt-1 text-sm leading-6 text-slate-500">
-            Add clear photos of your product. The first image will be used as
-            the cover image. You can add maximum 8 images
+            Upload clear photos of your product Here.
           </p>
         </div>
 

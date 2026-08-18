@@ -1,5 +1,5 @@
 import { Search } from "lucide-react";
-import { chatData } from "./ChatData";
+import { chatData } from "../ChatData";
 import ChatConversetionItem from "./ChatConversetionItem";
 import { useState } from "react";
 

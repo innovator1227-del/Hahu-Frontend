@@ -2,17 +2,7 @@ import React from "react";
 
 const ListingBasicInfo = ({ form, updateField }) => {
   return (
-    <section className="rounded-2xl bg-white p-6 shadow-sm">
-      <div className="mb-6">
-        <h2 className="text-xl font-semibold">
-          Basic information About Your Product
-        </h2>
-
-        <p className="mt-1 text-sm text-slate-500">
-          Tell buyers what you are selling.
-        </p>
-      </div>
-
+    <section className="rounded-2xl bg-white p-6 shadow-lg">
       <div className="space-y-5">
         {/* Product title */}
         <div>

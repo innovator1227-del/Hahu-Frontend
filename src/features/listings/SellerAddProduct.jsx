@@ -5,6 +5,7 @@ import useListingForm from "./hooks/useListingForm";
 import ListingBasicInfo from "./components/ListingBasicInfo";
 import ListingImageUpload from "./components/image-upload/ListingImageUpload";
 import ListingDetails from "./components/ListingDetails";
+import ListingDropdown from "./components/ListingDropdown";
 
 const SellerAddProduct = () => {
   const navigate = useNavigate();
@@ -52,8 +53,20 @@ const SellerAddProduct = () => {
       )}
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        <ListingBasicInfo form={form} updateField={updateField} />
-        <ListingImageUpload form={form} updateField={updateField} />
+        <ListingDropdown
+          title="Basic information About Your Product"
+          description="Add Main Information About Yor Product."
+        >
+          <ListingBasicInfo form={form} updateField={updateField} />
+        </ListingDropdown>
+
+        <ListingDropdown
+          title="Your Product Photo"
+          description="Add clear photos of your product. The first image will be used as the cover image. You can add maximum 8 images"
+        >
+          <ListingImageUpload form={form} updateField={updateField} />
+        </ListingDropdown>
+
         <ListingDetails form={form} updatedField={updateField} />
         <button
           type="submit"

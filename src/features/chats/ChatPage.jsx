@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import ChatHeader from "./ChatHeader";
-import ChatInput from "./ChatInput";
-import ChatSideBar from "./ChatSideBar";
+import ChatHeader from "./components/ChatHeader";
+import ChatInput from "./components/ChatInput";
+import ChatSideBar from "./components/ChatSideBar";
 import { chatData } from "./ChatData";
-import ChatList from "./ChatList";
+import ChatList from "./components/ChatList";
 
 const ChatPage = () => {
   // State to manage the selected chat
