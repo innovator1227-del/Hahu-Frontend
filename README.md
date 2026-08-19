@@ -1,4 +1,6 @@
-Developed a full-stack App with in second-hand marketplace platform with secure escrow payment integration and ** National ID verification for trusted peer-to-peer transactions. Engineered scalable backend services supporting AI-powered image moderation, fake product detection, real-time logistics tracking, and in-app messaging. Implemented smart recommendation systems, location-based product discovery, seller reputation and review mechanisms, real-time bidding/auction functionality, and push notification services to enhance user engagement and platform reliability. Built role-based admin dashboards, analytics tools, digital wallet integration, and cloud-based media storage with CDN optimization for high performance and scalability.
+HAHU_MARKET
+
+Developed a full-stack App with in second-hand marketplace platform with secure escrow payment integration and \*\* National ID verification for trusted peer-to-peer transactions. Engineered scalable backend services supporting AI-powered image moderation, fake product detection, real-time logistics tracking, and in-app messaging. Implemented smart recommendation systems, location-based product discovery, seller reputation and review mechanisms, real-time bidding/auction functionality, and push notification services to enhance user engagement and platform reliability. Built role-based admin dashboards, analytics tools, digital wallet integration, and cloud-based media storage with CDN optimization for high performance and scalability.
 
 Secure Wallet System
 Integrated wallet for safe payments between buyers and sellers. Funds are protected during transactions until delivery is completed. Reduces payment scams and improves transaction security.
@@ -13,18 +15,18 @@ AI Worker - Face Verification Service
 Overview
 This service verifies whether the face shown in a user's selfie video matches the face shown on the front image of their National ID card.
 
- Separate Admin Management Portal Hahu-second hand ecommerce market
-          Trustly and Securely manage products, orders, customers, categories,
-          inventory, analytics, and business operations from one place.
-          ✅ Product Management
-          ✅ Order Tracking
-          ✅ Customer Management
-          ✅ Sales Analytics
-          ✅ Role-Based Access Control
-          ✅ Transaction Track Management
-          ✅ Payment and negotiation Management
-          ✅ Product delivery and pickup tracking with integrated Google map api
-          ✅ Product aprroval and rejection feature
+Separate Admin Management Portal Hahu-second hand ecommerce market
+Trustly and Securely manage products, orders, customers, categories,
+inventory, analytics, and business operations from one place.
+✅ Product Management
+✅ Order Tracking
+✅ Customer Management
+✅ Sales Analytics
+✅ Role-Based Access Control
+✅ Transaction Track Management
+✅ Payment and negotiation Management
+✅ Product delivery and pickup tracking with integrated Google map api
+✅ Product aprroval and rejection feature
 The system performs:
 
 -> Face extraction from National ID image
@@ -49,5 +51,5 @@ Purpose:
 
 Read images Read videos Extract frames Image preprocessing Package:
 
-this is our e-commerce well orginzed app by minyamr, rahel, yaschil, and tebie 
+this is our e-commerce well orginzed app by Minyamr, Rahel, Yaschil, and Tebie
 we are passionate about tech
