@@ -13,8 +13,18 @@ AI Worker - Face Verification Service
 Overview
 This service verifies whether the face shown in a user's selfie video matches the face shown on the front image of their National ID card.
 
-Separate admin panel
-
+ Separate Admin Management Portal Hahu-second hand ecommerce market
+          Trustly and Securely manage products, orders, customers, categories,
+          inventory, analytics, and business operations from one place.
+          ✅ Product Management
+          ✅ Order Tracking
+          ✅ Customer Management
+          ✅ Sales Analytics
+          ✅ Role-Based Access Control
+          ✅ Transaction Track Management
+          ✅ Payment and negotiation Management
+          ✅ Product delivery and pickup tracking with integrated Google map api
+          ✅ Product aprroval and rejection feature
 The system performs:
 
 
