@@ -1,18 +1,41 @@
-# React + Vite
-hahu market
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Developed a full-stack App with in second-hand marketplace platform with secure escrow payment integration and ** National ID verification for trusted peer-to-peer transactions. Engineered scalable backend services supporting AI-powered image moderation, fake product detection, real-time logistics tracking, and in-app messaging. Implemented smart recommendation systems, location-based product discovery, seller reputation and review mechanisms, real-time bidding/auction functionality, and push notification services to enhance user engagement and platform reliability. Built role-based admin dashboards, analytics tools, digital wallet integration, and cloud-based media storage with CDN optimization for high performance and scalability.
 
-Currently, two official plugins are available:
+Secure Wallet System
+Integrated wallet for safe payments between buyers and sellers. Funds are protected during transactions until delivery is completed. Reduces payment scams and improves transaction security.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Real-Time Chat System
+Buyers and sellers communicate through an in-app messaging system. Supports negotiation, product discussion, and delivery coordination. AI Scam & Illegal Activity Detection The system monitors chat messages to detect:
 
-## React Compiler
+Scam attempts
+Fraudulent behavior Illegal trading Harmful or suspicious language
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+AI Worker - Face Verification Service
+Overview
+This service verifies whether the face shown in a user's selfie video matches the face shown on the front image of their National ID card.
 
-## Expanding the ESLint configuration
+The system performs:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+-> Face extraction from National ID image
+-> Face extraction from video frames
+-> Face embedding generation
+-> Face similarity comparison
+Basic liveness detection
+
+-> Verification result generation
+-> Technology Stack
+-> Backend Framework
+-> FastAPI
+-> Purpose:
+-> REST API development
+-> File upload handling -> JSON responses
+
+-> Package:
+-> pip install fastapi uvicorn
+-> Computer Vision
+-> OpenCV
+Purpose:
+
+Read images Read videos Extract frames Image preprocessing Package:
+
 this is our e-commerce well orginzed app by minyamr, rahel, yaschil, and tebie 
 we are passionate about tech
