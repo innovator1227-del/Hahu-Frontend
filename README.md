@@ -13,6 +13,8 @@ AI Worker - Face Verification Service
 Overview
 This service verifies whether the face shown in a user's selfie video matches the face shown on the front image of their National ID card.
 
+Separate admin panel
+
 The system performs:
 
 
