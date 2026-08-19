@@ -15,6 +15,7 @@ This service verifies whether the face shown in a user's selfie video matches th
 
 The system performs:
 
+
 -> Face extraction from National ID image
 -> Face extraction from video frames
 -> Face embedding generation
