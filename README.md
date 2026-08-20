@@ -134,7 +134,7 @@ This e-commerce application was developed by:
 
 * **Minyamr**
 * **Rahel**
-* **Yaschil**
+* **Yaschilal**
 * **Tebie**
 
 We are passionate about **technology, innovation, and building secure digital solutions**.
