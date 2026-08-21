@@ -1,18 +1,148 @@
-# React + Vite
-hahu market
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# HAHU_MARKET
 
-Currently, two official plugins are available:
+A full-stack **second-hand e-commerce marketplace platform** built for secure and trusted peer-to-peer transactions.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Overview
 
-## React Compiler
+HAHU_MARKET provides a secure marketplace experience with:
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* Secure escrow payment integration
+* **National ID verification**
+* AI-powered image moderation
+* Fake product detection
+* Real-time logistics tracking
+* In-app messaging
+* Smart product recommendation
+* Location-based product discovery
+* Seller reputation and review system
+* Real-time bidding and auction functionality
+* Push notifications
+* Digital wallet integration
+* Cloud-based media storage with CDN optimization
 
-## Expanding the ESLint configuration
+The platform is designed to improve **security, trust, performance, and user engagement**.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-this is our e-commerce well orginzed app by minyamr, rahel, yaschil, and tebie 
+---
+
+## 💰 Secure Wallet System
+
+An integrated wallet system provides safe payments between buyers and sellers.
+
+* Funds are protected during transactions.
+* Payment is held until delivery is completed.
+* Helps reduce payment scams.
+* Improves transaction security.
+
+---
+
+## 💬 Real-Time Chat System
+
+Buyers and sellers can communicate through an in-app messaging system.
+
+The chat system supports:
+
+* Product discussions
+* Price negotiation
+* Delivery coordination
+* Buyer-seller communication
+
+### 🤖 AI Scam & Illegal Activity Detection
+
+The system monitors chat messages to detect:
+
+* Scam attempts
+* Fraudulent behavior
+* Illegal trading
+* Harmful or suspicious language
+
+---
+
+## 🪪 AI Worker — Face Verification Service
+
+### Overview
+
+This service verifies whether the face shown in a user's selfie video matches the face shown on the front image of their National ID card.
+
+### Verification Process
+
+The system performs:
+
+1. Face extraction from the National ID image
+2. Face extraction from video frames
+3. Face embedding generation
+4. Face similarity comparison
+5. Basic liveness detection
+6. Verification result generation
+
+---
+
+## 🛠️ Technology Stack
+
+### Backend Framework
+
+**FastAPI**
+
+Purpose:
+
+* REST API development
+* File upload handling
+* JSON responses
+
+Installation:
+
+```bash
+pip install fastapi uvicorn
+```
+
+### Computer Vision
+
+**OpenCV**
+
+Purpose:
+
+* Read images
+* Read videos
+* Extract video frames
+* Image preprocessing
+
+---
+
+## 🖥️ Separate Admin Management Portal
+
+### HAHU Second-Hand E-commerce Market
+
+A dedicated admin portal for securely and efficiently managing the entire marketplace from one place.
+
+### Admin Features
+
+* ✅ Product Management
+* ✅ Order Tracking
+* ✅ Customer Management
+* ✅ Sales Analytics
+* ✅ Role-Based Access Control
+* ✅ Transaction Tracking
+* ✅ Payment and Negotiation Management
+* ✅ Product Delivery and Pickup Tracking
+* ✅ Google Maps API Integration
+* ✅ Product Approval and Rejection
+
+---
+
+## 👨‍💻 Development Team
+
+This e-commerce application was developed by:
+
+* **Minyamr**
+* **Rahel**
+* **Yaschilal**
+* **Tebie**
+
+We are passionate about **technology, innovation, and building secure digital solutions**.
+
+---
+
+## ❤️ Our Vision
+
+Our goal is to build a **trusted, secure, and intelligent second-hand marketplace** that makes buying and selling easier while protecting users from fraud and unsafe transactions.
+
 we are passionate about tech
