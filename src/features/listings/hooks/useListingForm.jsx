@@ -9,13 +9,15 @@ const initialForm = {
   brand: "",
   model: "",
   age: "",
-  condition: "",
+  condition: "Good",
+
   location: {
     address: "",
     city: "",
     latitude: null,
     longitude: null,
   },
+
   pickupAvailable: true,
   deliveryAvailable: false,
 };

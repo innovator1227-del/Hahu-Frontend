@@ -11,7 +11,7 @@ const MyListings = () => {
 
         <Link
           to="/app/create-listing"
-          className="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700"
+          className="bg-green-500 text-white px-5 py-2 rounded-lg shadow-2xl transition-all duration-500 ease-in-out hover:translate-x-1"
         >
           + Create Listing
         </Link>

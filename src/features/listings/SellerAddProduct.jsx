@@ -7,7 +7,7 @@ import ListingImageUpload from "./components/image-upload/ListingImageUpload";
 import ListingDetails from "./components/ListingDetails";
 import ListingDropdown from "./components/ListingDropdown";
 import ListingLocation from "./components/location/ListingLocation";
-import ListingPreview from "./components/ListingPreview";
+import ListingPreview from "./components/preview/ListingPreview";
 
 const SellerAddProduct = () => {
   const navigate = useNavigate();
@@ -86,8 +86,9 @@ const SellerAddProduct = () => {
         <ListingDropdown
           title="Preview your product"
           description="Check how buyers will see your product before Submitting"
+          defaultOpen={true}
         >
-          <ListingPreview />
+          <ListingPreview form={form} />
         </ListingDropdown>
 
         <button
