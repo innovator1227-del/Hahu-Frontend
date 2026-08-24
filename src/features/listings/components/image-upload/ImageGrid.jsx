@@ -13,11 +13,9 @@ const ImageGrid = ({
         <div className="mt-6">
           <div className="mb-3 flex items-center justify-between">
             <div>
-              <h3 className="text-sm font-semibold text-slate-800">
-                Uploaded photos
-              </h3>
+              <h3 className="text-sm font-semibold">Uploaded photos</h3>
 
-              <p className="mt-1 text-xs text-slate-500">
+              <p className="mt-1 text-xs">
                 The first photo is your cover image.
               </p>
             </div>
@@ -38,7 +36,7 @@ const ImageGrid = ({
               return (
                 <div
                   key={image.id}
-                  className=" group relative overflow-hidden rounded-2xl border border-slate-200 bg-slate-100"
+                  className=" group relative overflow-hidden rounded-2xl border border-slate-200"
                 >
                   <img
                     src={image.preview}
@@ -51,14 +49,14 @@ const ImageGrid = ({
 
                   {/* Cover Badge */}
                   {isCover && (
-                    <div className="absolute left-2 top-2 flex items-center gap-1 rounded-full bg-green-600 px-2.5 py-1 text-xs font-semibold text-white shadow">
+                    <div className="absolute left-2 top-2 flex items-center gap-1 rounded-full bg-green-600 px-2.5 py-1 text-xs font-semibold shadow">
                       <Star className="h-3 w-3 fill-current" />
                       Cover
                     </div>
                   )}
 
                   {/* Image number */}
-                  <div className="absolute bottom-2 left-2 rounded-full bg-black/60 px-2 py-1 text-xs font-medium text-white backdrop-blur-sm">
+                  <div className="absolute bottom-2 left-2 rounded-full bg-black/60 px-2 py-1 text-xs font-medium backdrop-blur-sm">
                     {index + 1}
                   </div>
 

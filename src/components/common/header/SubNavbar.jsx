@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const SubNavbar = () => {
   const menuItems = [
-    { id: 1, name: "Home", link: "/" },
+    { id: 1, name: "Home", link: "/app/home" },
     { id: 2, name: "Browse", link: "/app/browse" },
   ];
 
@@ -19,9 +19,7 @@ const SubNavbar = () => {
                 key={item.id}
                 to={item.link}
                 className={`px-3.5 py-1.5 rounded-lg text-sm font-medium transition-all duration-200 ${
-                  location.pathname === item.link
-                    ? "bg-slate-800 text-white"
-                    : "text-slate-400 hover:text-white hover:bg-slate-800/40"
+                  location.pathname === item.link ? "text-green-700" : "h"
                 }`}
               >
                 {item.name}

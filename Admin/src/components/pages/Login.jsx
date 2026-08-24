@@ -2,7 +2,7 @@ import AuthForm from "@/features/auth/AuthForm";
 import useThemeStore from "@/stores/ThemeStore";
 
 const Login = () => {
-  const { theme, setTheme } = useThemeStore();
+  const { theme } = useThemeStore();
   return (
     <div
       className={`min-h-screen flex

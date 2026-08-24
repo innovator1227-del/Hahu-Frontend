@@ -3,8 +3,10 @@ import { useOrders } from "@/store/orderStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "@/components/ui/Button";
+import useThemeStore from "@/store/themeStore";
 
 const Checkout = () => {
+  const { theme } = useThemeStore();
   const { cartItems, clearCart } = useCart();
 
   const { createOrder } = useOrders();
@@ -51,11 +53,13 @@ const Checkout = () => {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 py-12">
+    <div className="min-h-screen py-12">
       <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* LEFT SIDE FORM */}
 
-        <div className="bg-white rounded-3xl border border-slate-200 shadow-sm p-8">
+        <div
+          className={`rounded-2xl shadow-2xl p-8 ${theme === "dark" ? "bg-slate-900" : ""} `}
+        >
           <h2 className="text-xl font-bold mb-6">Shipping Details</h2>
 
           <div className="mb-5">
@@ -66,14 +70,7 @@ const Checkout = () => {
               value={form.name}
               onChange={handleChange}
               placeholder="Name"
-              className="
-                w-full
-                h-12
-                rounded-xl
-                border
-                border-slate-300
-                px-4
-              "
+              className="w-full h-12 rounded-xl border border-slate-500 px-4"
             />
           </div>
 
@@ -87,14 +84,7 @@ const Checkout = () => {
               value={form.phone}
               onChange={handleChange}
               placeholder="09...."
-              className="
-                w-full
-                h-12
-                rounded-xl
-                border
-                border-slate-300
-                px-4
-              "
+              className="w-full h-12 rounded-xl border border-slate-500 px-4"
             />
           </div>
 
@@ -106,15 +96,7 @@ const Checkout = () => {
               value={form.address}
               onChange={handleChange}
               placeholder="Address"
-              className="
-                w-full
-                h-28
-                rounded-xl
-                border
-                border-slate-300
-                px-4
-                py-3
-              "
+              className="w-full h-28 rounded-xl border border-slate-500 px-4 py-3"
             />
           </div>
 
@@ -125,7 +107,9 @@ const Checkout = () => {
 
         {/* RIGHT SIDE SUMMARY */}
 
-        <div className="bg-white p-6 rounded-xl shadow">
+        <div
+          className={`p-6 rounded-4xl shadow-2xl ${theme === "dark" ? "bg-slate-900" : ""} `}
+        >
           <h2 className="text-xl font-bold mb-4">Order Summary</h2>
 
           {cartItems.map((item) => (

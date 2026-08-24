@@ -1,14 +1,14 @@
+import useThemeStore from "@/store/themeStore";
 import { Circle } from "lucide-react";
 
 const ChatConversetionItem = ({ chat, active, onClick }) => {
+  const { theme } = useThemeStore();
   return (
     <button
       onClick={onClick}
       className={`w-full flex items-center gap-2 p-3 rounded-xl transition-all duration-700 ease-in-out hover:translate-x-1 cursor-pointer ${
-        active
-          ? "bg-green-50  border-green-100"
-          : "hover:bg-slate-300 bg-slate-100"
-      }`}
+        active ? "bg-green-300  border-green-100" : "bg-slate-50"
+      } ${theme === "dark" ? "bg-slate-800" : ""}`}
     >
       {/* Seller Avatar */}
       <div className="flex items-center justify-between">

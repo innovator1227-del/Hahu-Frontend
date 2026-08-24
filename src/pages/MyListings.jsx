@@ -1,7 +1,9 @@
 import { useProducts } from "@/store/productStore";
+import useThemeStore from "@/store/themeStore";
 import { Link } from "react-router-dom";
 
 const MyListings = () => {
+  const { theme } = useThemeStore();
   const { products } = useProducts();
 
   return (
@@ -11,22 +13,22 @@ const MyListings = () => {
 
         <Link
           to="/app/create-listing"
-          className="bg-green-500 text-white px-5 py-2 rounded-lg shadow-2xl transition-all duration-500 ease-in-out hover:translate-x-1"
+          className="bg-green-700 text-white px-5 py-2 rounded-lg shadow-2xl transition-all duration-500 ease-in-out hover:translate-x-1"
         >
           + Create Listing
         </Link>
       </div>
 
       {products.length === 0 ? (
-        <div className="bg-white p-6 rounded-xl shadow">
-          <p className="text-gray-500">You have no listings yet.</p>
+        <div className="p-6 rounded-xl shadow">
+          <p>You have no listings yet.</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {products.map((product) => (
             <div
               key={product.id}
-              className="bg-white rounded-xl shadow-2xl overflow-hidden transition-all duration-500 ease-in-out hover:scale-105 cursor-pointer"
+              className={`rounded-xl shadow-2xl overflow-hidden transition-all duration-500 ease-in-out hover:scale-105 cursor-pointer ${theme === "dark" ? "bg-slate-900/80" : "bg-slate-50"}`}
             >
               <img
                 src={product.images?.[0]}
@@ -49,7 +51,7 @@ const MyListings = () => {
                       px-3 py-1 rounded-full text-sm font-medium
                       ${
                         product.status === "APPROVED"
-                          ? "bg-green-100 text-green-700"
+                          ? "text-green-700"
                           : product.status === "PENDING"
                             ? "bg-yellow-100 text-yellow-700"
                             : "bg-red-100 text-red-700"

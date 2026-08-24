@@ -1,8 +1,12 @@
+import useThemeStore from "@/store/themeStore";
 import React from "react";
 
 const ListingBasicInfo = ({ form, updateField }) => {
+  const { theme } = useThemeStore();
   return (
-    <section className="rounded-2xl bg-white p-6 shadow-lg">
+    <section
+      className={`rounded-2xl p-6 shadow-lg ${theme === "dark" ? "bg-slate-800" : "bg-slate-100"} `}
+    >
       <div className="space-y-5">
         {/* Product title */}
         <div>
@@ -15,7 +19,7 @@ const ListingBasicInfo = ({ form, updateField }) => {
             value={form.title}
             onChange={(e) => updateField("title", e.target.value)}
             placeholder="Example: iPhone 13 Pro"
-            className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500"
+            className="w-full rounded-xl border border-slate-500 px-4 py-3 outline-none transition focus:border-blue-500"
           />
         </div>
 
@@ -24,7 +28,7 @@ const ListingBasicInfo = ({ form, updateField }) => {
           <label className="mb-2 block text-sm font-medium">Price</label>
 
           <div className="flex">
-            <span className="flex items-center rounded-l-xl border border-r-0 border-slate-300 bg-slate-50 px-4 text-sm text-slate-500">
+            <span className="flex items-center rounded-l-xl border border-r-0 border-slate-500 px-4 text-sm">
               ETB
             </span>
 
@@ -33,7 +37,7 @@ const ListingBasicInfo = ({ form, updateField }) => {
               value={form.price}
               onChange={(e) => updateField("price", e.target.value)}
               placeholder="50000"
-              className="w-full rounded-r-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500"
+              className="w-full rounded-r-xl border border-slate-500 px-4 py-3 outline-none transition focus:border-blue-500"
             />
           </div>
         </div>
@@ -45,7 +49,7 @@ const ListingBasicInfo = ({ form, updateField }) => {
           <select
             value={form.category}
             onChange={(e) => updateField("category", e.target.value)}
-            className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500"
+            className="w-full rounded-xl border border-slate-400 px-4 py-3 outline-none transition focus:border-blue-500"
           >
             <option value="Phones">Phones</option>
             <option value="Electronics">Electronics</option>

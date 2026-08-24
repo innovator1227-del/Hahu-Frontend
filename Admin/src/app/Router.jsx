@@ -2,7 +2,7 @@ import Dashboard from "@/features/dashboards/Dashboard";
 import Notification from "@/components/pages/notifications/Notification";
 import Order from "@/components/pages/orders/Order";
 import User from "@/components/pages/users/User";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import AdminLayout from "./layouts/AdminLayout";
 import Login from "@/components/pages/Login";

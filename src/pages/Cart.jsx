@@ -1,7 +1,9 @@
+import useThemeStore from "@/store/themeStore";
 import { useCart } from "../store/cartStore";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
+  const { theme } = useThemeStore();
   const { cartItems, removeFromCart, increaseQty, decreaseQty } = useCart();
 
   const navigate = useNavigate();
@@ -13,7 +15,7 @@ const Cart = () => {
   return (
     <div className="p-6 max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
       {/* LEFT SIDE - CART ITEMS */}
-      <div className="lg:col-span-2 space-y-4">
+      <div className={`lg:col-span-2 space-y-4 `}>
         <h1 className="text-2xl font-bold mb-4">Your Cart</h1>
 
         {cartItems.length === 0 ? (
@@ -22,7 +24,7 @@ const Cart = () => {
           cartItems.map((item) => (
             <div
               key={item.id || item.cartId}
-              className="flex gap-4 border border-slate-400 p-4 rounded-2xl bg-white hover:scale-x-95 hover:translate-1.5 transition-all duration-500 ease-in-out"
+              className={`flex gap-4 p-4 rounded-2xl shadow-2xl transition-all duration-500 ease-in-out ${theme === "dark" ? "bg-slate-900" : ""} `}
             >
               {/* IMAGE (optional fallback) */}
               <img
@@ -78,7 +80,7 @@ const Cart = () => {
 
       {/* RIGHT SIDE - SUMMARY */}
       {cartItems.length > 0 && (
-        <div className="h-fit sticky top-20 border border-slate-400 rounded-2xl p-4 bg-white shadow-lg hover:scale-x-95 transition-all duration-500 ease-in-out hover:translate-2">
+        <div className="h-fit sticky top-20 rounded-2xl p-4 shadow-2xl hover:scale-[1.02] transition-all duration-500 ease-in-out hover:translate-2">
           <h2 className="text-lg font-bold mb-4">Order Summary</h2>
 
           <div className="flex justify-between mb-2">
@@ -93,7 +95,7 @@ const Cart = () => {
 
           <button
             onClick={() => navigate("/app/checkout")}
-            className="w-full mt-4 bg-black text-white py-2 rounded-lg hover:bg-gray-800"
+            className="w-full mt-4 bg-green-700 text-white py-2 rounded-lg hover:bg-green-600"
           >
             Proceed to Checkout
           </button>

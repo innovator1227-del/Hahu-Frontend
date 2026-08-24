@@ -1,9 +1,12 @@
 import { useProducts } from "@/store/productStore";
+import useThemeStore from "@/store/themeStore";
+import { Pointer } from "lucide-react";
 
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 
 const BrowseListing = () => {
+  const { theme } = useThemeStore();
   const [open, setOpen] = useState(false);
   const { products } = useProducts();
   const [searchParams] = useSearchParams();
@@ -37,7 +40,7 @@ const BrowseListing = () => {
           <Link
             key={product.id}
             to={`/app/product/${product.id}`}
-            className="rounded-lg overflow-hidden shadow-2xl hover:shadow-lg transition-all duration-500 ease-in-out hover:scale-105"
+            className={`rounded-lg overflow-hidden shadow-2xl hover:shadow-lg transition-all duration-500 ease-in-out hover:scale-105 ${theme === "dark" ? "bg-slate-900/80" : "bg-slate-50"}`}
           >
             <img
               src={product.images?.[0]}
@@ -51,6 +54,12 @@ const BrowseListing = () => {
               <p className="text-blue-600 font-bold">{product.price} ETB</p>
 
               <p className="text-gray-500 text-sm">{product.description}</p>
+            </div>
+            <div className="mt-2 flex flex-1 gap-3 shadow-lg p-3 m-1.5 rounded-lg items-center w-full md:w-72 text-sm font-medium">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-green-600">
+                <Pointer className="h-5 w-5" />
+              </div>
+              click image to see detail
             </div>
           </Link>
         ))}

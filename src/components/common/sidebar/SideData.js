@@ -27,14 +27,24 @@ export const publicMenuItems = [
 ];
 
 export const publicCategories = [
-  { id: 1, name: "Electronics", icon: Laptop, link: "/category/electronics" },
-  { id: 2, name: "Vehicles", icon: Van, link: "/category/vehicles" },
-  { id: 3, name: "Furniture", icon: BedSingle, link: "/category/furniture" },
-  { id: 4, name: "Clothing", icon: Shirt, link: "/category/clothing" },
-  { id: 5, name: "Books", icon: BookOpenText, link: "/category/books" },
-  { id: 6, name: "Sports", icon: Volleyball, link: "/category/sports" },
-  { id: 7, name: "Home & Garden", icon: House, link: "/category/home" },
-  { id: 8, name: "Baby & Kids", icon: Baby, link: "/category/baby" },
+  {
+    id: 1,
+    name: "Electronics",
+    icon: Laptop,
+    link: "/app/category/electronics",
+  },
+  { id: 2, name: "Vehicles", icon: Van, link: "/app/category/vehicles" },
+  {
+    id: 3,
+    name: "Furniture",
+    icon: BedSingle,
+    link: "/app/category/furniture",
+  },
+  { id: 4, name: "Clothing", icon: Shirt, link: "/app/category/clothing" },
+  { id: 5, name: "Books", icon: BookOpenText, link: "/app/category/books" },
+  { id: 6, name: "Sports", icon: Volleyball, link: "/app/category/sports" },
+  { id: 7, name: "Home & Garden", icon: House, link: "/app/category/home" },
+  { id: 8, name: "Baby & Kids", icon: Baby, link: "/app/category/baby" },
 ];
 
 // User Sidebar - Logged in user features

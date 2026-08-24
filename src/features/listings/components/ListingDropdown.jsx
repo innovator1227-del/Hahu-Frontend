@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { MapPinPlusInside } from "lucide-react";
+import useThemeStore from "@/store/themeStore";
 
 const ListingDropdown = ({
   title,
@@ -7,22 +8,23 @@ const ListingDropdown = ({
   children,
   defaultOpen = false,
 }) => {
+  const { theme } = useThemeStore();
   const [isOpen, setIsOpen] = useState(defaultOpen);
 
   return (
-    <section className="transition-all duration-500 rounded-2xl border border-slate-200 bg-white shadow-lg">
+    <section
+      className={`transition-all duration-500 rounded-2xl bg- shadow-2xl mr-2 ml-2 ${theme === "dark" ? "bg-slate-900" : ""}`}
+    >
       {/* Header */}
       <button
         type="button"
         onClick={() => setIsOpen((prev) => !prev)}
-        className="flex w-full items-center justify-between p-5 text-left cursor-pointer bg-slate-50 rounded-2xl"
+        className="flex w-full items-center justify-between p-5 text-left cursor-pointer rounded-2xl"
       >
         <div>
-          <h2 className="text-lg font-semibold text-slate-900">{title}</h2>
+          <h2 className="text-lg font-semibold">{title}</h2>
 
-          {description && (
-            <p className="mt-1 text-sm text-slate-500">{description}</p>
-          )}
+          {description && <p className="mt-1 text-sm">{description}</p>}
         </div>
 
         <MapPinPlusInside
@@ -36,7 +38,7 @@ const ListingDropdown = ({
         className={`grid transition-all duration-500 ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
       >
         <div className="overflow-hidden">
-          <div className="border-t border-slate-200 p-5">{children}</div>
+          <div className="p-5">{children}</div>
         </div>
       </div>
     </section>

@@ -3,13 +3,13 @@ import { useState } from "react";
 const initialForm = {
   title: "",
   price: "",
-  category: "Phones",
+  category: "",
   description: "",
   images: [],
   brand: "",
   model: "",
   age: "",
-  condition: "Good",
+  condition: "",
 
   location: {
     address: "",
@@ -18,8 +18,8 @@ const initialForm = {
     longitude: null,
   },
 
-  pickupAvailable: true,
-  deliveryAvailable: false,
+  pickupAvailable: "",
+  deliveryAvailable: "",
 };
 
 const useListingForm = () => {

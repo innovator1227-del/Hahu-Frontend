@@ -2,22 +2,26 @@ import { Search } from "lucide-react";
 import { chatData } from "../ChatData";
 import ChatConversetionItem from "./ChatConversetionItem";
 import { useState } from "react";
+import useThemeStore from "@/store/themeStore";
 
 const ChatSideBar = ({ selectedChat, setSelectedChat }) => {
+  const { theme } = useThemeStore();
   const [filter, setFilter] = useState("all");
 
   const chatsToRender =
     filter === "unread" ? chatData.filter((chat) => chat.unread > 0) : chatData;
   return (
-    <aside className="w-80 border-r border-slate-300 bg-slate-200 flex flex-col">
+    <aside
+      className={`w-80 flex flex-col rounded-xl ${theme === "dark" ? "bg-slate-900/80" : "bg-slate-200"}`}
+    >
       {/* Title */}
-      <div className="p-5 border-b border-slate-300">
+      <div className="p-5">
         <h2 className="text-2xl font-bold">Hahu-Market Chat</h2>
       </div>
 
       {/* Search */}
-      <div className="p-4">
-        <div className="flex items-center gap-2 bg-slate-50 rounded-xl px-3 py-2">
+      <div className="p-1 m-3 border border-slate-400 rounded-2xl">
+        <div className="flex items-center gap-2 rounded-xl px-3 py-2">
           <Search size={18} />
 
           <input
@@ -30,13 +34,13 @@ const ChatSideBar = ({ selectedChat, setSelectedChat }) => {
       {/* Filter */}
       <div className="flex gap-4 px-4 pb-4">
         <button
-          className={`px-3 py-1 rounded-lg text-sm transition-all duration-500 ease-in-out cursor-pointer ${filter === "all" ? "bg-blue-600 text-white" : "bg-slate-200 text-slate-700"}`}
+          className={`px-3 py-1 rounded-lg text-sm transition-all duration-500 ease-in-out cursor-pointer ${filter === "all" ? "bg-green-600 text-white" : "bg-slate-200 text-slate-700"}`}
           onClick={() => setFilter("all")}
         >
           All
         </button>
         <button
-          className={`px-3 py-1 rounded-lg text-sm transition-all duration-700 ease-in-out cursor-pointer ${filter === "unread" ? "bg-blue-600 text-white" : "bg-slate-200 text-slate-700"}`}
+          className={`px-3 py-1 rounded-lg text-sm transition-all duration-700 ease-in-out cursor-pointer ${filter === "unread" ? "bg-green-600 text-white" : "bg-slate-200 text-slate-700"}`}
           onClick={() => setFilter("unread")}
         >
           Unread

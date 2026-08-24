@@ -8,23 +8,25 @@ import {
   FaEnvelope,
   FaMapMarkerAlt,
 } from "react-icons/fa";
+import useThemeStore from "@/store/themeStore";
 
 export default function Footer() {
+  const { theme } = useThemeStore();
   return (
-    <footer className="bg-gray-100 text-black border-t border-slate-400 mt-auto">
+    <footer
+      className={`mt-auto shadow-2xl ${theme === "dark" ? "bg-slate-900/95" : "bg-slate-50"}`}
+    >
       <div className="max-w-6xl mx-auto px-4 py-8">
         {/* Top Section */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {/* About */}
           <div>
-            <h3 className="text-lg font-semibold text-black mb-2">
-              HAHU MARKET
-            </h3>
+            <h3 className="text-lg font-semibold mb-2">HAHU MARKET</h3>
             <p className="text-black-400 text-sm mb-3 leading-relaxed">
               Buy & sell second-hand items easily. Find great deals on
               electronics, vehicles, furniture and more.
             </p>
-            <div className="flex gap-3 text-black text-base">
+            <div className="flex gap-3 text-base">
               <a href="#" className="hover:text-red-500">
                 <FaFacebookF />
               </a>
@@ -42,10 +44,10 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-md font-semibold text-black mb-2 hover:text-gray-700">
+            <h4 className="text-md font-semibold mb-2 hover:text-green-700">
               Links
             </h4>
-            <ul className="space-y-1 text-black text-sm">
+            <ul className="space-y-1 text-sm">
               <li className="hover:text-red-700">
                 <Link to="/">Home</Link>
               </li>
@@ -63,10 +65,10 @@ export default function Footer() {
 
           {/* Categories */}
           <div>
-            <h4 className="text-md font-semibold text-black mb-2 hover:text-gray-700">
+            <h4 className="text-md font-semibold mb-2 hover:text-green-700">
               Categories
             </h4>
-            <ul className="space-y-1 text-black text-sm">
+            <ul className="space-y-1 text-sm">
               <li className="hover:text-red-700">
                 <Link to="/category/electronics">Electronics</Link>
               </li>
@@ -84,10 +86,10 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-md font-semibold text-black mb-2 hover:text-gray-700">
+            <h4 className="text-md font-semibold mb-2 hover:text-green-700">
               Contact
             </h4>
-            <ul className="space-y-2 text-black text-sm">
+            <ul className="space-y-2 text-sm">
               <li className="flex items-center gap-2">
                 <FaMapMarkerAlt className="text-red-500" />
                 Bahirdar, Ethiopia
@@ -105,7 +107,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="mt-6 pt-4 border-t border-gray-400 flex flex-col md:flex-row justify-between items-center text-xs text-black gap-3">
+        <div className="mt-6 pt-4 border-t flex flex-col md:flex-row justify-between items-center text-xs gap-3">
           <span>© {new Date().getFullYear()} HAHU MARKET</span>
           <div className="flex gap-3">
             <Link className="hover:text-red-400" to="/privacy">

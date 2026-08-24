@@ -1,8 +1,10 @@
 import { MapPin, Truck, Store, ShieldCheck, Pointer } from "lucide-react";
 import PreviewGallery from "./PreviewGallery";
 import PreviewInfo from "./PreviewInfo";
+import useThemeStore from "@/store/themeStore";
 
 const ListingPreview = ({ form }) => {
+  const { theme } = useThemeStore();
   const images = form?.images ?? [];
 
   const locationText =
@@ -15,17 +17,17 @@ const ListingPreview = ({ form }) => {
   };
 
   return (
-    <section className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+    <section
+      className={`overflow-hidden rounded-2xl shadow-2xl ${theme === "dark" ? "bg-slate-800" : "bg-slate-100"} `}
+    >
       {/* Preview label */}
-      <div className="border-b border-slate-200 bg-slate-50 px-4 py-4 sm:px-6">
+      <div className="px-4 py-4 sm:px-6">
         <div className="flex items-start gap-3">
           <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-100 text-green-600">
             <ShieldCheck className="h-5 w-5" />
           </div>
           <div>
-            <h2 className="text-lg font-semibold text-slate-900">
-              Listing Preview
-            </h2>
+            <h2 className="text-lg font-semibold">Listing Preview</h2>
           </div>
         </div>
       </div>
@@ -51,32 +53,30 @@ const ListingPreview = ({ form }) => {
 
         {/* Location + delivery */}
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
-          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+          <div className="rounded-2xl border border-slate-200 p-4">
             <div className="flex items-start gap-3">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-100 text-green-600">
                 <MapPin className="h-5 w-5" />
               </div>
 
               <div className="min-w-0">
-                <p className="text-xs font-medium uppercase tracking-wide text-slate-400">
+                <p className="text-xs font-medium uppercase tracking-wide">
                   Location
                 </p>
 
-                <p className="mt-1 break-words font-medium text-slate-800">
-                  {locationText}
-                </p>
+                <p className="mt-1 break-words font-medium">{locationText}</p>
               </div>
             </div>
           </div>
 
-          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+          <div className="rounded-2xl border border-slate-200 p-4">
             <div className="flex items-start gap-3">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-600">
                 <Truck className="h-5 w-5" />
               </div>
 
               <div className="min-w-0">
-                <p className="text-xs font-medium uppercase tracking-wide text-slate-400">
+                <p className="text-xs font-medium uppercase tracking-wide">
                   Delivery options
                 </p>
 
@@ -96,20 +96,12 @@ const ListingPreview = ({ form }) => {
                   )}
 
                   {!form?.pickupAvailable && !form?.deliveryAvailable && (
-                    <span className="text-sm text-slate-500">
-                      No delivery option selected
-                    </span>
+                    <span className="text-sm">No delivery option selected</span>
                   )}
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="mt-2 flex flex-1 gap-3 text-slate-400 shadow-lg p-4 m-2 bg-slate-50 rounded-lg border border-slate-200 items-center w-full md:w-72">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-100 text-green-600">
-            <Pointer className="h-5 w-5" />
-          </div>
-          Click Image To see Detail about the product
         </div>
       </div>
     </section>

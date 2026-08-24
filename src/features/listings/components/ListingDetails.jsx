@@ -1,6 +1,7 @@
-import React from "react";
+import useThemeStore from "@/store/themeStore";
 
 const ListingDetails = ({ form, updateField }) => {
+  const { theme } = useThemeStore();
   const conditions = [
     {
       value: "New",
@@ -30,47 +31,43 @@ const ListingDetails = ({ form, updateField }) => {
   ];
 
   return (
-    <section className="rounded-2xl bg-white p-6 shadow-sm">
+    <section
+      className={`rounded-2xl p-6 shadow-sm ${theme === "dark" ? "bg-slate-800" : "bg-slate-100"} `}
+    >
       <div className="mb-6">
-        <h2 className="text-lg font-semibold text-slate-900">
-          Product details
-        </h2>
+        <h2 className="text-lg font-semibold">Product details</h2>
       </div>
 
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         {/* Brand */}
         <div>
-          <label className="mb-2 block text-sm font-semibold text-slate-700">
-            Brand
-          </label>
+          <label className="mb-2 block text-sm font-semibold">Brand</label>
 
           <input
             type="text"
             value={form.brand}
             onChange={(e) => updateField("brand", e.target.value)}
             placeholder="Example: Apple"
-            className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+            className="w-full rounded-xl border border-slate-400 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-0 focus:ring-blue-100"
           />
         </div>
 
         {/* Model */}
         <div>
-          <label className="mb-2 block text-sm font-semibold text-slate-700">
-            Model
-          </label>
+          <label className="mb-2 block text-sm font-semibold">Model</label>
 
           <input
             type="text"
             value={form.model}
             onChange={(e) => updateField("model", e.target.value)}
             placeholder="Example: iPhone 13 Pro"
-            className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+            className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-0 focus:ring-blue-100"
           />
         </div>
 
         {/* Age */}
         <div>
-          <label className="mb-2 block text-sm font-semibold text-slate-700">
+          <label className="mb-2 block text-sm font-semibold">
             How old is Your Product?
           </label>
 
@@ -81,10 +78,10 @@ const ListingDetails = ({ form, updateField }) => {
               value={form.age}
               onChange={(e) => updateField("age", e.target.value)}
               placeholder="Example: 2"
-              className="w-full rounded-l-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+              className="w-full rounded-l-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-0 focus:ring-blue-100"
             />
 
-            <span className="flex items-center rounded-r-xl border border-l-0 border-slate-300 bg-slate-50 px-4 text-sm text-slate-500">
+            <span className="flex items-center rounded-r-xl border border-l-0 border-slate-300 px-4 text-sm">
               years
             </span>
           </div>
@@ -94,11 +91,9 @@ const ListingDetails = ({ form, updateField }) => {
       {/* Condition */}
       <div className="mt-7">
         <div className="mb-3">
-          <label className="text-sm font-semibold text-slate-700">
-            Product condition
-          </label>
+          <label className="text-sm font-semibold">Product condition</label>
 
-          <p className="mt-1 text-xs text-slate-500">
+          <p className="mt-1 text-xs">
             Be honest about the condition to build buyer trust.
           </p>
         </div>
@@ -111,17 +106,17 @@ const ListingDetails = ({ form, updateField }) => {
               <button
                 key={condition.value}
                 type="button"
-                onClick={(e) => updateField("condition", condition.value)}
+                onClick={() => updateField("condition", condition.value)}
                 className={`rounded-xl border p-4 text-left transition-all duration-200 ${
                   selected
-                    ? "border-green-500 bg-green-50 ring-2 ring-green-100"
-                    : "border-slate-200 bg-white hover:border-slate-400 hover:bg-slate-50"
+                    ? "border-green-500 ring-0 ring-green-100"
+                    : "border-slate-200 hover:border-slate-400"
                 }`}
               >
                 <div className="flex items-center justify-between">
                   <span
                     className={`font-semibold ${
-                      selected ? "text-green-700" : "text-slate-800"
+                      selected ? "text-green-700" : ""
                     }`}
                   >
                     {condition.label}
@@ -136,7 +131,7 @@ const ListingDetails = ({ form, updateField }) => {
                   />
                 </div>
 
-                <p className="mt-2 text-xs leading-5 text-slate-500">
+                <p className="mt-2 text-xs leading-5">
                   {condition.description}
                 </p>
               </button>

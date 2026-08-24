@@ -9,8 +9,11 @@ import SellerDetail from "@/pages/product-detail/SellerDetail";
 import ProductDetail from "@/pages/product-detail/ProductDetail";
 import Cart from "@/pages/Cart";
 import BrowseListing from "@/features/listings/BrowseListing";
+import Home from "@/pages/home/Home";
+import CategoryPage from "@/pages/CategoryPage";
 
 export const AppRoute = [
+  { path: "home", element: <Home /> },
   { path: "create-listing", element: <SellerAddProduct /> },
   {
     path: "profile",
@@ -25,4 +28,10 @@ export const AppRoute = [
   { path: "product/:id", element: <ProductDetail /> },
   { path: "cart", element: <Cart /> },
   { path: "browse", element: <BrowseListing /> },
+  { path: "category/:category", element: <CategoryPage /> },
+
+  {
+    path: "categories",
+    element: <StaticPage title="Categories" description="Browse categories" />,
+  },
 ];
