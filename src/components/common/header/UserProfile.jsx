@@ -43,7 +43,7 @@ const UserProfile = () => {
       {user && (
         <button
           onClick={() => setUserMenuOpen(!userMenuOpen)}
-          className="flex items-center gap-1.5 pl-1.5 pr-2 h-9 rounded-full hover:scale-105 transition-all duration-200 cursor-pointer"
+          className="flex items-center gap-1.5 pl-1.5 pr-2 h-9 rounded-full hover:scale-105 transition-all duration-200 cursor-pointer shadow-lg"
         >
           <div className="w-7 h-7 rounded-full bg-linear-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-xs font-bold text-white cursor-pointer">
             {userInitials}

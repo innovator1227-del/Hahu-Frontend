@@ -14,7 +14,7 @@ const HomeSection = ({ title, products }) => {
 
   return (
     <section
-      className={`mb-10 transition-all duration-500 ease-in-out ${
+      className={`mb-10 ${
         open ? "opacity-100 translate-y-2" : "opacity-0 translate-y-6"
       }`}
     >

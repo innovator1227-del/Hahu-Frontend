@@ -5,11 +5,8 @@ import ThemeBackground from "@/components/ThemeBackground";
 import { Outlet } from "react-router-dom";
 
 const PublicLayout = () => {
-  // const location = useLocation();
-  //const showHero = location.pathname === "/" || location.pathname === "/browse";
-
   return (
-    <ThemeBackground>
+    <ThemeBackground variant>
       <div className="h-screen overflow-hidden">
         <div className="h-full min-w-0 flex flex-col transition-[margin] duration-500 ease-in-out">
           <HeroHeader heroMenu={heroMenu} />

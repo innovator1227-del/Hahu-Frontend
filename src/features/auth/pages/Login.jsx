@@ -5,6 +5,8 @@ import { useAuth } from "@/store/authStore.jsx";
 import Input from "@/components/ui/Input";
 
 import useThemeStore from "@/store/themeStore";
+import { motion } from "framer-motion";
+import { fadeIn, scaleIn, slideRight } from "@/utils/animate";
 
 const Login = () => {
   const { theme } = useThemeStore();
@@ -34,7 +36,12 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center py-12 px-4 sm:px-6">
+    <motion.div
+      variants={scaleIn(0)}
+      initial="hidden"
+      animate="visible"
+      className="min-h-[80vh] flex items-center justify-center py-12 px-4 sm:px-6"
+    >
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold">Welcome Back!</h1>
@@ -158,7 +165,7 @@ const Login = () => {
           </p>
         </form>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

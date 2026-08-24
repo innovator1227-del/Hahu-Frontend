@@ -14,6 +14,8 @@ import { useAuth } from "@/store/authStore.jsx";
 import Button from "@/components/ui/Button";
 import Input from "@/components/ui/Input";
 import useThemeStore from "@/store/themeStore";
+import { scaleIn } from "@/utils/animate";
+import { motion } from "framer-motion";
 
 const Register = () => {
   const { theme } = useThemeStore();
@@ -57,7 +59,12 @@ const Register = () => {
   };
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center py-12 px-4 sm:px-6">
+    <motion.div
+      variants={scaleIn(0)}
+      initial="hidden"
+      animate="visible"
+      className="min-h-[80vh] flex items-center justify-center py-12 px-4 sm:px-6"
+    >
       <div className="w-full max-w-lg">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold">Create Account</h1>
@@ -290,7 +297,7 @@ const Register = () => {
           </p>
         </form>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
