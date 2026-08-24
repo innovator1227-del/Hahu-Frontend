@@ -9,12 +9,12 @@ const ThemeToggle = () => {
     <button
       onClick={toggleTheme}
       aria-label="Toggle theme"
-      className="flex h-10 w-10 items-center justify-center rounded-full transition-colors cursor-pointer hover:scale-105"
+      className="flex h-10 w-10 items-center justify-center rounded-full transition-call duration-500 cursor-pointer hover:scale-105 shadow-lg shadow-purple-700 hover:shadow-xl hover:shadow-purple-800"
     >
       {theme === "dark" ? (
         <Sun
           className="h-5 w-5 text-yellow-500 transition-transform duration-300"
-          size={28}
+          size={38}
         />
       ) : (
         <Moon
