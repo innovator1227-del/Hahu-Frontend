@@ -5,13 +5,13 @@ const PreviewInfo = ({ title, price, category, brand, age, description }) => {
     <div className="flex flex-col">
       <div className="flex flex-wrap items-center gap-2">
         {category && (
-          <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">
+          <span className="rounded-full px-3 py-1 text-xs font-medium">
             {category}
           </span>
         )}
       </div>
 
-      <h1 className="mt-4 break-words text-2xl font-bold text-slate-900 sm:text-3xl">
+      <h1 className="mt-4 break-words text-2xl font-bold sm:text-3xl">
         {title || "Product Name"}
       </h1>
 
@@ -23,16 +23,16 @@ const PreviewInfo = ({ title, price, category, brand, age, description }) => {
 
       <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
         {brand && (
-          <div className="rounded-xl bg-slate-50 p-3">
-            <p className="text-xs text-slate-400">Brand</p>
-            <p className="mt-1 font-medium text-slate-800">{brand}</p>
+          <div className="rounded-xl p-3">
+            <p className="text-xs">Brand</p>
+            <p className="mt-1 font-medium">{brand}</p>
           </div>
         )}
 
         {age !== "" && age != null && (
-          <div className="rounded-xl bg-slate-50 p-3">
-            <p className="text-xs text-slate-400">Age</p>
-            <p className="mt-1 font-medium text-slate-800">
+          <div className="rounded-xl p-3">
+            <p className="text-xs">Age</p>
+            <p className="mt-1 font-medium">
               {age} {Number(age) === 1 ? "year" : "years"}
             </p>
           </div>
@@ -40,11 +40,9 @@ const PreviewInfo = ({ title, price, category, brand, age, description }) => {
       </div>
 
       <div className="mt-6 rounded-2xl border border-slate-200 p-4">
-        <h3 className="text-sm font-semibold text-slate-900">
-          Product summary
-        </h3>
+        <h3 className="text-sm font-semibold">Product summary</h3>
 
-        <p className="mt-3 whitespace-pre-wrap break-words text-sm leading-7 text-slate-600">
+        <p className="mt-3 whitespace-pre-wrap break-words text-sm leading-7">
           {description?.trim() ||
             "Add a description to tell buyers more about this product."}
         </p>

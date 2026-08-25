@@ -1,8 +1,10 @@
+import useThemeStore from "@/store/themeStore";
 import EmojiPicker from "emoji-picker-react";
 import { Camera, Paperclip, Send, Smile } from "lucide-react";
 import React, { useEffect, useState, useRef } from "react";
 
 const ChatInput = ({ onSendMessage }) => {
+  const { theme } = useThemeStore();
   const [showEmoji, setShowEmoji] = useState(false);
 
   const [message, setMessage] = useState("");
@@ -49,7 +51,9 @@ const ChatInput = ({ onSendMessage }) => {
   }, []);
 
   return (
-    <div className="shrink-0 border-t border-green-400 bg-white px-6 py-3 flex items-center justify-between gap-2">
+    <div
+      className={`shrink-0 border-t border-green-400 px-6 py-3 flex items-center justify-between gap-2 rounded-xl ${theme === "dark" ? "bg-slate-900/80" : "bg-slate-100"}`}
+    >
       <div className="flex items-end gap-2 flex-1">
         <button
           onClick={() => fileInputRef.current.click()}
@@ -75,7 +79,9 @@ const ChatInput = ({ onSendMessage }) => {
             <Smile size={24} />
           </button>
           {showEmoji && (
-            <div className="absolute bottom-full left-0 mb-2 z-50">
+            <div
+              className={`absolute bottom-full left-0 mb-2 z-50 shadow-2xl ${theme === "dark" ? "bg-slate-900" : ""} `}
+            >
               <EmojiPicker onEmojiClick={handleEmojiClick} />
             </div>
           )}

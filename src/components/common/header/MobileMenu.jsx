@@ -9,8 +9,8 @@ const MobileMenu = ({ categories }) => {
 
   const navigate = useNavigate();
   const menuItems = [
-    { id: 1, name: "Home", link: "/" },
-    { id: 2, name: "Browse", link: "/browse" },
+    { id: 1, name: "Home", link: "/app/home" },
+    { id: 2, name: "Browse", link: "/app/browse" },
   ];
 
   const location = useLocation();

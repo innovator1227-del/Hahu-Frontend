@@ -17,7 +17,7 @@ const PublicItem = ({ isOpen, variant, onClose }) => {
               `}
           >
             <div className="pt-4 pb-2">
-              <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider">
+              <h3 className="text-sm font-semibold uppercase tracking-wider">
                 Categories
               </h3>
             </div>
@@ -29,7 +29,7 @@ const PublicItem = ({ isOpen, variant, onClose }) => {
               onClick={handleNavClick}
               data-tooltip-id={!isOpen ? "sidebar-tooltip" : undefined}
               data-tooltip-content={!isOpen ? cat.name : undefined}
-              className="group relative flex items-center gap-3 h-12 px-4 rounded-2xl transition-all duration-300 text-slate-400 hover:scale-[1.02] hover:text-white hover:bg-white/5"
+              className="group relative flex items-center gap-3 h-12 px-4 rounded-2xl hover:scale-[1.02] hover:bg-white/5"
             >
               {/* Icon ALWAYS visible */}
 
@@ -39,7 +39,7 @@ const PublicItem = ({ isOpen, variant, onClose }) => {
 
               {/* Text only when open */}
               <span
-                className={`block overflow-hidden whitespace-nowrap transition-all duration-500 ease-in-out origin-left ${isOpen ? "opacity-100 translate-x-0 max-w-40" : "opacity-0 -translate-x-3 max-w-0"}`}
+                className={`block overflow-hidden whitespace-nowrap origin-left ${isOpen ? "opacity-100 translate-x-0 max-w-40" : "opacity-0 -translate-x-3 max-w-0"}`}
               >
                 {cat.name}
               </span>

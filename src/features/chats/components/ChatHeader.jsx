@@ -1,6 +1,9 @@
-import react from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import ThemeBackground from "@/components/ThemeBackground";
+import useThemeStore from "@/store/themeStore";
+import { useNavigate } from "react-router-dom";
+
 const ChatHeader = ({ selectedChat }) => {
+  const { theme } = useThemeStore();
   const navigate = useNavigate();
 
   const goToProduct = () => {
@@ -12,7 +15,9 @@ const ChatHeader = ({ selectedChat }) => {
   };
 
   return (
-    <header className="h-20 px-6 border-b border-slate-300  bg-slate-200 flex items-center justify-between">
+    <header
+      className={`h-20 px-6 flex items-center justify-between rounded-xl ${theme === "dark" ? "bg-slate-900/80" : "bg-slate-100"}`}
+    >
       <div className="flex items-center gap-4 cursor-pointer">
         <img
           onClick={goToSellerDetail}
@@ -27,7 +32,7 @@ const ChatHeader = ({ selectedChat }) => {
           >
             {selectedChat.online ? "Online" : "Offline"}
           </p>
-          <p className="text-xs text-slate-500">{selectedChat.location}</p>
+          <p className="text-xs">{selectedChat.location}</p>
         </div>
       </div>
       <div className="flex items-center gap-4">

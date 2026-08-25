@@ -42,7 +42,7 @@ const QuickButton = () => {
         className={`w-2xl  ${
           isWishlisted
             ? "bg-red-100 text-red-600 cursor-not-allowed"
-            : "hover:bg-gray-600"
+            : "hover:bg-green-700"
         }`}
       >
         <Heart

@@ -1,8 +1,9 @@
 import { Camera } from "lucide-react";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 
-const UploadArea = ({ onFilesSelected, canAddMore, error }) => {
+const UploadArea = ({ onFilesSelected, canAddMore }) => {
   const fileInputRef = useRef(null);
+  const [error, setError] = useState("");
 
   return (
     <div>
@@ -20,21 +21,19 @@ const UploadArea = ({ onFilesSelected, canAddMore, error }) => {
           <button
             type="button"
             onClick={() => fileInputRef.current?.click()}
-            className="group flex min-h-[180px] w-full flex-col items-center justify-center rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 px-6 py-8 text-center transition-all duration-300 hover:border-green-400 hover:bg-green-50 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 cursor-pointer"
+            className="group flex min-h-[180px] w-full flex-col items-center justify-center rounded-2xl border-2 border-dashed border-slate-300 px-6 py-8 text-center transition-all duration-300 hover:border-green-400 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 cursor-pointer"
           >
-            <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-white text-slate-500 shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:text-green-600">
+            <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full text-slate-500 shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:text-green-600">
               <Camera className="h-7 w-7" />
             </div>
 
-            <span className="text-base font-semibold text-slate-800">
-              Add product photos
-            </span>
+            <span className="text-base font-semibold">Add product photos</span>
 
-            <span className="mt-1 text-sm text-slate-500">
+            <span className="mt-1 text-sm">
               Click to browse from your device
             </span>
 
-            <span className="mt-3 text-xs text-slate-400">
+            <span className="mt-3 text-xs">
               JPG, PNG or WEBP • Max 5 MB each • Up to 8 photos
             </span>
           </button>

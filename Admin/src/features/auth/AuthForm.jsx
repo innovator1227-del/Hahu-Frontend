@@ -1,7 +1,7 @@
 import useTheme from "@/hooks/useTheme";
 import UseAuthStore from "@/stores/AuthStore";
 import { ArrowRight } from "lucide-react";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AuthForm = ({

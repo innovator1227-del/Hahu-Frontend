@@ -53,14 +53,14 @@ const UserItem = ({ isOpen, variant, onClose }) => {
                     })}
                 data-tooltip-id={!isOpen ? "sidebar-tooltip" : undefined}
                 data-tooltip-content={!isOpen ? item.name : undefined}
-                className="group relative flex items-center gap-3 h-12 px-4 rounded-2xl transition-all duration-300 text-slate-400 hover:scale-[1.02] hover:text-white hover:bg-white/5"
+                className="group relative flex items-center gap-3 h-12 px-4 rounded-2xl hover:scale-[1.02] hover:bg-white/5"
               >
                 <span className="text-lg group-hover:scale-105 transition-transform">
                   <item.icon size={20} />
                 </span>
 
                 <span
-                  className={`block overflow-hidden whitespace-nowrap transition-all duration-500 ease-in-out origin-left ${
+                  className={`block overflow-hidden whitespace-nowrap  origin-left ${
                     isOpen
                       ? "opacity-100 translate-x-0 max-w-40"
                       : "opacity-0 -translate-x-3 max-w-0"

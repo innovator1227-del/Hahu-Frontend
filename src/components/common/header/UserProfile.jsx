@@ -1,18 +1,18 @@
-import Button from "@/components/ui/Button";
 import { useAuth } from "@/store/authStore";
+import useThemeStore from "@/store/themeStore";
 import {
   ChevronDown,
-  LogInIcon,
   LogOut,
   MessageCircle,
   Package,
   ShoppingBag,
   User,
 } from "lucide-react";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const UserProfile = () => {
+  const { theme } = useThemeStore();
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const userRef = useRef(null);
 
@@ -40,61 +40,52 @@ const UserProfile = () => {
 
   return (
     <div className="relative pb-1.5" ref={userRef}>
-      {user ? (
+      {user && (
         <button
           onClick={() => setUserMenuOpen(!userMenuOpen)}
-          className="flex items-center gap-1.5 pl-1.5 pr-2 h-9 rounded-full hover:bg-slate-800/60 transition-all duration-200 cursor-pointer"
+          className="flex items-center gap-1.5 pl-1.5 pr-2 h-9 rounded-full hover:scale-105 transition-all duration-200 cursor-pointer shadow-lg"
         >
           <div className="w-7 h-7 rounded-full bg-linear-to-br from-blue-600 to-cyan-500 flex items-center justify-center text-xs font-bold text-white cursor-pointer">
             {userInitials}
           </div>
           <ChevronDown
             size={14}
-            className={`text-slate-400 transition-transform duration-200 ${userMenuOpen ? "rotate-180" : ""}`}
+            className={`transition-transform duration-200 ${userMenuOpen ? "rotate-180" : ""}`}
           />
         </button>
-      ) : (
-        <Link to="/login">
-          <Button variant="login" size="sm" className="gap-1.5">
-            <LogInIcon size={28} />
-            <span className="hidden sm:inline">Login</span>
-          </Button>
-        </Link>
       )}
 
       {/* User Dropdown Menu */}
       {user && (
         <div
-          className={`absolute top-full right-0 mt-2 w-56 bg-slate-950 rounded-xl shadow-2xl border border-slate-800 py-2 z-50 transition-all duration-200 origin-top-right ${userMenuOpen ? "opacity-100 scale-100 translate-y-0 visible" : "opacity-0 scale-95 -translate-y-2 invisible pointer-events-none"}`}
+          className={`absolute top-full right-0 mt-2 w-56 rounded-2xl shadow-2xl py-2 z-50 transition-all duration-200 origin-top-right ${userMenuOpen ? "opacity-100 scale-100 translate-y-0 visible" : "opacity-0 scale-95 -translate-y-2 invisible pointer-events-none"} ${theme === "dark" ? "bg-slate-900" : "bg-slate-50"}`}
         >
           <div className="px-4 py-2 border-b border-slate-800/60">
-            <p className="font-semibold text-sm text-white truncate">
-              {user.name}
-            </p>
-            <p className="text-xs text-slate-400 truncate">{user.email}</p>
+            <p className="font-semibold text-sm truncate">{user.name}</p>
+            <p className="text-xs truncate">{user.email}</p>
           </div>
           <div className="py-1">
             <Link
               to="/profile"
-              className="flex items-center gap-2.5 px-4 py-2 hover:bg-slate-800/60 text-sm text-slate-300 hover:text-white transition-colors"
+              className="flex items-center gap-2.5 px-4 py-2 text-sm  hover:translate-x-1 transition-all duration-300 ease-in-out"
             >
               <User size={15} /> My Profile
             </Link>
             <Link
               to="/my-listings"
-              className="flex items-center gap-2.5 px-4 py-2 hover:bg-slate-800/60 text-sm text-slate-300 hover:text-white transition-colors"
+              className="flex items-center gap-2.5 px-4 py-2 hover:translate-x-1 transition-all duration-300 ease-in-out text-sm"
             >
               <Package size={15} /> My Listings
             </Link>
             <Link
               to="/orders"
-              className="flex items-center gap-2.5 px-4 py-2 hover:bg-slate-800/60 text-sm text-slate-300 hover:text-white transition-colors"
+              className="flex items-center gap-2.5 px-4 py-2 hover:translate-x-1 transition-all duration-300 ease-in-out text-sm"
             >
               <ShoppingBag size={15} /> My Orders
             </Link>
             <Link
               to="/messages"
-              className="flex items-center gap-2.5 px-4 py-2 hover:bg-slate-800/60 text-sm text-slate-300 hover:text-white transition-colors"
+              className="flex items-center gap-2.5 px-4 py-2 hover:translate-x-1 transition-all duration-300 ease-in-out text-sm"
             >
               <MessageCircle size={15} /> Messages
               <span className="ml-auto bg-blue-600 text-[10px] text-white px-1.5 py-0.5 rounded-full">

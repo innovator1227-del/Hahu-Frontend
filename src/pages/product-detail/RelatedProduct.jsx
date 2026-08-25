@@ -1,8 +1,10 @@
 import products from "@/data/products";
+import useThemeStore from "@/store/themeStore";
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 
 const RelatedProduct = () => {
+  const { theme } = useThemeStore();
   const { id } = useParams();
 
   // Find product
@@ -22,9 +24,9 @@ const RelatedProduct = () => {
             <Link
               key={item.id}
               to={`/app/product/${item.id}`}
-              className="bg-white rounded-xl overflow-hidden
+              className={`rounded-xl overflow-hidden
                  hover:shadow-lg transition-all duration-500
-                 hover:translate-x-1 shadow-2xl"
+                 hover:translate-x-1 shadow-2xl ${theme === "dark" ? "bg-slate-800" : "bg-slate-50"}`}
             >
               <img
                 src={Array.isArray(item.images) ? item.images[0] : item.images}
