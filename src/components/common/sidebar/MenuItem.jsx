@@ -32,7 +32,7 @@ const MenuItem = ({ isOpen, variant, onClose }) => {
           onClick={handleNavClick}
           data-tooltip-id={!isOpen ? "sidebar-tooltip" : undefined}
           data-tooltip-content={!isOpen ? item.name : undefined}
-          className={`group relative flex items-center gap-3 h-12 px-4 rounded-2xl hover:translate-x-1 hover:scale-[1.02] hover:bg-white/5 ${
+          className={`group relative flex items-center gap-3 h-12 px-4 rounded-2xl hover:translate-x-1 hover:scale-[1.02] hover:bg-white/5 hover:transition-all hover:duration-500 ${
             isActive(item.link)
               ? "bg-white/10 border border-white/10 shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]"
               : ""

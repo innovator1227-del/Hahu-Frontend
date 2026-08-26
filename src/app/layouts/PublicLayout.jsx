@@ -6,7 +6,7 @@ import { Outlet } from "react-router-dom";
 
 const PublicLayout = () => {
   return (
-    <ThemeBackground variant>
+    <ThemeBackground>
       <div className="h-screen overflow-hidden">
         <div className="h-full min-w-0 flex flex-col transition-[margin] duration-500 ease-in-out">
           <HeroHeader heroMenu={heroMenu} />
