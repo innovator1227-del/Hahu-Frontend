@@ -63,7 +63,7 @@ const ChatPage = () => {
 
   return (
     <div
-      className={`relative min-w-0 flex h-full overflow-hidden m-5 p-4 pb-12 rounded-2xl border-slate-400  transition-all duration-700 ease-in-out shadow-2xl
+      className={`relative min-w-0 flex h-full overflow-hidden m-5 p-4 pb-12 rounded-2xl transition-all duration-700 ease-in-out shadow-2xl
 
     ${loaded ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"}`}
     >
