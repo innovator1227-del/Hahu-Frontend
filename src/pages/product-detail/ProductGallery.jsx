@@ -1,19 +1,8 @@
-import products from "@/data/products";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
-const ProductGallery = () => {
-  const { id } = useParams();
-
-  const product = products.find((p) => p.id === Number(id));
-
-  if (!product) {
-    return <div className="p-6">Product not found</div>;
-  }
-
+const ProductGallery = ({product}) => {
   const images = Array.isArray(product.images)
     ? product.images
     : [product.images];
@@ -27,24 +16,21 @@ const ProductGallery = () => {
 
   useEffect(() => {
     setSelectedImage(images[0] || null);
-  }, [id]);
+  }, [product]);
 
   return (
     <>
       <div className="flex gap-4 rounded-2xl flex-1">
         <div className="flex flex-col gap-2">
-          <h1 className="text-lg font-semibold m-6">
-            Welcome Back to Hahu and Enjoy WIth Brand and Chip products
-          </h1>
 
           {/* Thumbnails */}
-          <div className="flex flex-col-1 gap-6 p-3 m-3">
-            <div className="flex flex-col gap-6">
+          <div className="flex flex-col sm:flex-row gap-4 p-3">
+            <div className="flex sm:flex-col gap-3 overflow-x-auto sm:overflow-visible shrink-0">
               {images.map((image, index) => (
                 <button
                   key={index}
                   onClick={() => setSelectedImage(image)}
-                  className={`w-28 h-28 rounded-xl overflow-hidden border-2 cursor-pointer ${
+                  className={`w-20 h-20 sm:w-24 sm:h-24 shrink-0 rounded-xl overflow-hidden border-2 cursor-pointer ${
                     selectedImage === image
                       ? "border-blue-600"
                       : "border-transparent"
@@ -66,7 +52,7 @@ const ProductGallery = () => {
                   src={selectedImage}
                   alt={product.title}
                   onClick={() => setOpen(true)}
-                  className="w-full h-[650px] rounded-2xl object-contain cursor-zoom-in"
+                  className="w-full h-[350px] sm:h-[450px] lg:h-[520px] rounded-2xl object-contain cursor-zoom-in"
                 />
               )}
             </div>

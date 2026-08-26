@@ -1,23 +1,23 @@
-import products from "@/data/products";
+import { useProducts } from "@/store/productStore";
 import useThemeStore from "@/store/themeStore";
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const RelatedProduct = () => {
+const RelatedProduct = ({ product }) => {
   const { theme } = useThemeStore();
-  const { id } = useParams();
-
-  // Find product
-  const product = products.find((p) => p.id === parseInt(id));
-
-  if (!product) {
-    return <div className="p-6">Product not found</div>;
-  }
+  const { products } = useProducts()
   return (
-    <div className="m-12">
-      <h2 className="text-2xl font-bold mb-6">Related Products</h2>
+    <div className="mt-10 md:mt-14 px-2 md:px-4">
+      <div className="flex items-center justify-between mb-6">
+        <div>
+          <h2 className="text-2xl font-bold">Related Products</h2>
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+            More products you might like
+          </p>
+        </div>
+      </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {products
           .filter((p) => p.category === product.category && p.id !== product.id)
           .map((item) => (
@@ -25,13 +25,18 @@ const RelatedProduct = () => {
               key={item.id}
               to={`/app/product/${item.id}`}
               className={`rounded-xl overflow-hidden
-                 hover:shadow-lg transition-all duration-500
-                 hover:translate-x-1 shadow-2xl ${theme === "dark" ? "bg-slate-800" : "bg-slate-50"}`}
+  border transition-all duration-300
+  hover:-translate-y-1 hover:shadow-xl
+  ${theme === "dark"
+                  ? "bg-slate-800 border-slate-700"
+                  : "bg-white border-slate-200"
+                }
+`}
             >
               <img
                 src={Array.isArray(item.images) ? item.images[0] : item.images}
                 alt={item.title}
-                className="h-40 w-full object-cover"
+                className="h-48 w-full object-cover transition-transform duration-300 group-hover:scale-105"
               />
 
               <div className="p-4">

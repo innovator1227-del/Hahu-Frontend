@@ -1,8 +1,11 @@
 import useThemeStore from "@/store/themeStore";
 import React from "react";
 
+import {categories} from "@/components/common/header/Categories";
+
 const ListingBasicInfo = ({ form, updateField }) => {
   const { theme } = useThemeStore();
+  
   return (
     <section
       className={`rounded-2xl p-6 shadow-lg ${theme === "dark" ? "bg-slate-800" : "bg-slate-100"} `}
@@ -49,13 +52,16 @@ const ListingBasicInfo = ({ form, updateField }) => {
           <select
             value={form.category}
             onChange={(e) => updateField("category", e.target.value)}
-            className="w-full rounded-xl border border-slate-400 px-4 py-3 outline-none transition focus:border-blue-500"
+            className={`w-full rounded-xl border border-slate-400 px-4 py-3 outline-none transition focus:border-blue-500
+              ${theme === "dark" ? "bg-slate-800" : "bg-slate-100"}`}
           >
-            <option value="Phones">Phones</option>
-            <option value="Electronics">Electronics</option>
-            <option value="Furniture">Furniture</option>
-            <option value="Clothes">Clothes</option>
-            <option value="Vehicles">Vehicles</option>
+            {categories.map((category) => {
+                return (
+                  <option key={category.name} value={category.name}>
+                       {category.name}
+                  </option>
+                )
+            })}
           </select>
         </div>
       </div>

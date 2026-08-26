@@ -12,13 +12,14 @@ const BrowseListing = () => {
   const [searchParams] = useSearchParams();
 
   const category = searchParams.get("category");
+  const search = searchParams.get("search");
 
   const filteredProducts = products.filter((product) => {
     const isApproved = product.status === "APPROVED";
 
     const matchesCategory = !category || product.category === category;
-
-    return isApproved && matchesCategory;
+    const matchesSearch = !search || product.title.toLowerCase().includes(search.toLowerCase())
+    return isApproved && matchesCategory && matchesSearch;
   });
 
   useEffect(() => {

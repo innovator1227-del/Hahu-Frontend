@@ -101,8 +101,8 @@ const SellerAddProduct = () => {
         <button
           type="submit"
           className="w-48 rounded-2xl bg-green-700 py-3 font-semibold text-slate-800 transition-all duration-500 ease-in-out hover:bg-green-500 cursor-pointer hover:scale-[1.02] m-auto"
-        >
-          Submin Product
+          onClick={handleSubmit}>
+          Submit Product
         </button>
       </div>
     </>

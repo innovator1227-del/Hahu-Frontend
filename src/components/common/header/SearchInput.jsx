@@ -2,20 +2,32 @@ import React, { useState } from "react";
 import { Search } from "lucide-react";
 import { useSearch } from "@/store/searchStore";
 import Input from "@/components/ui/Input";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
+
 const SearchInput = () => {
   const [searchText, setSearchText] = useState("");
 
   const { setSearchQuery } = useSearch();
 
-  const navigate = useNavigate;
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
 
   const handleSearch = (e) => {
-    e.preventDefault();
-    const query = searchText.trim();
-    setSearchQuery(query);
-    navigate(query ? `/browse?search=${encodeURIComponent(query)}` : "/browse");
-  };
+  e.preventDefault();
+
+  const query = searchText.trim();
+
+  setSearchQuery(query);
+
+  if (query) {
+    searchParams.set("search", query);
+  } else {
+    searchParams.delete("search");
+  }
+
+  navigate(`/app/browse?${searchParams.toString()}`);
+  
+};
 
   return (
     <div className="hidden md:flex flex-1 max-w-lg mx-4">

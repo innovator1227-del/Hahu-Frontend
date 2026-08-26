@@ -1,27 +1,54 @@
+import useThemeStore from "@/store/themeStore";
+import { useParams } from "react-router-dom";
+import { useProducts } from "@/store/productStore";
+
 import QuickButton from "./QuickButton";
 import RelatedProduct from "./RelatedProduct";
 import Description from "./Description";
 import ProductGallery from "./ProductGallery";
-import useThemeStore from "@/store/themeStore";
+
 
 const ProductDetail = () => {
   const { theme } = useThemeStore();
+  const { id } = useParams();
+  const { products } = useProducts();
+
+  const product = products.find(
+    (p) => p.id === Number(id)
+  );
+  if (!product) {
+    return <div className="p-6">Product not found</div>;
+  }
   return (
     <div
-      className={`grid grid-cols-1 p-8 m-3 rounded-2xl ${theme === "dark" ? "bg-slate-950" : ""} `}
+      className={`p-2 md:p-4 ${theme === "dark"
+          ? "bg-slate-950 text-white"
+          : "bg-slate-50 text-slate-900"
+        }`}
     >
-      <div className="shadow-lg hover:scale-100 transition-all duration-500 ease-out">
-        <div className="flex gap-4 space-x-2">
-          <ProductGallery />
-          <QuickButton />
-        </div>
-        <div className="flex flex-1 m-4 p-3">
-          <Description />
+      <div
+        className={`rounded-2xl overflow-hidden ${theme === "dark"
+            ? "bg-slate-900"
+            : "bg-white"
+          }`}
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-[1.15fr_0.85fr] gap-6 lg:gap-8 p-4 md:p-6">
+          <ProductGallery product={product} />
+          <div className="flex flex-col justify-center gap-6">
+            <Description product={product} />
+
+            <div
+              className={`border-t pt-5 ${theme === "dark"
+                ? "border-slate-700"
+                : "border-slate-200"
+                }`}
+            >
+              <QuickButton product={product} />
+            </div>
+          </div>
         </div>
       </div>
-
-      {/* Related Products */}
-      <RelatedProduct />
+      <RelatedProduct product={product} />
     </div>
   );
 };

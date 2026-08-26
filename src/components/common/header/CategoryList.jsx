@@ -1,13 +1,18 @@
 import useThemeStore from "@/store/themeStore";
 import { ChevronDown } from "lucide-react";
 import React, { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 const CategoryList = ({ categories }) => {
   const { theme } = useThemeStore();
   const [catOpen, setCatOpen] = useState(false);
   const catRef = useRef(null);
+  const [searchParams] = useSearchParams();
+  const currentCategory = searchParams.get("category");
 
+  const selectedCategory = categories.find(
+    (cat) => cat.link.includes(`category=${currentCategory}`)
+  );
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (catRef.current && !catRef.current.contains(e.target)) {
@@ -24,10 +29,11 @@ const CategoryList = ({ categories }) => {
         onClick={() => setCatOpen(!catOpen)}
         className="hidden md:flex items-center gap-1.5 px-6 py-3 text-sm font-semibold transition-all duration-200 border border-blue-300 cursor-pointer backdrop-opacity-100"
       >
-        All
+        {selectedCategory?.name || "All"}
         <ChevronDown
           size={14}
-          className={`transition-transform duration-200 ${catOpen ? "rotate-180" : ""}`}
+          className={`transition-transform duration-200 ${catOpen ? "rotate-180" : ""
+            }`}
         />
       </button>
 
@@ -36,7 +42,18 @@ const CategoryList = ({ categories }) => {
         className={`absolute top-full left-0 mt-2 w-80 rounded-xl shadow-2xl py-3 z-50 origin-top-left transition-all duration-200 ${catOpen ? "opacity-100 scale-100 translate-y-0 visible" : "opacity-0 scale-95 -translate-y-2 invisible pointer-events-none"} ${theme === "dark" ? "bg-slate-900" : "bg-slate-50"}`}
       >
         <div className="grid grid-cols-1 gap-0.5 px-2 max-h-96 overflow-y-auto mr-2">
+          <Link
+            to="/app/browse"
+            className="flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-300 hover:translate-x-1"
+            onClick={() => setCatOpen(false)}
+          >
+            <div className="flex-1 min-w-0">
+              <p className="text-xs font-medium">All Categories</p>
+              <p className="text-[10px]">View all listings</p>
+            </div>
+          </Link>
           {categories.map((cat) => (
+
             <Link
               key={cat.id}
               to={cat.link}
