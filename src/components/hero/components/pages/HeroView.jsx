@@ -1,6 +1,6 @@
-import slogan from "@/assets/slogan.png";
-import photo from "@/assets/Item.jpg";
-import { scaleIn, slideRight, slideUp } from "@/utils/animate";
+import slogan from "@/assets/Hahu.jpg";
+import photo from "@/assets/Social.jpg";
+import { scaleIn, slideLeft, slideRight, slideUp } from "@/utils/animate";
 import { motion } from "framer-motion";
 import { ShieldCheck, Wallet, Truck, Check } from "lucide-react";
 import ThemeBackground from "@/components/ThemeBackground";
@@ -27,26 +27,26 @@ const HeroPart = () => {
         <div className="w-full self-start lg:w-1/2">
           <div className="pt-4 md:pt-8">
             <motion.h3
-              variants={slideRight(0)}
+              variants={slideLeft(0)}
               initial="hidden"
               animate="visible"
               className="text-4xl font-bold text-green-800 md:text-5xl lg:text-6xl py-10"
             >
-              HAHU-Market
+              Happy With HAHU
             </motion.h3>
 
             <motion.p
-              variants={slideRight(0.15)}
+              variants={slideLeft(0.15)}
               initial="hidden"
               animate="visible"
               className="mt-3 text-sm font-medium text-amber-500 md:text-base"
             >
-              Buy smart, sell easy — find it on HAHU.
+              A Smarter Way to Buy and Sell Second-Hand.
             </motion.p>
           </div>
 
           <motion.p
-            variants={slideRight(0.3)}
+            variants={slideLeft(0.3)}
             initial="hidden"
             animate="visible"
             className="mt-6 max-w-xl lg:text-sm leading-6 opacity-70 md:text-base"
@@ -56,26 +56,22 @@ const HeroPart = () => {
           </motion.p>
 
           <motion.div
-            variants={slideRight(0.5)}
+            variants={slideLeft(0.5)}
             initial="hidden"
             animate="visible"
-            className="mt-10 space-y-4"
+            className="mt-10 space-y-2"
           >
             <p className="flex flex-1 gap-2">
-              <Check size={28} className="text-green-500" /> Trusted Deals.
-              Better Prices. Smarter Shopping
+              <Check size={28} className="text-green-500" />
+              Where Trust Meets Better Deals.
             </p>
             <p className="flex flex-1 gap-2">
-              <Check size={28} className="text-green-500" /> Trusted Deals. Buy
-              Second-Hand. Sell with Confidence.
+              <Check size={28} className="text-green-500" />
+              Your Marketplace. Your Price. Your Choice.
             </p>
             <p className="flex flex-1 gap-2">
-              <Check size={28} className="text-green-500" /> Trusted Deals. Find
-              It. Negotiate It, Own It
-            </p>
-            <p className="flex flex-1 gap-2">
-              <Check size={28} className="text-green-500" /> Trusted Deals. Buy
-              Second-Hand. Sell with Confidence.
+              <Check size={28} className="text-green-500" />
+              Trade with Trust, Buy with Confidence.
             </p>
           </motion.div>
         </div>
@@ -94,7 +90,7 @@ const HeroPart = () => {
                 <img
                   src={slogan}
                   alt="HAHU Marketplace"
-                  className="h-auto w-52 object-contain sm:w-60 md:w-64 lg:w-96"
+                  className="h-auto w-52 object-contain sm:w-60 md:w-64 lg:w-72"
                 />
               </motion.div>
 
@@ -102,7 +98,7 @@ const HeroPart = () => {
                 <img
                   src={photo}
                   alt="HAHU Marketplace"
-                  className="h-auto w-52 object-contain sm:w-60 md:w-64 lg:w-96"
+                  className="h-auto w-52 object-contain sm:w-60 md:w-64 lg:w-72"
                 />
               </div>
             </Slider>

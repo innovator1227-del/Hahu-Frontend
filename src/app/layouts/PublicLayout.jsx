@@ -10,7 +10,7 @@ const PublicLayout = () => {
       <div className="h-screen overflow-hidden">
         <div className="h-full min-w-0 flex flex-col transition-[margin] duration-500 ease-in-out">
           <HeroHeader heroMenu={heroMenu} />
-          <main className="flex-1 min-h-0 min-w-0 overflow-y-auto overflow-x-hidden rounded-tl-3xl">
+          <main className="flex-1 min-h-0 min-w-0 overflow-y-auto overflow-x-hidden">
             <div className="min-h-full flex flex-col">
               <div className="flex-1">
                 <Outlet />
