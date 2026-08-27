@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-import heroBg from "@/assets/Used.png";
 import HeroPart from "./components/pages/HeroPart";
 import HeroView from "./components/pages/HeroView";
 
