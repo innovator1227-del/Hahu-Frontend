@@ -29,7 +29,7 @@ const PublicItem = ({ isOpen, variant, onClose }) => {
               onClick={handleNavClick}
               data-tooltip-id={!isOpen ? "sidebar-tooltip" : undefined}
               data-tooltip-content={!isOpen ? cat.name : undefined}
-              className="group relative flex items-center gap-3 h-12 px-4 rounded-2xl hover:scale-[1.02] hover:bg-white/5"
+              className="group relative flex items-center gap-3 h-12 px-4 rounded-2xl hover:scale-[1.02] hover:bg-white/5 hover:transition-all hover:duration-500"
             >
               {/* Icon ALWAYS visible */}
 

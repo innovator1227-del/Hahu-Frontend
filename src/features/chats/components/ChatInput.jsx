@@ -52,7 +52,7 @@ const ChatInput = ({ onSendMessage }) => {
 
   return (
     <div
-      className={`shrink-0 border-t border-green-400 px-6 py-3 flex items-center justify-between gap-2 rounded-xl ${theme === "dark" ? "bg-slate-900/80" : "bg-slate-100"}`}
+      className={`shrink-0 min-w-0 border-t border-green-400 px-6 py-3 flex items-center justify-between gap-2 rounded-xl ${theme === "dark" ? "bg-slate-900/80" : "bg-slate-100"}`}
     >
       <div className="flex items-end gap-2 flex-1">
         <button
@@ -89,7 +89,7 @@ const ChatInput = ({ onSendMessage }) => {
         <textarea
           ref={textareaRef}
           placeholder="Type your message..."
-          className="w-full bg-transparent border-none focus:outline-none focus:ring-0 bottom-3 resize-none py-3 max-h-32 overflow-y-auto"
+          className="w-full bg-transparent border-none focus:outline-none focus:ring-0 bottom-3 resize-none py-3 max-h-32 overflow-y-auto min-w-0"
           value={message}
           onChange={(e) => {
             setMessage(e.target.value);

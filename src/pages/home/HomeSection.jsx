@@ -26,7 +26,7 @@ const HomeSection = ({ title, products }) => {
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {products.slice(0, 4).map((product) => (
           <Link
             key={product.id}

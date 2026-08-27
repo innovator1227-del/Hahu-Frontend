@@ -4,8 +4,10 @@ import ChatInput from "./components/ChatInput";
 import ChatSideBar from "./components/ChatSideBar";
 import { chatData } from "./ChatData";
 import ChatList from "./components/ChatList";
+import { Menu } from "lucide-react";
 
 const ChatPage = () => {
+  const [showside, setShowside] = useState(false);
   // State to manage the selected chat
   const [selectedChat, setSelectedChat] = useState(chatData[0]);
 
@@ -61,22 +63,27 @@ const ChatPage = () => {
 
   return (
     <div
-      className={`flex h-full overflow-hidden m-5 p-4 pb-12 rounded-2xl border-slate-400  transition-all duration-700 ease-in-out shadow-2xl
+      className={`relative min-w-0 flex h-full overflow-hidden m-5 p-4 pb-12 rounded-2xl transition-all duration-700 ease-in-out shadow-2xl
 
     ${loaded ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"}`}
     >
       {/* Sidebar */}
       <ChatSideBar
+        isOpen={showside}
+        onClose={() => setShowside(false)}
         selectedChat={selectedChat}
         setSelectedChat={setSelectedChat}
       />
 
       {/* Right */}
-      <div className="flex flex-col flex-1">
-        <ChatHeader selectedChat={selectedChat} />
+      <div className="flex min-w-0 flex-col flex-1">
+        <ChatHeader
+          selectedChat={selectedChat}
+          onOPenSidebar={() => setShowside(true)}
+        />
 
         {/* Messages */}
-        <div className="flex-1 overflow-y-auto">
+        <div className="min-h-0 flex-1 overflow-y-auto">
           <ChatList messages={messages} />
         </div>
         <div>
