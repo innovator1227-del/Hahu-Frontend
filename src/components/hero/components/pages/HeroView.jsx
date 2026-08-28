@@ -2,7 +2,7 @@ import slogan from "@/assets/Hahu.jpg";
 import photo from "@/assets/Social.jpg";
 import { scaleIn, slideLeft, slideRight, slideUp } from "@/utils/animate";
 import { motion } from "framer-motion";
-import { ShieldCheck, Wallet, Truck, Check } from "lucide-react";
+import { Check, FastForward, HouseHeart, SmileIcon } from "lucide-react";
 import ThemeBackground from "@/components/ThemeBackground";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -51,8 +51,8 @@ const HeroPart = () => {
             animate="visible"
             className="mt-6 max-w-xl lg:text-sm leading-6 opacity-70 md:text-base"
           >
-            HAHU is a trusted second-hand marketplace that connects buyers and
-            sellers in a secure and convenient environment.
+            HAHU makes every deal worth smiling about — better prices, trusted
+            users, secure payments, and convenient delivery, all in one place.
           </motion.p>
 
           <motion.div
@@ -112,23 +112,22 @@ const HeroPart = () => {
             className="mt-auto grid w-full max-w-md grid-cols-3 gap-6"
           >
             <div className="flex flex-col items-center gap-1 text-center">
-              <ShieldCheck className="h-5 w-5 text-purple-500" />
+              <SmileIcon size={28} className="h-5 w-5 text-purple-500" />
               <span className="text-[10px] font-medium sm:text-xs">
-                Secure Transaction
+                Shop. Save. Smile.
+              </span>
+            </div>
+            <div className="flex flex-col items-center gap-1 text-center">
+              <FastForward size={28} className="h-5 w-5 text-purple-500" />
+              <span className="text-[10px] font-medium sm:text-xs">
+                Get your in Fast
               </span>
             </div>
 
             <div className="flex flex-col items-center gap-1 text-center">
-              <Wallet className="h-5 w-5 text-purple-500" />
+              <HouseHeart size={28} className="h-5 w-5 text-purple-500" />
               <span className="text-[10px] font-medium sm:text-xs">
-                Secure Wallet
-              </span>
-            </div>
-
-            <div className="flex flex-col items-center gap-1 text-center">
-              <Truck className="h-5 w-5 text-purple-500" />
-              <span className="text-[10px] font-medium sm:text-xs">
-                Delivery Available
+                Come In Hahu And Enjoy Product
               </span>
             </div>
           </motion.div>

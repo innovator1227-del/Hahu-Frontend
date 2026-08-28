@@ -1,8 +1,9 @@
+import useThemeStore from "@/store/themeStore";
 import { Check, Clock3, MapPin } from "lucide-react";
 import React from "react";
 
-
 const Description = ({ product }) => {
+  const { theme } = useThemeStore();
   return (
     <div className="w-full">
       <span className="inline-block text-sm font-semibold text-blue-600 mb-2">
@@ -24,22 +25,18 @@ const Description = ({ product }) => {
         <p className="leading-7 text-slate-600 dark:text-slate-300"></p>
       </div>
       <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <div className="rounded-lg bg-slate-100 dark:bg-slate-800 p-3">
-          <p className="text-xs text-slate-500 dark:text-slate-400">
-            Category
-          </p>
-          <p className="font-medium mt-1 dark:text-white">
-            {product.category}
-          </p>
+        <div
+          className={`rounded-lg p-3 ${theme === "dark" ? "bg-slate-800" : "bg-slate-100"} `}
+        >
+          <p className="text-xs">Category</p>
+          <p className="font-medium mt-1">{product.category}</p>
         </div>
 
-        <div className="rounded-lg bg-slate-100 dark:bg-slate-800 p-3">
-          <p className="text-xs text-slate-500 dark:text-slate-400">
-            Location
-          </p>
-          <p className="font-medium mt-1 dark:text-white">
-            {product.place}
-          </p>
+        <div
+          className={`rounded-lg p-3 ${theme === "dark" ? "bg-slate-800" : "bg-slate-100"} `}
+        >
+          <p className="text-xs">Location</p>
+          <p className="font-medium mt-1">{product.place}</p>
         </div>
       </div>
 
@@ -68,7 +65,6 @@ const Description = ({ product }) => {
           <span>{product.time_served}</span>
         </div>
       </div>
-
     </div>
   );
 };
