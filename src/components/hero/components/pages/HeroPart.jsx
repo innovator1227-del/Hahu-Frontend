@@ -2,7 +2,13 @@ import slogan from "@/assets/slogan.png";
 import photo from "@/assets/Item.jpg";
 import { scaleIn, slideRight, slideUp } from "@/utils/animate";
 import { motion } from "framer-motion";
-import { ShieldCheck, Wallet, Truck, Check } from "lucide-react";
+import {
+  ShieldCheck,
+  Wallet,
+  Truck,
+  Check,
+  ShoppingBasket,
+} from "lucide-react";
 import ThemeBackground from "@/components/ThemeBackground";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -59,7 +65,7 @@ const HeroPart = () => {
             variants={slideRight(0.5)}
             initial="hidden"
             animate="visible"
-            className="mt-10 space-y-4"
+            className="mt-10 space-y-5"
           >
             <p className="flex flex-1 gap-2">
               <Check size={28} className="text-green-500" /> Trusted Deals.
@@ -113,24 +119,30 @@ const HeroPart = () => {
             variants={slideUp(0)}
             initial="hidden"
             animate="visible"
-            className="mt-auto grid w-full max-w-md grid-cols-3 gap-6"
+            className="mt-auto grid w-full max-w-md grid-cols-4 gap-6"
           >
             <div className="flex flex-col items-center gap-1 text-center">
-              <ShieldCheck className="h-5 w-5 text-purple-500" />
+              <ShoppingBasket size={28} className="h-5 w-5 text-purple-500" />
+              <span className="text-[10px] font-medium sm:text-xs">
+                Quality Second Hand Product
+              </span>
+            </div>
+            <div className="flex flex-col items-center gap-1 text-center">
+              <ShieldCheck size={28} className="h-5 w-5 text-purple-500" />
               <span className="text-[10px] font-medium sm:text-xs">
                 Secure Transaction
               </span>
             </div>
 
             <div className="flex flex-col items-center gap-1 text-center">
-              <Wallet className="h-5 w-5 text-purple-500" />
+              <Wallet size={28} className="h-5 w-5 text-purple-500" />
               <span className="text-[10px] font-medium sm:text-xs">
                 Secure Wallet
               </span>
             </div>
 
             <div className="flex flex-col items-center gap-1 text-center">
-              <Truck className="h-5 w-5 text-purple-500" />
+              <Truck size={28} className="h-5 w-5 text-purple-500" />
               <span className="text-[10px] font-medium sm:text-xs">
                 Delivery Available
               </span>
