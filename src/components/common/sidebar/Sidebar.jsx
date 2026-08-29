@@ -2,7 +2,6 @@ import Logo from "@/assets/logo.png";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 import MenuItem from "./MenuItem.jsx";
-import PublicItem from "./PublicItem.jsx";
 import UserItem from "./UserItem.jsx";
 import ThemeBackground from "@/components/ThemeBackground.jsx";
 
@@ -37,7 +36,7 @@ const Sidebar = ({ isOpen, onClose, variant }) => {
                 `}
             >
               <span className="text-lg font-bold tracking-tight">
-                SECOND <span className="text-blue-400">HAND</span>
+                HAHU <span className="text-blue-400">MARKET</span>
               </span>
             </span>
           </div>
@@ -49,11 +48,6 @@ const Sidebar = ({ isOpen, onClose, variant }) => {
             {/* Main Menu Items*/}
             {variant === "user" && (
               <MenuItem isOpen={isOpen} variant="user" onClose={onClose} />
-            )}
-
-            {/* Public Categories */}
-            {(variant === "user" || variant === "public") && (
-              <PublicItem isOpen={isOpen} variant="public" onClose={onClose} />
             )}
 
             {/* Bottom Actions */}

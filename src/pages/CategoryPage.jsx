@@ -20,8 +20,7 @@ const CategoryPage = () => {
             <h1 className="text-3xl font-bold">{title}</h1>
             <p className="mt-2">Browse top deals in the {title} category.</p>
           </div>
-          <Link
-            to="/app/browse"
+          <Link to={`/app/browse?category=${category}`}
             className="inline-flex items-center justify-center rounded-full px-4 py-2 text-sm font-medium  text-green-700 cursor-pointer transition"
           >
             View All Listings

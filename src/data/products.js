@@ -1,14 +1,27 @@
 const products = [
   {
-    id: 1,
-    title: "iPhone 13",
-    price: 45000,
-    category: "Phones",
-    images: ["https://images.unsplash.com/photo-1632661674596-618e0d3e0b6c"],
-    description: "iPhone 13, 128GB, excellent condition",
-    place: "Bahirdar",
-    time_served: "two year",
+  id: 1,
+  title: "iPhone 13",
+  price: 45000,
+  category: "Phones",
+  images: ["https://images.unsplash.com/photo-1632661674596-618e0d3e0b6c"],
+  description: "iPhone 13, 128GB, excellent condition",
+
+  brand: "Apple",
+  model: "iPhone 13",
+  age: "2 years",
+  condition: "Excellent",
+
+  location: {
+    address: "",
+    city: "Bahir Dar",
+    latitude: null,
+    longitude: null,
   },
+
+  pickupAvailable: true,
+  deliveryAvailable: false,
+},
   {
     id: 2,
     title: "HP Laptop",

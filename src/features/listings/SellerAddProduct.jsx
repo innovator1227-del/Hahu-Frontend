@@ -22,6 +22,18 @@ const SellerAddProduct = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (
+      !form.title.trim() ||
+      !form.price ||
+      !form.category ||
+      form.images.length === 0 ||
+      !form.condition ||
+      !form.location.city.trim()
+    ) {
+      setMessage("Please complete all required fields before submitting.");
+      return;
+    }
+
     addProduct({
       ...form,
       price: Number(form.price),
@@ -101,7 +113,7 @@ const SellerAddProduct = () => {
         <button
           type="submit"
           className="w-48 rounded-2xl bg-green-700 py-3 font-semibold text-slate-800 transition-all duration-500 ease-in-out hover:bg-green-500 cursor-pointer hover:scale-[1.02] m-auto"
-          onClick={handleSubmit}>
+        >
           Submit Product
         </button>
       </div>

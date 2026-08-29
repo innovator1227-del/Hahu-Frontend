@@ -13,6 +13,7 @@ export const categories = [
   {
     id: 1,
     name: "Electronics & Gadgets",
+    value: "Electronics",
     icon: LaptopIcon,
     link: "/app/browse?category=Electronics",
     count: 234,
@@ -20,6 +21,7 @@ export const categories = [
   {
     id: 2,
     name: "Vehicles",
+    value: "Vehicles",
     icon: Car,
     link: "/app/browse?category=Vehicles",
     count: 89,
@@ -27,6 +29,7 @@ export const categories = [
   {
     id: 3,
     name: "Furniture",
+    value: "Furniture",
     icon: BedIcon,
     link: "/app/browse?category=Furniture",
     count: 156,
@@ -34,13 +37,15 @@ export const categories = [
   {
     id: 4,
     name: "Clothing & Fashion",
+    value: "Clothes",
     icon: ShirtIcon,
-    link: "/app/browse?category=Clothing",
+    link: "/app/browse?category=Clothes",
     count: 312,
   },
   {
     id: 5,
     name: "Books & Education",
+    value: "Books",
     icon: BookAIcon,
     link: "/app/browse?category=Books",
     count: 78,
@@ -48,6 +53,7 @@ export const categories = [
   {
     id: 6,
     name: "Sports & Outdoors",
+    value: "Sports",
     icon: VolleyballIcon,
     link: "/app/browse?category=Sports",
     count: 67,
@@ -55,6 +61,7 @@ export const categories = [
   {
     id: 7,
     name: "Home & Garden",
+    value: "Home",
     icon: Home,
     link: "/app/browse?category=Home",
     count: 145,
@@ -62,6 +69,7 @@ export const categories = [
   {
     id: 8,
     name: "Baby & Kids",
+    value: "Baby",
     icon: BabyIcon,
     link: "/app/browse?category=Baby",
     count: 89,
