@@ -61,7 +61,7 @@ const ThemeDropdown = () => {
       >
         <div className="flex flex-1 items-center space-x-3 pl-6 pr-5 border-l border-slate-200 rounded-xl gap-3">
           <Sun />
-          <div className="hidden: md-block">
+          <div className="hidden sm:block">
             <h1 className="font-2xl font-bold">Theme</h1>
             <div className="flex flex-1 gap-2">
               <div className={`w-3 h-3 rounded-full ${selectedTheme.color}`} />
@@ -105,7 +105,7 @@ const ThemeDropdown = () => {
                   ${currentTheme.dropdownText}
                 `}
               >
-                <div className="flex items-center gap-6">
+                <div className="items-center gap-6 flex">
                   <div className={`w-4 h-4 rounded-full ${item.color}`} />
 
                   <span>{item.name}</span>

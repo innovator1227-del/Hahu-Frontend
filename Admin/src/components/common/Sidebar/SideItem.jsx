@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-const SideItem = ({ icon, path, text, isOpen, setIsOpen }) => {
+const SideItem = ({ icon, path, text, isOpen }) => {
   return (
     <div className="flex items-center gap-4 cursor-pointer w-full hover:text-blue-400">
       <Link to={path}>
