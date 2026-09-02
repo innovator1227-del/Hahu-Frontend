@@ -65,7 +65,7 @@ const HeroPart = () => {
             variants={slideRight(0.5)}
             initial="hidden"
             animate="visible"
-            className="mt-10 space-y-5"
+            className="mt-10 space-y-1"
           >
             <p className="flex flex-1 gap-2">
               <Check size={28} className="text-green-500" /> Trusted Deals.

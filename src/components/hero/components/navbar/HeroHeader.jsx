@@ -25,8 +25,9 @@ const HeroHeader = ({ heroMenu }) => {
               <Link
                 key={item.id}
                 to={item.link}
-                className="whitespace-nowrap rounded-full px-5 py-2.5 text-sm font-medium transition hover:text-green-700"
+                className="whitespace-nowrap rounded-full flex items-center px-5 py-2.5 text-sm font-medium transition hover:text-green-700"
               >
+                {item.icon && <item.icon size={20} className="mr-2" />}
                 {item.name}
               </Link>
             ))}
