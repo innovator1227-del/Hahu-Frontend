@@ -1,10 +1,10 @@
-import { useCart } from "@/store/cartStore";
+import cartStore from "@/store/cartStore";
 import { Bell, Heart, ShoppingCart } from "lucide-react";
 import React from "react";
 import { Link } from "react-router-dom";
 
 const QuickLink = () => {
-  const { cartItems, message } = useCart();
+  const { cartItems, message } = cartStore();
 
   return (
     <div className="flex flex-1 items-center gap-8">

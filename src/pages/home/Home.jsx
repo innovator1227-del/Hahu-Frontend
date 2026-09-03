@@ -1,9 +1,9 @@
-import { useProducts } from "@/store/productStore";
+import productStore from "@/store/productStore";
 
 import HomeSection from "@/pages/home/HomeSection";
 
 const Home = () => {
-  const { products } = useProducts();
+  const { products } = productStore();
 
   const approvedProducts = products.filter(
     (product) => product.status === "APPROVED",

@@ -1,67 +1,36 @@
-import { createContext, useContext, useState } from "react"
+import { create } from "zustand";
 
-const OrderContext = createContext()
-
-
-export function OrderProvider({ children }) {
-
-  const [orders, setOrders] = useState(() => {
-
-    const savedOrders = localStorage.getItem("orders")
-
-    return savedOrders
-      ? JSON.parse(savedOrders)
-      : []
-
-  })
-
-
-  const createOrder = (orderData) => {
-
-    const newOrder = {
-      id: Date.now(),
-      ...orderData,
-      status: "PENDING",
-      date: new Date().toLocaleDateString()
-    }
-
-
-    const updatedOrders = [
-      ...orders,
-      newOrder
-    ]
-
-
-    setOrders(updatedOrders)
-
-
-    localStorage.setItem(
-      "orders",
-      JSON.stringify(updatedOrders)
-    )
-
+const getInitialOrders = () => {
+  try {
+    const orders = localStorage.getItem("orders");
+    return orders ? JSON.parse(orders) : [];
+  } catch (error) {
+    console.error("failed to load orders:", error);
+    return [];
   }
+};
 
+const orderStore = create((set) => ({
+  orders: getInitialOrders(),
 
+  createOrder: (orderData) =>
+    set((state) => {
+      const newOrder = {
+        id: Date.now(),
+        ...orderData,
+        status: "PENDING",
+        date: new Date().toLocaleDateString(),
+      };
 
-  return (
+      const updatedOrders = [...state.orders, newOrder];
 
-    <OrderContext.Provider
-      value={{
-        orders,
-        createOrder
-      }}
-    >
+      // Keep localStorage synchronized
+      localStorage.setItem("orders", JSON.stringify(updatedOrders));
 
-      {children}
+      return {
+        orders: updatedOrders,
+      };
+    }),
+}));
 
-    </OrderContext.Provider>
-
-  )
-
-}
-
-
-
-export const useOrders = () =>
-  useContext(OrderContext)
+export default orderStore;

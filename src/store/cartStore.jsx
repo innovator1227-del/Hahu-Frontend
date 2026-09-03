@@ -1,86 +1,52 @@
-import { createContext, useContext, useState } from "react"
+import { create } from "zustand";
 
-const CartContext = createContext()
-
-
-export function CartProvider({ children }) {
-  const [cartItems, setCartItems] = useState([])
-  const [message, setMessage] = useState(null);
-
-const addToCart = (product) => {
-  setCartItems(prev => {
-    const existingItem = prev.find(item => item.id === product.id);
-
-    if (existingItem) {
-      return prev.map(item =>
-        item.id === product.id
-          ? { ...item, quantity: (item.quantity || 1) + 1 }
-          : item
+const cartStore = create((set) => ({
+  cartItems: [],
+  message: null,
+  addToCart: (product) =>
+    set((state) => {
+      const existingItem = state.cartItems.find(
+        (item) => item.id === product.id,
       );
-    }
+      let newCartItems;
 
-    return [...prev, { ...product, quantity: 1 }];
-  });
+      if (existingItem) {
+        newCartItems = state.cartItems.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: (item.quantity || 1) + 1 }
+            : item,
+        );
+      } else {
+        newCartItems = [...state.cartItems, { ...product, quantity: 1 }];
+      }
 
-  setMessage(`${product.title} added to cart`);
+      return { cartItems: newCartItems };
+    }),
+  removeFromCart: (id) =>
+    set((state) => ({
+      cartItems: state.cartItems
+        .map((item) =>
+          item.id === id ? { ...item, quantity: item.quantity - 1 } : item,
+        )
+        .filter((item) => item.quantity > 0),
+    })),
+  increaseQty: (id) =>
+    set((state) => ({
+      cartItems: state.cartItems.map((item) =>
+        item.id === id ? { ...item, quantity: (item.quantity || 1) + 1 } : item,
+      ),
+    })),
+  decreaseQty: (id) =>
+    set((state) => ({
+      cartItems: state.cartItems
+        .map((item) =>
+          item.id === id
+            ? { ...item, quantity: (item.quantity || 1) - 1 }
+            : item,
+        )
+        .filter((item) => item.quantity > 0),
+    })),
+  clearCart: () => set({ cartItems: [] }),
+}));
 
-  setTimeout(() => setMessage(null), 2000);
-};
-
- const removeFromCart = (id) => {
-  setCartItems(prev =>
-    prev
-      .map(item =>
-        item.id === id
-          ? { ...item, quantity: item.quantity - 1 }
-          : item
-      )
-      .filter(item => item.quantity > 0)
-  );
-};
-
-const increaseQty = (id) => {
-  setCartItems(prev =>
-    prev.map(item =>
-      item.id === id
-        ? { ...item, quantity: (item.quantity || 1) + 1 }
-        : item
-    )
-  );
-};
-
-const decreaseQty = (id) => {
-  setCartItems(prev =>
-    prev
-      .map(item =>
-        item.id === id
-          ? { ...item, quantity: (item.quantity || 1) - 1 }
-          : item
-      )
-      .filter(item => item.quantity > 0)
-  );
-};
-const clearCart = () => {
-
- setCartItems([])
-
-}
-
-  return (
-    <CartContext.Provider value={{
-  cartItems,
-  addToCart,
-  removeFromCart,
-  message,
-  increaseQty,
-  decreaseQty,
-  clearCart,
-  setCartItems
-  }}
->
-      {children}
-    </CartContext.Provider>
-  )
-}
-
-export const useCart = () => useContext(CartContext)
+export default cartStore;

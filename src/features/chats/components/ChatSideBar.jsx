@@ -20,7 +20,7 @@ const ChatSideBar = ({ selectedChat, setSelectedChat, isOpen, onClose }) => {
       )}
 
       <aside
-        className={`fixed inset-y-0 left-0 z-50 w-80  rounded-xl transform transition-transform duration-500 border-r border-green-400 ${isOpen ? "translate-x-0" : "-translate-x-full"} lg:static lg:z-auto lg:block lg:translate-x-0 ${theme === "dark" ? "bg-slate-900/80" : "bg-slate-200"}`}
+        className={`fixed inset-y-0 left-0 z-50 w-80  rounded-xl transform transition-transform duration-500 border-r border-green-400 ${isOpen ? "translate-x-0" : "-translate-x-77"} lg:static lg:z-auto lg:block lg:translate-x-0 ${theme === "dark" ? "bg-slate-900/80" : "bg-slate-200"}`}
       >
         {/* Title */}
         <div className="p-5">

@@ -1,5 +1,5 @@
-import { useCart } from "@/store/cartStore";
-import { useOrders } from "@/store/orderStore";
+import cartStore from "@/store/cartStore";
+import orderStore from "@/store/orderStore";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Button from "@/components/ui/Button";
@@ -7,9 +7,9 @@ import useThemeStore from "@/store/themeStore";
 
 const Checkout = () => {
   const { theme } = useThemeStore();
-  const { cartItems, clearCart } = useCart();
+  const { cartItems, clearCart } = cartStore();
 
-  const { createOrder } = useOrders();
+  const { createOrder } = orderStore();
 
   const navigate = useNavigate();
 

@@ -1,13 +1,13 @@
 import Button from "@/components/ui/Button";
-import { useCart } from "@/store/cartStore";
-import { useWishlist } from "@/store/wishlistStore";
+import cartStore from "@/store/cartStore";
+import whishlistStore from "@/store/wishlistStore";
 import { Eye, Heart, Send, ShoppingCart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const QuickButton = ({ product }) => {
-  const { addToCart } = useCart();
+  const { addToCart } = cartStore();
   const navigate = useNavigate();
-  const { addToWishlist, wishlist } = useWishlist();
+  const { addToWishlist, wishlist } = whishlistStore();
 
   const isWishlisted = wishlist.some((item) => item.id === product.id);
 
@@ -44,19 +44,12 @@ const QuickButton = ({ product }) => {
       >
         <Heart
           size={18}
-          className={`mr-2 ${
-            isWishlisted ? "fill-red-500 text-red-500" : ""
-          }`}
+          className={`mr-2 ${isWishlisted ? "fill-red-500 text-red-500" : ""}`}
         />
         {isWishlisted ? "Saved" : "Add to Wishlist"}
       </Button>
 
-      <Button
-        variant="primary"
-        size="sm"
-        onClick={goToChat}
-        className="w-full"
-      >
+      <Button variant="primary" size="sm" onClick={goToChat} className="w-full">
         <Send size={18} className="mr-2" />
         Chat with Seller
       </Button>

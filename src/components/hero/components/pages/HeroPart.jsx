@@ -28,7 +28,7 @@ const HeroPart = () => {
   };
   return (
     <ThemeBackground>
-      <section className="flex flex-col lg:flex-row rounded-2xl border-l-0 md:p-6 shadow-2xl hover:shadow-2xl transition-all duration-300 hover:translate-x-1 min-w-0 px-6 w-full h-full mt-0 mb-0 items-center justify-between gap-6 p-5">
+      <section className="flex flex-col lg:flex-row rounded-2xl border-l-0 md:p-6 shadow-2xl hover:shadow-2xl transition-all duration-500 hover:translate-x-1 min-w-0 px-6 w-full h-full mt-0 mb-0 items-center justify-between gap-6 p-5">
         {/* LEFT CONTENT */}
         <div className="w-full self-start lg:w-1/2">
           <div className="pt-4 md:pt-8">
@@ -54,7 +54,8 @@ const HeroPart = () => {
           <motion.p
             variants={slideRight(0.3)}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
             className="mt-6 max-w-xl lg:text-sm leading-6 opacity-70 md:text-base"
           >
             HAHU is a trusted second-hand marketplace that connects buyers and

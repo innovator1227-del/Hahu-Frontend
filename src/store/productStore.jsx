@@ -1,57 +1,41 @@
-import { createContext, useContext, useState } from "react";
+import { create } from "zustand";
 import initialProducts from "../data/products";
 
-const ProductContext = createContext();
+const productStore = create((set) => ({
+  // Initialize seed products only once
+  products: initialProducts.map((product) => ({
+    ...product,
+    status: "APPROVED",
+  })),
 
-export function ProductProvider({ children }) {
-  // Initialize products (seed data)
-  const [products, setProducts] = useState(
-    initialProducts.map((p) => ({
-      ...p,
-      status: "APPROVED", // existing products are approved
+  // Seller adds product
+  addProduct: (newProduct) =>
+    set((state) => ({
+      products: [
+        ...state.products,
+        {
+          ...newProduct,
+          id: Date.now(),
+          status: "PENDING",
+        },
+      ],
     })),
-  );
 
-  // ✅ Seller adds product
-  const addProduct = (newProduct) => {
-    const product = {
-      ...newProduct,
-      id: Date.now(),
-      status: "PENDING",
-    };
-
-    setProducts((prev) => [...prev, product]);
-  };
-
-  // ✅ Admin approves product
-  const approveProduct = (id) => {
-    setProducts((prev) =>
-      prev.map((product) =>
+  // Admin approves product
+  approveProduct: (id) =>
+    set((state) => ({
+      products: state.products.map((product) =>
         product.id === id ? { ...product, status: "APPROVED" } : product,
       ),
-    );
-  };
-  // ❌ Admin rejects product
-  const rejectProduct = (id) => {
-    setProducts((prev) =>
-      prev.map((product) =>
+    })),
+
+  // Admin rejects product
+  rejectProduct: (id) =>
+    set((state) => ({
+      products: state.products.map((product) =>
         product.id === id ? { ...product, status: "REJECTED" } : product,
       ),
-    );
-  };
+    })),
+}));
 
-  return (
-    <ProductContext.Provider
-      value={{
-        products,
-        addProduct,
-        approveProduct,
-        rejectProduct,
-      }}
-    >
-      {children}
-    </ProductContext.Provider>
-  );
-}
-
-export const useProducts = () => useContext(ProductContext);
+export default productStore;

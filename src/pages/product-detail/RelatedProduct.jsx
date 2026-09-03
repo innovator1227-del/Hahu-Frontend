@@ -1,11 +1,11 @@
-import { useProducts } from "@/store/productStore";
+import productStore from "@/store/productStore";
 import useThemeStore from "@/store/themeStore";
 import React from "react";
 import { Link } from "react-router-dom";
 
 const RelatedProduct = ({ product }) => {
   const { theme } = useThemeStore();
-  const { products } = useProducts();
+  const { products } = productStore();
   return (
     <div className="mt-10 md:mt-14 px-2 md:px-4">
       <div className="flex items-center justify-between mb-6">

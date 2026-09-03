@@ -29,7 +29,8 @@ const HeroPart = () => {
             <motion.h3
               variants={slideLeft(0)}
               initial="hidden"
-              animate="visible"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
               className="text-4xl font-bold text-green-800 md:text-5xl lg:text-6xl py-10"
             >
               Happy With HAHU
@@ -38,7 +39,8 @@ const HeroPart = () => {
             <motion.p
               variants={slideLeft(0.15)}
               initial="hidden"
-              animate="visible"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.5 }}
               className="mt-3 text-sm font-medium text-amber-500 md:text-base"
             >
               A Smarter Way to Buy and Sell Second-Hand.
@@ -48,7 +50,8 @@ const HeroPart = () => {
           <motion.p
             variants={slideLeft(0.3)}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
             className="mt-6 max-w-xl lg:text-sm leading-6 opacity-70 md:text-base"
           >
             HAHU makes every deal worth smiling about — better prices, trusted
@@ -58,7 +61,8 @@ const HeroPart = () => {
           <motion.div
             variants={slideLeft(0.5)}
             initial="hidden"
-            animate="visible"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
             className="mt-10 space-y-2"
           >
             <p className="flex flex-1 gap-2">
@@ -84,7 +88,8 @@ const HeroPart = () => {
               <motion.div
                 variants={scaleIn(0)}
                 initial="hidden"
-                animate="visible"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.5 }}
                 className="flex justify-center"
               >
                 <img

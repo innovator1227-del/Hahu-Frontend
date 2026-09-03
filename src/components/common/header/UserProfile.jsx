@@ -66,19 +66,19 @@ const UserProfile = () => {
           </div>
           <div className="py-1">
             <Link
-              to="/profile"
+              to="/app/profile"
               className="flex items-center gap-2.5 px-4 py-2 text-sm  hover:translate-x-1 transition-all duration-300 ease-in-out"
             >
               <User size={15} /> My Profile
             </Link>
             <Link
-              to="/my-listings"
+              to="/app/my-listings"
               className="flex items-center gap-2.5 px-4 py-2 hover:translate-x-1 transition-all duration-300 ease-in-out text-sm"
             >
               <Package size={15} /> My Listings
             </Link>
             <Link
-              to="/orders"
+              to="/app/orders"
               className="flex items-center gap-2.5 px-4 py-2 hover:translate-x-1 transition-all duration-300 ease-in-out text-sm"
             >
               <ShoppingBag size={15} /> My Orders
