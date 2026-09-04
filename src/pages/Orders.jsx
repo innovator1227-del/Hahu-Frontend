@@ -1,10 +1,10 @@
-import { useOrders } from "@/store/orderStore";
+import orderStore from "@/store/orderStore";
 import useThemeStore from "@/store/themeStore";
 import { MapPin, Phone, User2 } from "lucide-react";
 
 const Orders = () => {
   const { theme } = useThemeStore();
-  const { orders } = useOrders();
+  const { orders } = orderStore();
 
   return (
     <div

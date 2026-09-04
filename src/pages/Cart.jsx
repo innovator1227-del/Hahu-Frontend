@@ -1,10 +1,10 @@
 import useThemeStore from "@/store/themeStore";
-import { useCart } from "../store/cartStore";
+import cartStore from "../store/cartStore";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const { theme } = useThemeStore();
-  const { cartItems, removeFromCart, increaseQty, decreaseQty } = useCart();
+  const { cartItems, removeFromCart, increaseQty, decreaseQty } = cartStore();
 
   const navigate = useNavigate();
   const total = cartItems.reduce(

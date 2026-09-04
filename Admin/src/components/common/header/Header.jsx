@@ -26,66 +26,84 @@ const Header = ({ setIsOpen }) => {
   };
   return (
     <header
-      className={`top-0 left-0 z-50 sticky w-full h-16 flex items-center gap-6 justify-between p-6 shadow-sm
+      className={` sticky top-0 z-50 flex w-full min-w-0 items-center justify-between gap-3 px-3 py-3 sm:px-4 lg:px-8 shadow-lg
     ${currentTheme.header}
     ${currentTheme.text}
-    transition-colors
-    duration-500
-    ease-in-out
-`}
+    transition-colors duration-500 ease-in-out
+  `}
     >
-      <div className="flex items-center space-x-4 gap-6">
+      {/* LEFT: Menu + Dashboard title */}
+      <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
         <button
           onClick={() => setIsOpen((prev) => !prev)}
-          className="cursor-pointer text-xl p-2 rounded-lg w-5 h-5"
+          className="flex h-10 w-10 shrink-0 cursor-pointer items-center justify-center rounded-lg text-xl transition-all duration-300 hover:scale-105"
         >
           <FaBars />
         </button>
-        <div className="hidden md:block">
-          <h1 className="text-2xl font-black">HAHU-DASHBOARD</h1>
-          <p> welcome back to hahu</p>
+
+        <div className="min-w-0">
+          <h1 className="truncate text-sm font-black sm:text-lg md:text-xl lg:text-2xl">
+            HAHU-DASHBOARD
+          </h1>
+
+          <p className="hidden truncate text-xs sm:block sm:text-sm">
+            Welcome back to HAHU
+          </p>
         </div>
       </div>
 
-      <div className="ml-10">
-        <div className="hidden md:flex flex-1 w-full">
-          <form onSubmit={handleSearch} className="relative w-full">
-            <AdminInput
-              type="text"
-              placeholder="Search And Track Hahu...."
-              value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}
-            />
-            <button
-              type="submit"
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 transition-colors duration-200"
-            >
-              <Search size={16} />
-            </button>
-          </form>
-        </div>
+      {/* CENTER: Search */}
+      <div className="hidden min-w-0 flex-1 md:flex md:max-w-md lg:max-w-lg">
+        <form onSubmit={handleSearch} className="relative w-full">
+          <AdminInput
+            type="text"
+            placeholder="Search and Track Hahu...."
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+            className="pr-10"
+          />
+
+          <button
+            type="submit"
+            className=" absolute right-3 top-1/2 -translate-y-1/2 text-slate-400"
+          >
+            <Search size={16} />
+          </button>
+        </form>
       </div>
-      <div className="flex items-center ml-auto gap-5">
+
+      {/* RIGHT: Notifications + Cart + Profile + Theme */}
+      <div className="flex shrink-0 items-center gap-1 sm:gap-2 md:gap-3">
+        {/* Notification */}
         <Link
           to="/Notification"
-          className="relative w-9 h-9 flex items-center justify-center rounded-full hover:bg-slate-800/60 transition-all duration-200"
+          className="flex h-9 w-9  items-center justify-center rounded-full transition-all duration-200 hover:bg-slate-800/60"
         >
-          <Bell size={25} />
+          <Bell size={20} />
         </Link>
+
+        {/* Cart */}
         <Link
           to="/Order"
-          className="relative w-9 h-9 flex items-center justify-center rounded-full hover:bg-slate-800/60 transition-all duration-200"
+          className="hidden sm:flex h-9 w-9 items-center justify-center rounded-full transition-all duration-200 hover:bg-slate-800/60"
         >
-          <ShoppingCart size={25} />
-          <span className="absolute top-2 right-3 w-2 h-2 rounded-full animate-pulse"></span>
+          <ShoppingCart size={20} />
         </Link>
-        <Animate show={admin && open} variant="slideDown">
-          <ProfileDropdown />
-        </Animate>
+
+        {/* Profile */}
+        <div className="shrink-0 pr-3">
+          <Animate show={admin && open} variant="slideDown">
+            <ProfileDropdown />
+          </Animate>
+        </div>
+
+        {/* Theme */}
+        <div className="shrink-0">
+          <Animate variant="fade">
+            <ThemeDropdown />
+          </Animate>
+        </div>
       </div>
-      <Animate variant="fade">
-        <ThemeDropdown />
-      </Animate>
     </header>
   );
 };

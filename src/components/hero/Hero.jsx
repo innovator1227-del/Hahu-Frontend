@@ -7,7 +7,7 @@ const Hero = () => {
       <section className="relative min-h-[600px] overflow-hidden">
         {/* Content */}
         <div className="relative z-10 mx-auto w-full px-4 py-6">
-          <div className="grid grid-cols-1 items-stretch gap-6 lg:grid-cols-2">
+          <div className="grid grid-cols-1 items-stretch gap-6 xl:grid-cols-2">
             <HeroPart />
             <HeroView />
           </div>

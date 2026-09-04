@@ -5,7 +5,7 @@ const Login = () => {
   const { theme } = useThemeStore();
   return (
     <div
-      className={`min-h-screen flex
+      className={`min-h-screen flex-col lg:flex-row flex items-center justify-center gap-6 p-4
         ${
           theme === "darkblue" || theme === "black"
             ? "bg-slate-900"
@@ -14,19 +14,21 @@ const Login = () => {
     `}
     >
       {/* Left Side */}
-      <div className="hidden lg:flex flex-1 flex-col justify-center px-20">
-        <h1 className="text-5xl font-extrabold">
+      <div className="lg:flex flex-1 flex-col justify-center px-20">
+        <h1 className="text-2xl md:text-3xl   lg:text-5xl font-extrabold">
           HAHU <span className="text-blue-500">MARKET</span>
         </h1>
 
-        <h2 className="mt-4 text-3xl font-bold">Admin Management Portal</h2>
+        <h2 className="mt-4 text-xl md:text-2xl lg:text-3xl font-bold">
+          Admin Management Portal
+        </h2>
 
         <p className="mt-6 max-w-lg leading-7">
           Trustly and Securely manage products, orders, customers, categories,
           inventory, analytics, and business operations from one place.
         </p>
 
-        <div className="mt-10 space-y-4">
+        <div className="mt-10 space-y-4 font-normal text-sm md:text-base lg:text-lg">
           <p>✅ Product Management</p>
           <p>✅ Order Tracking</p>
           <p>✅ Customer Management</p>

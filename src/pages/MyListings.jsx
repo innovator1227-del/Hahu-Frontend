@@ -1,10 +1,10 @@
-import { useProducts } from "@/store/productStore";
+import productStore from "@/store/productStore";
 import useThemeStore from "@/store/themeStore";
 import { Link } from "react-router-dom";
 
 const MyListings = () => {
   const { theme } = useThemeStore();
-  const { products } = useProducts();
+  const { products } = productStore();
 
   return (
     <div className="space-y-6">
@@ -24,7 +24,7 @@ const MyListings = () => {
           <p>You have no listings yet.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {products.map((product) => (
             <div
               key={product.id}

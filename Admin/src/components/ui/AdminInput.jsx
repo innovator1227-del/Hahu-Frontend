@@ -1,24 +1,18 @@
 import { twMerge } from "tailwind-merge";
 import useTheme from "../../hooks/useTheme";
-import useThemeStore from "../../stores/ThemeStore";
 
 const AdminInput = ({ label, error, className, ...props }) => {
   const currentTheme = useTheme();
-  const { theme, setTheme } = useThemeStore();
+
   return (
-    <div
-      className={`w-full
-      ${currentTheme.header}
-      ${currentTheme.text} `}
-    >
+    <div className={twMerge("w-full", currentTheme.header, currentTheme.text)}>
       {label && (
-        <label className="mb-2 text-sm font-medium text-slate-700">
-          {label}
-        </label>
+        <label className="mb-2 block text-sm font-medium">{label}</label>
       )}
+
       <input
         className={twMerge(
-          "w-xl gap-2 h-12 rounded-xl border shadow-none px-4 text-sm placeholder:text-slate-400 outline-none transition-colors duration-all focus:border-gray-500 focus:ring-0.5 focus:ring-gray-500",
+          `block w-full  h-10 rounded-xl border px-4 text-sm outline-none shadow-none placeholder:text-slate-400 transition-colors duration-300 focus:border-gray-500 focus:ring-1 focus:ring-gray-500`,
           error && "border-red-500 focus:border-red-400 focus:ring-red-400",
           className,
         )}

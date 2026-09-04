@@ -1,16 +1,16 @@
 import { Link } from "react-router-dom";
-import { useProducts } from "@/store/productStore";
-import { useWishlist } from "@/store/wishlistStore";
-import { useOrders } from "@/store/orderStore";
+import productStore from "@/store/productStore";
+import whishlistStore from "@/store/wishlistStore";
+import orderStore from "@/store/orderStore";
 import useThemeStore from "@/store/themeStore";
 
 const Dashboard = () => {
   const { theme } = useThemeStore();
-  const { products } = useProducts();
+  const { products } = productStore();
 
-  const { wishlist } = useWishlist();
+  const { wishlist } = whishlistStore();
 
-  const { orders } = useOrders();
+  const { orders } = orderStore();
   const myListings = products.filter((product) => product.status === "PENDING");
 
   return (

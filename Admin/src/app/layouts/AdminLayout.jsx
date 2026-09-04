@@ -5,7 +5,7 @@ import useTheme from "@/hooks/useTheme";
 import { Outlet } from "react-router-dom";
 
 const AdminLayout = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const currentTheme = useTheme();
 
@@ -14,20 +14,34 @@ const AdminLayout = () => {
       className={`flex min-h-screen w-full ${currentTheme.background} ${currentTheme.text}`}
     >
       {/* Sidebar */}
-      <aside className="sticky top-0 h-screen shrink-0">
-        <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
+      <aside
+        className={`
+          fixed left-0 top-0 z-50 h-screen
+          transition-transform duration-300
+          ${isOpen ? "translate-x-0" : "-translate-x-full"}
+          md:sticky md:translate-x-0
+        `}
+      >
+        <Sidebar
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
+          onClose={() => setIsOpen(false)}
+        />
       </aside>
 
-      <div className="flex flex-col flex-1">
+      {/* Main area */}
+      <div className="flex min-w-0 flex-1 flex-col">
         <Header isOpen={isOpen} setIsOpen={setIsOpen} />
 
-        <main className="flex-1 p-6">
+        <main className="min-w-0 flex-1 p-6">
           <Outlet />
         </main>
+
         <footer
-          className={`h-14 flex items-center justify-center text-sm
-           ${currentTheme.header}
-           ${currentTheme.text}
+          className={`
+            flex h-14 items-center justify-center text-sm
+            ${currentTheme.header}
+            ${currentTheme.text}
           `}
         >
           © 2026 HAHU Market Admin Dashboard

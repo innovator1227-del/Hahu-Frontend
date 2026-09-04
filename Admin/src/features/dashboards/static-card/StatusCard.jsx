@@ -30,7 +30,7 @@ const StatusCard = ({ title, value, change, icon: Icon, color }) => {
 
       <div className="mt-4 h-1.5 rounded-full bg-slate-300 overflow-hidden">
         <div
-          className={`h-full rounded-full ${color} transition-all duration-700`}
+          className={`rounded-full ${color} transition-all duration-700`}
           style={{ width: "70%" }}
         />
       </div>

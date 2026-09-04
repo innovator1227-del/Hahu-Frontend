@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useProducts } from "@/store/productStore";
+import productStore from "@/store/productStore";
 import useListingForm from "./hooks/useListingForm";
 import ListingBasicInfo from "./components/ListingBasicInfo";
 import ListingImageUpload from "./components/image-upload/ListingImageUpload";
@@ -13,7 +13,7 @@ import useThemeStore from "@/store/themeStore";
 const SellerAddProduct = () => {
   const { theme } = useThemeStore();
   const navigate = useNavigate();
-  const { addProduct } = useProducts();
+  const { addProduct } = productStore();
 
   const { form, updateField, resetForm } = useListingForm();
 

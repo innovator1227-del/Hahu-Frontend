@@ -1,9 +1,9 @@
 import useThemeStore from "@/store/themeStore";
-import { useWishlist } from "@/store/wishlistStore";
+import whishlistStore from "@/store/wishlistStore";
 
 const Wishlist = () => {
   const { theme } = useThemeStore();
-  const { wishlist, removeFromWishlist } = useWishlist();
+  const { wishlist, removeFromWishlist } = whishlistStore();
 
   return (
     <div className="space-y-6">
@@ -14,7 +14,7 @@ const Wishlist = () => {
           <p>Your wishlist is empty.</p>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {wishlist.map((product) => (
             <div
               key={product.id}

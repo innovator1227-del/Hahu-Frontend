@@ -5,7 +5,7 @@ import { Tooltip } from "react-tooltip";
 import { ShieldCheck } from "lucide-react";
 import useTheme from "../../../hooks/useTheme";
 
-const Sidebar = ({ isOpen, setIsOpen }) => {
+const Sidebar = ({ isOpen, setIsOpen, onClose }) => {
   const currentTheme = useTheme();
   return (
     <div>
@@ -17,6 +17,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
         ${currentTheme.sidebar}
         ${currentTheme.text}top-0 left-0 h-screen sticky z-50 p-4 flex flex-col gap-8 transition-colors duration-500 ease-in-out
         `}
+        onClick={onClose}
       >
         <div
           className={`flex items-center ${isOpen ? "justify-start" : "justify-center"}`}
