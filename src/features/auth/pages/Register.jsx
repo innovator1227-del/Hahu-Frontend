@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+﻿import { useState,useEffect} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   Eye,
@@ -18,6 +18,10 @@ import { scaleIn } from "@/utils/animate";
 import { motion } from "framer-motion";
 
 const Register = () => {
+  useEffect(() => {
+  clearAuthError();
+}, []);
+
   const { theme } = useThemeStore();
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -32,7 +36,7 @@ const Register = () => {
     agreeTerms: false,
   });
 
-  const { register, authError, isLoading } = useAuth();
+  const { register, authError, isLoading, clearAuthError } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -282,7 +286,7 @@ const Register = () => {
             </label>
           </div>
 
-          <Button type="submit" disabled={isLoading} as child variant="primary">
+          <Button type="submit" disabled={isLoading} variant="primary">
             {isLoading ? "Creating account..." : "Create Account"}
           </Button>
 

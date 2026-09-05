@@ -1,10 +1,16 @@
 import productStore from "@/store/productStore";
 import useThemeStore from "@/store/themeStore";
 import { Link } from "react-router-dom";
+import { useAuth } from "@/store/authStore";
 
 const MyListings = () => {
   const { theme } = useThemeStore();
   const { products } = productStore();
+  const { user } = useAuth();
+
+  const myProducts = products.filter(
+    (product) => product.sellerId === user.id
+  );
 
   return (
     <div className="space-y-6">
@@ -19,16 +25,18 @@ const MyListings = () => {
         </Link>
       </div>
 
-      {products.length === 0 ? (
+      {myProducts.length === 0 ? (
         <div className="p-6 rounded-xl shadow">
           <p>You have no listings yet.</p>
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {products.map((product) => (
+          {myProducts.map((product) => (
             <div
               key={product.id}
-              className={`rounded-xl shadow-2xl overflow-hidden transition-all duration-500 ease-in-out hover:scale-105 cursor-pointer ${theme === "dark" ? "bg-slate-900/80" : "bg-slate-50"}`}
+              className={`rounded-xl shadow-2xl overflow-hidden transition-all duration-500 ease-in-out hover:scale-105 cursor-pointer ${
+                theme === "dark" ? "bg-slate-900/80" : "bg-slate-50"
+              }`}
             >
               <img
                 src={product.images?.[0]}
@@ -43,7 +51,9 @@ const MyListings = () => {
                   {product.price} ETB
                 </p>
 
-                <p className="text-gray-500 text-sm mt-1">{product.category}</p>
+                <p className="text-gray-500 text-sm mt-1">
+                  {product.category}
+                </p>
 
                 <div className="mt-4">
                   <span

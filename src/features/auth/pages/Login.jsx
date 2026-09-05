@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+﻿import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 import { useAuth } from "@/store/authStore.jsx";
@@ -9,6 +9,10 @@ import { motion } from "framer-motion";
 import { fadeIn, scaleIn, slideRight } from "@/utils/animate";
 
 const Login = () => {
+  useEffect(() => {
+    clearAuthError();
+  }, []);
+
   const { theme } = useThemeStore();
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -16,7 +20,7 @@ const Login = () => {
     password: "",
     rememberMe: false,
   });
-  const { login, authError, isLoading } = useAuth();
+  const { login, authError, isLoading, clearAuthError } = useAuth();
   const navigate = useNavigate();
 
   const handleChange = (e) => {

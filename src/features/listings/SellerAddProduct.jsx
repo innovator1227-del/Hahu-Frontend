@@ -9,11 +9,13 @@ import ListingDropdown from "./components/ListingDropdown";
 import ListingLocation from "./components/location/ListingLocation";
 import ListingPreview from "./components/preview/ListingPreview";
 import useThemeStore from "@/store/themeStore";
+import { useAuth } from "@/store/authStore";
 
 const SellerAddProduct = () => {
   const { theme } = useThemeStore();
   const navigate = useNavigate();
   const { addProduct } = productStore();
+  const { user } = useAuth();
 
   const { form, updateField, resetForm } = useListingForm();
 
@@ -27,8 +29,7 @@ const SellerAddProduct = () => {
       !form.price ||
       !form.category ||
       form.images.length === 0 ||
-      !form.condition ||
-      !form.location.city.trim()
+      !form.condition
     ) {
       setMessage("Please complete all required fields before submitting.");
       return;
@@ -37,6 +38,7 @@ const SellerAddProduct = () => {
     addProduct({
       ...form,
       price: Number(form.price),
+      sellerId: user.id,
     });
 
     setMessage(
@@ -64,11 +66,7 @@ const SellerAddProduct = () => {
       <div
         className={`max-w-5xl mx-auto rounded-2xl ${theme === "dark" ? "bg-slate-950" : ""}`}
       >
-        {message && (
-          <div className="mb-6 rounded-xl bg-green-100 px-4 py-3 text-green-700">
-            {message}
-          </div>
-        )}
+
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <ListingDropdown
@@ -106,17 +104,25 @@ const SellerAddProduct = () => {
           >
             <ListingPreview form={form} />
           </ListingDropdown>
+
+          {message && (
+            <div className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium text-red-700">
+              {message}
+            </div>
+          )}
+
+          <div className="pt-2">
+            <button
+              type="submit"
+              className="w-48 rounded-2xl bg-green-700 py-3 font-semibold text-slate-800 transition-all duration-500 ease-in-out hover:bg-green-500 cursor-pointer hover:scale-[1.02]"
+            >
+              Submit Product
+            </button>
+          </div>
         </form>
       </div>
 
-      <div className="mt-2">
-        <button
-          type="submit"
-          className="w-48 rounded-2xl bg-green-700 py-3 font-semibold text-slate-800 transition-all duration-500 ease-in-out hover:bg-green-500 cursor-pointer hover:scale-[1.02] m-auto"
-        >
-          Submit Product
-        </button>
-      </div>
+
     </>
   );
 };
