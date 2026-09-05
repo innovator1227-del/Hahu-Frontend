@@ -22,7 +22,7 @@ const HeroPart = () => {
   };
   return (
     <ThemeBackground>
-      <section className="flex flex-col lg:flex-row rounded-2xl border-l-0 md:p-6 shadow-2xl hover:shadow-2xl transition-all duration-300 hover:translate-x-1 min-w-0 px-6 w-full h-full mt-0 mb-0 items-center justify-between gap-6 p-5">
+      <section className="flex flex-col lg:flex-row rounded-2xl border-l-0 md:p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:translate-x-1 min-w-0 px-6 w-full h-full mt-0 mb-0 items-center justify-between gap-6 p-5 font-serif">
         {/* LEFT CONTENT */}
         <div className="w-full self-start lg:w-1/2">
           <div className="pt-4 md:pt-8">

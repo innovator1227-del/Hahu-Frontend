@@ -1,5 +1,6 @@
 import HeroPart from "./components/pages/HeroPart";
 import HeroView from "./components/pages/HeroView";
+import Reasining from "./components/pages/Reasining";
 
 const Hero = () => {
   return (
@@ -13,7 +14,7 @@ const Hero = () => {
           </div>
         </div>
       </section>
-      <h1>hero</h1>
+      <Reasining />
     </>
   );
 };
