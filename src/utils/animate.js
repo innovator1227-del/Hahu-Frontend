@@ -31,10 +31,10 @@ export const slideLeft = (delay) => {
   return {
     hidden: {
       opacity: 0,
-      x: +100,
+      x: +50,
     },
     visible: {
-      opacity: 100,
+      opacity: 1,
       x: 0,
       transition: {
         duration: 1,
@@ -48,10 +48,10 @@ export const slideRight = (delay) => {
   return {
     hidden: {
       opacity: 0,
-      x: -100,
+      x: -50,
     },
     visible: {
-      opacity: 100,
+      opacity: 1,
       x: 0,
       transition: {
         duration: 1,
@@ -61,18 +61,19 @@ export const slideRight = (delay) => {
   };
 };
 
-export const slideUp = (delay) => {
+export const slideUp = (delay = 0) => {
   return {
     hidden: {
       opacity: 0,
-      y: +100,
+      y: +50,
     },
     visible: {
-      opacity: 100,
+      opacity: 1,
       y: 0,
       transition: {
-        duration: 1,
-        delay: delay,
+        duration: 0.6,
+        delay,
+        ease: "easeout",
       },
     },
   };

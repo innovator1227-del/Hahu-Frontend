@@ -1,5 +1,7 @@
 import HeroPart from "./components/pages/HeroPart";
 import HeroView from "./components/pages/HeroView";
+import Reasining from "./components/pages/Reasining";
+import Service from "./components/pages/hahu-service/Service";
 
 const Hero = () => {
   return (
@@ -13,7 +15,9 @@ const Hero = () => {
           </div>
         </div>
       </section>
-      <h1>hero</h1>
+      <Reasining />
+
+      <Service />
     </>
   );
 };
