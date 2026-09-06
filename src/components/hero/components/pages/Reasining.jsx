@@ -15,7 +15,7 @@ const Reasining = () => {
   const theme = useThemeStore((state) => state.theme);
   return (
     <div
-      className={`min-h-[40vh] flex-1 py-12 items-center justify-center px-4 sm:px-6 font-serif  ${theme === "dark" ? "bg-slate-900" : "bg-slate-50"} `}
+      className={`min-h-[40vh] flex-1 py-8 items-center justify-center px-4 sm:px-6 font-serif  ${theme === "dark" ? "bg-slate-900" : "bg-slate-50"} `}
     >
       <div className="flex flex-col space-y-3 items-center justify-between">
         <h1 className="text-2xl font-bold items-center justify-center">
@@ -33,7 +33,7 @@ const Reasining = () => {
           variants={slideUp(0)}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.3 }}
           className={`flex flex-col items-center justify-center m-5 p-4 rounded-lg shadow-2xl hover:translate-x-2 transition-all duration-500 ${theme === "dark" ? "bg-slate-800" : "bg-slate-200"} `}
         >
           <ShieldCheck
@@ -60,7 +60,7 @@ const Reasining = () => {
           variants={slideUp(0)}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.3 }}
           className={`flex flex-col items-center justify-center m-5 p-4 rounded-lg shadow-2xl hover:translate-x-2 transition-all duration-500 ${theme === "dark" ? "bg-slate-800" : "bg-slate-200"} `}
         >
           <CircleDollarSign
@@ -87,7 +87,7 @@ const Reasining = () => {
           variants={slideUp(0)}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.3 }}
           className={`flex flex-col items-center justify-center m-5 p-4 rounded-lg shadow-2xl hover:translate-x-2 transition-all duration-500 ${theme === "dark" ? "bg-slate-800" : "bg-slate-200"} `}
         >
           <Van
@@ -112,7 +112,7 @@ const Reasining = () => {
           variants={slideUp(0)}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
+          viewport={{ once: true, amount: 0.3 }}
           className={`flex flex-col items-center justify-center m-5 p-4 rounded-lg shadow-2xl hover:translate-x-2 transition-all duration-500 ${theme === "dark" ? "bg-slate-800" : "bg-slate-200"} `}
         >
           <Star
