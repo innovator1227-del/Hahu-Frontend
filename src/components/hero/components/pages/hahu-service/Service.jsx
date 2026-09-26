@@ -9,28 +9,31 @@ const Service = () => {
   const theme = useThemeStore((state) => state.theme);
   return (
     <ThemeBackground>
-      <div className="flex-1 py-8 items-center justify-center px-4 sm:px-6 font-serif">
-        <div className="flex flex-col space-y-3 items-center justify-between">
-          <h1 className="text-sm bg-blue-300 text-black rounded-2xl p-2 mb-3">
-            our service
-          </h1>
-          <h1 className="text-2xl font-bold items-center justify-center">
-            Our comprhensive market solution
-          </h1>
+      <section className="px-4 py-12 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="inline-flex rounded-full bg-blue-100 px-4 py-1.5 text-sm font-medium text-blue-700">
+              Our services
+            </span>
 
-          <p className="text-sm font-extralight space-y-2.5">
-            Unlock the value of your pre-loved items and discover premium
-            second-hand items on HAHU. Buy. Sell. Reuse. — Give every item a
-            second life.
-          </p>
+            <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">
+              Our comprehensive marketplace solution
+            </h1>
+
+            <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 sm:text-base">
+              Unlock the value of your pre-loved items and discover quality
+              second-hand products on HAHU. Buy. Sell. Reuse. Give every item a
+              second life.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 max-w-7xl mx-auto">
+            <AllInOne />
+            <UsedFocus />
+            <IntegratedChat />
+            <Escrow />
+          </div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-0 mt-4">
-          <AllInOne />
-          <UsedFocus />
-          <IntegratedChat />
-          <Escrow />
-        </div>
-      </div>
+      </section>
     </ThemeBackground>
   );
 };

@@ -1,66 +1,146 @@
 import useThemeStore from "@/store/themeStore";
 import { slideLeft } from "@/utils/animate";
 import { motion } from "framer-motion";
-import { Asterisk, CircleCheckBig, RefreshCcw } from "lucide-react";
-import React from "react";
+import { Asterisk, ArrowRight, CircleCheckBig, RefreshCcw } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const UsedFocus = () => {
   const theme = useThemeStore((state) => state.theme);
+
+  const isDark = theme === "dark";
+
   return (
     <motion.div
       variants={slideLeft(0)}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
-      className={`flex flex-col gap-0.5 rounded-2xl w-full max-w-xl  shadow-2xl hover:translate-x-1.5 transition-all duration-300 ${theme === "dark" ? "bg-slate-900" : "bg-slate-100"} `}
+      className={`group flex h-full w-full flex-col overflow-hidden rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-1 ${
+        isDark ? "bg-slate-900" : "bg-slate-100"
+      }`}
     >
       <div
-        className={`flex flex-1 gap-0.5 p-2 rounded-2xl ${theme === "dark" ? "bg-slate-800" : "bg-slate-200"} `}
+        className={`flex items-center gap-4 p-4 ${
+          isDark ? "bg-slate-800" : "bg-slate-200"
+        }`}
       >
         <RefreshCcw
-          size={50}
-          className="text-green-600 bg-blue-300 rounded-2xl p-2"
+          size={30}
+          className="shrink-0 rounded-xl bg-blue-300 p-2 text-green-600"
         />
-        <h1 className="text-xl flex-1 p-2">
-          second Hand focused and easy searching for listed items
-        </h1>
+
+        <h2
+          className={`min-w-0 text-lg font-semibold leading-snug sm:text-xl ${
+            isDark ? "text-white" : "text-slate-900"
+          }`}
+        >
+          Second-hand focused marketplace made easy
+        </h2>
       </div>
-      <div className="m-1">
-        <div className="flex flex-1 gap-0.5">
-          <Asterisk className="text-green-800" />
-          <p className="font-semibold">
-            our core focus is to unluck second items and reuse those item a a
-            new lexury conditon, let's find second and pre-owned items
+
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        <div className="flex gap-2">
+          <Asterisk size={18} className="mt-1 shrink-0 text-green-600" />
+
+          <p
+            className={`text-sm font-medium leading-6 ${
+              isDark ? "text-slate-500" : "text-slate-400"
+            }`}
+          >
+            Our core focus is giving pre-owned and second-hand items a new life.
+            Discover quality products, save money, and make better use of items
+            that still have value.
           </p>
         </div>
-        <div className="m-6 grid grid-cols-1 md:grid-cols-2">
-          <div className="flex flex-1 gap-1">
-            <CircleCheckBig size={18} className="text-green-500" />
-            <h1>Give It a Second Life</h1>
+
+        <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
+          <div className="flex items-start gap-2">
+            <CircleCheckBig
+              size={18}
+              className="mt-0.5 shrink-0 text-green-500"
+            />
+
+            <p
+              className={`text-sm leading-5 ${
+                isDark ? "text-slate-300" : "text-slate-700"
+              }`}
+            >
+              Give unused items a second life.
+            </p>
           </div>
 
-          <div className="flex flex-1 gap-1">
-            <CircleCheckBig size={26} className="text-green-500" />
-            <h1>
-              Buy quality second-hand products while saving money and reducing
-              waste.
-            </h1>
+          <div className="flex items-start gap-2">
+            <CircleCheckBig
+              size={18}
+              className="mt-0.5 shrink-0 text-green-500"
+            />
+
+            <p
+              className={`text-sm leading-5 ${
+                isDark ? "text-slate-300" : "text-slate-700"
+              }`}
+            >
+              Buy quality second-hand products
+            </p>
           </div>
-          <div className="flex flex-1 gap-1">
-            <CircleCheckBig size={26} className="text-green-500" />
-            <h1>
-              HAHU connects sellers with buyers looking for quality second-hand
-              products.
-            </h1>
+
+          <div className="flex items-start gap-2">
+            <CircleCheckBig
+              size={18}
+              className="mt-0.5 shrink-0 text-green-500"
+            />
+
+            <p
+              className={`text-sm leading-5 ${
+                isDark ? "text-slate-300" : "text-slate-700"
+              }`}
+            >
+              searching valuable pre-owned products.
+            </p>
           </div>
-          <div className="flex flex-1 gap-1">
-            <CircleCheckBig size={18} className="text-green-500" />
-            <h1>Explore second-hand products that offer quality</h1>
+
+          <div className="flex items-start gap-2">
+            <CircleCheckBig
+              size={18}
+              className="mt-0.5 shrink-0 text-green-500"
+            />
+
+            <p
+              className={`text-sm leading-5 ${
+                isDark ? "text-slate-300" : "text-slate-700"
+              }`}
+            >
+              Explore affordable second-hand products without endless searching.
+            </p>
           </div>
-          <div className="flex flex-1 gap-1">
-            <CircleCheckBig size={18} className="text-green-500" />
-            <h1>Give your unused items value</h1>
+
+          <div className="flex items-start gap-2">
+            <CircleCheckBig
+              size={18}
+              className="mt-0.5 shrink-0 text-green-500"
+            />
+
+            <p
+              className={`text-sm leading-5 ${
+                isDark ? "text-slate-300" : "text-slate-700"
+              }`}
+            >
+              Turn your unused possessions into something valuable.
+            </p>
           </div>
+        </div>
+
+        <div className="mt-auto pt-6">
+          <Link
+            to="/app/services/used-focus"
+            className="group/btn inline-flex items-center gap-2 rounded-xl bg-green-600 px-4 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:bg-green-700"
+          >
+            Explore second-hand
+            <ArrowRight
+              size={17}
+              className="transition-transform duration-300 group-hover/btn:translate-x-1"
+            />
+          </Link>
         </div>
       </div>
     </motion.div>
