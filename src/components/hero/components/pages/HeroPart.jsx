@@ -1,158 +1,149 @@
-import slogan from "@/assets/slogan.png";
-import photo from "@/assets/Item.jpg";
-import { scaleIn, slideRight, slideUp } from "@/utils/animate";
-import { motion } from "framer-motion";
-import {
-  ShieldCheck,
-  Wallet,
-  Truck,
-  Check,
-  ShoppingBasket,
-} from "lucide-react";
-import ThemeBackground from "@/components/ThemeBackground";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import photo from '@/assets/Item.jpg';
+import slogan from '@/assets/slogan.png';
+import useThemeStore from '@/store/themeStore';
+import { scaleIn, slideRight } from '@/utils/animate';
+import { motion } from 'framer-motion';
+import { Check, ShieldCheck, ShoppingBasket, Truck, Wallet } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import Slider from 'react-slick';
 
 const HeroPart = () => {
-  const settings = {
-    dots: true,
+  const theme = useThemeStore((state) => state.theme);
+  const isDark = theme === 'dark';
+
+  const imageSettings = {
+    dots: false,
+    arrows: false,
     infinite: true,
-    speed: 700,
+    autoplay: true,
+    autoplaySpeed: 3500,
+    speed: 600,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    arrows: false,
     pauseOnHover: true,
   };
+
+  const features = ['Quality finds', 'Secure deals', 'Direct chat', 'Delivery'];
+
   return (
-    <ThemeBackground>
-      <section className="flex flex-col lg:flex-row rounded-2xl border-l-0 md:p-6 shadow-xl hover:shadow-2xl transition-all duration-500 hover:translate-x-1 min-w-0 px-6 w-full h-full mt-0 mb-0 items-center justify-between gap-6 p-5 font-serif">
-        {/* LEFT CONTENT */}
-        <div className="w-full self-start lg:w-1/2">
-          <div className="pt-4 md:pt-8">
-            <motion.h3
-              variants={slideRight(0)}
-              initial="hidden"
-              animate="visible"
-              className="text-4xl font-bold text-green-800 md:text-5xl lg:text-6xl py-10"
-            >
-              HAHU-Market
-            </motion.h3>
+    <motion.div
+      variants={slideRight(0)}
+      initial="hidden"
+      animate="visible"
+      className={`grid h-full w-full grid-cols-1 overflow-hidden rounded-3xl border shadow-lg sm:min-h-[430px] lg:grid-cols-2 ${
+        isDark ? 'border-slate-700 bg-slate-900' : 'border-slate-200 bg-white'
+      }`}
+    >
+      {/* LEFT */}
+      <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
+        <span className="w-fit rounded-full bg-green-100 px-3 py-1 text-xs font-semibold text-green-700">
+          Buy • Sell • Reuse
+        </span>
 
-            <motion.p
-              variants={slideRight(0.15)}
-              initial="hidden"
-              animate="visible"
-              className="mt-3 text-sm font-medium text-amber-500 md:text-base"
-            >
-              Buy smart, sell easy — find it on HAHU.
-            </motion.p>
-          </div>
+        <motion.h1
+          variants={slideRight(0.1)}
+          className={`mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl ${
+            isDark ? 'text-white' : 'text-slate-900'
+          }`}
+        >
+          HAHU Market
+        </motion.h1>
 
-          <motion.p
-            variants={slideRight(0.3)}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.5 }}
-            className="mt-6 max-w-xl lg:text-sm leading-6 opacity-70 md:text-base"
-          >
-            HAHU is a trusted second-hand marketplace that connects buyers and
-            sellers in a secure and convenient environment.
-          </motion.p>
+        <motion.p
+          variants={slideRight(0.2)}
+          className="mt-3 text-base font-semibold text-green-600 sm:text-lg"
+        >
+          Buy smart. Sell easy.
+        </motion.p>
 
-          <motion.div
-            variants={slideRight(0.5)}
-            initial="hidden"
-            animate="visible"
-            className="mt-10 space-y-1"
-          >
-            <p className="flex flex-1 gap-2">
-              <Check size={28} className="text-green-500" /> Trusted Deals.
-              Better Prices. Smarter Shopping
-            </p>
-            <p className="flex flex-1 gap-2">
-              <Check size={28} className="text-green-500" /> Trusted Deals. Buy
-              Second-Hand. Sell with Confidence.
-            </p>
-            <p className="flex flex-1 gap-2">
-              <Check size={28} className="text-green-500" /> Trusted Deals. Find
-              It. Negotiate It, Own It
-            </p>
-            <p className="flex flex-1 gap-2">
-              <Check size={28} className="text-green-500" /> Trusted Deals. Buy
-              Second-Hand. Sell with Confidence.
-            </p>
-          </motion.div>
+        <p
+          className={`mt-3 max-w-lg text-sm leading-6 ${
+            isDark ? 'text-slate-300' : 'text-slate-600'
+          }`}
+        >
+          Quality second-hand products, secure deals, and easy seller chat.
+        </p>
+
+        {/* Features */}
+        <div className="mt-5 grid grid-cols-2 gap-2">
+          {features.map((feature) => (
+            <div key={feature} className="flex items-center gap-2">
+              <Check size={16} className="shrink-0 text-green-500" />
+              <span className="text-xs sm:text-sm">{feature}</span>
+            </div>
+          ))}
         </div>
 
-        {/* RIGHT CONTENT */}
-        <div className="flex w-full flex-col items-center lg:w-1/2 min-h-[500px]">
-          {/* IMAGE */}
-          <div className="w-full">
-            <Slider {...settings}>
-              <motion.div
-                variants={scaleIn(0)}
-                initial="hidden"
-                animate="visible"
-                className="flex justify-center"
-              >
-                <img
-                  src={slogan}
-                  alt="HAHU Marketplace"
-                  className="h-auto w-52 object-contain sm:w-60 md:w-64 lg:w-96"
-                />
-              </motion.div>
-
-              <div className="flex justify-center">
-                <img
-                  src={photo}
-                  alt="HAHU Marketplace"
-                  className="h-auto w-52 object-contain sm:w-60 md:w-64 lg:w-96"
-                />
-              </div>
-            </Slider>
-          </div>
-
-          {/* QUICK ACTIONS */}
-          <motion.div
-            variants={slideUp(0)}
-            initial="hidden"
-            animate="visible"
-            className="mt-auto grid w-full max-w-md grid-cols-4 gap-6"
+        {/* Buttons */}
+        <div className="mt-6 flex flex-col gap-2 sm:flex-row">
+          <Link
+            to="/app/browse"
+            className="rounded-xl bg-green-600 px-4 py-2.5 text-center text-sm font-semibold text-white transition hover:bg-green-700"
           >
-            <div className="flex flex-col items-center gap-1 text-center">
-              <ShoppingBasket size={28} className="h-5 w-5 text-purple-500" />
-              <span className="text-[10px] font-medium sm:text-xs">
-                Quality Second Hand Product
-              </span>
-            </div>
-            <div className="flex flex-col items-center gap-1 text-center">
-              <ShieldCheck size={28} className="h-5 w-5 text-purple-500" />
-              <span className="text-[10px] font-medium sm:text-xs">
-                Secure Transaction
-              </span>
-            </div>
+            Browse Listings
+          </Link>
 
-            <div className="flex flex-col items-center gap-1 text-center">
-              <Wallet size={28} className="h-5 w-5 text-purple-500" />
-              <span className="text-[10px] font-medium sm:text-xs">
-                Secure Wallet
-              </span>
-            </div>
-
-            <div className="flex flex-col items-center gap-1 text-center">
-              <Truck size={28} className="h-5 w-5 text-purple-500" />
-              <span className="text-[10px] font-medium sm:text-xs">
-                Delivery Available
-              </span>
-            </div>
-          </motion.div>
+          <Link
+            to="/app/sell"
+            className={`rounded-xl border px-4 py-2.5 text-center text-sm font-semibold ${
+              isDark
+                ? 'border-slate-600 text-white hover:bg-slate-800'
+                : 'border-slate-300 text-slate-800 hover:bg-slate-100'
+            }`}
+          >
+            Sell an Item
+          </Link>
         </div>
-      </section>
-    </ThemeBackground>
+      </div>
+
+      {/* RIGHT IMAGE */}
+      <div className="flex items-center justify-center p-4 sm:p-6">
+        <div className="w-full max-w-md">
+          <Slider {...imageSettings}>
+            <motion.div
+              variants={scaleIn(0)}
+              initial="hidden"
+              animate="visible"
+              className="flex h-52 items-center justify-center sm:h-60 lg:h-72"
+            >
+              <img
+                src={slogan}
+                alt="HAHU marketplace"
+                className="max-h-full w-full object-contain"
+              />
+            </motion.div>
+
+            <div className="flex h-52 items-center justify-center sm:h-60 lg:h-72">
+              <img
+                src={photo}
+                alt="HAHU marketplace"
+                className="max-h-full w-full object-contain"
+              />
+            </div>
+          </Slider>
+
+          {/* Trust items */}
+          <div
+            className={`mt-3 grid grid-cols-4 gap-1 rounded-2xl p-2 ${
+              isDark ? 'bg-slate-800' : 'bg-slate-50'
+            }`}
+          >
+            <MiniFeature icon={ShoppingBasket} text="Quality" />
+            <MiniFeature icon={ShieldCheck} text="Secure" />
+            <MiniFeature icon={Wallet} text="Protected" />
+            <MiniFeature icon={Truck} text="Delivery" />
+          </div>
+        </div>
+      </div>
+    </motion.div>
   );
 };
+
+const MiniFeature = ({ icon: Icon, text }) => (
+  <div className="flex flex-col items-center gap-1 text-center">
+    <Icon size={18} className="text-green-500" />
+    <span className="text-[9px] font-medium sm:text-[10px]">{text}</span>
+  </div>
+);
 
 export default HeroPart;
