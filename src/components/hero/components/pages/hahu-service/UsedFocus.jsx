@@ -1,37 +1,30 @@
-import useThemeStore from "@/store/themeStore";
-import { slideLeft } from "@/utils/animate";
-import { motion } from "framer-motion";
-import { Asterisk, ArrowRight, CircleCheckBig, RefreshCcw } from "lucide-react";
-import { Link } from "react-router-dom";
+import useThemeStore from '@/store/themeStore';
+import { slideLeft } from '@/utils/animate';
+import { motion } from 'framer-motion';
+import { ArrowRight, Asterisk, CircleCheckBig, RefreshCcw } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const UsedFocus = () => {
   const theme = useThemeStore((state) => state.theme);
 
-  const isDark = theme === "dark";
+  const isDark = theme === 'dark';
 
   return (
     <motion.div
-      variants={slideLeft(0)}
+      variants={slideLeft(0.2)}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
+      viewport={{ once: true, amount: 0 }}
       className={`group flex h-full w-full flex-col overflow-hidden rounded-2xl shadow-xl transition-all duration-300 hover:-translate-y-1 ${
-        isDark ? "bg-slate-900" : "bg-slate-100"
+        isDark ? 'bg-slate-900' : 'bg-slate-100'
       }`}
     >
-      <div
-        className={`flex items-center gap-4 p-4 ${
-          isDark ? "bg-slate-800" : "bg-slate-200"
-        }`}
-      >
-        <RefreshCcw
-          size={30}
-          className="shrink-0 rounded-xl bg-blue-300 p-2 text-green-600"
-        />
+      <div className={`flex items-center gap-4 p-4 ${isDark ? 'bg-slate-800' : 'bg-slate-200'}`}>
+        <RefreshCcw size={30} className="shrink-0 rounded-xl bg-blue-300 p-2 text-green-600" />
 
         <h2
           className={`min-w-0 text-lg font-semibold leading-snug sm:text-xl ${
-            isDark ? "text-white" : "text-slate-900"
+            isDark ? 'text-white' : 'text-slate-900'
           }`}
         >
           Second-hand focused marketplace made easy
@@ -44,87 +37,51 @@ const UsedFocus = () => {
 
           <p
             className={`text-sm font-medium leading-6 ${
-              isDark ? "text-slate-500" : "text-slate-400"
+              isDark ? 'text-slate-500' : 'text-slate-400'
             }`}
           >
-            Our core focus is giving pre-owned and second-hand items a new life.
-            Discover quality products, save money, and make better use of items
-            that still have value.
+            Our core focus is giving pre-owned and second-hand items a new life. Discover quality
+            products, save money, and make better use of items that still have value.
           </p>
         </div>
 
         <div className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
           <div className="flex items-start gap-2">
-            <CircleCheckBig
-              size={18}
-              className="mt-0.5 shrink-0 text-green-500"
-            />
+            <CircleCheckBig size={18} className="mt-0.5 shrink-0 text-green-500" />
 
-            <p
-              className={`text-sm leading-5 ${
-                isDark ? "text-slate-300" : "text-slate-700"
-              }`}
-            >
+            <p className={`text-sm leading-5 ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
               Give unused items a second life.
             </p>
           </div>
 
           <div className="flex items-start gap-2">
-            <CircleCheckBig
-              size={18}
-              className="mt-0.5 shrink-0 text-green-500"
-            />
+            <CircleCheckBig size={18} className="mt-0.5 shrink-0 text-green-500" />
 
-            <p
-              className={`text-sm leading-5 ${
-                isDark ? "text-slate-300" : "text-slate-700"
-              }`}
-            >
+            <p className={`text-sm leading-5 ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
               Buy quality second-hand products
             </p>
           </div>
 
           <div className="flex items-start gap-2">
-            <CircleCheckBig
-              size={18}
-              className="mt-0.5 shrink-0 text-green-500"
-            />
+            <CircleCheckBig size={18} className="mt-0.5 shrink-0 text-green-500" />
 
-            <p
-              className={`text-sm leading-5 ${
-                isDark ? "text-slate-300" : "text-slate-700"
-              }`}
-            >
+            <p className={`text-sm leading-5 ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
               searching valuable pre-owned products.
             </p>
           </div>
 
           <div className="flex items-start gap-2">
-            <CircleCheckBig
-              size={18}
-              className="mt-0.5 shrink-0 text-green-500"
-            />
+            <CircleCheckBig size={18} className="mt-0.5 shrink-0 text-green-500" />
 
-            <p
-              className={`text-sm leading-5 ${
-                isDark ? "text-slate-300" : "text-slate-700"
-              }`}
-            >
+            <p className={`text-sm leading-5 ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
               Explore affordable second-hand products without endless searching.
             </p>
           </div>
 
           <div className="flex items-start gap-2">
-            <CircleCheckBig
-              size={18}
-              className="mt-0.5 shrink-0 text-green-500"
-            />
+            <CircleCheckBig size={18} className="mt-0.5 shrink-0 text-green-500" />
 
-            <p
-              className={`text-sm leading-5 ${
-                isDark ? "text-slate-300" : "text-slate-700"
-              }`}
-            >
+            <p className={`text-sm leading-5 ${isDark ? 'text-slate-300' : 'text-slate-700'}`}>
               Turn your unused possessions into something valuable.
             </p>
           </div>

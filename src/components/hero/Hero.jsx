@@ -1,6 +1,7 @@
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
+import Categories from './components/pages/Categories';
 import Service from './components/pages/hahu-service/Service';
 import HeroPart from './components/pages/HeroPart';
 import HeroView from './components/pages/HeroView';
@@ -34,6 +35,8 @@ const Hero = () => {
           </Slider>
         </div>
       </section>
+
+      <Categories />
 
       <Reasining />
 

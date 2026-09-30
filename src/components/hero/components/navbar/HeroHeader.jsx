@@ -1,8 +1,8 @@
-import ThemeBackground from "@/components/ThemeBackground";
-import ThemeToggle from "@/components/ThemeToggle";
-import { useState } from "react";
-import { FaBars } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import ThemeBackground from '@/components/ThemeBackground';
+import ThemeToggle from '@/components/ThemeToggle';
+import { useState } from 'react';
+import { FaBars } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const HeroHeader = ({ heroMenu }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

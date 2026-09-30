@@ -1,16 +1,15 @@
-import Button from "@/components/ui/Button";
-import { Menu, Search, X } from "lucide-react";
-import React, { useEffect, useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Menu, Search, X } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const MobileMenu = ({ categories }) => {
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState('');
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navigate = useNavigate();
   const menuItems = [
-    { id: 1, name: "Home", link: "/app/home" },
-    { id: 2, name: "Browse", link: "/app/browse" },
+    { id: 1, name: 'Home', link: '/app/home' },
+    { id: 2, name: 'Browse', link: '/app/browse' },
   ];
 
   const location = useLocation();
@@ -18,7 +17,7 @@ const MobileMenu = ({ categories }) => {
     e.preventDefault();
     const query = searchText.trim();
 
-    navigate(query ? `/browse?search=${encodeURIComponent(query)}` : "/browse");
+    navigate(query ? `/browse?search=${encodeURIComponent(query)}` : '/browse');
   };
 
   useEffect(() => {
@@ -55,7 +54,7 @@ const MobileMenu = ({ categories }) => {
               <Link
                 key={item.id}
                 to={item.link}
-                className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-colors ${location.pathname === item.link ? "bg-slate-800 text-white" : "text-slate-300 hover:bg-slate-800/60"}`}
+                className={`block py-2.5 px-3 rounded-lg text-sm font-medium transition-colors ${location.pathname === item.link ? 'bg-slate-800 text-white' : 'text-slate-300 hover:bg-slate-800/60'}`}
               >
                 {item.name}
               </Link>
@@ -80,9 +79,7 @@ const MobileMenu = ({ categories }) => {
                   <span className="text-base">
                     <cat.icon size={20} />
                   </span>
-                  <span className="text-xs font-medium text-slate-300 truncate">
-                    {cat.name}
-                  </span>
+                  <span className="text-xs font-medium text-slate-300 truncate">{cat.name}</span>
                 </Link>
               ))}
             </div>

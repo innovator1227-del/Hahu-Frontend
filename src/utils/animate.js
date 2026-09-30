@@ -37,7 +37,7 @@ export const slideLeft = (delay) => {
       opacity: 1,
       x: 0,
       transition: {
-        duration: 1,
+        duration: 0.7,
         delay: delay,
       },
     },
@@ -54,7 +54,7 @@ export const slideRight = (delay) => {
       opacity: 1,
       x: 0,
       transition: {
-        duration: 1,
+        duration: 0.7,
         delay: delay,
       },
     },
@@ -73,7 +73,7 @@ export const slideUp = (delay = 0) => {
       transition: {
         duration: 0.6,
         delay,
-        ease: "easeout",
+        ease: 'easeout',
       },
     },
   };
