@@ -1,27 +1,27 @@
 const products = [
   {
-  id: 1,
-  title: "iPhone 13",
-  price: 45000,
-  category: "Phones",
-  images: ["https://images.unsplash.com/photo-1632661674596-618e0d3e0b6c"],
-  description: "iPhone 13, 128GB, excellent condition",
+    id: 1,
+    title: "iPhone 13",
+    price: 45000,
+    category: "Phones",
+    images: ["https://images.unsplash.com/photo-1632661674596-618e0d3e0b6c"],
+    description: "iPhone 13, 128GB, excellent condition",
 
-  brand: "Apple",
-  model: "iPhone 13",
-  age: "2 years",
-  condition: "Excellent",
+    brand: "Apple",
+    model: "iPhone 13",
+    age: "2 years",
+    condition: "Excellent",
 
-  location: {
-    address: "",
-    city: "Bahir Dar",
-    latitude: null,
-    longitude: null,
+    location: {
+      address: "",
+      city: "Bahir Dar",
+      latitude: null,
+      longitude: null,
+    },
+
+    pickupAvailable: true,
+    deliveryAvailable: false,
   },
-
-  pickupAvailable: true,
-  deliveryAvailable: false,
-},
   {
     id: 2,
     title: "HP Laptop",
@@ -42,7 +42,10 @@ const products = [
     title: "Modern Sofa",
     price: 20000,
     category: "Furniture",
-    images: ["https://images.unsplash.com/photo-1586023492125-27b2c045efd7"],
+    images: [
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7",
+      "https://images.unsplash.com/photo-1586023492125-27b2c045efd7",
+    ],
     description: "Comfortable 3-seat sofa, like new",
     place: "Bahirdar",
     time_served: "one year",
