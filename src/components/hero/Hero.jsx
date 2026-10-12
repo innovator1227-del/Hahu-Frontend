@@ -1,11 +1,18 @@
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick-theme.css';
-import 'slick-carousel/slick/slick.css';
-import Categories from './components/pages/Categories';
-import Service from './components/pages/hahu-service/Service';
-import HeroPart from './components/pages/HeroPart';
-import HeroView from './components/pages/HeroView';
-import Reasining from './components/pages/Reasining';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import Categories from "./components/pages/Categories";
+import Service from "./components/pages/hahu-service/Service";
+import HeroPart from "./components/pages/HeroPart";
+import HeroView from "./components/pages/HeroView";
+import Reasining from "./components/pages/Reasining";
+import About from "./components/pages/about/AboutUS";
+import AboutHahu from "./components/pages/AboutHahu";
+import Story from "./components/pages/Story";
+import Vission from "./components/pages/about/Vission";
+import ExploreGrid from "./components/pages/ExploreGrid";
+import HahuWork from "./components/pages/how_towork/HahuWork";
+import { teamMembers } from "./components/pages/about/AboutData";
 
 const Hero = () => {
   const settings = {
@@ -41,6 +48,12 @@ const Hero = () => {
       <Reasining />
 
       <Service />
+      <AboutHahu />
+      <Story />
+      <Vission />
+      <HahuWork />
+      <About teamMembers={teamMembers} />
+      <ExploreGrid />
     </>
   );
 };
