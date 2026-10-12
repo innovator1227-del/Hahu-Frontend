@@ -1,6 +1,8 @@
+import useThemeStore from "@/store/themeStore";
 import { Tag } from "lucide-react";
 
 const PreviewInfo = ({ title, price, category, brand, age, description }) => {
+  const theme = useThemeStore((state) => state.theme);
   return (
     <div className="flex flex-col">
       <div className="flex flex-wrap items-center gap-2">
@@ -39,7 +41,9 @@ const PreviewInfo = ({ title, price, category, brand, age, description }) => {
         )}
       </div>
 
-      <div className="mt-6 rounded-2xl border border-slate-200 p-4">
+      <div
+        className={`mt-6 rounded-2xl p-4 ${theme === "dark" ? "border border-slate-600" : "border border-slate-300"} `}
+      >
         <h3 className="text-sm font-semibold">Product summary</h3>
 
         <p className="mt-3 whitespace-pre-wrap break-words text-sm leading-7">

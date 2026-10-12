@@ -46,12 +46,6 @@ const HomeSection = ({ title, products }) => {
 
               <p className="text-gray-500 text-sm">{product.description}</p>
             </div>
-            <div className="mt-2 flex flex-1 gap-3  shadow-lg p-2 m-1 rounded-lg items-center w-full md:w-72 text-sm font-medium">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-green-600">
-                <Pointer className="h-5 w-5" />
-              </div>
-              click image to see detail
-            </div>
           </Link>
         ))}
       </div>

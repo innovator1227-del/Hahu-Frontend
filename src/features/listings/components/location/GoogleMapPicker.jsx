@@ -1,10 +1,12 @@
+import useThemeStore from "@/store/themeStore";
 import { MapIcon } from "lucide-react";
 
 const GoogleMapPicker = () => {
+  const theme = useThemeStore((state) => state.theme);
   return (
     <button
       type="button"
-      className="group flex min-h-[180px] w-full flex-col items-center justify-center rounded-2xl border-2 border-slate-300 px-6 py-8 text-center transition-all duration-300 hover:border-green-200 focus:outline-none focus:ring-0 focus:ring-offset-1 cursor-pointer"
+      className={`group flex min-h-[180px] w-full flex-col items-center justify-center rounded-2xl px-6 py-8 text-center transition-all duration-300 hover:border-green-200 focus:outline-none focus:ring-0 focus:ring-offset-1 cursor-pointer ${theme === "dark" ? "border border-slate-600" : "border border-slate-300"} `}
     >
       <span className="text-base font-semibold">Google Map</span>
 

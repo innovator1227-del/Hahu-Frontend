@@ -2,7 +2,7 @@ import useThemeStore from "@/store/themeStore";
 import { twMerge } from "tailwind-merge";
 
 const Input = ({ label, error, className, ...props }) => {
-  const { theme } = useThemeStore();
+  const theme = useThemeStore((state) => state.theme);
 
   return (
     <div className="w-full">
@@ -10,7 +10,7 @@ const Input = ({ label, error, className, ...props }) => {
 
       <input
         className={twMerge(
-          `w-full h-12 gap-2 rounded-2xl px-4 text-sm outline-none
+          `w-full h-12 gap-2 rounded-xl px-4 text-sm outline-none
            transition-all duration-300 focus:ring-0.5
            ${
              theme === "dark"

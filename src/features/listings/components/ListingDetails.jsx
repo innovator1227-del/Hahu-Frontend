@@ -1,7 +1,8 @@
+import Input from "@/components/ui/Input";
 import useThemeStore from "@/store/themeStore";
 
 const ListingDetails = ({ form, updateField }) => {
-  const { theme } = useThemeStore();
+  const theme = useThemeStore((state) => state.theme);
   const conditions = [
     {
       value: "New",
@@ -43,12 +44,11 @@ const ListingDetails = ({ form, updateField }) => {
         <div>
           <label className="mb-2 block text-sm font-semibold">Brand</label>
 
-          <input
+          <Input
             type="text"
             value={form.brand}
             onChange={(e) => updateField("brand", e.target.value)}
             placeholder="Example: Apple"
-            className="w-full rounded-xl border border-slate-400 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-0 focus:ring-blue-100"
           />
         </div>
 
@@ -56,12 +56,11 @@ const ListingDetails = ({ form, updateField }) => {
         <div>
           <label className="mb-2 block text-sm font-semibold">Model</label>
 
-          <input
+          <Input
             type="text"
             value={form.model}
             onChange={(e) => updateField("model", e.target.value)}
             placeholder="Example: iPhone 13 Pro"
-            className="w-full rounded-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-0 focus:ring-blue-100"
           />
         </div>
 
@@ -72,16 +71,18 @@ const ListingDetails = ({ form, updateField }) => {
           </label>
 
           <div className="flex">
-            <input
+            <Input
               type="number"
               min="0"
               value={form.age}
               onChange={(e) => updateField("age", e.target.value)}
               placeholder="Example: 2"
-              className="w-full rounded-l-xl border border-slate-300 px-4 py-3 outline-none transition focus:border-blue-500 focus:ring-0 focus:ring-blue-100"
+              className="border border-r-0"
             />
 
-            <span className="flex items-center rounded-r-xl border border-l-0 border-slate-300 px-4 text-sm">
+            <span
+              className={`flex items-center rounded-r-xl px-4 text-sm ${theme === "dark" ? "border border-slate-700 border-l-0" : "border border-slate-300 border-l-0"} `}
+            >
               years
             </span>
           </div>
@@ -108,10 +109,8 @@ const ListingDetails = ({ form, updateField }) => {
                 type="button"
                 onClick={() => updateField("condition", condition.value)}
                 className={`rounded-xl border p-4 text-left transition-all duration-200 ${
-                  selected
-                    ? "border-green-500 ring-0 ring-green-100"
-                    : "border-slate-200 hover:border-slate-400"
-                }`}
+                  selected ? "border-green-500 ring-0 ring-green-100" : ""
+                } ${theme === "dark" ? "border border-slate-600" : "border border-slate-300"} `}
               >
                 <div className="flex items-center justify-between">
                   <span

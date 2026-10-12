@@ -10,10 +10,12 @@ import SubNavbar from "./SubNavbar";
 import MobileMenu from "./MobileMenu";
 import ThemeToggle from "@/components/ThemeToggle";
 import ThemeBackground from "@/components/ThemeBackground";
+import useThemeStore from "@/store/themeStore";
 const Navbar = ({ toggleSidebar }) => {
+  const theme = useThemeStore((state) => state.theme);
   return (
     <ThemeBackground>
-      <nav className="w-full shrink-0 shadow-2xl">
+      <nav className="w-full shrink-0 shadow-xl">
         <div className="mx-auto w-full px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
           <div className="flex items-center gap-2 shrink-0">
             <Button onClick={toggleSidebar} variant="ghost" size="icon">
@@ -48,7 +50,9 @@ const Navbar = ({ toggleSidebar }) => {
         </div>
 
         {/* LINE 2: SUB-NAVIGATION (Desktop Only) */}
-        <div className="hidden md:block border-t border-slate-900 ring-0">
+        <div
+          className={`hidden md:block ring-0 ${theme === "dark" ? "border-t border-slate-700" : "border-t border-slate-300"} `}
+        >
           <SubNavbar />
         </div>
 

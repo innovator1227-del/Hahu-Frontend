@@ -1,15 +1,15 @@
-import ThemeBackground from '@/components/ThemeBackground';
-import ThemeToggle from '@/components/ThemeToggle';
-import { useState } from 'react';
-import { FaBars } from 'react-icons/fa';
-import { Link } from 'react-router-dom';
+import ThemeBackground from "@/components/ThemeBackground";
+import ThemeToggle from "@/components/ThemeToggle";
+import { useState } from "react";
+import { FaBars } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const HeroHeader = ({ heroMenu }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <ThemeBackground>
-      <div className="w-full shadow-2xl font-serif">
+      <div className="w-full shadow-xl font-serif">
         <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           {/* Mobile menu button */}
           <button
