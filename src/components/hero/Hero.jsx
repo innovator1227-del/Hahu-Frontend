@@ -1,7 +1,7 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
-import Categories from "./components/pages/Categories";
+import Categories from "./components/pages/catogories/Categories";
 import Service from "./components/pages/hahu-service/Service";
 import HeroPart from "./components/pages/HeroPart";
 import HeroView from "./components/pages/HeroView";
@@ -13,6 +13,7 @@ import Vission from "./components/pages/about/Vission";
 import ExploreGrid from "./components/pages/ExploreGrid";
 import HahuWork from "./components/pages/how_towork/HahuWork";
 import { teamMembers } from "./components/pages/about/AboutData";
+import TopReated from "./components/pages/top_reated/TopReated";
 
 const Hero = () => {
   const settings = {
@@ -43,12 +44,16 @@ const Hero = () => {
         </div>
       </section>
 
+      <AboutHahu />
+
       <Categories />
+
+      <TopReated />
+
+      <Service />
 
       <Reasining />
 
-      <Service />
-      <AboutHahu />
       <Story />
       <Vission />
       <HahuWork />

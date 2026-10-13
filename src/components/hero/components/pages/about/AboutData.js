@@ -3,7 +3,7 @@ export const teamMembers = [
     name: "Minyamr",
     initial: "M",
     description:
-      "Passionate about learning, building, and creating useful software.",
+      "Passionate about learning and building user freindly Mobile and web app with flutter.",
   },
   {
     name: "Rahel",

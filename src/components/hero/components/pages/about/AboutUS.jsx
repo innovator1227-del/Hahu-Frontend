@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import useThemeStore from "@/store/themeStore";
+import { slideRight, slideUp } from "@/utils/animate";
 
 const About = ({ teamMembers }) => {
   const theme = useThemeStore((state) => state.theme);
@@ -19,45 +20,59 @@ const About = ({ teamMembers }) => {
         }`}
       >
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="mx-auto mb-12 max-w-2xl text-center">
-            <p className="font-semibold uppercase tracking-widest text-blue-500">
+          <motion.div
+            variants={slideUp(0.2)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="mx-auto mb-12 max-w-2xl text-center"
+          >
+            <p className="font-semibold uppercase tracking-widest text-green-500">
               Meet Our Team
             </p>
 
             <h2 className="mt-3 text-3xl font-bold sm:text-4xl">
-              The people behind HAHU
+              HAHU Development Team
             </h2>
 
             <p className={`mt-4 leading-7 ${mutedText}`}>
               We are a team of passionate software developer students learning,
               collaborating, and building our ideas into reality.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {teamMembers.map((member) => (
-              <article
+              <motion.div
+                variants={slideUp(0.4)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
                 key={member.name}
-                className={`rounded-2xl border p-6 text-center transition duration-300 hover:-translate-y-1 hover:shadow-lg ${cardStyle}`}
+                className={`rounded-2xl border p-6 text-center transition duration-300 hover:-translate-y-1 shadow-xl ${cardStyle}`}
               >
-                <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-blue-600 to-indigo-600 text-3xl font-bold text-white shadow-lg">
+                <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-green-600 to-green-600 text-3xl font-bold text-white shadow-lg">
                   {member.initial}
                 </div>
 
                 <h3 className="mt-5 text-xl font-bold">{member.name}</h3>
 
-                <p className="mt-2 text-sm font-medium text-blue-500">
+                <p className="mt-2 text-sm font-medium text-green-500">
                   Software Developer Student
                 </p>
 
                 <p className={`mt-4 text-sm leading-6 ${mutedText}`}>
                   {member.description}
                 </p>
-              </article>
+              </motion.div>
             ))}
           </div>
 
-          <div
+          <motion.div
+            variants={slideRight(0.6)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
             className={`mt-10 rounded-2xl border p-6 text-center ${cardStyle}`}
           >
             <p className={`leading-7 ${mutedText}`}>
@@ -65,7 +80,7 @@ const About = ({ teamMembers }) => {
               teamwork, curiosity, and a shared passion for software
               development.
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
     </main>

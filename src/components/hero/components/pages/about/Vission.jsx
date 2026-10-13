@@ -1,5 +1,8 @@
 import useThemeStore from "@/store/themeStore";
-import React from "react";
+import { slideUp } from "@/utils/animate";
+import { motion } from "framer-motion";
+import { Eye, MinusSquareIcon } from "lucide-react";
+import { SiDreamstime } from "react-icons/si";
 
 const Vission = () => {
   const theme = useThemeStore((state) => state.theme);
@@ -19,8 +22,14 @@ const Vission = () => {
         }`}
       >
         <div className="mx-auto max-w-7xl px-5 sm:px-8">
-          <div className="mx-auto mb-12 max-w-2xl text-center">
-            <p className="font-semibold uppercase tracking-widest text-blue-500">
+          <motion.div
+            variants={slideUp(0.2)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className="mx-auto mb-12 max-w-2xl text-center"
+          >
+            <p className="font-semibold uppercase tracking-widest text-green-500">
               What Drives Us
             </p>
 
@@ -31,14 +40,18 @@ const Vission = () => {
             <p className={`mt-4 leading-7 ${mutedText}`}>
               The principles behind what we are building.
             </p>
-          </div>
+          </motion.div>
 
           <div className="grid gap-6 md:grid-cols-2">
-            <article
-              className={`rounded-2xl border p-8 transition hover:-translate-y-1 ${cardStyle}`}
+            <motion.div
+              variants={slideUp(0.4)}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              className={`rounded-2xl border p-8 transition hover:-translate-y-1 shadow-xl ${cardStyle}`}
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-100 text-2xl">
-                🎯
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-300 text-2xl">
+                <SiDreamstime className="text-4xl text-green-950" />
               </div>
 
               <h3 className="mt-5 text-2xl font-bold">Our Mission</h3>
@@ -49,13 +62,17 @@ const Vission = () => {
                 products, connect with sellers, and give useful items a second
                 life.
               </p>
-            </article>
+            </motion.div>
 
-            <article
-              className={`rounded-2xl border p-8 transition hover:-translate-y-1 ${cardStyle}`}
+            <motion.div
+              variants={slideUp(0.4)}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              className={`rounded-2xl border p-8 transition hover:-translate-y-1 shadow-xl ${cardStyle}`}
             >
-              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-100 text-2xl">
-                🌍
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-green-300 text-2xl">
+                <Eye className="text-4xl text-green-950" />
               </div>
 
               <h3 className="mt-5 text-2xl font-bold">Our Vision</h3>
@@ -65,7 +82,7 @@ const Vission = () => {
                 encourages reuse, supports connections between people, and
                 contributes to a more resource-conscious future.
               </p>
-            </article>
+            </motion.div>
           </div>
         </div>
       </section>

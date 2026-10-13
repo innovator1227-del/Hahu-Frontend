@@ -1,6 +1,7 @@
 import useThemeStore from "@/store/themeStore";
+import { slideRight, slideUp } from "@/utils/animate";
 import { Heart } from "lucide-react";
-import React from "react";
+import { motion } from "framer-motion";
 
 const Story = () => {
   const theme = useThemeStore((state) => state.theme);
@@ -15,8 +16,13 @@ const Story = () => {
     <div>
       <section id="our-story" className="mx-auto max-w-7xl px-5 py-20 sm:px-8">
         <div className="grid gap-10 md:grid-cols-2 md:items-center">
-          <div>
-            <p className="font-semibold uppercase tracking-widest text-blue-500">
+          <motion.div
+            variants={slideUp(0.2)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+          >
+            <p className="font-semibold uppercase tracking-widest text-green-500">
               Our Story
             </p>
 
@@ -30,15 +36,27 @@ const Story = () => {
               still be valuable to someone else.
             </p>
 
-            <p className={`mt-4 leading-8 ${mutedText}`}>
+            <motion.p
+              variants={slideUp(0.4)}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.2 }}
+              className={`mt-4 leading-8 ${mutedText}`}
+            >
               By bringing buyers and sellers together in one platform, we aim to
               make it easier to find useful products, sell pre-loved items, and
               make better use of the things around us.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
-          <div className={`rounded-3xl border p-8 sm:p-10 ${cardStyle}`}>
-            <Heart className="text-4xl text-red-600" />
+          <motion.div
+            variants={slideUp(0.6)}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            className={`rounded-3xl border p-8 sm:p-10 shadow-xl ${cardStyle}`}
+          >
+            <Heart className="text-6xl text-green-600" />
 
             <h3 className="mt-5 text-2xl font-bold">More than a marketplace</h3>
 
@@ -46,7 +64,7 @@ const Story = () => {
               HAHU represents our commitment to learning, creativity, teamwork,
               and building technology that can solve everyday problems.
             </p>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>
