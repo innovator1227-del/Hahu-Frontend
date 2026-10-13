@@ -1,5 +1,5 @@
-import { themes } from "@/store/theme";
-import useThemeStore from "@/store/themeStore";
+import { themes } from '@/store/theme';
+import useThemeStore from '@/store/themeStore';
 
 const ThemeBackground = ({ children }) => {
   const theme = useThemeStore((state) => state.theme);
@@ -7,9 +7,7 @@ const ThemeBackground = ({ children }) => {
   const currentTheme = themes[theme];
 
   return (
-    <div
-      className={`relative ${currentTheme.page.background} ${currentTheme.page.text}`}
-    >
+    <div className={`relative ${currentTheme.page.background} ${currentTheme.page.text}`}>
       {currentTheme.pattern.enabled && (
         <>
           <div className={currentTheme.pattern.glow} />

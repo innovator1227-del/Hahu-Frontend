@@ -1,11 +1,15 @@
+import useThemeStore from "@/store/themeStore";
 import { Image as ImageIcon } from "lucide-react";
 
 const PreviewGallery = ({ images = [], title = "" }) => {
+  const theme = useThemeStore((state) => state.theme);
   const coverImage = images[0];
 
   if (!images.length) {
     return (
-      <div className="flex aspect-square min-h-[280px] items-center justify-center rounded-2xl border border-slate-400">
+      <div
+        className={`flex aspect-square min-h-[280px] items-center justify-center rounded-2xl ${theme === "dark" ? "border border-slate-600" : "border border-slate-300"}`}
+      >
         <div className="text-center">
           <ImageIcon className="mx-auto h-10 w-10" />
 
@@ -22,7 +26,9 @@ const PreviewGallery = ({ images = [], title = "" }) => {
   return (
     <div className="space-y-3 cursor-pointer">
       {/* Main image */}
-      <div className="overflow-hidden rounded-2xl border border-slate-200 cursor-pointer">
+      <div
+        className={`overflow-hidden rounded-2xl cursor-pointer ${theme === "dark" ? "border border-slate-600" : "border border-slate-300"} `}
+      >
         {coverImage && (
           <img
             src={coverImage.preview}

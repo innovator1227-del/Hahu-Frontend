@@ -4,7 +4,7 @@ import PreviewInfo from "./PreviewInfo";
 import useThemeStore from "@/store/themeStore";
 
 const ListingPreview = ({ form }) => {
-  const { theme } = useThemeStore();
+  const theme = useThemeStore((state) => state.theme);
   const images = form?.images ?? [];
 
   const locationText =
@@ -53,7 +53,9 @@ const ListingPreview = ({ form }) => {
 
         {/* Location + delivery */}
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
-          <div className="rounded-2xl border border-slate-200 p-4">
+          <div
+            className={`rounded-2xl p-4 ${theme === "dark" ? "border border-slate-600" : "border border-slate-300"} `}
+          >
             <div className="flex items-start gap-3">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-green-100 text-green-600">
                 <MapPin className="h-5 w-5" />
@@ -69,7 +71,9 @@ const ListingPreview = ({ form }) => {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-slate-200 p-4">
+          <div
+            className={`rounded-2xl p-4 ${theme === "dark" ? "border border-slate-600" : "border border-slate-300"} `}
+          >
             <div className="flex items-start gap-3">
               <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-100 text-blue-600">
                 <Truck className="h-5 w-5" />

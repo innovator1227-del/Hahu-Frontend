@@ -1,145 +1,135 @@
-import slogan from "@/assets/Hahu.jpg";
-import photo from "@/assets/Social.jpg";
-import { scaleIn, slideLeft, slideRight, slideUp } from "@/utils/animate";
-import { motion } from "framer-motion";
-import { Check, FastForward, HouseHeart, SmileIcon } from "lucide-react";
-import ThemeBackground from "@/components/ThemeBackground";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import slogan from '@/assets/Hahu.jpg';
+import photo from '@/assets/Social.jpg';
+import useThemeStore from '@/store/themeStore';
+import { scaleIn, slideLeft } from '@/utils/animate';
+import { motion } from 'framer-motion';
+import { Check, FastForward, HouseHeart, SmileIcon } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import Slider from 'react-slick';
 
-const HeroPart = () => {
-  const settings = {
-    dots: true,
+const HeroView = () => {
+  const theme = useThemeStore((state) => state.theme);
+  const isDark = theme === 'dark';
+
+  const imageSettings = {
+    dots: false,
+    arrows: false,
     infinite: true,
-    speed: 700,
+    autoplay: true,
+    autoplaySpeed: 3500,
+    speed: 600,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    arrows: false,
     pauseOnHover: true,
   };
+
+  const features = ['Better prices', 'Easy negotiation', 'Trusted deals'];
+
   return (
-    <ThemeBackground>
-      <section className="flex flex-col lg:flex-row rounded-2xl border-l-0 md:p-6 shadow-xl hover:shadow-2xl transition-all duration-300 hover:translate-x-1 min-w-0 px-6 w-full h-full mt-0 mb-0 items-center justify-between gap-6 p-5 font-serif">
-        {/* LEFT CONTENT */}
-        <div className="w-full self-start lg:w-1/2">
-          <div className="pt-4 md:pt-8">
-            <motion.h3
-              variants={slideLeft(0)}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.5 }}
-              className="text-4xl font-bold text-green-800 md:text-5xl lg:text-6xl py-10"
-            >
-              Happy With HAHU
-            </motion.h3>
+    <motion.div
+      variants={slideLeft(0)}
+      initial="hidden"
+      animate="visible"
+      className={`grid h-full w-full grid-cols-1 overflow-hidden rounded-3xl border shadow-lg sm:min-h-[430px] lg:grid-cols-2 ${
+        isDark ? 'border-slate-700 bg-slate-900' : 'border-slate-200'
+      }`}
+    >
+      {/* LEFT */}
+      <div className="flex flex-col justify-center p-6 sm:p-8 lg:p-10">
+        <span className="w-fit rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-700">
+          A better marketplace
+        </span>
 
-            <motion.p
-              variants={slideLeft(0.15)}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.5 }}
-              className="mt-3 text-sm font-medium text-amber-500 md:text-base"
-            >
-              A Smarter Way to Buy and Sell Second-Hand.
-            </motion.p>
-          </div>
+        <motion.h2
+          variants={slideLeft(0.1)}
+          className={`mt-4 text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl ${
+            isDark ? 'text-white' : 'text-slate-900'
+          }`}
+        >
+          Happy With HAHU
+        </motion.h2>
 
-          <motion.p
-            variants={slideLeft(0.3)}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.5 }}
-            className="mt-6 max-w-xl lg:text-sm leading-6 opacity-70 md:text-base"
-          >
-            HAHU makes every deal worth smiling about — better prices, trusted
-            users, secure payments, and convenient delivery, all in one place.
-          </motion.p>
+        <motion.p
+          variants={slideLeft(0.2)}
+          className="mt-3 text-base font-semibold text-green-600 sm:text-lg"
+        >
+          Buy better. Sell with confidence.
+        </motion.p>
 
-          <motion.div
-            variants={slideLeft(0.5)}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.5 }}
-            className="mt-10 space-y-2"
-          >
-            <p className="flex flex-1 gap-2">
-              <Check size={28} className="text-green-500" />
-              Where Trust Meets Better Deals.
-            </p>
-            <p className="flex flex-1 gap-2">
-              <Check size={28} className="text-green-500" />
-              Your Marketplace. Your Price. Your Choice.
-            </p>
-            <p className="flex flex-1 gap-2">
-              <Check size={28} className="text-green-500" />
-              Trade with Trust, Buy with Confidence.
-            </p>
-          </motion.div>
+        <p
+          className={`mt-3 max-w-lg text-sm leading-6 ${
+            isDark ? 'text-slate-300' : 'text-slate-600'
+          }`}
+        >
+          Find value, connect directly, and trade with confidence.
+        </p>
+
+        {/* Features */}
+        <div className="mt-5 space-y-2">
+          {features.map((feature) => (
+            <div key={feature} className="flex items-center gap-2">
+              <Check size={16} className="shrink-0 text-green-500" />
+              <span className="text-sm">{feature}</span>
+            </div>
+          ))}
         </div>
 
-        {/* RIGHT CONTENT */}
-        <div className="flex w-full flex-col items-center lg:w-1/2 min-h-[500px]">
-          {/* IMAGE */}
-          <div className="w-full">
-            <Slider {...settings}>
-              <motion.div
-                variants={scaleIn(0)}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.5 }}
-                className="flex justify-center"
-              >
-                <img
-                  src={slogan}
-                  alt="HAHU Marketplace"
-                  className="h-auto w-52 object-contain sm:w-60 md:w-64 lg:w-72"
-                />
-              </motion.div>
+        {/* Button */}
+        <Link
+          to="/app/browse"
+          className="mt-6 w-fit rounded-xl bg-green-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-green-700"
+        >
+          Explore HAHU
+        </Link>
+      </div>
 
-              <div className="flex justify-center">
-                <img
-                  src={photo}
-                  alt="HAHU Marketplace"
-                  className="h-auto w-52 object-contain sm:w-60 md:w-64 lg:w-72"
-                />
-              </div>
-            </Slider>
-          </div>
+      {/* RIGHT IMAGE */}
+      <div className="flex items-center justify-center p-4 sm:p-6">
+        <div className="w-full max-w-md">
+          <Slider {...imageSettings}>
+            <motion.div
+              variants={scaleIn(0)}
+              initial="hidden"
+              animate="visible"
+              className="flex h-52 items-center justify-center sm:h-60 lg:h-72"
+            >
+              <img
+                src={slogan}
+                alt="Happy with HAHU"
+                className="max-h-full w-full object-contain"
+              />
+            </motion.div>
 
-          {/* QUICK ACTIONS */}
-          <motion.div
-            variants={slideUp(0)}
-            initial="hidden"
-            animate="visible"
-            className="mt-auto grid w-full max-w-md grid-cols-3 gap-6"
+            <div className="flex h-52 items-center justify-center sm:h-60 lg:h-72">
+              <img
+                src={photo}
+                alt="HAHU marketplace"
+                className="max-h-full w-full object-contain"
+              />
+            </div>
+          </Slider>
+
+          {/* Bottom features */}
+          <div
+            className={`mt-3 grid grid-cols-3 gap-1 rounded-2xl p-2 ${
+              isDark ? 'bg-slate-800' : 'bg-slate-50'
+            }`}
           >
-            <div className="flex flex-col items-center gap-1 text-center">
-              <SmileIcon size={28} className="h-5 w-5 text-purple-500" />
-              <span className="text-[10px] font-medium sm:text-xs">
-                Shop. Save. Smile.
-              </span>
-            </div>
-            <div className="flex flex-col items-center gap-1 text-center">
-              <FastForward size={28} className="h-5 w-5 text-purple-500" />
-              <span className="text-[10px] font-medium sm:text-xs">
-                Get your in Fast
-              </span>
-            </div>
-
-            <div className="flex flex-col items-center gap-1 text-center">
-              <HouseHeart size={28} className="h-5 w-5 text-purple-500" />
-              <span className="text-[10px] font-medium sm:text-xs">
-                Come In Hahu And Enjoy Product
-              </span>
-            </div>
-          </motion.div>
+            <MiniFeature icon={SmileIcon} text="Shop & save" />
+            <MiniFeature icon={FastForward} text="Simple & fast" />
+            <MiniFeature icon={HouseHeart} text="Enjoy HAHU" />
+          </div>
         </div>
-      </section>
-    </ThemeBackground>
+      </div>
+    </motion.div>
   );
 };
 
-export default HeroPart;
+const MiniFeature = ({ icon: Icon, text }) => (
+  <div className="flex flex-col items-center gap-1 text-center">
+    <Icon size={18} className="text-green-500" />
+    <span className="text-[9px] font-medium sm:text-[10px]">{text}</span>
+  </div>
+);
+
+export default HeroView;

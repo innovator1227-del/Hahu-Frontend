@@ -3,6 +3,7 @@ import Navbar from "@/components/common/header/Navbar";
 import Sidebar from "@/components/common/sidebar/Sidebar";
 import { Outlet, useLocation } from "react-router-dom";
 import ThemeBackground from "@/components/ThemeBackground";
+import useThemeStore from "@/store/themeStore";
 
 const AppLayout = () => {
   const [showSidebar, setShowSidebar] = useState(false);
@@ -10,7 +11,7 @@ const AppLayout = () => {
   const location = useLocation();
 
   const isChatPage = location.pathname === "/app/chat";
-
+  const theme = useThemeStore((state) => state.theme);
   return (
     <ThemeBackground>
       <div className="h-screen overflow-hidden">
@@ -38,7 +39,9 @@ const AppLayout = () => {
                   <Outlet />
                 </div>
 
-                <footer className="mt-auto pt-4 pb-6 shadow-2xl border-t border-slate-400">
+                <footer
+                  className={`mt-auto pt-4 pb-6 shadow-2xl ${theme === "dark" ? "border-t border-slate-700" : "border-t border-slate-300"} `}
+                >
                   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="text-center">
                       &copy; {new Date().getFullYear()} Bahirdar Universty BiT
